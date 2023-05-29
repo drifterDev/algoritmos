@@ -1,0 +1,1 @@
+{"name":"Local: gcd","url":"g:\\Mi unidad\\programacion\\algoritmos\\Teoria de numeros\\gcd.cpp","tests":[{"id":1685392414168,"input":"3 5","output":"1"},{"id":1685392765206,"input":"40 2","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"g:\\Mi unidad\\programacion\\algoritmos\\Teoria de numeros\\gcd.cpp","group":"local","local":true}
