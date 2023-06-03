@@ -1,30 +1,10 @@
-# alfabeto=list("abcdefghijklmnopqrstuvwxyz")
-# words=input().split()
-# orden=input()
-# dic={}
-# for i in range(26):
-#     dic[orden[i]]=alfabeto[i]
-# m=len(words)
-# for y in range (m):
-#     n=len(words[y])
-#     new=""
-#     for j in range (n):
-#         new+=dic[words[y][j]]
-#     words[y]=new
-# orden=sorted(words)
-# if (words==orden):
-#     print("YES")
-# else:
-#     print("NO")
-
-
 def is_alien_sorted(words, orden):
     dic={}
     for i in range(26):
-        dic[orden[i]]=i
+        dic[words[i]]=i
     n=len(words) 
     for j in range(n-1): #O(n*m)
-      if not comparar(dic, words[j], words[j+1]):
+      if not comparar(words[j], words[j+1]):
           return False
     return True
       
