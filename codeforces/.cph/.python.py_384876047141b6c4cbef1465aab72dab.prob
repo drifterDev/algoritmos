@@ -1,0 +1,1 @@
+{"name":"Local: python","url":"g:\\Mi unidad\\programacion\\algoritmos\\codeforces\\python.py","tests":[{"id":1686062903574,"input":"5\n1 2\n2 1\n2 2\n10 2\n179 100","output":"2\n2\n3\n4\n180"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"g:\\Mi unidad\\programacion\\algoritmos\\codeforces\\python.py","group":"local","local":true}
