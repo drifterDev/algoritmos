@@ -45,5 +45,9 @@
     "xtr1common": "cpp",
     "xutility": "cpp"
   },
-  "cph.general.onceMaintainerMessage": false
+  "cph.general.onceMaintainerMessage": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none"
 }

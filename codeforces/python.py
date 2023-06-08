@@ -1,6 +1,10 @@
-for cases in range (int(input())):
-    n,k=list(map(int, input().split()))
-    p=[0,]
-    for i in range(k):
-        p.append(2**i)
-    print(p)
+nums = [23, 39, 40, 41, 43, 47, 51, 58, 63, 66, 67, 69, 72]
+result = 0
+result2 = 0
+for i in nums:
+    result += i
+    result2 += i**2
+result /= 13
+print(result)
+print((result2 / 13) - (result**2))
+print(((result2 / 13) - (result**2)) ** 0.5)
