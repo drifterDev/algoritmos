@@ -4,7 +4,6 @@ result2 = 0
 for i in nums:
     result += i
     result2 += i**2
-result /= 13
 print(result)
-print((result2 / 13) - (result**2))
+print((result2 / 13) - ((result) ** 2))
 print(((result2 / 13) - (result**2)) ** 0.5)
