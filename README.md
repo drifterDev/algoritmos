@@ -7,9 +7,8 @@
 Dentro de este repositorio, encontrarás una variedad de código, archivos y notas relacionados con los algoritmos que he aprendido. Estos recursos incluyen:
 
 - Implementaciones de algoritmos en c++ o python.
-- Descripciones detalladas de los algoritmos, incluyendo su funcionamiento y complejidad.
-- Ejemplos de casos de uso y aplicaciones prácticas de los algoritmos.
-- Archivos de entrada y salida utilizados en ejercicios y contests.
+- Descripciones de los algoritmos, incluyendo su complejidad.
+- Solución de diversos problemas presentados en competencias.
 
 ## Contribuciones
 
@@ -19,7 +18,7 @@ Si bien este repositorio es de carácter personal y no acepta contribuciones dir
 
 Si tienes alguna pregunta o comentario sobre este repositorio, no dudes en contactarme por correo electrónico: [maalvarezmu@unal.edu.co](mailto:maalvarezmu@unal.edu.co).
 
-Espero que este repositorio te sea útil en tu aprendizaje de algoritmos. Muchas gracias por visitarlo.
+Espero que este repositorio te sea útil en tu aprendizaje de algoritmos.
 
 ## Licencia
 
