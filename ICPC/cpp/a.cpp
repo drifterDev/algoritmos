@@ -17,21 +17,38 @@ int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ll n;cin>>n;
-    string word;cin>>word;
-    ll unos=0;
-    for (ll i = 0; i < word.length(); i++) {
-        string c = word.substr(i, 1);
-        if(c=="1"){
-            unos++;
+    ll n, q;cin >> n >> q;
+    ll noti = 0;
+    queue<pair<ll, ll>> notifications;
+    vector<queue<ll>> aplications(n + 1);
+    vector<bool> visto(q, false);
+    ll eventos = 1;
+    for (ll i = 0; i < q; i++) {
+        ll typ, x;cin >> typ >> x;
+        if (typ == 1) {
+            notifications.push(make_pair(eventos, x));
+            aplications[x].push(eventos);
+            eventos++;
+            noti++;
+        } else if (typ == 2) {
+            while (!aplications[x].empty()) {
+                visto[aplications[x].front()] = true;
+                aplications[x].pop();
+                noti--;
+            }
+        } else {
+            while (!notifications.empty() && notifications.front().first <= x) {
+                int j = notifications.front().first;
+                int k = notifications.front().second;
+                notifications.pop();
+                if (!visto[j]) {
+                    visto[j] = true;
+                    aplications[k].pop();
+                    noti--;
+                }
+            }
         }
+        cout << noti << "\n";
     }
-    if(n>unos){
-        cout<<"0\n";
-    }else{
-        for (ll k=0;k<word.length();k++){
-            
-        }
-    }
-    
+    return 0;
 }

@@ -1,18 +1,27 @@
-n = int(input())
-for case in range(n):
-    n, m = list(map(int, input().split()))
-    libros = list(map(int, input().split()))
-    librosGratis = libros.count(0)
-    if librosGratis > m:
-        print("Impossible")
-    elif n == m:
-        print("Richman")
+import queue
+
+n, q = list(map(int, input().split()))
+noti = 0
+notifications = queue.Queue()
+aplications = [queue.Queue() for o in range(n + 1)]
+visto = [False] * q
+eventos = 1
+for i in range(q):
+    typ, x = list(map(int, input().split()))
+    if typ == 1:
+        notifications.put((eventos, x))
+        aplications[x].put(eventos)
+        eventos += 1
+        noti += 1
+    elif typ == 2:
+        while aplications[x].qsize() > 0:
+            visto[aplications[x].get()] = True
+            noti -= 1
     else:
-        money = 0
-        libros.sort()
-        minimo = sum(libros[:m])
-        libros.reverse()
-        for i in range(n - m - 1):
-            maximo = sum(libros[i : i + m])
-            if minimo > maximo:
-                print(maximo)
+        while notifications.qsize() > 0 and notifications.queue[0][0] <= int(x):
+            j, k = notifications.get()
+            if not visto[j]:
+                visto[j] = True
+                aplications[k].get()
+                noti -= 1
+    print(noti)
