@@ -14,41 +14,49 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+string cadenaBinaria(string cadena){
+    ll n=cadena.length();
+    ll ceros=0;
+    ll unos=0;
+    string seg1,seg2,seg3;
+    if (cadena[0]=='1'){
+        seg1="0";
+        unos++;
+    }else {
+        ceros++;
+    }
+    for (int i = 1; i < n; i++) {
+        if(cadena[i]=='1'){
+            unos++;
+        }else{
+            ceros++;
+        }
+        if(cadena[i-1]=='0' && cadena[i]=='1' && seg1==""){
+            seg1=to_string(i);
+        }else if(cadena[i-1]=='1' && cadena[i]=='0' && seg2==""){
+            seg2=to_string(i);
+        }else if(cadena[i-1]=='0' && cadena[i]=='1' && seg3==""){
+            seg3=to_string(i);
+        }
+    }
+    if(ceros==n){
+        seg1=to_string(n);
+        seg2=to_string(n);
+        seg3=to_string(n);
+    }else if(unos==n || seg2==""){
+        seg2=to_string(n);
+        seg3=to_string(n);
+    }else if(seg3==""){
+        seg3=to_string(n);
+    }
+    return seg1+" "+seg2+" "+seg3;
+}
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ll n, q;cin >> n >> q;
-    ll noti = 0;
-    queue<pair<ll, ll>> notifications;
-    vector<queue<ll>> aplications(n + 1);
-    vector<bool> visto(q, false);
-    ll eventos = 1;
-    for (ll i = 0; i < q; i++) {
-        ll typ, x;cin >> typ >> x;
-        if (typ == 1) {
-            notifications.push(make_pair(eventos, x));
-            aplications[x].push(eventos);
-            eventos++;
-            noti++;
-        } else if (typ == 2) {
-            while (!aplications[x].empty()) {
-                visto[aplications[x].front()] = true;
-                aplications[x].pop();
-                noti--;
-            }
-        } else {
-            while (!notifications.empty() && notifications.front().first <= x) {
-                int j = notifications.front().first;
-                int k = notifications.front().second;
-                notifications.pop();
-                if (!visto[j]) {
-                    visto[j] = true;
-                    aplications[k].pop();
-                    noti--;
-                }
-            }
-        }
-        cout << noti << "\n";
-    }
+    string entrada, imprime;cin>>entrada;
+    imprime=cadenaBinaria(entrada);
+    cout<<imprime<<"\n";
     return 0;
 }

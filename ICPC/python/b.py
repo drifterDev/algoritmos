@@ -1,13 +1,24 @@
-n = int(input())
-x = 0
-y = 0
-z = 0
-for vector in range(n):
-    px, py, pz = list(map(int, input().split()))
-    x += px
-    y += py
-    z += pz
-if x == 0 and y == 0 and z == 0:
-    print("YES")
-else:
-    print("NO")
+def formarCombates(string):
+    reto = ""
+    lens = len(string)
+    for i in range(lens):
+        reto += string[0] + " " + string[1]
+        combates.append(reto)
+        formarCombates(string[1:])
+        formarCombates(string[:1])
+
+
+cases = int(input())
+for case in range(cases):
+    n, k = list(map(int, input().split()))
+    if n % 2 != 0:
+        print("Impossible")
+        continue
+    caballeros = []
+    for i in range(1, n + 1):
+        caballeros.append(str(i))
+    combates = []
+    formarCombates("".join(caballeros))
+    combates.sort()
+    for combate in combates:
+        print(combate)
