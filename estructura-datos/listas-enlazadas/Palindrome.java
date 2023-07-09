@@ -3,7 +3,6 @@ public class Palindrome {
       if (cabeza==null){
         return true;
       }
-      Nodo finPrimeraMitad=encontrarMitad(cabeza);
       Nodo comienzoSegundaMitad=reversarLista(cabeza);
       boolean esPalindromo=true;
       Nodo p1=cabeza;
@@ -16,7 +15,7 @@ public class Palindrome {
         p1=p1.siguiente;
         p2=p2.siguiente;
       }
-      finPrimeraMitad=reversarLista(comienzoSegundaMitad);
+      comienzoSegundaMitad=reversarLista(comienzoSegundaMitad);
       return esPalindromo;
     }
 
