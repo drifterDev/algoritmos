@@ -1,18 +1,19 @@
-total: int
+class Response:
+    def __init__(self, total=0):
+        self.total = total
+
+    def dfs(self, node, valor_actual):
+        parcial = valor_actual + str(node.valor)
+
+        if node.izquierda is None and node.derecha is None:
+            self.total = self.total + int(parcial)
+        if node.derecha is not None:
+            self.dfs(node.derecha, parcial)
+        if node.izquierda is not None:
+            self.dfs(node.izquierda, parcial)
 
 
-def sum_root_leaf(raiz) -> int:
-    if raiz == None:
-        return 0
-    total = 0
-    dfs(raiz, "", total)
-    return total
-
-
-def dfs(raiz, camino, total):
-    if raiz.izquierda == None and raiz.derecha == None:
-        total += int(camino + str(raiz.value))
-    if raiz.izquierda != None:
-        dfs(raiz.izquierda, camino + str(raiz.value), total)
-    if raiz.derecha != None:
-        dfs(raiz.derecha, camino + str(raiz.value), total)
+def sum_numbers(node, valor_actual=""):
+    response = Response(0)
+    response.dfs(node, valor_actual)
+    return response.total
