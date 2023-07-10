@@ -2,6 +2,7 @@ def existe_palabra(matriz: list[list[str]], palabra: str) -> bool:
     existe = False
 
     def dfs(matriz: list[list[str]], x: int, y: int, index: int):
+        nonlocal existe
         if (
             x < 0
             or y < 0
@@ -23,7 +24,7 @@ def existe_palabra(matriz: list[list[str]], palabra: str) -> bool:
     for i in range(len(matriz)):
         for j in range(len(matriz[0])):
             if palabra[0] == matriz[i][j]:
-                dfs(matriz, i, j, 0, palabra)
+                dfs(matriz, i, j, 0)
                 if existe:
                     return True
     return existe
