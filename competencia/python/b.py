@@ -2,7 +2,7 @@ def formarCombates(string):
     reto = ""
     lens = len(string)
     for i in range(lens):
-        reto += string[0] + " " + string[1]
+        reto = string[0] + " " + string[1]
         combates.append(reto)
         formarCombates(string[1:])
         formarCombates(string[:1])
