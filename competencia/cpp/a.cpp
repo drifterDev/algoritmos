@@ -14,49 +14,82 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-string cadenaBinaria(string cadena){
-    ll n=cadena.length();
-    ll ceros=0;
-    ll unos=0;
-    string seg1,seg2,seg3;
-    if (cadena[0]=='1'){
-        seg1="0";
-        unos++;
-    }else {
-        ceros++;
-    }
-    for (int i = 1; i < n; i++) {
-        if(cadena[i]=='1'){
-            unos++;
-        }else{
-            ceros++;
+bool comprobar(vector<vector<char>>& mapa, vector<pair<char, ll>>& instrucciones, pair<ll, ll>& letra) {
+    ll x = letra.first;
+    ll y = letra.second;
+    for (const auto& instruccion : instrucciones) {
+        char direccion = instruccion.first;
+        ll pasos = instruccion.second;
+        if (direccion == 'N') {
+            for (ll j = 0; j < pasos; j++) {
+                if (x-1< 0 || mapa[x-1][y]=='#') {
+                    return false;
+                }
+                x--;
+            }
+        } else if (direccion == 'S') {
+            for (ll j = 0; j < pasos; j++) {
+                if (x+1>=sz(mapa) || mapa[x+1][y]=='#') {
+                    return false;
+                }
+                x++;
+            }
+        }else if (direccion == 'W') {
+            for (ll j = 0; j < pasos; j++) {
+                if (y-1< 0 || mapa[x][y-1]=='#') {
+                    return false;
+                }
+                y--;
+            }
+        }else if (direccion == 'E'){
+            for (ll j = 0; j < pasos; j++) {
+                if (y+1>= sz(mapa[0]) || mapa[x][y+1]=='#') {
+                    return false;
+                }
+                y++;
+            }
         }
-        if(cadena[i-1]=='0' && cadena[i]=='1' && seg1==""){
-            seg1=to_string(i);
-        }else if(cadena[i-1]=='1' && cadena[i]=='0' && seg2==""){
-            seg2=to_string(i);
-        }else if(cadena[i-1]=='0' && cadena[i]=='1' && seg3==""){
-            seg3=to_string(i);
-        }
     }
-    if(ceros==n){
-        seg1=to_string(n);
-        seg2=to_string(n);
-        seg3=to_string(n);
-    }else if(unos==n || seg2==""){
-        seg2=to_string(n);
-        seg3=to_string(n);
-    }else if(seg3==""){
-        seg3=to_string(n);
-    }
-    return seg1+" "+seg2+" "+seg3;
+    return true;
 }
+
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    string entrada, imprime;cin>>entrada;
-    imprime=cadenaBinaria(entrada);
-    cout<<imprime<<"\n";
+    ll n,m;cin>>n >>m;
+    vector<vector<char>> mapa(n, vector<char>(m));
+    vector<pair<ll, ll>> letras;
+    vector<char> letrasOrigen;
+    vector<char> ans;
+    for (ll i=0;i<n;i++){
+        for (ll j=0;j<m;j++){
+            cin >> mapa[i][j];
+            if (mapa[i][j] != '.' && mapa[i][j] != '#') {
+                letras.push_back(make_pair(i, j));
+                letrasOrigen.push_back(mapa[i][j]);
+            }
+        }
+    }
+    ll ins;cin>>ins;
+    vector<pair<char, ll>> instrucciones(ins);
+    for (ll q = 0; q < ins; q++) {
+        cin >> instrucciones[q].first >> instrucciones[q].second;
+    }
+    for (ll t=0;t<sz(letras);t++){
+        if (comprobar(mapa, instrucciones, letras[t])){
+            ans.push_back(letrasOrigen[t]);
+        }
+    }
+    if(ans.empty()){
+        cout<<"no solution";
+    }else{
+        sort(ans.begin(), ans.end());
+        for (char c:ans){
+            cout<<c;
+        }
+    }
+    cout<<"\n";
     return 0;
 }
+

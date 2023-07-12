@@ -1,11 +1,38 @@
-n = int(input())
-nums = list(map(int, input().split()))
-deposito = 0
-for j in range(20240000):
-    for i in range(n):
-        nums[i] += deposito
-        deposito = nums[i] / 2
-        nums[i] -= deposito
-nums[0] += deposito
-for n in nums:
-    print(round(n, 6), end=" ")
+xa, ya = map(int, input().split())
+xb, yb = map(int, input().split())
+xc, yc = map(int, input().split())
+
+# Gracias wikipedia
+if (ya - yb) * (xb - xc) == (yb - yc) * (xa - xb):
+    print("TOWARDS")
+elif (ya - yb) * (xb - xc) > (yb - yc) * (xa - xb):
+    print("RIGHT")
+else:
+    print("LEFT")
+
+
+# try:
+#     m = (ya - yb) / (xa - xb)
+#     if abs(yc - m * xc) < 10 ** (-5):
+#         print("TOWARDS")
+#     else:
+#         vector1 = (xb - xa, yb - ya)
+#         vector2 = (xc - xb, yc - yb)
+#         producto = vector1[0] * vector2[1] - vector1[1] * vector2[0]
+#         if producto > 0:
+#             print("LEFT")
+#         else:
+#             print("RIGHT")
+# except:
+#     if xb == xc:
+#         print("TOWARDS")
+#     elif ya < yb:
+#         if xb < xc:
+#             print("RIGHT")
+#         else:
+#             print("LEFT")
+#     else:
+#         if xb < xc:
+#             print("LEFT")
+#         else:
+#             print("RIGHT")
