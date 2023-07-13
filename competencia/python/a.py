@@ -1,38 +1,34 @@
-xa, ya = map(int, input().split())
-xb, yb = map(int, input().split())
-xc, yc = map(int, input().split())
-
-# Gracias wikipedia
-if (ya - yb) * (xb - xc) == (yb - yc) * (xa - xb):
-    print("TOWARDS")
-elif (ya - yb) * (xb - xc) > (yb - yc) * (xa - xb):
-    print("RIGHT")
+n = int(input())
+s = input()
+t = input()
+p1 = -1
+p2 = -1
+res = 0
+letrass = {}
+letrast = {}
+for i in range(n):
+    if s[i] != t[i]:
+        res += 1
+        letrass[s[i]] = i
+        letrast[t[i]] = i
+numero = res
+respuestas = {}
+minimo = 200000
+pasa = False
+for j in letrast:
+    if j in letrass:
+        p1 = letrass[j]
+        p2 = letrast[j]
+        res -= 2 if t[p1] == s[p2] else 1
+        respuestas[res] = [p1 + 1, p2 + 1]
+        minimo = min(minimo, res)
+        res = numero
+        pasa = True
+if not pasa:
+    print(res)
+    print("-1 -1")
 else:
-    print("LEFT")
-
-
-# try:
-#     m = (ya - yb) / (xa - xb)
-#     if abs(yc - m * xc) < 10 ** (-5):
-#         print("TOWARDS")
-#     else:
-#         vector1 = (xb - xa, yb - ya)
-#         vector2 = (xc - xb, yc - yb)
-#         producto = vector1[0] * vector2[1] - vector1[1] * vector2[0]
-#         if producto > 0:
-#             print("LEFT")
-#         else:
-#             print("RIGHT")
-# except:
-#     if xb == xc:
-#         print("TOWARDS")
-#     elif ya < yb:
-#         if xb < xc:
-#             print("RIGHT")
-#         else:
-#             print("LEFT")
-#     else:
-#         if xb < xc:
-#             print("LEFT")
-#         else:
-#             print("RIGHT")
+    print(minimo)
+    p1 = respuestas[minimo][0]
+    p2 = respuestas[minimo][1]
+    print(str(p1) + " " + str(p2))
