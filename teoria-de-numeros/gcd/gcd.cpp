@@ -24,7 +24,10 @@ int main() {
     return 0;
 }
 
-
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
+int lcm(int a, int b) { return a * (b / gcd(a, b)); }
+// Also you can use __gcd function from cpp
+// int ans = __gcd(x, y)
 
 
 
