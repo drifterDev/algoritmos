@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dado un tablero de m x n donde cada celda es un acorazado ‘X’ o un vacío ‘.’, devuelva el número de los barcos en el tablero. Los barcos sólo pueden colocarse horizontal o verticalmente en el tablero. En otras palabras, sólo pueden tener la forma 1 x k (1 fila, k columnas) o k x 1 (k filas, 1 columna), donde k puede ser de cualquier tamaño. Al menos una celda horizontal o vertical separa dos barcos (es decir, no hay barcos adyacentes).
 
 # Ejemplo 1:

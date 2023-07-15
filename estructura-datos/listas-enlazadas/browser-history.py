@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # BrowserHistory(string homepage): inicializa el objeto con la página de inicio del navegador.
 # void visit(string url): visita la url de la página actual. Borra todo el historial de avance.
 # string back(int steps): mueve los pasos hacia atrás en el historial. Si sólo puede devolver x pasos en el historial y pasos > x, devolverá sólo x pasos. Devuelve la url actual después de retroceder como máximo pasos en el historial.

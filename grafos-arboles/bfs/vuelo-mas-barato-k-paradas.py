@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Hay n ciudades conectadas por un cierto número de vuelos. Se le da un array flights donde flights[i] = [fromi, toi, pricei] indica que hay un vuelo desde la ciudad fromi a la ciudad toi con un precioi. También se le dan tres enteros src, dst y k, devuelve el precio más barato de src a dst con un máximo de k paradas. Si no existe tal ruta, devuelve -1.
 
 # Ejemplo 1:

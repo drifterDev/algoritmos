@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dado un árbol binario, encuentre el ancestro común más bajo (LCA) de dos nodos dados en el árbol. Según la definición de LCA en Wikipedia “El mínimo común antecesor se define entre dos nodos p y q como el nodo más bajo de T que tiene tanto p como q como descendientes (donde permitimos que un nodo sea descendiente de sí mismo).”
 
 # Ejemplo 1:

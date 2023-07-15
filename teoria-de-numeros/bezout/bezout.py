@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Identidad de Bezout empleando el algoritmo de Euclides extendido
 # Este algoritmo nos da los coeficientes que multiplican para que el resultado sea:
 # a*s + b*t = 1

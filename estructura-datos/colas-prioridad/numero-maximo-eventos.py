@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dado un array de eventos donde events[i] = [comienzoDiai, finalDiai]. Cada evento i comienza en comienzoDiai y termina en finalDiai. Puedes asistir a un evento i en cualquier día d donde startTimei <= d <= endTimei. Sólo se puede asistir a un evento en cualquier momento d. Devuelve el número máximo de eventos a los que puedes asistir.
 
 # Ejemplo 1:

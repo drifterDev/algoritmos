@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Se le da un tablero de matriz entera n x n en el que las casillas están etiquetadas de 1 a n2 al estilo Boustrophedon empezando por la parte inferior izquierda del tablero (es decir, tablero[n - 1][0]) y alternando la dirección de cada fila. Se comienza en la casilla 1 del tablero. En cada movimiento, partiendo de la casilla curr, haz lo siguiente
 # Elige una casilla de destino próxima con una etiqueta en el rango [curr + 1, min(curr + 6, n2)]. Esta elección simula el resultado de una tirada estándar de 6 caras: es decir, siempre hay como máximo 6 destinos, independientemente del tamaño del tablero.
 # Si el siguiente tiene una serpiente o escalera, debes moverte al destino de esa serpiente o escalera. En caso contrario, te mueves a siguiente.

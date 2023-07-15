@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 def dfs(raiz, objetivo):
     print("En el nodo con valor: " + str(raiz.valor))
     if raiz.valor == objetivo:

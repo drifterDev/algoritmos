@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Hay un total de numCursos cursos que tiene que tomar, etiquetados de 0 a numCursos - 1. Se le da una matriz prerrequisitos donde prerrequisitos[i] = [ai, bi] indica que debe tomar el curso bi primero si quiere tomar el curso ai. Por ejemplo, el par [0, 1], indica que para tomar el curso 0 hay que tomar primero el curso 1. Devuelve true si puedes terminar todos los cursos. En caso contrario, devuelve false.
 
 # Ejemplo 1:

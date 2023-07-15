@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada la raíz de un árbol binario, construya una cadena formada por paréntesis y enteros a partir de un árbol binario con el modo de recorrido de preorden, y devuélvala. Omita todos los pares de paréntesis vacíos que no afecten a la relación de mapeo uno a uno entre la cadena y el árbol binario original.
 
 # Ejemplo 1

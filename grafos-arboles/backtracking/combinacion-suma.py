@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una matriz de enteros distintos candidatos y un entero objetivo, devuelve una lista de todas las combinaciones únicas de candidatos en las que los números elegidos suman el objetivo. Puede devolver las combinaciones en cualquier orden. El mismo número puede ser elegido entre los candidatos un número ilimitado de veces. Dos combinaciones son únicas si la frecuencia de al menos uno de los números elegidos es diferente. Los casos de prueba se generan de forma que el número de combinaciones únicas que suman el objetivo sea inferior a 150 combinaciones para la entrada dada.
 
 # Ejemplo 1:

@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una cadena s y un diccionario de cadenas wordDict, devuelve true si s puede segmentarse en una secuencia separada por espacios de una o más palabras del diccionario. Tenga en cuenta que la misma palabra del diccionario puede reutilizarse varias veces en la segmentación.
 
 #  Ejemplo 1:

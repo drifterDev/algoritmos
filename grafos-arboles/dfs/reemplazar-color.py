@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Una imagen está representada por una cuadrícula de enteros m x n donde image[i][j] representa el valor de los píxeles de la imagen.
 
 # También se le dan tres enteros sr, sc y color. Debe realizar un relleno en la imagen comenzando por el píxel image[sr][sc].

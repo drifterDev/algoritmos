@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una cadena que representa una ruta absoluta, es decir que representa la ruta de archivo o directorio en un sistema de archivos estilo Unix (comienza con un slash ‘/’), conviértala en la ruta canónica simplificada.
 
 # En un sistema de archivos de estilo Unix, un punto ‘.’ se refiere al directorio actual, un doble punto ‘…’ se refiere al directorio de un nivel superior, y cualquier barra múltiple consecutiva (es decir, ‘//’) se trata como una sola barra ‘/’. Para este problema, cualquier otro formato de puntos como ‘…’ se tratan como nombres de archivo/directorio.

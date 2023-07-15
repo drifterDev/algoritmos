@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una cadena s que representa una expresión, evaluar esta expresión y devolver su valor. La división de enteros debe truncar hacia cero. Puede asumir que la expresión dada es siempre válida. Todos los resultados intermedios estarán en el rango de [-231, 231 - 1].
 
 # Nota: No está permitido utilizar ninguna función incorporada que evalúe cadenas como expresiones matemáticas, como eval().

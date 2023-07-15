@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Tienes un arreglo de caracteres tasks que representa las tareas que debe realizar una CPU, donde cada letra representa una tarea diferente. Las tareas pueden realizarse en cualquier orden. Cada tarea se realiza en una unidad de tiempo. Por cada unidad de tiempo la CPU puede completar una tarea o simplemente estar inactiva.
 
 # Sin embargo, existe un período de enfriamiento entre dos tareas iguales (la misma letra en la matriz) representado por la variable n, es decir que debe haber al menos n unidades de tiempo entre dos tareas iguales.

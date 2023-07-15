@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Intercambio de nodos por parejas
 
 # Dada una lista enlazada, intercambia cada dos nodos adyacentes y devuelve su cabeza. Debe resolver el problema sin modificar los valores de los nodos de la lista (es decir, sólo se pueden cambiar los propios nodos).

@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Se le da un tablero de matriz de m x n caracteres que representa el tablero de juego donde:
 
 #     ‘M’ representa una mina no revelada,

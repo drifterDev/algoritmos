@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dadas dos cadenas s y t, devuelve true si son iguales cuando ambas se escriben en editores de texto vacíos. ‘#’ significa un carácter de backspace (tecla de restroceso). En el caso de retroceder en una cadena vacía, esta continuará vacía.
 
 # Ejemplo 1:

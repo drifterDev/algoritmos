@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una cadena s, se puede transformar cada letra individualmente para que sea minúscula o mayúscula para crear otra cadena. Devuelve una lista de todas las posibles cadenas que podríamos crear. Devuelve la salida en cualquier orden.
 
 # Ejemplo 1:

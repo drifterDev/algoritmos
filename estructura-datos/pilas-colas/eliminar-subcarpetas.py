@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Dada una lista de carpetas, devuelva las carpetas después de eliminar todas las subcarpetas de esas carpetas. Puede devolver la respuesta en cualquier orden.
 
 # Si una carpeta[i] se encuentra dentro de otra carpeta[j], se denomina subcarpeta de ésta.

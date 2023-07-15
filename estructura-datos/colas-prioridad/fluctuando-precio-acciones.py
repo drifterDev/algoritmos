@@ -1,3 +1,9 @@
+# Autor: Mateo Álvarez Murillo
+# Fecha de creación: 2023
+
+# Este código se proporciona bajo la Licencia MIT.
+# Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 # Se le da un flujo de registros sobre una acción concreta. Cada registro contiene el tiempo y el precio correspondiente de la acción en esa marca.
 # Por desgracia, debido a la naturaleza volátil del mercado de valores, los registros no vienen en orden y algunos registros pueden ser incorrectos. Otro registro con el mismo registro de tiempo puede aparecer más tarde en el flujo corrigiendo el precio del anterior registro erróneo.
 
