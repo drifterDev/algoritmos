@@ -1,1 +1,0 @@
-{"name":"Local: b","url":"c:\\Users\\Admin\\programacion\\algoritmos\\ICPC\\python\\b.py","tests":[{"id":1688585479208,"input":"2\n3 1\n4 3","output":"Impossible\n2 1 4 3\n3 4 1 2\n4 3 2 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\programacion\\algoritmos\\ICPC\\python\\b.py","group":"local","local":true}
