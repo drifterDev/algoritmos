@@ -1,19 +1,24 @@
-def analizar_expresion(expresion: str) -> bool:
-    simbolos = "+-*/%"
-    expresion = expresion.split()
-    for i in range(len(expresion)):
-        if i % 2 == 0:
-            try:
-                numero = int(expresion[i])
-            except:
-                return False
-        else:
-            if not expresion[i] in simbolos:
-                return False
-    return True
+def comparar_cadenas(cadena1: str, cadena2: str) -> list[str]:
+    n = len(cadena1)
+    m = len(cadena2)
+    s = min(n, m)
+    letras_diferentes = []
+    for i in range(s):
+        if cadena1[i] != cadena2[i]:
+            letras_diferentes.append(cadena2[i])
+    if n > m:
+        for k in range(m, n):
+            letras_diferentes.append("")
+    elif m > n:
+        for j in range(n, m):
+            letras_diferentes.append(cadena2[j])
+    return letras_diferentes
 
 
+# Se debe ingresar primero la cadena original
+# y luego la cadena a comparar, ambas separadas por un salto de linea.
 if __name__ == "__main__":
-    expresion = input("Introducir la expresion a analizar: ")
-    res = "true" if analizar_expresion(expresion) else "false"
-    print("Es una expresion valida? " + res)
+    cadena1 = input().strip()
+    cadena2 = input().strip()
+    letras_diferentes = comparar_cadenas(cadena1, cadena2)
+    print(letras_diferentes)
