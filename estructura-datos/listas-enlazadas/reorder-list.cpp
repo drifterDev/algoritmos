@@ -19,70 +19,73 @@ int dirx[4] = {0,-1,1,0};
 int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
-
-class Nodo {
-public:
-    int valor;
-    Nodo* siguiente;
-
-    Nodo(int valor = 0, Nodo* siguiente = nullptr) {
-        this->valor = valor;
-        this->siguiente = siguiente;
-    }
+/**/
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-
-void reorderList(Nodo* cabeza) {
-    if (!cabeza || !cabeza->siguiente || !cabeza->siguiente->siguiente) {
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next || !head->next->next) {
         return;
     }
-    Nodo* rapido = cabeza->siguiente;
-    Nodo* lento = cabeza;
-    while (rapido && rapido->siguiente) {
-        rapido = rapido->siguiente->siguiente;
-        lento = lento->siguiente;
+    ListNode* rapido = head->next;
+    ListNode* lento = head;
+    while (rapido && rapido->next) {
+        rapido = rapido->next->next;
+        lento = lento->next;
     }
-    Nodo* comienzoSegundaMitad = lento->siguiente;
-    Nodo* actual = comienzoSegundaMitad;
-    Nodo* anterior = nullptr;
-    Nodo* tmp;
+    ListNode* comienzoSegundaMitad = lento->next;
+    ListNode* actual = comienzoSegundaMitad;
+    ListNode* anterior = nullptr;
+    ListNode* tmp;
     while (actual) {
-        tmp = actual->siguiente;
-        actual->siguiente = anterior;
+        tmp = actual->next;
+        actual->next = anterior;
         anterior = actual;
         actual = tmp;
     }
-    Nodo* p1 = cabeza;
-    Nodo* p2 = anterior;
+    ListNode* p1 = head;
+    ListNode* p2 = anterior;
     while (p2) {
-        tmp = p1->siguiente;
-        p1->siguiente = p2;
-        p1->siguiente->siguiente = tmp;
-        p2->siguiente = tmp;
+        tmp = p1->next;
+        p1->next = p2;
+        p1->next->next = tmp;
+        p2->next = tmp;
         p1 = tmp;
     }
-}
+    }
+};
+
+
+
+
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
     // Ejemplo de uso
-    Nodo* nodo1 = new Nodo(1);
-    Nodo* nodo2 = new Nodo(2);
-    Nodo* nodo3 = new Nodo(3);
-    Nodo* nodo4 = new Nodo(4);
-    Nodo* nodo5 = new Nodo(5);
+    ListNode* nodo1 = new ListNode(1);
+    ListNode* nodo2 = new ListNode(2);
+    ListNode* nodo3 = new ListNode(3);
+    ListNode* nodo4 = new ListNode(4);
+    ListNode* nodo5 = new ListNode(5);
 
-    nodo1->siguiente = nodo2;
-    nodo2->siguiente = nodo3;
-    nodo3->siguiente = nodo4;
-    nodo4->siguiente = nodo5;
+    nodo1->next = nodo2;
+    nodo2->next = nodo3;
+    nodo3->next = nodo4;
+    nodo4->next = nodo5;
 
-    reorderList(nodo1);
+    // Solution.reverseList(nodo1);
 
-    Nodo* nodoActual = nodo1;
+    ListNode* nodoActual = nodo1;
     while (nodoActual) {
-        std::cout << nodoActual->valor << " ";
-        nodoActual = nodoActual->siguiente;
+        cout << nodoActual->val << " ";
+        nodoActual = nodoActual->next;
     }
     cout << endl;
 
