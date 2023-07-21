@@ -12,23 +12,19 @@
 # Explicación: 2 y 3 son candidatos, y 2 + 2 + 3 = 7. Nótese que 2 puede usarse varias veces. 7 es un candidato, y 7 = 7. Estas son las dos únicas combinaciones.
 
 
-def combinationSum(candidatos: list[int], target: int) -> list[list[int]]:
-    def dfs(sobrante, pila, resultado):
-        if sobrante == 0:
-            resultado.append(pila.copy())
-            return
-        for numero in candidatos:
-            if numero > sobrante:
+class Solution:
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+        def dfs(sobrante, pila, resultado):
+            if sobrante == 0:
+                resultado.append(pila.copy())
                 return
-            if not pila or pila[-1] <= numero:
-                dfs(sobrante - numero, pila + [numero], resultado)
+            for numero in candidates:
+                if numero > sobrante:
+                    return
+                if not pila or pila[-1] <= numero:
+                    dfs(sobrante - numero, pila + [numero], resultado)
 
-    resultado = []
-    candidatos.sort()
-    dfs(target, [], resultado)
-    return resultado
-
-
-nums = list(map(int, input().split()))
-target = int(input())
-print(combinationSum(nums, target))
+        resultado = []
+        candidates.sort()
+        dfs(target, [], resultado)
+        return resultado

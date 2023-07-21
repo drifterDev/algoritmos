@@ -1,5 +1,12 @@
 cases = int(input())
-for case in range(cases):
-    n, m = map(int, input().split())
-    res = "YES" if n % m == 0 else "NO"
-    print(res)
+for i in range(cases):
+    n = int(input())
+    mayor = 0
+    index = 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        if a <= 10:
+            if b > mayor:
+                index = i
+                mayor = b
+    print(index + 1)

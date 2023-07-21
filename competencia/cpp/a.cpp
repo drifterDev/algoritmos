@@ -14,52 +14,56 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+
+ll gcd(ll a, ll b) {
+    while (b) {
+        a %= b;
+        swap(a, b);
+    }
+    return a;
+}
+
+ll ranas(vl& nums, ll n) {
+    ll mayor = 0;
+    for (ll i = 2; i <= n; i++) {
+        ll count = 0;
+        if (nums[i] > n) {
+            break;
+        }
+        for (ll num : nums) {
+            if(num>n){
+                break;
+            }
+            if (num==1){
+                count++;
+                continue;
+            }
+            if (gcd(i, num) > 1) {
+                count++;
+            }
+        }
+        mayor = max(mayor, count);
+    }
+
+    return mayor;
+}
+
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int N;
-    cin >> N;
-
-    set<string> candidates;
-    vector<string> votes(N);
-    for (int i = 0; i < N; i++) {
-        cin >> votes[i];
-        candidates.insert(votes[i]);
-    }
-
-    vector<int> voteCounts(candidates.size());
-    for (int i = 0; i < N; i++) {
-        voteCounts[distance(candidates.begin(), candidates.find(votes[i]))]++;
-    }
-
-    int majorityThreshold = N / 2 + 1;
-    set<string> eliminatedCandidates;
-    while (true) {
-        int minVotes = *min_element(voteCounts.begin(), voteCounts.end());
-        if (minVotes >= majorityThreshold) {
-            break;
+    ll cases;cin >> cases;
+    for (ll i = 0; i < cases; i++) {
+        ll n;cin >> n;
+        vl nums(n,0);
+        for (ll j = 0; j < n; j++) {
+            cin >> nums[j];
         }
-
-        auto minVotesIndex = min_element(voteCounts.begin(), voteCounts.end()) - voteCounts.begin();
-        voteCounts[minVotesIndex] = INT_MAX;
-        eliminatedCandidates.insert(*next(candidates.begin(), minVotesIndex));
-
-        for (int i = 0; i < N; i++) {
-            if (votes[i] == *next(candidates.begin(), minVotesIndex)) {
-                for (int j = 0; j < candidates.size(); j++) {
-                    if (votes[i] == *next(candidates.begin(), j)) {
-                        voteCounts[j]++;
-                        break;
-                    }
-                }
-            }
-        }
+        sort(nums.begin(), nums.end());
+        ll res=ranas(nums, n);
+        cout <<res << endl;
     }
-
-    cout << eliminatedCandidates.size() << endl;
-    for (const auto& candidate : eliminatedCandidates) {
-        cout << candidate << endl;
-    }
-
     return 0;
 }
+
+

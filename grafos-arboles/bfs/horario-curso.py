@@ -21,9 +21,9 @@ class Node:
 
 
 class Solution:
-    def canFinish(self, numCourses, prerequisitos):
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         grafo = defaultdict(Node)
-        for cursos in prerequisitos:
+        for cursos in prerequisites:
             grafo[cursos[0]].indegree += 1
             grafo[cursos[1]].outNodes.append(grafo[cursos[0]])
         cola = deque()
@@ -38,4 +38,4 @@ class Solution:
                 nextCourse.indegree -= 1
                 if nextCourse.indegree == 0:
                     cola.append(nextCourse)
-        return removerConexion == len(prerequisitos)
+        return removerConexion == len(prerequisites)
