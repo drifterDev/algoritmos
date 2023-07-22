@@ -1,3 +1,10 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2023
+
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
@@ -25,8 +32,7 @@ public:
     int rob(vector<int>& nums) {
       int n=nums.size();
       vector<int> dp(n+1,0);
-      dp.push_back(0);
-      dp.push_back(nums[0]);
+      dp[1]=nums[0];
       for(int i=1;i<n;i++){
         dp[i+1]=max(dp[i], dp[i-1]+nums[i]);
       }

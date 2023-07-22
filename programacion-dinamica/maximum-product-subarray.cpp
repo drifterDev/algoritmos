@@ -4,7 +4,6 @@
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
-
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
@@ -29,20 +28,18 @@ int main() {
 
 class Solution {
 public:
-    unordered_map<int, int> memo;
-    int climbStairs(int n) {
-        if(n==1){
-          return 1;
-        }else if(n==2){
-          return 2;
-        }else{
-          if(memo.find(n)!=memo.end()){
-            return memo[n];
-          }else{
-            int res=climbStairs(n-1)+climbStairs(n-2);
-            memo[n]=res;
-            return res;
-          }
-        }
+    int maxProduct(vector<int>& nums) {
+      int n=nums.size();
+      vector<int> maximo(n+1,0);
+      vector<int> minimo(n+1,0);
+      maximo[0]=1;
+      minimo[0]=1;
+      int res=INT_MIN;
+      for (int i=0;i<n;i++){
+        maximo[i+1]=max(max(maximo[i]*nums[i], minimo[i]*nums[i]),nums[i]);
+        minimo[i+1]=min(min(maximo[i]*nums[i], minimo[i]*nums[i]), nums[i]);
+        res=max(res, maximo[i+1]);
+      }
+      return res;
     }
-};
+}; 

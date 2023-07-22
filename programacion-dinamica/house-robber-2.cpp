@@ -1,3 +1,10 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2023
+
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
@@ -30,15 +37,16 @@ public:
         return max(nums[0], nums[1]);
       }else{
         int n=nums.size();
-        vector<int> dp(n+1,0);
-        dp[0]=0;
-        dp[1]=nums[n-1];
-        dp[2]=max(dp[0],nums[0]);
-        for(int i=1;i<n-2;i++){
-          dp[i+2]=max(dp[i+1], dp[i]+nums[i]);
+        vector<int> dp(n,0);
+        vector<int> dp2(n,0);
+        dp[1]=nums[0];
+        dp2[1]=nums[1];
+        for(int i=1;i<n-1;i++){
+          dp[i+1]=max(dp[i], dp[i-1]+nums[i]);
+          dp2[i+1]=max(dp2[i], dp2[i-1]+nums[i+1]);
         }
-        dp[n]=max(dp[n-1], dp[n-2]+nums[n-2]);
-        return dp[n];
+        int res=max(dp2[n-1], dp[n-1]);
+        return res;
       }
     }
 };
