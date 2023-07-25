@@ -7,4 +7,11 @@
 
 class Solution:
     def reverseBits(self, n: int) -> int:
-        pass
+        res = 0
+        act = n
+        pot = -1
+        while act > 0:
+            pot += 1
+            res += (2 ** (32 - pot - 1)) if act % 2 != 0 else 0
+            act = act // 2
+        return res
