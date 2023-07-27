@@ -2,68 +2,38 @@
 using namespace std;
 #define sz(arr) ((int) arr.size())
 typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
 typedef vector<long long> vl;
-const int INF = 1e9;
-const ll INFL = 1e18;
-const int MOD = 1e9+7;
-int dirx[4] = {0,-1,1,0};
-int diry[4] = {-1,0,0,1};
-int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
-int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-
-ll gcd(ll a, ll b) {
-    while (b) {
-        a %= b;
-        swap(a, b);
-    }
-    return a;
-}
-
-ll ranas(vl& nums, ll n) {
-    ll mayor = 0;
-    for (ll i = 2; i <= n; i++) {
-        ll count = 0;
-        if (nums[i] > n) {
-            break;
+void bucle_invariable(string c){
+    ll n=c.size();string c2=c+c;
+    ll balance=0;ll index=0;
+    ll ultima=0;
+    ll diferencia=0;
+    for (ll i=0;i<n;i++){
+        char actual=c[i];
+        balance+= actual=='('?1:-1;
+        if (!balance){
+            if (!diferencia){
+                diferencia=index-ultima;
+            }else if(index-ultima!=diferencia){
+                cout<<c2.substr(index,n)<<"\n";
+                return;
+            }
+            ultima=index;
+            index=i+1;
         }
-        for (ll num : nums) {
-            if(num>n){
-                break;
-            }
-            if (num==1){
-                count++;
-                continue;
-            }
-            if (gcd(i, num) > 1) {
-                count++;
-            }
-        }
-        mayor = max(mayor, count);
     }
-
-    return mayor;
+    if (c!=c2.substr(ultima,n)){
+        cout<<c2.substr(ultima,n)<<"\n";
+    }else{
+        cout<<"no\n";
+    }
 }
-
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ll cases;cin >> cases;
-    for (ll i = 0; i < cases; i++) {
-        ll n;cin >> n;
-        vl nums(n,0);
-        for (ll j = 0; j < n; j++) {
-            cin >> nums[j];
-        }
-        sort(nums.begin(), nums.end());
-        ll res=ranas(nums, n);
-        cout <<res << endl;
-    }
+    string c;cin>>c;bucle_invariable(c);
     return 0;
 }
-
 

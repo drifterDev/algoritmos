@@ -1,21 +1,22 @@
-def ranas(n, nums):
-    array = [0] * (n + 1)
-    mayor = 0
-    nums.sort()
-    for i in range(n):
-        if nums[i] > n:
-            break
-        for j in range(0, n + 1, nums[i]):
-            array[j] += 1
-            if j == 0:
-                continue
-            mayor = max(array[j], mayor)
-    return mayor
+def teclado_t9(input_nums: list[str]) -> str:
+    letters = {
+        "1": ",.?!",
+        "2": "ABC",
+        "3": "DEF",
+        "4": "GHI",
+        "5": "JKL",
+        "6": "MNO",
+        "7": "PQRS",
+        "8": "TUV",
+        "9": "WXYZ",
+        "0": " ",
+    }
+    res = []
+    for string in input_nums:
+        res.append(letters[string[0]][len(string) - 1])
+    return "".join(res)
 
 
-cases = int(input())
-for i in range(cases):
-    n = int(input())
-    nums = list(map(int, input().split()))
-    res = ranas(n, nums)
-    print(res)
+if __name__ == "__main__":
+    input_nums = input().split("-")
+    print(teclado_t9(input_nums))
