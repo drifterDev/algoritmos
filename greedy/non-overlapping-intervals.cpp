@@ -29,7 +29,7 @@ int main() {
 
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
         
     }
 };
