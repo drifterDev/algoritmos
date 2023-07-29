@@ -30,6 +30,22 @@ int main() {
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
-        
+        sort(intervals.begin(), intervals.end(), [](const vector<int>& a, const vector<int>& b) {
+            return a[0] < b[0];
+        });
+        int res=0;
+        vector<int> actual = intervals[0];
+        int n = intervals.size();
+        for (int i = 1; i < n; ++i) {
+            if (intervals[i][0] >= actual[1]) {
+                actual = intervals[i];
+            } else{
+              res++;
+              if (intervals[i][1]<actual[1]){
+                actual=intervals[i];
+              }
+            }
+        }
+        return res;
     }
 };

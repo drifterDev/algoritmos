@@ -30,6 +30,23 @@ int main() {
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        
+        sort(intervals.begin(), intervals.end(), [](const vector<int>& a, const vector<int>& b) {
+            return a[0] < b[0];
+        });
+
+        vector<vector<int>> res;
+        vector<int> actual = intervals[0];
+        int n = intervals.size();
+
+        for (int i = 1; i < n; ++i) {
+            if (intervals[i][0] > actual[1]) {
+                res.push_back(actual);
+                actual = intervals[i];
+            } else if (intervals[i][0] <= actual[1]) {
+                actual = {min(actual[0], intervals[i][0]), max(actual[1], intervals[i][1])};
+            }
+        }
+        res.push_back(actual);
+        return res;
     }
 };
