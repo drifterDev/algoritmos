@@ -4,7 +4,7 @@
 # Este código se proporciona bajo la Licencia MIT.
 # Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
-
+# FIXME: corregir el nombre de la funcion
 class Solution:
     def hammingWeight(self, n: int) -> int:
         res=n

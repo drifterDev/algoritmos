@@ -48,6 +48,12 @@ public:
             terminado=true;
           }else if(intervals[i][0]>newInterval[0] && intervals[i][1]<newInterval[1]){
             continue;
+          }else if(intervals[i][0]>newInterval[1]){
+            retorno.push_back(newInterval);
+            retorno.push_back(intervals[i]);
+            terminado=true;
+          }else{
+            newInterval={min(newInterval[0], intervals[i][0]),max(newInterval[1], intervals[i][1])};
           }
         }
       }
