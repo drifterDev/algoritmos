@@ -2,38 +2,20 @@
 using namespace std;
 #define sz(arr) ((int) arr.size())
 typedef long long ll;
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
+typedef vector<int> vi;
 typedef vector<long long> vl;
-
-void bucle_invariable(string c){
-    ll n=c.size();string c2=c+c;
-    ll balance=0;ll index=0;
-    ll ultima=0;
-    ll diferencia=0;
-    for (ll i=0;i<n;i++){
-        char actual=c[i];
-        balance+= actual=='('?1:-1;
-        if (!balance){
-            if (!diferencia){
-                diferencia=index-ultima;
-            }else if(index-ultima!=diferencia){
-                cout<<c2.substr(index,n)<<"\n";
-                return;
-            }
-            ultima=index;
-            index=i+1;
-        }
-    }
-    if (c!=c2.substr(ultima,n)){
-        cout<<c2.substr(ultima,n)<<"\n";
-    }else{
-        cout<<"no\n";
-    }
-}
+const int INF = 1e9;
+const ll INFL = 1e18;
+const int MOD = 1e9+7;
+int dirx[4] = {0,-1,1,0};
+int diry[4] = {-1,0,0,1};
+int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    string c;cin>>c;bucle_invariable(c);
-    return 0;
+ios::sync_with_stdio(false);
+cin.tie(0);
+return 0;
 }
-
