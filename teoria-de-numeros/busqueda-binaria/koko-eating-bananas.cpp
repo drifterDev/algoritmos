@@ -36,6 +36,7 @@ public:
         }
         int l=1;
         int r=maximo;
+        vector<int>res;
         while(l<=r){
           int mid=l+(r-l)/2;
           int actual=horas(piles,mid);
@@ -43,11 +44,13 @@ public:
             return mid;
           }else if(actual<h){
             l=mid+1;
+            res.push_back(mid);
           }else{
             r=mid-1;
           }
         }
-        return l;
+        sort(res.begin(),res.end());
+        return res[res.size()-1];
     }
 
     int horas(vector<int>& piles, int k){
