@@ -14,17 +14,19 @@
 
 class Solution:
     def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
-        def dfs(sobrante, pila, resultado):
+        def dfs(sobrante, pila, resultado, prohibidos):
             if sobrante == 0:
                 resultado.append(pila.copy())
                 return
-            for numero in candidates:
-                if numero > sobrante:
+            for i in range(len(candidates)):
+                if i in prohibidos:
+                    continue
+                if candidates[i] > sobrante:
                     return
-                if not pila or pila[-1] <= numero:
-                    dfs(sobrante - numero, pila + [numero], resultado)
-
+                if not pila or pila[-1] <= candidates[i]:
+                    prohibidos.append(i)
+                    dfs(sobrante - candidates[i], pila + [i], resultado, prohibidos)
         resultado = []
         candidates.sort()
-        dfs(target, [], resultado)
+        dfs(target, [], resultado, [])
         return resultado
