@@ -1,9 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
@@ -12,7 +6,6 @@ using namespace std;
 typedef vector<string> vs;
 typedef vector<int> vi;
 
-// O(n)
 vi prefix_function(string s){
   int n=len(s);
   vi pi(n);
@@ -28,13 +21,10 @@ vi prefix_function(string s){
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-string s="aabaaab";
+string s;cin>>s;
 vi pi=prefix_function(s);
-cout<<"Función phi\n";
 for(int i=0;i<len(s);i++)cout<<pi[i]<<" ";
 cout<<"\n";
-
-cout<<"Cantidad de veces que aparecen los prefijos\n";
 int n=len(s);
 vi ans(n + 1);
 for(int i=0;i<n;i++)ans[pi[i]]++;
