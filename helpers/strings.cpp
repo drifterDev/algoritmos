@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Función para convertir un caracter a un entero
+int conv(char ch) { 
+  return ((ch >= 'a' && ch <= 'z') ? ch-'a' : ch-'A'+26);
+}
+
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
