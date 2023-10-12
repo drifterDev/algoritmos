@@ -71,15 +71,30 @@ int go(int v, char ch) {
   return t[v].go[c];
 } 
 
+void find_strings(vs& strings, string& text){
+  int act=0;
+  for(char ch:text){
+    act=go(act,ch);
+    // Verifica si el nodo actual marca el final de alguna cadena
+    int tmp=act;
+    while(tmp!=0) {
+      // Imprime la cadena que termina en este nodo
+      if(t[tmp].output)cout<<"Encontrada: "<<strings[tmp]<<"\n";
+      tmp=get_link(tmp);
+    }
+  }
+}
+
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
 int n;cin>>n;
+vs strings(n);
 for(int i=0;i<n;i++) {
-  string s;cin>>s;
-  add_string(s);
+  cin>>strings[i];
+  add_string(strings[i]);
 }
 string text;cin>>text;
-
+find_strings(strings, text);
 return 0;
 }
