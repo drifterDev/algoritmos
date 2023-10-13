@@ -24,7 +24,7 @@ int trie[N][26], nodes;
 int cnt[N], end_word[N];
 int fail[N], fail_out[N];
 
-void add(string& s, int index){
+void add(string& s, int index){ 
   int act=0;
   for(char c:s){
     int x=c-'a'; // Mapea a un número de 0 a 25

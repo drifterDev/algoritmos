@@ -23,7 +23,7 @@ int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 const int K = 26;
 
 struct Vertex {
-  int next[K];
+  int next[K]; 
   bool output=false;
   int p=-1;
   char pch;
