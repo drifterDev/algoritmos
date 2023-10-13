@@ -84,7 +84,7 @@ vi lcp_construction(string const& s, vi const& p) {
   for(int i=0;i<n;i++){
     if(rank[i]==n-1) {
       k=0;continue;
-    }
+    } 
     int j=p[rank[i]+1];
     while(i+k<n && j+k<n && s[i+k]==s[j+k])k++;
     lcp[rank[i]] = k;

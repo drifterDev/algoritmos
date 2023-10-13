@@ -17,7 +17,7 @@ const int MOD = 1e9+7;
 int dirx[4] = {0,-1,1,0};
 int diry[4] = {-1,0,0,1};
 int dr[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1}; 
 
 // Tamaño del alfabeto
 const int K = 26;
