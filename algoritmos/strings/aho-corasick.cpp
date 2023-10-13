@@ -25,7 +25,7 @@ const int K = 26;
 struct Vertex {
   int next[K]; 
   bool output=false;
-  int p=-1;
+  int p=-1; 
   char pch;
   int link=-1;
   int go[K];

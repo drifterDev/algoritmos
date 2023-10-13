@@ -6,24 +6,10 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define watch(x) cout<<#x<<"="<<x<<'\n'
-#define trace(x) cerr<<#x<<"="<<x<<'\n'
-#define sz(arr) ((int) arr.size())
 #define len(str) ((int) str.length())
 #define all(x) x.begin(), x.end()
-typedef vector<string> vs;
 typedef pair<int, int> ii;
-typedef vector<ii> vii;
 typedef vector<int> vi;
-typedef long long ll;
-typedef vector<ll> vl;
-const int INF = 1e9;
-const ll INFL = 1e18;
-const int MOD = 1e9+7;
-int dirx[4] = {0,-1,1,0};
-int diry[4] = {-1,0,0,1};
-int dr[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 vi sort_cyclic_shifts(string const& s) {
   int n=len(s);
@@ -60,6 +46,7 @@ vi sort_cyclic_shifts(string const& s) {
   }
   return p;
 }
+
 // O(nlogn)
 vi suffix_array(string s) {
   s+="$";
@@ -70,10 +57,6 @@ vi suffix_array(string s) {
 
 // Casos de uso
 // ******************************
-// Tambien podemos usar el suffix_array para 
-// Encontrar el smallest cyclic shift
-// Sin añadir ningun caracter a la cadena
-// Lo obtenemos en p[0]
 
 vi lcp_construction(string const& s, vi const& p) {
   int n=len(s);
@@ -92,18 +75,29 @@ vi lcp_construction(string const& s, vi const& p) {
   }
   return lcp;
 }
+
+int different_substrings(string s) {
+  vi sa=suffix_array(s);
+  vi lcp=lcp_construction(s,sa);
+  int n=len(s);
+  int act=n*(n+1);act/=2;
+  for(int i=0;i<n-1;i++)act-=lcp[i];
+  return act;
+}
+
 // ******************************
 
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-string s;cin>>s;
-vi sa=suffix_array(s);
-for(int i=0;i<len(s);i++)cout<<sa[i]<<" ";
-cout<<"\n";
-
+string s;cin>>s;int n=len(s);
+vi sa=suffix_array(s); 
+cout<<"Desde el index, el suffix array\n";
+for(int i=0;i<n;i++)cout<<sa[i]<<" ";
+cout<<"\nVa comparando de 2 en 2 y muestra el lcp:\n";
 vi lcp=lcp_construction(s,sa);
-for(int i=0;i<len(s)-1;i++)cout<<lcp[i]<<" ";
-cout<<"\n";
+for(int i=0;i<n-1;i++)cout<<lcp[i]<<" ";
+cout<<"\nEl número de substrings distintos\n";
+cout<<different_substrings(s)<<"\n";
 return 0;
 }
