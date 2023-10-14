@@ -12,6 +12,7 @@ typedef vector<int> vi;
 typedef long long ll;
 typedef vector<ll> vl;
  
+// Construcción O(nlogn)
 struct SuffixArray{
   char MIN_CHAR='$';
   int ALPHA=256;
@@ -53,6 +54,8 @@ struct SuffixArray{
     }
   }
  
+  // O(logn+t)
+  // Encuentra cuantas veces aparece t en s
   int cntMatching(const string &t){
     int m=len(t);
     if(m>n)return 0;
@@ -73,6 +76,7 @@ struct SuffixArray{
     return s.substr(pos[lb], m)==t?ub-lb+1:0;
   }
 
+  // El k-esimo substring lexicografico sin repeticiones O(n)
   string kthSubstr(ll k){
     for(int i=1;i<n;i++){
       int nxt=n-1-pos[i]-lcp[i-1];
@@ -84,6 +88,7 @@ struct SuffixArray{
     }
   }
 
+  // O(n)
   void numeroSubstringsPorTamano(){
     vl ps(n+1);
     for(int i=1;i<n;i++){
