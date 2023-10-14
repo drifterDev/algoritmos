@@ -7,114 +7,79 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
-typedef vector<string> vs;
-typedef vector<int> vi;
-typedef long long ll;
-typedef vector<ll> vl;
-char const MIN_CHAR='a';
-int const ALPHA=26;
- 
-// O(n) construcción, O(n) memoria
-struct SuffixAutomaton {
-  int last;
-  vi len,link,firstPos;
-  vl cnt;
-  vector<array<int,2>> order;
-  vector<array<int, ALPHA>> nxt;
-  SuffixAutomaton():last(0),len(1),link(1,-1),firstPos(1),cnt(1),nxt(1){}
-  SuffixAutomaton(const string &s):SuffixAutomaton(){
-    for (char c:s)
-      extend(c);
-  }
 
-  int getIndex(char c){
-    return c-MIN_CHAR;
-  }
- 
-  void extend(char c) {
-    int act=sz(len), i=getIndex(c),p=last;
-    len.push_back(len[last]+1);
-    link.emplace_back();
-    cnt.push_back(1);
-    firstPos.emplace_back(len[last]+1);
-    order.push_back({len[act],act});
-    nxt.emplace_back();
-    while(p != -1 && !nxt[p][i]){
-      nxt[p][i]=act;
-      p=link[p];
-    }
-    if(p!=-1){
-      int q=nxt[p][i];
-      if(len[p]+1==len[q]){
-        link[act]=q;
-      }else{
-        int clone=sz(len);
-        len.push_back(len[p]+1);
-        link.push_back(link[q]);
-        firstPos.push_back(firstPos[q]);
-        cnt.push_back(0);
-        order.push_back({len[clone],clone});
-        nxt.push_back(nxt[q]);
-        while(p!=-1 && nxt[p][i]==q){
-          nxt[p][i]=clone;
-          p=link[p];
-        }
-        link[q]=link[act]=clone;
-      }
-    }
-    last=act;
-  }
-
-  // El k-esimo substring lexicografico con repeticiones O(n+m)
-  void kthSubstr(ll k){
-    sort(order.rbegin(), order.rend());
-    for(auto [_,u]:order) {
-      cnt[link[u]]+=cnt[u];
-    }
-    vl dp(last+1);
-    function<void(int)>dfs=[&](int u){
-      dp[u]=cnt[u];
-      for(int i=0;i<26;i++){
-        if(!nxt[u][i])continue;
-        int v=nxt[u][i];
-        if (!dp[v])dfs(v);
-        dp[u]+=dp[v]; 
-      }
-    };
-    dfs(0);
-    int u=0;
-    while(k>0){
-      for(int i=0;i<26;i++) {
-        if(!nxt[u][i])continue;
-        int v=nxt[u][i];
-        if(k>dp[v]) {
-          k-=dp[v];
-        }else{
-          cout<<(char)('a' + i);
-          k-=cnt[v];
-          u=v;
-          break;
-        }
-      }
-    }
-  }
-
-  // La primera aparición de t en s O(t)
-  int firstMatching(const string &t) {
-    int act=0;
-    for(char c:t){
-      int cc=c-'a';
-      if(!nxt[act][cc])return -1;
-      act=nxt[act][cc];
-    }
-    return firstPos[act]-sz(t)+1;
-  }
+// La creación del automata es O(n)
+struct state {
+  int len,link;
+  map<char,int>next;
 };
- 
+
+const int N=100000;
+state st[N*2];
+int sz,last;
+
+void sa_init(){
+  st[0].len=0;
+  st[0].link=-1;
+  sz++;
+  last=0;
+}
+
+void sa_extend(char c){
+  int act=sz++;
+  st[act].len=st[last].len+1;
+  int p=last;
+  while(p!=-1 && !st[p].next.count(c)){
+    st[p].next[c]=act;
+    p=st[p].link;
+  }
+  if(p==-1){
+    st[act].link=0;
+  }else{
+    int q=st[p].next[c];
+    if(st[p].len+1==st[q].len){
+      st[act].link=q;
+    }else{
+      int clone=sz++;
+      st[clone].len=st[p].len+1;
+      st[clone].next=st[q].next;
+      st[clone].link=st[q].link;
+      while(p!=-1 && st[p].next[c]==q){
+        st[p].next[c]=clone;
+        p=st[p].link;
+      }
+      st[q].link=st[act].link=clone;
+    }
+  }
+  last=act;
+}
+
+// Retorna la subcadena común más larga entre S y T O(S+T)
+string lcs(string S,string T){
+  sa_init();
+  for(int i=0;i<sz(S);i++)sa_extend(S[i]);
+  int v=0,l=0,best=0,bestpos=0;
+  for (int i=0;i<sz(T);i++){
+    while(v && !st[v].next.count(T[i])){
+      v=st[v].link;
+      l=st[v].len;
+    }
+    if(st[v].next.count(T[i])){
+      v=st[v].next[T[i]];
+      l++;
+    }
+    if(l>best){
+      best=l;
+      bestpos=i;
+    }
+  }
+  return T.substr(bestpos-best+1,best);
+} 
+
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-string s;cin>>s;
-SuffixAutomaton sa(s);
+string s, t;cin>>s>>t;
+cout<<lcs(s, t)<<"\n";
 return 0;
 }
