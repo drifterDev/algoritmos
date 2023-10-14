@@ -9,17 +9,21 @@ using namespace std;
 #define len(str) ((int) str.length())
 typedef pair<int, int> ii;
 typedef vector<int> vi;
-
-// Usar cuando se necesita revisar un patrón en un texto
-// O(nlog^2n)
-
-template<char MIN_CHAR='$',int ALPHA=256> struct SuffixArray{
-  int n;string s;
+typedef long long ll;
+typedef vector<ll> vl;
+ 
+struct SuffixArray{
+  char MIN_CHAR='$';
+  int ALPHA=256;
+  int n;
+  string s;
   vi pos, rnk, lcp;
-  SuffixArray(const string &_s):n(len(_s) + 1),s(_s),pos(n),rnk(n),lcp(n-1){
-    s+=MIN_CHAR;buildSA();buildLCP();
+  SuffixArray(const string &_s):n(len(_s) + 1), s(_s), pos(n), rnk(n), lcp(n-1){
+    s+=MIN_CHAR;
+    buildSA();
+    buildLCP();
   }
-
+ 
   void buildSA(){
     vi cnt(max(ALPHA, n));
     for(int i=0;i<n;i++)cnt[s[i]]++;
@@ -40,7 +44,7 @@ template<char MIN_CHAR='$',int ALPHA=256> struct SuffixArray{
       pos=npos;rnk=nrnk;
     }
   }
-
+ 
   void buildLCP(){
     for(int i=0,k=0;i<n-1;i++,k=max(k-1,0)){
       int j=pos[rnk[i]-1];
@@ -48,7 +52,7 @@ template<char MIN_CHAR='$',int ALPHA=256> struct SuffixArray{
       lcp[rnk[i]-1]=k;
     }
   }
-
+ 
   int cntMatching(const string &t){
     int m=len(t);
     if(m>n)return 0;
@@ -68,8 +72,35 @@ template<char MIN_CHAR='$',int ALPHA=256> struct SuffixArray{
     ub=lo;
     return s.substr(pos[lb], m)==t?ub-lb+1:0;
   }
-};
 
+  string kthSubstr(ll k){
+    for(int i=1;i<n;i++){
+      int nxt=n-1-pos[i]-lcp[i-1];
+      if(k>nxt){
+        k-=nxt;
+      }else{
+        return s.substr(pos[i], k + lcp[i-1]);
+      }
+    }
+  }
+
+  void numeroSubstringsPorTamano(){
+    vl ps(n+1);
+    for(int i=1;i<n;i++){
+      int l=lcp[i-1]+1;
+      int r=n-1-pos[i];
+      ps[l]++; 
+      ps[r+1]--;
+    }   
+    for(int i=1;i<n;i++) {
+      ps[i]+=ps[i-1];
+    }
+    for(int i=1;i<n;i++) {
+      cout<<ps[i]<<" ";
+    }
+  }
+};
+ 
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
