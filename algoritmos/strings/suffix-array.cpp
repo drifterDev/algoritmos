@@ -86,6 +86,7 @@ int different_substrings(string s) {
 }
 
 string longest_repeated_substring(string& s){
+  // Si se tienen que sacar varios, entonces son todos los que sean iguales al maximo
   vi sa=suffix_array(s);
   vi lcp=lcp_construction(s,sa);
   int n=len(s);
