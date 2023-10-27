@@ -5,8 +5,11 @@
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 typedef long long ll;
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 #define all(arr) arr.begin(), arr.end()
 
 int main() {
@@ -63,6 +66,7 @@ int main() {
   for(int value:a)cout<<value<<" ";
   cout<<"\n";
 
+  // Ventaja O(1), Desventaja desordenado
   unordered_set<int> c={0, 1, 1, 2, 3, 5, 8, 13, 21};
   unordered_set<int> d={2, 3, 5, 7, 11, 13, 17, 19};
 
@@ -90,5 +94,17 @@ int main() {
     if(c.find(value)==c.end())cout<<value<<" ";
   }
   cout<<"\n"<<(c<=d)<<"\n";
+
+  indexed_set s;
+  s.insert(2);
+  s.insert(3);
+  s.insert(7);
+  s.insert(9);
+  auto x = s.find_by_order(2);
+  cout << *x << "\n"; // 7
+  cout << s.order_of_key(7) << "\n"; // 2
+  // El index que tendría si estuviera
+  cout << s.order_of_key(6) << "\n"; // 2
+  cout << s.order_of_key(8) << "\n"; // 3
   return 0;
 }
