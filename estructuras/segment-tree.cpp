@@ -1,78 +1,74 @@
-#include <iostream>
-#include <vector>
-#define ll long long
-#define vl vector<ll>
-#define ln "\n"
+#include <bits/stdc++.h>
 using namespace std;
+typedef vector<int> vi;
+typedef long long ll;
+int nullValue = 0;
+ 
+struct nodeST{
+nodeST *left,*right;
+int l,r;ll value,lazy;
+nodeST(vi &v,int l,int r):l(l),r(r){
+  int m=(l+r)>>1;
+  lazy=0;
+  if(l!=r){
+    left=new nodeST(v, l, m);
+    right=new nodeST(v, m+1, r);
+    value=opt(left->value, right->value);
+  }
+  else value = v[l];
+}
 
-struct nodeSt {
-    nodeSt *left, *right;
-    ll l, r, val;
+ll opt(ll leftValue, ll rightValue){
+  return leftValue^rightValue;
+}
 
-    nodeSt(vl &v, ll lef, ll rig) : l(lef), r(rig) {
-        ll m = (l + r) / 2;
+void propagate(){
+  if (lazy){
+    value+=lazy*(r-l+1);
+    if(l!=r)left->lazy+=lazy,right->lazy+=lazy;
+    lazy=0;
+  }
+}
 
-        if (l != r) {
-            left = new nodeSt(v, lef, m);
-            right = new nodeSt(v, m + 1, rig);
-            val = oper(left->val, right->val);
-        } else {
-            val = v[l];
-        }
-    }
+ll get(int i, int j){
+  propagate();
+  if(l>=i && r<=j)return value;
+  if(l>j || r<i)return nullValue;
+  return opt(left->get(i,j),right->get(i,j));
+}
 
-    ll get(ll i, ll j) {
-        if (l >= i && r <= j) {
-            return val;
-        }
-        if (l > j || r < i) {
-            return 0;
-        }
+void upd(int i, int j, int nv){
+  propagate();
+  if (l>j  || r<i)return;
+  if (l>=i && r<=j){
+    lazy+=nv;
+    propagate();
+    // value = nv;
+    return;
+  }
+  left->upd(i,j,nv);
+  right->upd(i,j,nv);
+  value=opt(left->value,right->value);
+}
 
-        return oper(left->get(i, j), right->get(i, j));
-    }
-
-    void actl(ll k, ll u) {
-        if (l > k || r < k) return;
-        if (l == k && r == k) {
-            val = u;
-            return;
-        }
-
-        left->actl(k, u);
-        right->actl(k, u);
-
-        val = oper(left->val, right->val);
-    }
-
-    ll oper(ll n1, ll n2) {
-        return n1 + n2;
-    }
+void upd(int k, int nv){
+  if(l>k  || r<k)return;
+  if(l>=k && r<=k){
+    value=nv;
+    return;
+  }
+  left->upd(k, nv);
+  right->upd(k, nv);
+  value=opt(left->value, right->value);
+}
 };
-
+ 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-
-    int n, q;
-    cin >> n >> q;
-
-    vl vals(n);
-    for (int i = 0; i < n; i++) cin >> vals[i];
-    nodeSt st(vals, 0, n - 1);
-
-    for (int i = 0; i < q; i++) {
-        ll n1, n2, n3;
-        cin >> n1 >> n2 >> n3;
-        if (n1 == 1) {
-            n2--;
-            st.actl(n2, n3);
-        } else {
-            n2--;
-            n3--;
-            cout << st.get(n2, n3) << ln;
-        }
-    }
-
-    return 0;
+ios::sync_with_stdio(false);
+cin.tie(0);
+int n,q;cin>>n>>q;
+vi nums(n);
+for(int i=0;i<n;++i)cin>>nums[i];
+nodeST st(nums, 0, n-1);
+return 0;
 }
