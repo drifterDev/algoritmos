@@ -34,8 +34,8 @@ int main() {
   if(it==s.end()){
     //x is not found
   }
-  cout<<*s.lower_bound(x)<<"\n";
-  cout<<*s.upper_bound(x)<<"\n";
+  cout<<*s.lower_bound(x)<<"\n"; // *it >= x
+  cout<<*s.upper_bound(x)<<"\n"; // *it > x
 
   //Set con multiples elementos repetidos
   multiset<int> s2;
