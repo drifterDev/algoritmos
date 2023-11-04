@@ -6,17 +6,32 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define watch(x) cout<<#x<<"="<<x<<'\n'
+#define trace(x) cerr<<#x<<"="<<x<<'\n'
 #define sz(arr) ((int) arr.size())
+#define len(str) ((int) str.length())
 #define all(x) x.begin(), x.end()
+#define F first
+#define S second
+typedef vector<string> vs;
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef long long ll;
+typedef vector<ll> vl;
 const int INF = 1e9;
-int nullValue = -INF;
-
+const ll INFL = 1e18;
+const int MOD = 1e9+7;
+int dirx[4] = {0,-1,1,0};
+int diry[4] = {-1,0,0,1};
+int dr[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+int nullValue=0;
+ 
 struct nodeST{
 nodeST *left,*right;
-int l,r;ll value,lazy;
-nodeST(vi &v,int l,int r):l(l),r(r){
+ll l,r;ll value,lazy;
+nodeST(vl &v,int l,int r):l(l),r(r){
   int m=(l+r)>>1;
   lazy=0;
   if(l!=r){
@@ -26,11 +41,11 @@ nodeST(vi &v,int l,int r):l(l),r(r){
   }
   else value = v[l];
 }
-
+ 
 ll opt(ll leftValue, ll rightValue){
-  return max(leftValue,rightValue);
+  return leftValue+rightValue;
 }
-
+ 
 void propagate(){
   if (lazy){
     value+=lazy*(r-l+1);
@@ -38,28 +53,28 @@ void propagate(){
     lazy=0;
   }
 }
-
+ 
 ll get(int i, int j){
   propagate();
   if(l>=i && r<=j)return value;
   if(l>j || r<i)return nullValue;
   return opt(left->get(i,j),right->get(i,j));
 }
-
+ 
 void upd(int i, int j, int nv){
   propagate();
   if (l>j  || r<i)return;
   if (l>=i && r<=j){
     lazy+=nv;
+    // value+=nv*(r-l+1);
     propagate();
-    // value = nv;
     return;
   }
   left->upd(i,j,nv);
   right->upd(i,j,nv);
   value=opt(left->value,right->value);
 }
-
+ 
 void upd(int k, int nv){
   if(l>k  || r<k)return;
   if(l>=k && r<=k){
@@ -71,31 +86,22 @@ void upd(int k, int nv){
   value=opt(left->value, right->value);
 }
 };
-
+ 
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-int n;cin>>n;
-vi nums(n);
+ll n,q,a,b,c,x;cin>>n>>q;
+vl nums(n);
 for(int i=0;i<n;++i)cin>>nums[i];
-vi order=nums;
-sort(all(order));
-map<int, int> mp;
-for(int i=0;i<n;++i)mp[order[i]]=i;
-vi ls(n,0);
-nodeST st(ls,0,n-1);
-ll ans=0;
-for(int i=0;i<n;i++){
-  int act=nums[i];
-  if(!mp[act]){
-    st.upd(mp[act], 1);
-    ans=max(ans, (ll)1);
+nodeST st(nums, 0, n-1);
+while(q--){
+  cin>>x>>a;
+  if(x==1){
+    cin>>b>>c;
+    st.upd(a-1,b-1,c);
   }else{
-    ll tmp=st.get(0,mp[act]-1)+1;
-    ans=max(ans,tmp);
-    st.upd(mp[act],tmp);
+    cout<<st.get(a-1,a-1)<<"\n";
   }
 }
-cout<<ans<<"\n";
 return 0;
 }

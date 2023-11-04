@@ -12,7 +12,7 @@ typedef vector<int> vi;
 typedef long long ll;
 const int INF = 1e9;
 int nullValue = -INF;
-
+ 
 struct nodeST{
 nodeST *left,*right;
 int l,r;ll value,lazy;
@@ -26,11 +26,11 @@ nodeST(vi &v,int l,int r):l(l),r(r){
   }
   else value = v[l];
 }
-
+ 
 ll opt(ll leftValue, ll rightValue){
   return max(leftValue,rightValue);
 }
-
+ 
 void propagate(){
   if (lazy){
     value+=lazy*(r-l+1);
@@ -38,14 +38,14 @@ void propagate(){
     lazy=0;
   }
 }
-
+ 
 ll get(int i, int j){
   propagate();
   if(l>=i && r<=j)return value;
   if(l>j || r<i)return nullValue;
   return opt(left->get(i,j),right->get(i,j));
 }
-
+ 
 void upd(int i, int j, int nv){
   propagate();
   if (l>j  || r<i)return;
@@ -59,7 +59,7 @@ void upd(int i, int j, int nv){
   right->upd(i,j,nv);
   value=opt(left->value,right->value);
 }
-
+ 
 void upd(int k, int nv){
   if(l>k  || r<k)return;
   if(l>=k && r<=k){
@@ -71,7 +71,7 @@ void upd(int k, int nv){
   value=opt(left->value, right->value);
 }
 };
-
+ 
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);

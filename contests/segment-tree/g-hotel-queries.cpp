@@ -6,13 +6,28 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define watch(x) cout<<#x<<"="<<x<<'\n'
+#define trace(x) cerr<<#x<<"="<<x<<'\n'
 #define sz(arr) ((int) arr.size())
+#define len(str) ((int) str.length())
 #define all(x) x.begin(), x.end()
+#define F first
+#define S second
+typedef vector<string> vs;
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef long long ll;
+typedef vector<ll> vl;
 const int INF = 1e9;
+const ll INFL = 1e18;
+const int MOD = 1e9+7;
+int dirx[4] = {0,-1,1,0};
+int diry[4] = {-1,0,0,1};
+int dr[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 int nullValue = -INF;
-
+ 
 struct nodeST{
 nodeST *left,*right;
 int l,r;ll value,lazy;
@@ -26,11 +41,11 @@ nodeST(vi &v,int l,int r):l(l),r(r){
   }
   else value = v[l];
 }
-
+ 
 ll opt(ll leftValue, ll rightValue){
   return max(leftValue,rightValue);
 }
-
+ 
 void propagate(){
   if (lazy){
     value+=lazy*(r-l+1);
@@ -38,14 +53,14 @@ void propagate(){
     lazy=0;
   }
 }
-
+ 
 ll get(int i, int j){
   propagate();
   if(l>=i && r<=j)return value;
   if(l>j || r<i)return nullValue;
   return opt(left->get(i,j),right->get(i,j));
 }
-
+ 
 void upd(int i, int j, int nv){
   propagate();
   if (l>j  || r<i)return;
@@ -59,7 +74,7 @@ void upd(int i, int j, int nv){
   right->upd(i,j,nv);
   value=opt(left->value,right->value);
 }
-
+ 
 void upd(int k, int nv){
   if(l>k  || r<k)return;
   if(l>=k && r<=k){
@@ -70,32 +85,35 @@ void upd(int k, int nv){
   right->upd(k, nv);
   value=opt(left->value, right->value);
 }
+ 
+int search(int k){
+  if(value<k)return -1;
+  if(value>=k && l==r) return l;
+  if(l!=r){
+    if(left->value>=k)return left->search(k);
+    else return right->search(k);
+  }else{
+    return -1;
+  }
+}
 };
-
+ 
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-int n;cin>>n;
+int tmp,n,q,x;cin>>n>>q;
 vi nums(n);
 for(int i=0;i<n;++i)cin>>nums[i];
-vi order=nums;
-sort(all(order));
-map<int, int> mp;
-for(int i=0;i<n;++i)mp[order[i]]=i;
-vi ls(n,0);
-nodeST st(ls,0,n-1);
-ll ans=0;
-for(int i=0;i<n;i++){
-  int act=nums[i];
-  if(!mp[act]){
-    st.upd(mp[act], 1);
-    ans=max(ans, (ll)1);
-  }else{
-    ll tmp=st.get(0,mp[act]-1)+1;
-    ans=max(ans,tmp);
-    st.upd(mp[act],tmp);
+nodeST st(nums, 0, n-1);
+while(q--){
+  cin>>x;
+  tmp=st.search(x);
+  // cout<<tmp<<"\n";
+  if(tmp==-1)cout<<"0 ";
+  else{
+    st.upd(tmp, st.get(tmp, tmp)-x);
+    cout<<tmp+1<<" ";
   }
-}
-cout<<ans<<"\n";
+}cout<<"\n";
 return 0;
 }
