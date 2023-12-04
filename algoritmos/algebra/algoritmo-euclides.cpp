@@ -8,20 +8,15 @@
 using namespace std;
 
 // Con recursión
-int gcd(int a, int b){
-  return b ? gcd(b, a % b) : a;
-}
+int gcd(int a, int b){return b==0?a:gcd(b,a%b);} 
+int lcm(int a, int b){return a/gcd(a,b)*b;}
 
-// // Sin recursión
+
+// Sin recursión
 int gcd(int a, int b){
   while (b){
     a%=b;swap(a,b);
   }return a;
-}
-
-// Minimo comun multiplo
-int lcm(int a, int b){
-  return a / gcd(a, b) * b;
 }
 
 // Identidad de Bezout
@@ -37,9 +32,10 @@ int gcd(int a, int b, int &x, int &y){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-int x,y;
-cout<<gcd(55,55,x,y)<<" "<<x<<" "<<y<<"\n";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int x,y;
+  int resultado=gcd(12,48,x,y);
+  cout<<resultado<<" "<<x<<" "<<y<<"\n";
+  return 0;
 }
