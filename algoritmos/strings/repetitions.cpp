@@ -80,8 +80,12 @@ void find_repetitions(string s, int shift=0){
 int main() {
 ios::sync_with_stdio(false);
 cin.tie(0);
-string s="acababaee";
+string s="aababcbcabab";
 find_repetitions(s);
-for(auto& rep:repetitions)cout<<rep.first<<" "<<rep.second<<"\n";
+for(auto& rep:repetitions){
+  cout<<rep.first<<" "<<rep.second<<"\n";
+  cout<<s.substr(rep.first,rep.second-rep.first)<<"\n";
+}
 return 0;
 }
+
