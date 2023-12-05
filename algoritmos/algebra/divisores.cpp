@@ -25,6 +25,17 @@ ll numberOfDivisors(ll num){
   return total;
 }
 
+// O(sqrt(n)) pero con los primos precalculados
+ll numDiv(ll n){
+  ll ans=1;
+  for(int i=0;(i<sz(p))&&(p[i]*p[i]<=n);++i){
+    int power=0;
+    while(n%p[i]==0){n/=p[i];++power;}
+    ans*=power+1;
+  }
+  return(n!= 1)?2*ans:ans;
+}
+
 // O(sqrt(n))
 ll SumOfDivisors(ll num){
   ll total=1;
@@ -43,6 +54,22 @@ ll SumOfDivisors(ll num){
   }
   if(num>1) total *= (1 + num);
   return total;
+}
+
+// O(sqrt(n)) pero con los primos precalculados
+ll sumDiv(ll n){
+  ll ans=1;         
+  for(int i=0;(i<sz(p))&&(p[i]*p[i]<=n);++i){
+    ll multiplier=p[i],total=1;
+    while(n%p[i]==0){
+      n/=p[i];
+      total+=multiplier;
+      multiplier*=p[i];
+    }                                  
+    ans*=total;                       
+  }
+  if(n!= 1)ans*=(n+1);
+  return ans;
 }
 
 int main() {

@@ -6,38 +6,40 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(arr) ((int) arr.size())
+#define PB push_back
+typedef long long ll;
+typedef vector<ll> vl;
 
-// Algoritmo #3
-vector<long long> primes;
-vector<long long> trial_division3(long long n){
-  vector<long long> factorization;
-  for(long long d:primes){
-    if (d*d>n)break;
-    while(n%d==0){
-      factorization.push_back(d);n/=d;
-    }
+// Retorna solo los primos, no las potencias
+vl primeFactors(ll n){
+  vl factors;
+  for(int i=0;sz(p) && (p[i]*p[i]<=n);++i){
+    if(n%p[i]!=0)continue;
+    while(n%p[i]==0)n/=p[i];
+    factors.PB(p[i]);
   }
-  if(n>1)factorization.push_back(n);
-  return factorization;
+  if(n!=1)factors.PB(n);
+  return factors;
 }
 
-// Algoritmo #2
-vector<long long> trial_division2(long long n){
-  vector<long long> factorization;
-  while (n%2==0){
-    factorization.push_back(2);n/=2;
-  }
-  for(long long d=3;d*d<=n;d+=2){
-    while (n%d==0){
-      factorization.push_back(d);n/=d;
+// Retorna los primos y las potencias
+vl primeFactors(ll n){
+  vl factors;
+  for(int i=0;sz(p) && (p[i]*p[i]<=n);++i){
+    if(n%p[i]!=0)continue;
+    while(n%p[i]==0){
+      n/=p[i];
+      factors.PB(p[i]);
     }
   }
-  if (n>1)factorization.push_back(n);
-  return factorization;
+  if(n!=1)factors.PB(n);
+  return factors;
 }
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
+  sieve(10000000);
   return 0;
 }

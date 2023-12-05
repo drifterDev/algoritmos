@@ -8,23 +8,24 @@
 using namespace std;
 
 // Con recursión
-int gcd(int a, int b){return b==0?a:gcd(b,a%b);} 
-int lcm(int a, int b){return a/gcd(a,b)*b;}
+ll gcd(ll a, ll b){return b==0?a:gcd(b,a%b);} 
+ll lcm(ll a, ll b){return a/gcd(a,b)*b;}
 
 
 // Sin recursión
-int gcd(int a, int b){
+ll gcd(ll a, ll b){
   while (b){
     a%=b;swap(a,b);
   }return a;
 }
 
 // Identidad de Bezout
-int gcd(int a, int b, int &x, int &y){
+// O(log(min(a, b))
+ll gcd(ll a, ll b, ll &x, ll &y){
   x=1,y=0;
-  int x1=0,y1=1,a1=a,b1=b;
+  ll x1=0,y1=1,a1=a,b1=b;
   while(b1){
-    int q=a1/b1;
+    ll q=a1/b1;
     tie(x, x1)=make_tuple(x1, x - q * x1);
     tie(y, y1)=make_tuple(y1, y - q * y1);
     tie(a1, b1)=make_tuple(b1, a1 - q * b1);
@@ -34,8 +35,8 @@ int gcd(int a, int b, int &x, int &y){
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
-  int x,y;
-  int resultado=gcd(12,48,x,y);
+  ll x,y;
+  ll resultado=gcd(12,48,x,y);
   cout<<resultado<<" "<<x<<" "<<y<<"\n";
   return 0;
 }
