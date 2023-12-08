@@ -14,7 +14,7 @@ typedef vector<ll> vl;
 // Retorna solo los primos, no las potencias
 vl primeFactors(ll n){
   vl factors;
-  for(int i=0;sz(p) && (p[i]*p[i]<=n);++i){
+  for(int i=0;i<sz(p) && (p[i]*p[i]<=n);++i){
     if(n%p[i]!=0)continue;
     while(n%p[i]==0)n/=p[i];
     factors.PB(p[i]);
