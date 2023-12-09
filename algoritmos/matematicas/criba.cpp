@@ -28,10 +28,11 @@ void sieve(ll tope){
     }
 }
 
+// O(n*log(log(n)))
 vl primos;
 void criba(ll n){
   vector<bool> is_prime(n+1, true);
-  for(ll i=2;i*i<=n;++i){
+  for(ll i=2;i<=n;++i){
     if(is_prime[i]){
       for(ll j=i*i;j<=n;j+=i)is_prime[j]=false;
       primos.PB(i);
