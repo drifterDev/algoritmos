@@ -12,7 +12,6 @@ using namespace std;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
-const int INF = 1e9;
 int n;
 
 // No usar con pesos negativos
@@ -20,7 +19,7 @@ int n;
 vi dijkstra(vector<vii> &adj, int s){
   priority_queue<ii, vii, greater<ii>> pq;
   pq.push({0, s});
-  vi dist(n, INF); 
+  vi dist(n, INT_MAX); 
   dist[s]=0;
   while(!pq.empty()){
     ii act=pq.top();pq.pop();
