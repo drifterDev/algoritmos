@@ -7,16 +7,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
-
-vi adj[n];
-queue<int> q;
 bool visited[n];
 int distance[n];
 
-void bfs(int x){
-  visited[x]=true;
-  distance[x]=0;
-  q.push(x);
+void bfs(vector<vi>& adj, int s){
+  visited[s]=true;
+  distance[s]=0;
+  queue<int> q;q.push(s);
   while(!q.empty()){
     int s=q.front();q.pop();
     for(auto u:adj[s]){

@@ -6,9 +6,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(arr) ((int) arr.size())
 #define PB push_back
-typedef vector<string> vs;
 typedef vector<int> vi;
 int n,m;
 
@@ -17,7 +15,7 @@ void bfs(vector<vi>& adj, vi& grade, vi& order){
   for(int i=0;i<n;i++)if(!grade[i])q.push(i);
   while(!q.empty()){
     int act=q.front();q.pop();
-    order.push_back(act);
+    order.PB(act);
     for(int v:adj[act]){
       grade[v]--;
       if(grade[v]==0)q.push(v);
@@ -26,25 +24,18 @@ void bfs(vector<vi>& adj, vi& grade, vi& order){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-cin>>n>>m;
-vector<vi> adj(n);
-vi grade(n), order;
-vs vertices(n);
-map<string, int> idx;
-for(int i=0;i<n;++i){
-  cin>>vertices[i];
-  idx[vertices[i]]=i;
-}
-string tmp1,tmp2;
-for(int i=0;i<m;++i){
-  cin>>tmp1>>tmp2;
-  adj[idx[tmp1]].PB(idx[tmp2]);
-  grade[idx[tmp2]]++;
-}
-bfs(adj,grade,order);
-for(int x:order)cout<<vertices[x]<<" ";
-cout<<"\n";
-return 0;
+  ios::sync_with_stdio(false);cin.tie(0);
+  cout<<setprecision(20)<<fixed;
+  cin>>n>>m;
+  vector<vi> adj(n);
+  vi grade(n), order;
+  for(int i=0,a,b;i<m;++i){
+    cin>>a>>b;
+    adj[a].PB(b);
+    grade[b]++;
+  }
+  bfs(adj,grade,order);
+  for(int x:order)cout<<x<<" ";
+  cout<<"\n";
+  return 0;
 }
