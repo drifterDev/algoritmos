@@ -20,16 +20,17 @@ int n;
 vi dijkstra(vector<vii> &adj, int s){
   priority_queue<ii, vii, greater<ii>> pq;
   pq.push({0, s});
-  vi dist(n+1, INF); 
+  vi dist(n, INF); 
   dist[s]=0;
   while(!pq.empty()){
-    ii act=pq.top(); pq.pop();
+    ii act=pq.top();pq.pop();
     int d=act.F,u=act.S;
     if(d>dist[u])continue;
     for(auto v:adj[u]){
-      if(dist[u]+v.S<dist[v.F]){
-        dist[v.F]=dist[u]+v.S;
-        pq.push({dist[v.F],v.F});
+      int w=v.S,b=v.F;
+      if(dist[u]+w<dist[b]){
+        dist[b]=dist[u]+w;
+        pq.push({dist[b],b});
       }
     }
   }
@@ -41,13 +42,13 @@ int main(){
   cout<<setprecision(20)<<fixed;
   int m,s;
   cin>>n>>m>>s;
-  vector<vii> adj(n+1);
+  vector<vii> adj(n);
   for(int i=0,a,b,w;i<m;++i){
     cin>>a>>b>>w;
-    adj[a].push_back({b,w});
-    adj[b].push_back({a,w});
+    adj[a-1].push_back({b-1,w});
+    adj[b-1].push_back({a-1,w});
   }
-  vi dist=dijkstra(adj,s);
-  for(int i=1;i<=n;i++)cout<<dist[i]<<" ";
+  vi dist=dijkstra(adj,s-1);
+  for(int i=0;i<n;i++)cout<<dist[i]<<" ";
   return 0;
 }
