@@ -6,23 +6,23 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(x) ((int) x.size())
+#define PB push_back
 #define S second
 #define F first
-typedef vector<int> vi;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
+typedef long long ll;
+typedef vector<ll> vl;
+typedef pair<ll, ll> pll;
+typedef vector<pll> vpll;
 int n;
 
-// No usar con pesos negativos
-// O (n+mlog(m))
-vi dijkstra(vector<vii> &adj, int s){
-  priority_queue<ii, vii, greater<ii>> pq;
+// O(n+mlog(m))
+vl dijkstra(vector<vpll> &adj, int s){
+  priority_queue<pll, vpll, greater<pll>> pq;
   pq.push({0, s});
-  vi dist(n, INT_MAX); 
+  vl dist(n, LONG_LONG_MAX); 
   dist[s]=0;
   while(!pq.empty()){
-    ii act=pq.top();pq.pop();
+    pll act=pq.top();pq.pop();
     int d=act.F,u=act.S;
     if(d>dist[u])continue;
     for(auto v:adj[u]){
@@ -41,13 +41,13 @@ int main(){
   cout<<setprecision(20)<<fixed;
   int m,s;
   cin>>n>>m>>s;
-  vector<vii> adj(n);
+  vector<pll> adj(n);
   for(int i=0,a,b,w;i<m;++i){
     cin>>a>>b>>w;
-    adj[a-1].push_back({b-1,w});
-    adj[b-1].push_back({a-1,w});
+    adj[a-1].PB({b-1,w});
+    adj[b-1].PB({a-1,w});
   }
-  vi dist=dijkstra(adj,s-1);
+  vl dist=dijkstra(adj,s-1);
   for(int i=0;i<n;i++)cout<<dist[i]<<" ";
   return 0;
 }
