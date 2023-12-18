@@ -6,30 +6,22 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
+typedef long long ll;
 const int MOD = 1e9+7;
-const int MAX = 15;
-int catalan[MAX];
-
-// O(n^2)
-void init() {
-    catalan[0] = catalan[1] = 1;
-    for (int i=2; i<MAX; i++) {
-        catalan[i] = 0;
-        for (int j=0; j < i; j++) {
-            catalan[i] += (catalan[j] * catalan[i-j-1]) % MOD;
-            if (catalan[i] >= MOD) {
-                catalan[i] -= MOD;
-            }
-        }
-    }
-}
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-init(); 
-// Visualizar
-for (int i = 0; i < MAX; i++) cout<<"Catalan["<<i<<"] = "<<catalan[i]<<"\n";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // O(nlogm)
+  const int n=10;
+  ll catalan[n];
+  catalan[0]=1;
+  for(int i=0;i<n-1;++i){
+    catalan[i+1]=((4*i+2)%MOD * catalan[i]%MOD * inv(i+2))%MOD;
+  }
+
+  // Visualizar
+  for (int i = 0; i < n; i++)
+  cout<<"Catalan["<<i<<"] = "<<catalan[i]<<"\n";
+  return 0;
 }

@@ -8,7 +8,6 @@
 using namespace std;
 typedef long long ll;
 
-// Sin recursión y más rápido:
 ll binpow(ll a, ll b){
   ll res=1;
   while(b>0){

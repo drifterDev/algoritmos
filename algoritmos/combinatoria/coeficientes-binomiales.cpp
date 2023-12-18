@@ -6,15 +6,27 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+const int n = 100010;   
+const int m = 1e9+7;
+typedef long long ll;
+ll factorial[n];
 
-int C(int n, int k) {
-  double res=1;
-  for (int i=1;i<=k;i++)res=res*(n-k+i)/i;
-  return (int)(res+0.01);
+// m>n
+// O(logm)
+ll coeficientes(int n, int k){
+  // Implementar el inverso mular
+  if(n<k)return 0;
+  return (((factorial[n]*inv(factorial[k]))%m)*inv(factorial[n-k]))%m;
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-return 0;
+  ios::sync_with_stdio(false);cin.tie(0);
+  cout<<setprecision(20)<<fixed;
+  factorial[0]=1;
+  for(int i=1;i<n;i++){
+    factorial[i]=(factorial[i-1]*i)%m;
+  }
+  cout<<coeficientes(100000, 50000)<<"\n";
+  cout<<coeficientes(40, 7)<<"\n";
+  return 0;
 }
