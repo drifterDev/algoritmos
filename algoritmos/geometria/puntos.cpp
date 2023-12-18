@@ -10,36 +10,36 @@ typedef long long ll;
 const double EPS = 1e-9;
 
 struct point{
-    ll x,y;
-    point(ll x,ll y): x(x),y(y){}
+  ll x,y;
+  point(ll x,ll y): x(x),y(y){}
 };
 
 struct point{
-    double x,y;
-    point(double _x,double _y): x(_x),y(_y){}
-    bool operator == (point other) const{
-        return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
-    };
+  double x,y;
+  point(double _x,double _y): x(_x),y(_y){}
+  bool operator == (point other) const{
+      return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
+  };
 };
 
 double deg_to_rad(double theta){
-    return theta*(M_PI/180);
+  return theta*(M_PI/180);
 }
 
 double dist(point p1, point p2){
-    return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+  return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
 }
 
 point rotate(point p, double theta){
-    // rotar por theta grados respecto al origen (0,0)
-    double rad=deg_to_rad(theta);
-    return point(p.x*cos(rad)-p.y*sin(rad),p.x*sin(rad)+p.y*cos(rad));
+  // rotar por theta grados respecto al origen (0,0)
+  double rad=deg_to_rad(theta);
+  return point(p.x*cos(rad)-p.y*sin(rad),p.x*sin(rad)+p.y*cos(rad));
 }
 
 double get_angle(point a, point o, point b){
-    // angulo AOB
-    double cos_theta=(dist(o,a)*dist(o,a)+dist(o,b)*dist(o,b)-dist(a,b)*dist(a,b))/(2*dist(o,a)*dist(o,b));
-    return acos(cos_theta)*(180/M_PI);
+  // angulo AOB
+  double cos_theta=(dist(o,a)*dist(o,a)+dist(o,b)*dist(o,b)-dist(a,b)*dist(a,b))/(2*dist(o,a)*dist(o,b));
+  return acos(cos_theta)*(180/M_PI);
 }
 
 int main(){

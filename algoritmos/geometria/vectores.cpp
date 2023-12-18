@@ -10,8 +10,8 @@ typedef long long ll;
 const double EPS = 1e-9;
 
 struct point{
-    ll x,y;
-    point(ll x,ll y): x(x),y(y){}
+  ll x,y;
+  point(ll x,ll y): x(x),y(y){}
 };
 
 struct vecto{
@@ -54,7 +54,8 @@ double angle(point a, point o, point b){
   vecto oa=tovecto(o,a);
   vecto ob=tovecto(o,b);
   double ang=acos(dot(oa,ob)/sqrt(norm_sq(oa)*norm_sq(ob)));
-  return ang*(180/M_PI);
+  // ang*=(180/M_PI); comentar para los poligonos
+  return ang;
 }
 
 // Producto cruz
