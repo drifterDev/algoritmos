@@ -26,5 +26,6 @@ const string ABC = "abcdefghijklmnopqrstuvwxyz";
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
+  
   return 0;
 }

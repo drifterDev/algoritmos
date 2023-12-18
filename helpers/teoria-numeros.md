@@ -31,3 +31,9 @@ a y b son inversos modulares si a * b ≡ 1 (mod M)
 * Cn = 1/(n+1) * 2nCn
 * Hay Cn árboles binarios con n nodos
 
+## Matrices
+
+* det(A) = det(A^T)
+* det(A*B) = det(A) * det(B)
+* det(A^-1) = 1/det(A)
+* Para hallar los caminos de k pasos entre dos nodos, elevar la matriz de adyacencia a la k y en la matriz de adyacencia poner 1 si hay camino y 0 si no hay camino
