@@ -30,13 +30,13 @@ int bishop_placements(int N, int K){
   return ans;
 }
 
+// O(k*n^2)
 int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
-  int N = 4; // Tamaño del tablero
-  int K = 3; // Número de alfiles
-  // O(k*n^2)
-  int result=bishop_placements(N, K);
-  cout<<"Número de formas de colocar "<<K<<" alfiles en un tablero "<<N<<"x"<<N<<": "<<result<<"\n";
+  int n=4; // Tamaño del tablero
+  int k=3; // Número de alfiles
+  int result=bishop_placements(n,k);
+  cout<<"Número de formas de colocar "<<k<<" alfiles en un tablero "<<n<<"x"<<n<<": "<<result<<"\n";
   return 0;
 }

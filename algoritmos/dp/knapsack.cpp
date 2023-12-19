@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define all(x) x.begin(), x.end()
+typedef pair<int,int> ii;
 typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef long long ll;
