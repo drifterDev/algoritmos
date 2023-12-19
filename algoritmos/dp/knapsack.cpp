@@ -24,15 +24,15 @@ void dp(vii& pesos, ll n, ll w){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-ll n,w,wi,vi;vii pesos;cin>>n>>w;
-for(ll i=0;i<n;i++){
-  cin>>wi>>vi;pesos.push_back({wi,vi});
-}
-sort(all(pesos));
-dp(pesos, n, w);
-cout<<k[n][w]<<"\n";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n,w,wi,vi;vii pesos;cin>>n>>w;
+  for(ll i=0;i<n;i++){
+    cin>>wi>>vi;pesos.push_back({wi,vi});
+  }
+  sort(all(pesos));
+  dp(pesos, n, w);
+  cout<<k[n][w]<<"\n";
+  return 0;
 }
 

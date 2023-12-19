@@ -73,29 +73,29 @@ void upd(int k, int nv){
 };
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-int n;cin>>n;
-vi nums(n);
-for(int i=0;i<n;++i)cin>>nums[i];
-vi order=nums;
-sort(all(order));
-map<int, int> mp;
-for(int i=0;i<n;++i)mp[order[i]]=i;
-vi ls(n,0);
-nodeST st(ls,0,n-1);
-ll ans=0;
-for(int i=0;i<n;i++){
-  int act=nums[i];
-  if(!mp[act]){
-    st.upd(mp[act], 1);
-    ans=max(ans, (ll)1);
-  }else{
-    ll tmp=st.get(0,mp[act]-1)+1;
-    ans=max(ans,tmp);
-    st.upd(mp[act],tmp);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;cin>>n;
+  vi nums(n);
+  for(int i=0;i<n;++i)cin>>nums[i];
+  vi order=nums;
+  sort(all(order));
+  map<int, int> mp;
+  for(int i=0;i<n;++i)mp[order[i]]=i;
+  vi ls(n,0);
+  nodeST st(ls,0,n-1);
+  ll ans=0;
+  for(int i=0;i<n;i++){
+    int act=nums[i];
+    if(!mp[act]){
+      st.upd(mp[act], 1);
+      ans=max(ans, (ll)1);
+    }else{
+      ll tmp=st.get(0,mp[act]-1)+1;
+      ans=max(ans,tmp);
+      st.upd(mp[act],tmp);
+    }
   }
-}
-cout<<ans<<"\n";
-return 0;
+  cout<<ans<<"\n";
+  return 0;
 }

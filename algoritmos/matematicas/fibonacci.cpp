@@ -29,9 +29,9 @@ pair<int, int> fib(int n){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-pair<int, int> p = fib(5);
-cout<<p.first<<" "<<p.second<<"\n";
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  pair<int, int> p = fib(5);
+  cout<<p.first<<" "<<p.second<<"\n";
 return 0;
 }

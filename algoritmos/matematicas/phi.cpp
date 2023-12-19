@@ -34,10 +34,10 @@ vi phi_1_to_n(int n){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-cout<<phi(12)<<"\n";
-vi ph=phi_1_to_n(12);
-for(int i=0;i<sz(ph);++i)cout<<ph[i]<<" ";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<phi(12)<<"\n";
+  vi ph=phi_1_to_n(12);
+  for(int i=0;i<sz(ph);++i)cout<<ph[i]<<" ";
+  return 0;
 }

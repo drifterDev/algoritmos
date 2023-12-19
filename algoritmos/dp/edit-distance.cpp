@@ -26,9 +26,9 @@ int editDist(string& x, string& y){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-string s1="love", s2="movie";
-cout<<editDist(s1, s2)<<"\n";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s1="love", s2="movie";
+  cout<<editDist(s1, s2)<<"\n";
+  return 0;
 }

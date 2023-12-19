@@ -130,15 +130,15 @@ string longestCommonPrefix(const TrieNode& root){
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-TrieNode* root=new TrieNode();
-insert(*root,"hola");
-insert(*root,"holas");
-insert(*root,"hol");
-cout<<search(*root,"hola")<<"\n";
-deleteWord(*root,"hola");
-cout<<search(*root,"hola")<<"\n";
-delete root;
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  TrieNode* root=new TrieNode();
+  insert(*root,"hola");
+  insert(*root,"holas");
+  insert(*root,"hol");
+  cout<<search(*root,"hola")<<"\n";
+  deleteWord(*root,"hola");
+  cout<<search(*root,"hola")<<"\n";
+  delete root;
+  return 0;
 }

@@ -8,15 +8,15 @@
 using namespace std;
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-int m=14;
-// Los bits en 1 los apaga y saca todos los subconjuntos
-// 11 - 10 - 01 - 00
-for(int s=m;;s=(s-1)&m){
-  cout<<bitset<4>(s)<<" ";
-  cout<<s<<"\n";
-  if(s==0)break;
-}
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int m=14;
+  // Los bits en 1 los apaga y saca todos los subconjuntos
+  // 11 - 10 - 01 - 00
+  for(int s=m;;s=(s-1)&m){
+    cout<<bitset<4>(s)<<" ";
+    cout<<s<<"\n";
+    if(s==0)break;
+  }
+  return 0;
 }
