@@ -45,7 +45,7 @@ bool inPoligono(point pt, const vector<point>& P){
   if(sz(P)==0)return false;
   double sum=0;
   for(int i=0;i<sz(P)-1;i++){
-    if(ccw(pt,P[i],P[i+1]))sum+=angle(P[i],pt,P[i+1]); // izquierda/anti-horario
+    if(ccw(pt,P[i],P[i+1])==1)sum+=angle(P[i],pt,P[i+1]); // izquierda/anti-horario
     else sum-=angle(P[i],pt,P[i+1]);// derecha/horario
   }
   return fabs(fabs(sum)-2*M_PI)<EPS;

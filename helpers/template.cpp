@@ -10,17 +10,13 @@ typedef long long ll;
 typedef vector<ll> vl;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
-typedef vector<string> vs;
 typedef vector<ii> vii;
-const double PI = acos(-1);
 const double EPS = 1e-9;
 const int MOD = 1e9+7;
 const int INF = 1e9;
 const ll INFL = 1e18;
-int dx4[4] = {0,-1,1,0};
-int dy4[4] = {-1,0,0,1};
-int dx8[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-int dy8[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+const int dirx[8] = {0,1,0,-1,1,1,-1,-1};
+const int diry[8] = {1,0,-1,0,1,-1,1,-1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
