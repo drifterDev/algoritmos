@@ -6,34 +6,31 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define all(x) x.begin(), x.end()
-typedef pair<int,int> ii;
-typedef vector<ii> vii;
+#define S second
+#define F first
 typedef vector<int> vi;
-typedef long long ll;
-ll k[101][100001];
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
+int n; // cantidad de elementos
+int w; // capacidad 
 
-void dp(vii& pesos, ll n, ll w){
-  for(ll i=1;i<=n;i++){
-    for(ll j=1;j<=w;j++){
-      ll anterior=k[i-1][j];
-      ll actual=0;
-      if(j>=pesos[i-1].first) actual=pesos[i-1].second+k[i-1][j-pesos[i-1].first];
-      k[i][j]=max(anterior, actual);
+int main(){
+  ios::sync_with_stdio(false);cin.tie(0);
+  cout<<setprecision(20)<<fixed;
+  cin>>n>>w;
+  vii weights(n); // F weight, S value
+  for(int i=0,tmp;i<n;++i){cin>>tmp;weights[i]={tmp,0};}
+  for(int i=0;i<n;++i)cin>>weights[i].S;
+  vector<vi> dp(n+1,vi(w+1,0));
+  for(int i=0;i<=n;++i)dp[i][0]=0;
+  for(int i=0;i<=w;++i)dp[0][i]=0;
+  for(int i=1;i<=n;++i){
+    for(int j=0;j<=w;++j){
+      dp[i][j]=dp[i-1][j];
+      if(j<weights[i-1].F)continue;
+      dp[i][j]=max(dp[i][j],weights[i-1].S+dp[i-1][j-weights[i-1].F]);
     }
   }
-}
-
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  ll n,w,wi,vi;vii pesos;cin>>n>>w;
-  for(ll i=0;i<n;i++){
-    cin>>wi>>vi;pesos.push_back({wi,vi});
-  }
-  sort(all(pesos));
-  dp(pesos, n, w);
-  cout<<k[n][w]<<"\n";
+  cout<<dp[n][w]<<"\n";
   return 0;
 }
-
