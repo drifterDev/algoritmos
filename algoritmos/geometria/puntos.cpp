@@ -11,11 +11,13 @@ const double EPS = 1e-9;
 
 struct point{
   ll x,y;
-  point(ll x,ll y): x(x),y(y){}
+  point(): x(0),y(0){}
+  point(ll _x,ll _y): x(_x),y(_y){}
 };
 
 struct point{
   double x,y;
+  point(): x(0),y(0){}
   point(double _x,double _y): x(_x),y(_y){}
   bool operator == (point other) const{
       return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
