@@ -6,11 +6,11 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define len(str) ((int) str.length())
+#define sz(arr) ((int) arr.size())
 
 // Encuentra la rotación lexicográficamente menor de un string
 int minExp(string &t) {
-  int i=0,j=1,k=0,n=len(t),x,y;
+  int i=0,j=1,k=0,n=sz(t),x,y;
   while(i<n && j<n && k<n) {
     x=i+k;y=j+k;
     if(x>=n)x-=n;
@@ -29,7 +29,7 @@ int minExp(string &t) {
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  return 0;
 }

@@ -7,11 +7,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
-#define len(str) ((int) str.length())
 typedef vector<string> vs;
 
 // Usar el aho-corasick para buscar multiples strings en un texto
-
 const static int N=5*1e5; // Maximo de strings
 const static int alpha = 26; // Tamaño del alfabeto
 int trie[N][alpha], fail[N], nodes, end_word[N], cnt_word[N], fail_out[N];

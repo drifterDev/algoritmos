@@ -8,12 +8,13 @@
 using namespace std;
 typedef vector<int> vi;
 #define all(x) x.begin(), x.end()
+#define sz(arr) ((int) arr.size())
 
 // O(log(n))
 int binary_search(vi& nums, int target) {
-  int l=0,r=nums.size()-1;
+  int l=0,r=sz(nums)-1;
   while(l<=r) {
-    int m=(l+r)/2;
+    int m=l+(r-l)/2;
     if (nums[m]==target)return m;
     if (nums[m]<target)l=m+1;
     else r=m-1;

@@ -6,13 +6,14 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define len(str) ((int) str.length())
-const int nMax = 1005;
-int dp[nMax][nMax];
+#define sz(arr) ((int) arr.size())
+const int n = 1005;
+int dp[n][n];
+
 // Longest Common Subsequence
 // O(n*m)
 int lcs(const string &s, const string &t){
-  int n=len(s),m=len(t);
+  int n=sz(s),m=sz(t);
   for(int i=1;i<=n;i++){
     for(int j=1;j<=m;j++){
       dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
@@ -23,7 +24,7 @@ int lcs(const string &s, const string &t){
 }
 
 string lcs_str(const string &s, const string &t){
-  int n=len(s),m=len(t);
+  int n=sz(s),m=sz(t);
   for(int i=1;i<=n;++i){
     for(int j=1;j<=m;++j){
       if(s[i-1]==t[j-1])dp[i][j]=dp[i-1][j-1]+1;
@@ -43,11 +44,11 @@ string lcs_str(const string &s, const string &t){
 
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-string s,t;
-cin>>s>>t;
-cout<<lcs(s,t)<<"\n";
-cout<<lcs_str(s,t)<<"\n";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s,t;
+  cin>>s>>t;
+  cout<<lcs(s,t)<<"\n";
+  cout<<lcs_str(s,t)<<"\n";
+  return 0;
 }

@@ -7,13 +7,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
-#define len(str) ((int) str.length())
 #define all(x) x.begin(), x.end()
 typedef vector<int> vi;
 
 // O(n)
 vi z_function(string s) {
-  int n=len(s),l=0,r=0;
+  int n=sz(s),l=0,r=0;
   vi z(n);
   for(int i=1;i<n;i++){
     if(i<r)z[i]=min(r - i, z[i - l]);
@@ -27,11 +26,11 @@ vi z_function(string s) {
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-string s="abacaba";
-vi z=z_function(s);
-cout<<"Funcion z:\n";
-for(int i=0;i<len(s);i++)cout<<z[i]<<" ";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s="abacaba";
+  vi z=z_function(s);
+  cout<<"Funcion z:\n";
+  for(int i=0;i<sz(s);i++)cout<<z[i]<<" ";
+  return 0;
 }

@@ -7,17 +7,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) ((int) x.size())
+#define all(x) x.begin(), x.end()
 typedef vector<int> vi;
 
 // Funciona para elementos no negativos
 // O(n+k) donde k es el maximo valor del arreglo
 void counting_sort(vi &a){ 
   int n=sz(a);
-  int maximo=*max_element(all(a));
-  vi cnt(maximo+1);
-  for(int i=0;i<n;++i)++cnt[a[i]];
-  for(int i=0,j=0;i<=maximo;++i)
-    while(cnt[i]--)a[j++]=i;
+  int maxi=*max_element(all(a));
+  int mini=*min_element(all(a));
+  vi cnt(maxi-mini+1,0);
+  for(int i=0;i<n;++i)++cnt[a[i]-mini];
+  for(int i=0,j=0;i<=maxi-mini;++i)
+    while(cnt[i]--)a[j++]=i+mini;
 }
 
 int main(){

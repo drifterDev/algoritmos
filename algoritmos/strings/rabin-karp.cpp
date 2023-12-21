@@ -41,13 +41,13 @@ vi rabin_karp(string const& s, string const& t) {
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-cout<<"Las ocurrencias de 'hola' en 'holazhozlahola' son:\n";
-vi ocurrencias=rabin_karp("hola", "holazhozlahola");
-for(int i=0;i<sz(ocurrencias);i++)cout<<ocurrencias[i]<<" ";
-cout<<"\nLas ocurrencias de 'aa' en 'aaaaaa' son:\n";
-ocurrencias=rabin_karp("aa", "aaaaaa");
-for(int i=0;i<sz(ocurrencias);i++)cout<<ocurrencias[i]<<" ";
-return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<"Las ocurrencias de 'hola' en 'holazhozlahola' son:\n";
+  vi ocurrencias=rabin_karp("hola", "holazhozlahola");
+  for(int i=0;i<sz(ocurrencias);i++)cout<<ocurrencias[i]<<" ";
+  cout<<"\nLas ocurrencias de 'aa' en 'aaaaaa' son:\n";
+  ocurrencias=rabin_karp("aa", "aaaaaa");
+  for(int i=0;i<sz(ocurrencias);i++)cout<<ocurrencias[i]<<" ";
+  return 0;
 }

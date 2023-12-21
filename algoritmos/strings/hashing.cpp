@@ -86,28 +86,28 @@ int count_unique_substrings(string const& s) {
 
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-cout<<"Funcion hash:\n";
-cout<<compute_hash("hola")<<"\n";
-cout<<compute_hash("HOLA")<<"\n";
-cout<<compute_hash("hoLa")<<"\n";
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<"Funcion hash:\n";
+  cout<<compute_hash("hola")<<"\n";
+  cout<<compute_hash("HOLA")<<"\n";
+  cout<<compute_hash("hoLa")<<"\n";
 
-// Caso de uso
-cout<<"\nDiferentes strings en un vector dado:\n";
-vs strings={"abc", "def", "abc", "ghi", "jkl", "def"};
-vector<vi> result = group_identical_strings(strings);
-for (const auto& group : result) {
-  cout<<"Grupo: ";
-  for(int index:group)cout<<index<<" ";
-  cout<<"\n";
-}
+  // Caso de uso
+  cout<<"\nDiferentes strings en un vector dado:\n";
+  vs strings={"abc", "def", "abc", "ghi", "jkl", "def"};
+  vector<vi> result = group_identical_strings(strings);
+  for (const auto& group : result) {
+    cout<<"Grupo: ";
+    for(int index:group)cout<<index<<" ";
+    cout<<"\n";
+  }
 
-// Caso de uso
-cout<<"\nCantidad de substrings unicos de un string dado:\n";
-vs s={"abc","abab","aaa","","abcdabcd"};
-for(int i=0;i<5;i++){
-  cout<<"Caso "<<i+1<<": "<<count_unique_substrings(s[i])<<"\n";
-}
-return 0;
+  // Caso de uso
+  cout<<"\nCantidad de substrings unicos de un string dado:\n";
+  vs s={"abc","abab","aaa","","abcdabcd"};
+  for(int i=0;i<5;i++){
+    cout<<"Caso "<<i+1<<": "<<count_unique_substrings(s[i])<<"\n";
+  }
+  return 0;
 }
