@@ -22,12 +22,10 @@ int main() {
   // El primer parametro es la posicion y el segundo es la cantidad de caracteres a reemplazar
   s.replace(0,2,"def");
   cout<<s<<"\n";
-
   for(char& c:s){
     c=toupper(c);
   }
   cout<<s<<"\n";
-
   for(char& c:s){
     c=tolower(c);
   }

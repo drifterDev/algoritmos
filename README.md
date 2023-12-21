@@ -1,6 +1,16 @@
-# Algoritmos
+# Algoritmos 
 
-Este repositorio contiene notas, apuntes principalmente en C++ y Python, enfocados en el aprendizaje y la práctica diferentes algoritmos para competencias de programación.
+Este repositorio contiene implementaciones de algoritmos de programación competitiva en C++.
+
+## Estructura del repositorio
+
+`algoritmos` contiene implementaciones de algoritmos de programación competitiva divididos por categorías.
+
+`contests` contiene soluciones a problemas de programación competitiva de diferentes contests en los que he participado.
+
+`estructuras` contiene implementaciones de estructuras de datos y explicaciones de su uso.
+
+`helpers` contiene archivos de ayuda como plantillas de código, teoría, etc.
 
 ## Contribuciones
 
