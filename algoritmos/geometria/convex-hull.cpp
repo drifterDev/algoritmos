@@ -7,60 +7,78 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) ((int) x.size())
+#define all(x) x.begin(),x.end()
 #define PB push_back
-typedef long long ll;
-
+const double EPS = 1e-9;
+ 
 struct point{
-  ll x,y;
+  int type;
+  double x,y;
   point(): x(0),y(0){}
-  point(ll _x,ll _y): x(_x),y(_y){}
+  point(double _x,double _y, int _t): x(_x),y(_y),type(_t){}
+  bool operator == (point other) const{
+      return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
+  };
 };
-
-ll dist(point p1, point p2){
-  return (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y);
+ 
+// orientacion c respecto una linea ab
+int orientation(point a, point b, point c){
+  double v=a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y);
+  if(v<0)return -1; // en la derecha
+  if(v>0)return 1; // en la izquierda
+  return 0; // colinear
 }
-
-int orientation(point p, point q, point r){
-  ll val=p.x*(q.y-r.y)+q.x*(r.y-p.y)+r.x*(p.y-q.y);
-  if(val>0)return 1;
-  if(val<0)return -1;
-  return 0;
+ 
+// imprime verdadero el punto c, esta a la derecha de la linea pb,
+// tambien da true si son cololineales e include_collinear == true 
+bool cw(point a, point b, point c, bool include_collinear){
+  int o=orientation(a, b, c);
+  return o<0 || (include_collinear && o==0);
 }
-
-vector<point> convexHull(vector<point>& points, int n){
-  int id=0;
-  for(int i=1;i<n;++i){
-    if(points[i].y<points[id].y)id=i;
-    else if(points[i].y==points[id].y && points[i].x<points[id].x)id=i;
-  }
-  swap(points[0],points[id]);
-  point p0=points[0];
-  sort(points.begin()+1,points.end(),[&p0](point& p, point& q){
-    int o=orientation(p0,p,q);
-    if(o==0)return dist(p0,p)<dist(p0,q);
-    return o>0;
+ 
+bool collinear(point a, point b, point c){return orientation(a, b, c)==0;}
+ 
+ 
+void convex_hull(vector<point>& a, bool include_collinear = false) {
+  point p0=*min_element(all(a), [](point a, point b) {
+    return make_pair(a.y, a.x)<make_pair(b.y, b.x);
   });
-  vector<point> ans;
-  for(int i=0;i<sz(points);++i){
-    if(!ans.empty() && points[i].x==ans.back().x && points[i].y==ans.back().y)continue;
-    while(sz(ans)>1 && orientation(ans[sz(ans)-2],ans.back(),points[i])!=1)ans.pop_back();
-    ans.PB(points[i]);
+  sort(all(a), [&p0](const point& a, const point& b){
+    int o=orientation(p0, a, b);
+    if(o==0)
+      return (p0.x-a.x)*(p0.x-a.x)+(p0.y-a.y)*(p0.y-a.y)
+          < (p0.x-b.x)*(p0.x-b.x)+(p0.y-b.y)*(p0.y-b.y);
+    return o<0;
+  });
+ 
+  // Busca donde empiezan los colineales (estan al final) e invierte su orden
+  if (include_collinear) {
+    int i=sz(a)-1;
+    while(i>=0 && collinear(p0,a[i],a.back()))i--;
+    reverse(a.begin()+i+1, a.end());
   }
-  return ans;
+  
+  // Aplicacion de graham
+  vector<point> st;
+  for(int i=0;i<sz(a);i++){
+    while(sz(st)>1 && !cw(st[sz(st)-2], st.back(), a[i], include_collinear))
+      st.pop_back();
+    st.PB(a[i]);
+  }
+  a=st;  
 }
-
-
+ 
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(20)<<fixed;
+  cout<<setprecision(0)<<fixed;
   int n;cin>>n;
-  while(n!=0){
-    vector<point> points(n);
-    for(int i=0;i<n;++i)cin>>points[i].x>>points[i].y;
-    vector<point> ans=convexHull(points, n);
-    cout<<sz(ans)<<"\n";
-    for(auto p:ans)cout<<p.x<<" "<<p.y<<"\n";
-    cin>>n;
+  vector<point> points;
+  for(int i=0;i<n;i++){
+    double x,y;cin>>x>>y;
+    points.PB(point(x,y,0));
   }
+  convex_hull(points,true);
+  cout<<sz(points)<<"\n";
+  for(auto x:points)cout<<x.x<<" "<<x.y<<"\n";
   return 0;
 }
