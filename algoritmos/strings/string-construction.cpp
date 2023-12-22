@@ -23,7 +23,7 @@ ll compute_hash(string const& s) {
 }
 
 // Cuenta la cantidad de formas de formar un string s con los strings 
-// O(n*sqrt(m))
+// O(n^2)
 ll count_forms(string s, vector<string>& strings){
   set<ll> hashes;
   for(auto x:strings)hashes.insert(compute_hash(x));
@@ -32,8 +32,8 @@ ll count_forms(string s, vector<string>& strings){
   dp[0]=1;
   for(int i=1;i<=n;++i){
     for(int j=1;j<=i;++j){
-      if(hashes.count(compute_hash(s.substr(j-1,i-j+1)))){
-        dp[i]+=dp[j-1];
+      if(hashes.count(compute_hash(s.substr(i-j,j)))){
+        dp[i]+=dp[i-j];
       }
     }
   }

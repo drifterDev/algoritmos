@@ -23,8 +23,8 @@ a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan
  
 a y b son inversos modulares si a * b ≡ 1 (mod M)
 
-* A^-1 es el inverso modular de A (solo en terminos de notacion) 
-
+* a^-1 es el inverso modular de a (solo en terminos de notacion) 
+* (a/d) % c = (a * inv(d, c)) % c
 
 ## Combinatoria
 
