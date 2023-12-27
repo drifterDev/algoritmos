@@ -20,7 +20,8 @@ const int diry[8] = {1,0,-1,0,1,-1,1,-1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(0); // Comentar para problemas interactivos
   cout<<setprecision(20)<<fixed;
+  cout<<"? 1 1\n"<<flush; // Para problemas interactivos
   return 0;
 }
