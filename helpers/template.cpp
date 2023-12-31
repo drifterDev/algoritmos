@@ -22,6 +22,8 @@ const string ABC = "abcdefghijklmnopqrstuvwxyz";
 int main(){
   ios::sync_with_stdio(false);cin.tie(0); // Comentar para problemas interactivos
   cout<<setprecision(20)<<fixed;
+  // freopen("file.in", "r", stdin);
+  // freopen("file.out", "w", stdout);
   cout<<"? 1 1\n"<<flush; // Para problemas interactivos
   return 0;
 }

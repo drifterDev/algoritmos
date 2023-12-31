@@ -6,15 +6,24 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define watch(x) cout<<#x<<"="<<x<<'\n'
 #define all(x) x.begin(), x.end()
+#define sz(x) ((int) x.size())
 #define PB push_back
 #define S second
 #define F first
 typedef long long ll;
 typedef vector<ll> vl;
+typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
-int n,m;
+const double EPS = 1e-9;
+const int MOD = 1e9+7;
+const int INF = 1e9;
+const ll INFL = 1e18;
+const int dirx[8] = {0,1,0,-1,1,1,-1,-1};
+const int diry[8] = {1,0,-1,0,1,-1,1,-1};
+const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 struct dsu{
   vl parents,sizes;
@@ -51,33 +60,32 @@ struct dsu{
   }
 };
 
-// O(mlogn)
-void kruskal(vector<pair<int,ii>>& edges){
-  sort(all(edges));
-  dsu uf(n);
-  ll res=0;
-  vii mst;
-  for(auto& e:edges){
-    if(!uf.isSameSet(e.S.F,e.S.S)){
-      uf.unionSets(e.S.F,e.S.S);
-      res+=e.F;
-      mst.PB(e.S);
-    }
-  }
-  if(uf.maxSz!=n)cout<<"IMPOSSIBLE\n";
-  else cout<<res<<"\n";
-  for(auto& e:mst)cout<<e.F+1<<" "<<e.S+1<<"\n";
-}
-
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
-  cin>>n>>m;
-  vector<pair<int,ii>> edges;
-  for(int i=0,u,v,w;i<m;++i){
-    cin>>u>>v>>w;
-    edges.PB({w,{u-1,v-1}});
+  freopen("closing.in", "r", stdin);
+  freopen("closing.out", "w", stdout);
+  int n,m;cin>>n>>m;
+  dsu uf(n);
+  vi nums(n,0);
+  vector<vi> adj(n,vi());
+  for(int i=0,a,b;i<m;++i){
+    cin>>a>>b;
+    adj[a-1].PB(b-1);
+    adj[b-1].PB(a-1);
   }
-  kruskal(edges);
+  vi res(n,0);
+  for(int i=0;i<n;++i){
+    cin>>res[i];res[i]--;
+  }
+  int j=1;
+  vector<bool> ans(n,false);
+  for(int i=n-1;i>=0;--i){
+   nums[res[i]]=1;
+    for(auto x:adj[res[i]])if(nums[x])uf.unionSets(x,res[i]);
+    ans[i]=uf.maxSz==j;
+    j++;
+  }
+  for(auto x:ans)cout<<(x?"YES":"NO")<<"\n";
   return 0;
 }
