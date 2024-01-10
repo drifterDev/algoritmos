@@ -1,16 +1,13 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 #include <bits/stdc++.h>
 using namespace std;
-#define watch(x) cout<<#x<<"="<<x<<'\n'
-#define all(x) x.begin(), x.end()
 #define sz(x) ((int) x.size())
-#define PB push_back
-#define S second
-#define F first
 typedef long long ll;
-typedef vector<ll> vl;
-typedef vector<int> vi;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
 const double EPS = 1e-9;
 
 struct point{
@@ -47,6 +44,10 @@ double angle(point a, point o, point b){
   return acos(cos_theta)*(180/M_PI);
 }
 
+ll cross(point a, point b, point c){
+  return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+}
+
 struct poligono{
   vector<point> P;
   poligono(){}
@@ -78,16 +79,37 @@ struct poligono{
     aux=area();
     return {(aux+2-boundary)/2, boundary};
   }
+
+  bool pointlineintersect(point P1, point P2, point P3){
+    ll tmp=cross(P2, P1, P3);
+    if(tmp!=0)return false;
+    return (min(P2.x, P3.x) <= P1.x && P1.x <= max(P2.x, P3.x))
+        && (min(P2.y, P3.y) <= P1.y && P1.y <= max(P2.y, P3.y));
+  }
+
+  void poinInPolygon(point p0){
+    int cnt=0;
+    bool boundary=false;
+    for(int i=0;i<sz(P)-1;++i){
+      int j=i+1;
+      if(pointlineintersect(p0,P[i],P[j]))boundary=true;
+      ll tmp1=cross(p0, P[i], P[j]);
+      ll tmp2=cross(p0, P[j], P[i]);
+      if(P[i].x<=p0.x && p0.x<P[j].x && tmp1<0)cnt++;
+      else if(P[j].x<=p0.x && p0.x<P[i].x && tmp2<0)cnt++;
+    }
+    if(boundary)cout<<"BOUNDARY\n";
+    else if(cnt&1)cout<<"INSIDE\n";
+    else cout<<"OUTSIDE\n";
+  }
 };
 
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(2)<<fixed;
-  point p1(1,0),p2(1,1),p3(0,1),p4(0,0);
-  vector<point> P={p1,p2,p3,p4,p1};
-  poligono Poligono(P);
-  cout<<Poligono.area()<<"\n";
-  cout<<Poligono.perimeter()<<"\n";
-
+  cout<<setprecision(20)<<fixed;
+  // freopen("file.in", "r", stdin);
+  // freopen("file.out", "w", stdout);
+  point p1(0,0),p2(0,1),p3(1,1),p4(1,0);
+  poligono p({p1,p2,p3,p4,p1});
   return 0;
 }
