@@ -8,20 +8,42 @@
 using namespace std;
 const double EPS = 1e-9;
 
-// Linea forma ax+by+c=0
-struct line{double a,b,c;};
+struct point{
+  double x,y;
+  point(): x(0),y(0){}
+  point(double _x,double _y): x(_x),y(_y){}
+  bool operator == (point other) const{
+      return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
+  };
+  bool operator < (point other) const{
+      return (x<other.x) || (fabs(x-other.x)<EPS && y<other.y);
+  };
+};
 
-// Creacion de linea con dos puntos
-// b=1 para lineas no verticales y b=0 para verticales
-void pointsToLine(point p1,point p2,line& l){
-  if(fabs(p1.x-p2.x)<EPS){
-    l.a=1.0;l.b=0.0;l.c=-p1.x;
-  }else{
-    l.a=-double(p1.y-p2.y)/(p1.x-p2.x);
-    l.b=1.0;
-    l.c=-double(l.a*p1.x)-p1.y;
+// Linea forma ax+by+c=0
+struct line{
+  double a,b,c;
+  line(){}
+  line(double _a,double _b,double _c): a(_a),b(_b),c(_c){}
+  // Creacion de linea con dos puntos
+  // b=1 para lineas no verticales y b=0 para verticales
+  line(point p1, point p2){
+    if(fabs(p1.x-p2.x)<EPS){
+      a=1.0;b=0.0;c=-p1.x;
+    }else{
+      a=-(double)(p1.y-p2.y)/(p1.x-p2.x);
+      b=1.0;c=-(double)(a*p1.x)-p1.y;
+    }
+    norm();
   }
-}
+
+  void norm(){
+    double z=sqrt(a*a+b*b);
+    if(abs(z)>EPS)a/=z,b/=z,c/=z;
+  }
+
+  double dist(point p)const{return a*p.x+b*p.y+c;}
+};
 
 // Comprobacion de lineas paralelas
 bool areParallel(line l1,line l2){
@@ -51,5 +73,14 @@ bool areIntersect(line l1, line l2, point& p){
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
+  point p1(-1,1),p2(1,1),p3(0,0);
+  line l1(p1,p2),l2(p3,p2);
+  cout<<distPointToLineaEq(l1,p3)<<"\n";
+  point p4;
+  areIntersect(l1,l2,p4);
+  cout<<p4.x<<" "<<p4.y<<"\n";
+  cout<<areParallel(l1,l2)<<"\n";
+  cout<<areSame(l1,l2)<<"\n";
+  cout<<l1.dist(p3)<<"\n";
   return 0;
 }

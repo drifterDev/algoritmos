@@ -56,6 +56,7 @@ int main() {
   ll a,b,c,x,y,g;
   a=39,b=15,c=12;
   cout<<"Numero soluciones en el rango definido: "<<find_all_solutions(a,b,c,-100,100,-100,100)<<"\n";
+  // ax+by=c
   if(find_any_solution(a,b,c,x,y,g)){
     cout<<"Una solucion: "<<x<<" "<<y<<"\n";
   }else{

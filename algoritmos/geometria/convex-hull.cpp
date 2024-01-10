@@ -12,39 +12,40 @@ using namespace std;
 const double EPS = 1e-9;
  
 struct point{
-  int type;
   double x,y;
   point(): x(0),y(0){}
-  point(double _x,double _y, int _t): x(_x),y(_y),type(_t){}
+  point(double _x,double _y): x(_x),y(_y){}
   bool operator == (point other) const{
       return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
   };
+  bool operator < (point other) const{
+      return (x<other.x) || (fabs(x-other.x)<EPS && y<other.y);
+  };
 };
- 
-// orientacion c respecto una linea ab
-int orientation(point a, point b, point c){
-  double v=a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y);
-  if(v<0)return -1; // en la derecha
-  if(v>0)return 1; // en la izquierda
-  return 0; // colinear
+
+// Lado respecto una linea pq
+int ccw(point p,point q,point r){
+  // Devuelve 1 (izquierda), -1 (derecha), 0 (colineal)
+  double res=(q.x-p.x)*(r.y-p.y)-(q.y-p.y)*(r.x-p.x);
+  if(fabs(res)<EPS)return 0;
+  return res>0?1:-1;
 }
  
 // imprime verdadero el punto c, esta a la derecha de la linea pb,
 // tambien da true si son cololineales e include_collinear == true 
 bool cw(point a, point b, point c, bool include_collinear){
-  int o=orientation(a, b, c);
+  int o=ccw(a, b, c);
   return o<0 || (include_collinear && o==0);
 }
  
-bool collinear(point a, point b, point c){return orientation(a, b, c)==0;}
- 
+bool collinear(point a, point b, point c){return ccw(a, b, c)==0;}
  
 void convex_hull(vector<point>& a, bool include_collinear = false) {
   point p0=*min_element(all(a), [](point a, point b) {
     return make_pair(a.y, a.x)<make_pair(b.y, b.x);
   });
   sort(all(a), [&p0](const point& a, const point& b){
-    int o=orientation(p0, a, b);
+    int o=ccw(p0, a, b);
     if(o==0)
       return (p0.x-a.x)*(p0.x-a.x)+(p0.y-a.y)*(p0.y-a.y)
           < (p0.x-b.x)*(p0.x-b.x)+(p0.y-b.y)*(p0.y-b.y);
@@ -75,7 +76,7 @@ int main(){
   vector<point> points;
   for(int i=0;i<n;i++){
     double x,y;cin>>x>>y;
-    points.PB(point(x,y,0));
+    points.PB(point(x,y));
   }
   convex_hull(points,true);
   cout<<sz(points)<<"\n";

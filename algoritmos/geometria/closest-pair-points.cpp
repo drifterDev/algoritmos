@@ -1,77 +1,93 @@
 // Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
+// Fecha de creación: 2024
 
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
 #include <bits/stdc++.h>
 using namespace std;
+#define all(x) x.begin(), x.end()
 #define S second
 #define F first
 typedef long long ll;
 typedef pair<int, int> ii;
 const double EPS = 1e-9;
-const ll INFL = 1e18;
 
 struct point{
-  int id;
-  double x,y;
+  ll x,y,id;
   point(): x(0),y(0),id(0){}
-  point(double _x,double _y, int _id): x(_x),y(_y),id(_id){}
-  bool operator == (point other) const{
-      return (fabs(x-other.x)<EPS) && (fabs(y-other.y)<EPS);
-  };
+  point(ll _x,ll _y,ll _id): x(_x),y(_y),id(_id){}
 };
 
-ii best_pair;
-double best_dist=INFL;
-
-bool cmp(point a,point b){
-  if(fabs(a.x-b.x)<EPS)return a.y<b.y;
-  return a.x<b.x;
+ll dist(point p1, point p2){
+  return (p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y);
 }
 
-double dist(point p1, point p2){
-  return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+bool order_x(point a, point b){
+  return a.x<b.x || (a.x==b.x && a.y<b.y);
 }
 
-double combine(point a[],int low,int mid,int high,double min_left,double min_right){
-  double d=(min_left<min_right)?min_left:min_right;
-  double line=(double)(a[mid].x+a[mid+1].x)*0.5;
-  best_dist=min(best_dist,d);
-  for(int i=mid+1;a[i].x<line+d && i<=high;++i){ 
-    for(int j=mid;a[j].x>line-d && j>=low;--j){
-      double temp=dist(a[i],a[j]);
-      if(temp<best_dist){
-        best_dist=temp;
-        best_pair={a[i].id,a[j].id};
+bool order_y(point a, point b){
+  return a.y<b.y;
+}
+
+vector<point> points;
+ll res;
+ii ids;
+int n;
+
+void upd(const point& a, const point& b){
+  ll dist1=dist(a,b);
+  if(dist1<res){
+    res=dist1;
+    ids={a.id, b.id};
+  }
+}
+
+vector<point> aux;
+
+void rec(int l, int r){
+  if(r-l<=3){
+    for(int i=l;i<r;++i){
+      for(int j=i+1;j<r;++j){
+        upd(points[i],points[j]);
       }
     }
+    sort(points.begin()+l, points.begin()+r, order_y);
+    return;
   }
-  return best_dist;
-}
+  
+  int m=(l+r)>>1;
+  int midx=points[m].x;
+  rec(l,m);
+  rec(m,r);
+  merge(points.begin()+l, points.begin()+m, points.begin()+m, points.begin()+r, aux.begin(), order_y);
+  copy(aux.begin(), aux.begin()+r-l, points.begin()+l);
 
-double divide(point a[],int low,int high){
-  if(low>=high)return INFL;  
-  int mid=(low+high)/2;
-  double min_left=divide(a,low,mid);
-  double min_right=divide(a,mid+1,high);
-  return combine(a,low,mid,high,min_left,min_right);
+  int tsz=0;
+  for(int i=l;i<r;++i){
+    if(abs(points[i].x-midx)<res){
+      for(int j=tsz-1;j>=0 && points[i].y-aux[j].y<res;--j)upd(points[i],aux[j]);
+      aux[tsz++]=points[i];
+    }
+  }
 }
 
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(6)<<fixed;
-  int n;cin>>n;
-  point points[50001];
+  // freopen("file.in", "r", stdin);
+  // freopen("file.out", "w", stdout);
+  cin>>n;
+  points.resize(n);
   for(int i=0;i<n;i++){
-    cin>>points[i].x>>points[i].y;
-    points[i].id=i;
+    ll x,y;cin>>x>>y;
+    points[i]=point(x,y,i);
   }
-  sort(points,points+n,cmp);
-  divide(points,0,n-1);
-  int id1=best_pair.F,id2=best_pair.S;
-  if(id1>id2)swap(id1,id2);
-  cout<<id1<<" "<<id2<<" "<<best_dist<<"\n";
+  aux.resize(n);
+  sort(all(points), order_x);
+  res=1E20;
+  rec(0,n);
+  cout<<min(ids.F,ids.S)<<" "<<max(ids.F,ids.S)<<" "<<sqrt(res)<<"\n";
   return 0;
 }
