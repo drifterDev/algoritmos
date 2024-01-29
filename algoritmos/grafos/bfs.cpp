@@ -25,6 +25,23 @@ void bfs(vector<vi>& adj, int s){
   }
 }
 
+void bfs01(vector<vi>& adj, int s){
+  distance[s]=0;
+  deque<int> dq;
+  dq.push_front(s);
+  while(!dq.empty()){
+    int s=dq.front();dq.pop_front();
+    for(auto x:adj[s]){
+      int u=x.F,w=x.S;
+      if(distance[u]>distance[s]+w){
+        distance[u]=distance[s]+w;
+        if(w==0)dq.push_front(u);
+        else dq.push_back(u);
+      }
+    }
+  }
+}
+
 int main(){
   ios::sync_with_stdio(false);
   cin.tie(0);
