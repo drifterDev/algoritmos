@@ -23,7 +23,7 @@ int main() {
   }
 
   // Dividir en dos para poder reducir el 2^n a un 2^(n/2)
-  unordered_map<ll, int> sumas;
+  map<ll, int> sumas;
   for(int i=0;i<(1<<(n/2-1));i++){
     ll sum=0;
     for(int j=0;j<n/2-1;j++)if(i&(1<<j))sum+=nums[j];

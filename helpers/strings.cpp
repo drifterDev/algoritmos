@@ -32,15 +32,12 @@ int main() {
   cout<<s<<"\n";
 
   // De string a entero
-  s="123";int n;
-  istringstream(s)>>n;
-  cout<<n<<"\n";
+  s="123";
+  int n=stoi(s);
 
   // De entero a string
   n=456;
-  ostringstream os;
-  os<<n;
-  s=os.str();
+  s=to_string(n);
   cout<<s<<"\n";
   return 0;
 }
