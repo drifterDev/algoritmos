@@ -23,15 +23,3 @@ int rev_g (int g) {
   return n;
 }
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  // Casos de prueba para g(n)
-  cout<<"Pruebas para g(n):\n";
-  for (int n=0;n<10;n++)cout<<"g("<<n<<") = "<<g(n)<<"\n";
-
-  // Casos de prueba para rev_g(g)
-  cout<<"\nPruebas para rev_g(g):\n";
-  for(int i=0;i<10;i++)cout<<"rev_g("<<i<<") = "<<rev_g(i)<<"\n";
-  return 0;
-}

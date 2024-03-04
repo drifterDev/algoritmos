@@ -31,7 +31,7 @@ int main(){
   // Modificar ciertos bits
   bits.set(3, true); // Establecer el cuarto bit en 1
   bits.reset(6);     // Establecer el séptimo bit en 0
-  cout << "Secuencia de bits modificada: " << bits << "\n";
+  cout<<"Secuencia de bits modificada: "<<bits<<"\n";
 
   int num2 = 42; // Representación binaria: 00101010
   num2=num2<<2; // Desplazar dos bits a la izquierda

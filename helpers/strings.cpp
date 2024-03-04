@@ -1,9 +1,25 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+// 
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 #include <bits/stdc++.h>
 using namespace std;
+#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
+#define PB push_back
 
 // Función para convertir un caracter a un entero
 int conv(char ch) { 
-  return ((ch >= 'a' && ch <= 'z') ? ch-'a' : ch-'A'+26);
+  return ((ch>='a' && ch<='z') ? ch-'a' : ch-'A'+26);
+}
+
+vector<string> split(string& s, char c=' '){
+  vector<string> res;
+  stringstream ss(s);
+  string sub;
+  while(getline(ss, sub, c))res.PB(sub);
+  return res;
 }
 
 int main() {
@@ -39,5 +55,14 @@ int main() {
   n=456;
   s=to_string(n);
   cout<<s<<"\n";
+
+  // De string a double
+  s="123.456";
+  double d=stod(s);
+
+  // De string a vector de strings
+  s="hola como estas";
+  vector<string> v=split(s, ' ');
+  print(v);
   return 0;
 }

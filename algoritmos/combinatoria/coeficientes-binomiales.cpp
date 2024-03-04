@@ -6,27 +6,35 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-const int n = 100010;   
-const int m = 1e9+7;
+const int MOD = 1e9+7;
+const int N = 100000;
 typedef long long ll;
-ll factorial[n];
+ll fact[N];
 
-// m>n
-// O(logm)
-ll coeficientes(int n, int k){
-  // Implementar el inverso mular
-  if(n<k)return 0;
-  return (((factorial[n]*inv(factorial[k]))%m)*inv(factorial[n-k]))%m;
+// nCr = n!/(r!*(n-r)!)
+
+// O(log MOD)
+ll c(int n, int r){
+  if(n<r)return 0;
+  return (((fact[n]*inv(fact[r],MOD))%MOD)*inv(fact[n-r],MOD))%MOD;
+}
+
+// O(min(r, n-r))
+ll c(ll n, ll r){
+  if(r<0 || n<r)return 0;
+  r=min(r, n-r);
+  ll ans=1;
+  for(int i=1;i<=r;++i){
+    ans=ans*(n-i+1)/i;
+  }
+  return ans;
 }
 
 int main() {
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
-  factorial[0]=1;
-  for(int i=1;i<n;i++){
-    factorial[i]=(factorial[i-1]*i)%m;
-  }
-  cout<<coeficientes(100000, 50000)<<"\n";
-  cout<<coeficientes(40, 7)<<"\n";
+  fact[0]=1;
+  for(int i=1;i<N;++i)
+    fact[i]=((fact[i-1]%MOD)*i)%MOD;
   return 0;
 }

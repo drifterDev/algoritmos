@@ -8,15 +8,16 @@
 using namespace std;
 
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  int m=14;
-  // Los bits en 1 los apaga y saca todos los subconjuntos
-  // 11 - 10 - 01 - 00
+  int m=14; // 1110
+  // Todos los subconjuntos del conjunto O(2^n)
   for(int s=m;;s=(s-1)&m){
-    cout<<bitset<4>(s)<<" ";
-    cout<<s<<"\n";
+    cout<<bitset<4>(s)<<"\n";
     if(s==0)break;
+  }
+  // Ascendente
+  for(int s=0;s=s-m&m;){ 
+    cout<<bitset<4>(s)<<"\n";
+    if(s==m)break;
   }
   return 0;
 }

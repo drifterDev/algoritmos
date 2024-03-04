@@ -8,15 +8,11 @@
 using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 typedef vector<int> vi;
-
-// Maximizar la ecuación c1*x1 + c2*x2 + c3*x3 ...
-// sujeta a restricciones a11*x1 + a12*x2 <= b1, a22*x2 + a23*x3 <= b2 ...
-// A: matriz de ecuaciones, contiene los coeficientes de cada variable
-// B: vector con los coeficientes de las restricciones
-// C: costos de las variables
-// Retorna valor optimo y valores de las variables
-
 const double EPS = 1e-6;
+
+// Maximizar c1*x1 + c2*x2 + c3*x3 ...
+// Restricciones a11*x1 + a12*x2 <= b1, a22*x2 + a23*x3 <= b2 ...
+// Retorna valor optimo y valores de las variables
 
 struct simplex {
   vi X, Y;

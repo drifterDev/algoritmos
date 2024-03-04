@@ -18,15 +18,3 @@ int kadane(vi &nums){
   }
   return ans;
 }
-
-int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(20)<<fixed;
-  // freopen("file.in", "r", stdin);
-  // freopen("file.out", "w", stdout);
-  int n;cin>>n;
-  vi nums(n);
-  for(int i=0;i<n;++i)cin>>nums[i];
-  cout<<kadane(nums)<<"\n";
-  return 0;
-}
