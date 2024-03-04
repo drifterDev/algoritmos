@@ -1,6 +1,13 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+// 
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 #include <bits/stdc++.h>
 using namespace std;
 
+// a*x^2+b*x+c=0
 void find_roots(double a,double b,double c){
   if(a==0 && b==0 && c==0){
     cout<<"-1\n";return;
@@ -21,13 +28,4 @@ void find_roots(double a,double b,double c){
     double root2=(-b-sqrt(determinante))/(2*a);
     cout<<"2\n"<<min(root1,root2)<<"\n"<<max(root1,root2)<<"\n";
   }
-}
-
-int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(20)<<fixed;
-  double a,b,c;
-  cin>>a>>b>>c;
-  find_roots(a,b,c);
-  return 0;
 }

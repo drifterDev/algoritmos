@@ -6,40 +6,27 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(arr) ((int) arr.size())
-#define PB push_back
+#define sz(x) ((int) x.size())
 typedef long long ll;
-typedef vector<ll> vl;
 
-// Retorna solo los primos, no las potencias
-vl primeFactors(ll n){
-  vl factors;
-  for(int i=0;i<sz(p) && (p[i]*p[i]<=n);++i){
-    if(n%p[i]!=0)continue;
-    while(n%p[i]==0)n/=p[i];
-    factors.PB(p[i]);
-  }
-  if(n!=1)factors.PB(n);
-  return factors;
-}
-
-// Retorna los primos y las potencias
-vl primeFactors(ll n){
-  vl factors;
-  for(int i=0;sz(p) && (p[i]*p[i]<=n);++i){
-    if(n%p[i]!=0)continue;
-    while(n%p[i]==0){
-      n/=p[i];
-      factors.PB(p[i]);
+// O(sqrt(n))
+// f tiene los factores primos de n y sus exponentes
+void primeFactors(ll x, map<ll,int>& f){
+  for(ll i=2;i*i<=x;i++)
+    while(x%i==0){
+      f[i]++;
+      x/=i;
     }
-  }
-  if(n!=1)factors.PB(n);
-  return factors;
+  if(x>1)f[x]++;
 }
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  sieve(10000000);
-  return 0;
-}
+// Con criba
+// O(sqrt(n)/log(sqrt(n)))
+void primeFactors(ll n, map<ll,int>& f){
+  for(int i=0;i<sz(primos) && 1ll*primos[i]*primos[i]<=n;++i)
+    while(n%primos[i]==0){
+      f[primos[i]]++;
+      n/=primos[i];
+    }
+  if(n>1)f[n]++; 
+}  

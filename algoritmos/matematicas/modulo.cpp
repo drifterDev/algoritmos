@@ -13,29 +13,27 @@ ll mod(ll a, ll m){
 }
 
 // O(log(min(a, b))
-ll inv1(ll b, ll m){
-    // Implementar algoritmos de euclides
-    ll x, y;
-    ll d = gcd(b, m, x, y);  //obtiene b*x + m*y == d
-    if (d != 1) return -1;          //indica error
-    // b*x + m*y == 1, ahora aplicamos (mod m) para obtener b*x == 1 (mod m)
-    return mod(x, m);
+ll inv(ll b, ll m){
+  // Implementar algoritmos de euclides
+  ll x,y;
+  ll d=gcd(b, m, x, y);  //obtiene b*x + m*y == d
+  if(d!=1)return -1;          //indica error
+  // b*x + m*y == 1, ahora aplicamos (mod m) para obtener b*x == 1 (mod m)
+  return mod(x, m);
 }
 
 // O(log MOD)
-ll inv2(ll a, ll m){
+// Si m es primo
+ll inv(ll a, ll m){
   // Implementar exponenciacion binaria
   return binpow(a, m-2, m);
 }
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  int a=3, b=5, m=7;
-  // Calcula el inverso modular de b respecto a m
-  int b_inv=inv1(b,m);
-  // Calcula a / b (mod m)
-  int result=(a*b_inv)%m;
-  cout<<a<<" / "<<b<<" (mod "<<m<<") = "<<result<<"\n";
-  return 0;
+// Calcular el inv de [2,m)
+const int n=1e6;
+ll inverso[n+1];
+void inv(ll m){
+  inverso[1]=1;
+  for(int i=2;i<=n;++i)
+    inverso[i]=(m-(m/i)*inverso[m%i]%m)%m;
 }

@@ -6,32 +6,16 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
-// O(n)
-// int fib(int n){
-//   int a=0;
-//   int b=1;
-//   for(int i=0;i<n;i++){
-//     int tmp=a+b;
-//     a=b;
-//     b=tmp;
-//   }return a;
-// }
+#define S second
+#define F first
+typedef pair<int, int> ii;
 
 // O(Log(n))
-pair<int, int> fib(int n){
-  if (n==0) return {0, 1};
+ii fib(int n){
+  if(n==0) return {0, 1};
   auto p=fib(n>>1);
-  int c=p.first*(2*p.second-p.first);
-  int d=p.first*p.first+p.second*p.second;
+  int c=p.F*(2*p.S-p.F);
+  int d=p.F*p.F+p.S*p.S;
   if (n&1)return {d, c + d};
   else return {c, d};
-}
-
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  pair<int, int> p = fib(5);
-  cout<<p.first<<" "<<p.second<<"\n";
-return 0;
 }

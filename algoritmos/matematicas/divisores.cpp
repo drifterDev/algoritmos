@@ -6,64 +6,55 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(arr) ((int) arr.size())
+#define sz(x) ((int) x.size())
+#define S second
+#define F first
 typedef long long ll;
 
-// O(sqrt(n))
-ll SumOfDivisors(ll num){
-  ll total=1;
-  for(int i=2;(ll)i*i<=num;i++){
-    if (num % i == 0){
-      int e = 0;
-      do{
-        e++;num /= i;
-      }while(num%i==0);
-      ll sum=0,pow=1;
-      do{
-        sum += pow;pow *= i;
-      } while(e-->0);
-      total*=sum;
+void primeFactors(ll x, map<ll,int>& f){
+  for(ll i=2;i*i<=x;i++)
+    while(x%i==0){
+      f[i]++;
+      x/=i;
     }
-  }
-  if(num>1) total *= (1 + num);
-  return total;
+  if(x>1)f[x]++;
 }
 
-// O(sqrt(n)) pero con los primos precalculados
+ll binpow(ll a, ll b, ll m){  
+  ll res=1;a%=m;
+  while(b>0){
+    if(b&1)res=(res*a)%m;
+    a=(a*a)%m;
+    b>>=1;
+  }
+  return res%m;
+}
+
+// d(n) = (a1+1)*(a2+1)*...*(ak+1)
 ll numDiv(ll n){
   ll ans=1;
-  for(int i=0;(i<sz(p))&&(p[i]*p[i]<=n);++i){
-    int power=0;
-    while(n%p[i]==0){n/=p[i];++power;}
-    ans*=power+1;
-  }
-  return(n!= 1)?2*ans:ans;
+  map<ll, int> f;
+  primeFactors(n,f);
+  for(auto &x:f)ans*=(x.S+1);
+  return ans;
 }
 
-// O(sqrt(n)) pero con los primos precalculados
+// sigma(n) = (p1^(a1+1)-1)/(p1-1) * (p2^(a2+1)-1)/(p2-1) * ... * (pk^(ak+1)-1)/(pk-1)
 ll sumDiv(ll n){
   ll ans=1;         
-  for(int i=0;(i<sz(p))&&(p[i]*p[i]<=n);++i){
-    ll multiplier=p[i],total=1;
-    while(n%p[i]==0){
-      n/=p[i];
-      total+=multiplier;
-      multiplier*=p[i];
-    }                                  
-    ans*=total;                       
-  }
-  if(n!= 1)ans*=(n+1);
+  map<ll, int> f;
+  primeFactors(n,f);
+  for(auto &x:f)
+    ans*=(binpow(x.F,x.S+1,LONG_LONG_MAX)-1)/(x.F-1);
   return ans;
 }
 
 ll productDiv(ll n){
   // Implementar binpow
   ll ans=numDiv(n);
-  return binpow(n,ans/2);
+  return binpow(n,ans/2,LONG_LONG_MAX);
 }
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  return 0;
-}
+// Si a y b son coprimos, entonces: 
+// sigma(a*b) = sigma(a)*sigma(b)
+// d(a*b) = d(a)*d(b)
