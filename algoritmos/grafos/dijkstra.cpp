@@ -12,12 +12,12 @@ using namespace std;
 typedef long long ll;
 typedef vector<ll> vl;
 typedef pair<ll, ll> pll;
-typedef vector<pll> vpll;
+typedef vector<pll> vll;
 int n;
 
 // O(n+mlog(m))
-vl dijkstra(vector<vpll> &adj, int s){
-  priority_queue<pll, vpll, greater<pll>> pq;
+vl dijkstra(vector<vll> &adj, int s){
+  priority_queue<pll, vll, greater<pll>> pq;
   pq.push({0, s});
   vl dist(n, LONG_LONG_MAX); 
   dist[s]=0;
@@ -41,7 +41,7 @@ int main(){
   cout<<setprecision(20)<<fixed;
   int m,s;
   cin>>n>>m>>s;
-  vector<vpll> adj(n);
+  vector<vll> adj(n);
   for(int i=0,a,b,w;i<m;++i){
     cin>>a>>b>>w;
     adj[a-1].PB({b-1,w});

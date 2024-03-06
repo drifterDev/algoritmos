@@ -31,11 +31,15 @@ int main() {
   vi grade(n), order;
   for(int i=0,a,b;i<m;++i){
     cin>>a>>b;
+    a--;b--;
     adj[a].PB(b);
     grade[b]++;
   }
   bfs(adj,grade,order);
-  for(int x:order)cout<<x<<" ";
-  cout<<"\n";
+  if(order.size()<n)cout<<"IMPOSSIBLE\n";
+  else{
+    for(int x:order)cout<<x+1<<" ";
+    cout<<"\n";
+  }
   return 0;
 }

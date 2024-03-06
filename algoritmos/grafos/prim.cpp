@@ -31,7 +31,8 @@ void prim(vector<vii>& edges){
       if(!visited[e.S])pq.push(e);
     }
   }
-  cout<<costo<<"\n";
+  if(count<n)cout<<"IMPOSSIBLE\n";
+  else cout<<costo<<"\n";
 }
 
 int main(){

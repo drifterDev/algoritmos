@@ -1,0 +1,43 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+// 
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+
+vector<bool> visited;
+vector<vi> adj; 
+vi tin, low;
+int n,timer;
+
+void dfs(int v,int p=-1){
+  visited[v]=true;
+  tin[v]=low[v]=timer++;
+  int children=0;
+  for(int to:adj[v]){
+    if(to==p)continue;
+    if(visited[to])low[v]=min(low[v],tin[to]);
+    else{
+      dfs(to,v);
+      low[v]=min(low[v], low[to]);
+      if(low[to]>tin[v]); // v-to es un puente
+      if (low[to]>=tin[v] && p!=-1); // v es un punto de articulación
+      ++children;
+    }
+  }
+  if(p==-1 && children>1); // v es un punto de articulación
+}
+
+// O(n+m)
+// Para grafos no dirigidos
+void find_bridges_cutpoints(){
+  timer=0;
+  visited.assign(n,false);
+  tin.assign(n,-1);low.assign(n,-1);
+  for(int i=0;i<n;++i){
+    if(!visited[i])dfs(i);
+  }
+}

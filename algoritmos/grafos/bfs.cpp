@@ -6,44 +6,43 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define S second
+#define F first
 typedef vector<int> vi;
-bool visited[n];
-int distance[n];
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
+const int n=100;
+vector<bool> visited(n);
+vector<int> dist(n);
 
 void bfs(vector<vi>& adj, int s){
   visited[s]=true;
-  distance[s]=0;
+  dist[s]=0;
   queue<int> q;q.push(s);
   while(!q.empty()){
     int s=q.front();q.pop();
     for(auto u:adj[s]){
       if (visited[u])continue;
       visited[u]=true;
-      distance[u]=distance[s]+1;
+      dist[u]=dist[s]+1;
       q.push(u);
     }
   }
 }
 
-void bfs01(vector<vi>& adj, int s){
-  distance[s]=0;
+void bfs01(vector<vii>& adj, int s){
+  dist[s]=0;
   deque<int> dq;
   dq.push_front(s);
   while(!dq.empty()){
     int s=dq.front();dq.pop_front();
     for(auto x:adj[s]){
       int u=x.F,w=x.S;
-      if(distance[u]>distance[s]+w){
-        distance[u]=distance[s]+w;
+      if(dist[u]>dist[s]+w){
+        dist[u]=dist[s]+w;
         if(w==0)dq.push_front(u);
         else dq.push_back(u);
       }
     }
   }
-}
-
-int main(){
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  return 0;
 }
