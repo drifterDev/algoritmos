@@ -26,9 +26,3 @@ int lis(vi& nums){
   }
   return ans;
 }
-
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  return 0;
-}

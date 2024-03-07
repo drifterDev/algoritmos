@@ -6,16 +6,15 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#define S second
+#define F first
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
+int main(){
+  ios::sync_with_stdio(false);cin.tie(0);
+  cout<<setprecision(20)<<fixed;
+  // freopen("file.in", "r", stdin);
+  // freopen("file.out", "w", stdout);
   map<string, int> m;
-  m["Mango"]=4;
-  m["Fresa"]=3;
-  m["Kiwi"]=9;
-  cout<<m["Fresa"]<<"\n"; //3
-  cout<<m["Mora"]<<"\n"; //0
 
   if (m.count("Mango")){
     //La llave existe
@@ -23,22 +22,20 @@ int main() {
 
   //Recorrer un map
   for(auto x:m){
-    cout<<x.first<<" "<<x.second<<"\n";
+    cout<<x.F<<" "<<x.S<<"\n";
   }
+
+  // Eliminar un elemento
+  m.erase("Mango");
+
+  map<int, int> m2;
+  m2[3]=5; // [(3, 5)]
+  m2[11]=4; // [(3, 5); (11, 4)]
+  m2[10]=491; // [(3, 5); (10, 491); (11, 4)]
+  cout<<m2.lower_bound(10)->F<<" "<<m2.lower_bound(10)->S<<"\n"; //,→ 10 491
+  cout<<m2.upper_bound(10)->F<<" "<<m2.upper_bound(10)->S<<"\n"; //,→ 11 4
 
   // Usa hashing y es O(1), desventaja: no esta ordenado
-  unordered_map<int,int> m2;
-
-  map<int, int> m;
-  m[3] = 5; // [(3, 5)]
-  m[11] = 4; // [(3, 5); (11, 4)]
-  m[10] = 491; // [(3, 5); (10, 491); (11, 4)]
-  cout << m.lower_bound(10)->first << " " << m.lower_bound(10)->second << '\n'; //,→ 10 491
-  cout << m.upper_bound(10)->first << " " << m.upper_bound(10)->second << '\n'; //,→ 11 4
-  m.erase(11); // [(3, 5); (10, 491)]
-  if (m.upper_bound(10) == m.end())
-  {
-  cout << "end" << endl; // Prints end
-  }
+  unordered_map<int,int> m3;
   return 0;
 }
