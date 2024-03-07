@@ -2,9 +2,6 @@
 
 ## Aritmetica modular
 
-* (a + b) % c = (a % c + b % c)%c
-* (a - b) % c = (a % c - b % c)%c
-* (a * b) % c = (a % c * b % c)%c
 * a^(p-1) % p = 1 (si p es primo)
 * (a^b) % c = ((a % c)^b) % c
 * (a/b) % c = (a * inv(b, c)) % c
@@ -18,13 +15,6 @@ a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan
 63 es congruente a 83 modulo 10 y se escribe 63 ≡ 83 (mod 10)
 
 * a ≡ b (mod N) 
-
-## Inverso modular
- 
-a y b son inversos modulares si a * b ≡ 1 (mod M)
-
-* a^-1 es el inverso modular de a (solo en terminos de notacion) 
-* (a/d) % c = (a * inv(d, c)) % c
 
 ## Combinatoria
 

@@ -11,9 +11,6 @@ using namespace std;
 #define F first
 typedef long long ll;
 
-void primeFactors(ll n,map<ll,int>& f);
-ll binpow(ll a,ll b,ll m);
-
 // d(n) = (a1+1)*(a2+1)*...*(ak+1)
 ll numDiv(ll n){
   ll ans=1;

@@ -8,6 +8,8 @@
 using namespace std;
 #define sz(x) ((int) x.size())
 
+// En python es eval()
+
 bool delim(char c){
   return c==' ';
 }
