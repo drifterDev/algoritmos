@@ -8,6 +8,7 @@
 using namespace std;
 typedef long long ll;
 
+// O(log(min(a,b)))
 bool find_any_solution(ll a, ll b, ll c, ll &x0, ll &y0, ll &g){
   // Implementar la identidad de Bezout
   g=gcd(abs(a),abs(b),x0,y0);
@@ -23,6 +24,7 @@ void shift_solution(ll& x, ll& y, ll a, ll b, ll cnt){
   x+=cnt*b;y-=cnt*a;
 }
 
+// O(log(min(a,b)))
 ll find_all_solutions(ll a,ll b,ll c,ll minx,ll maxx,ll miny,ll maxy){
   ll x,y,g;
   if(!find_any_solution(a,b,c,x,y,g))return 0;

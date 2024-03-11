@@ -15,6 +15,7 @@ const int n=100;
 vector<bool> visited(n);
 vector<int> dist(n);
 
+// O(n+m)
 void bfs(vector<vi>& adj, int s){
   visited[s]=true;
   dist[s]=0;

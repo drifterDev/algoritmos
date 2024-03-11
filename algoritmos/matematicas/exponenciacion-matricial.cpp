@@ -14,6 +14,7 @@ ll mod(ll a, ll m){
   return ((a%m)+m)%m;
 }
 
+// O(log(n))
 struct matrix {
   int r,c;vector<vl> m;
   matrix(int r, int c, const vector<vl> &m):r(r),c(c),m(m){}

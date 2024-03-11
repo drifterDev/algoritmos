@@ -10,6 +10,7 @@ using namespace std;
 typedef vector<int> vi;
 int n,m;
 
+// O(n+m)
 void bfs(vector<vi>& adj, vi& grade, vi& order){
   queue<int> q;
   for(int i=0;i<n;i++)if(!grade[i])q.push(i);

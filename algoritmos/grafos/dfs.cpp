@@ -11,6 +11,7 @@ const int n=100;
 vi adj[n];
 bool visited[n];
 
+// O(n+m)
 void dfs(int s) {
   if(visited[s])return;
   visited[s]=true;

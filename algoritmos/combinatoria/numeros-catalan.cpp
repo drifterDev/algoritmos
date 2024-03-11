@@ -11,6 +11,7 @@ const int MOD = 1e9+7;
 const int n=100;
 ll cat[n+1];
 
+// O(n*log(MOD))
 void init(){
   // Implementar inverso modular
   cat[0]=1;

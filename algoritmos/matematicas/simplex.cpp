@@ -14,6 +14,8 @@ const double EPS = 1e-6;
 // Restricciones a11*x1 + a12*x2 <= b1, a22*x2 + a23*x3 <= b2 ...
 // Retorna valor optimo y valores de las variables
 
+// O(c^2*b)
+// numero de variables c, numero de restricciones b
 struct simplex {
   vi X, Y;
   vector<vector<double>> a;

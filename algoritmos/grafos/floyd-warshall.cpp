@@ -9,6 +9,7 @@ using namespace std;
 typedef vector<int> vi;
 const int INF = 1e9;
 
+// O(n^3)
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;

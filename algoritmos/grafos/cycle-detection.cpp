@@ -48,6 +48,7 @@ bool dfs(int v, int par){
   return false;
 }
 
+// O(m)
 void find_cycle(){
   color.assign(n, 0); // Dirigidos
   visited.assign(n, false); // No dirigidos

@@ -9,6 +9,7 @@ using namespace std;
 #define PB push_back
 typedef vector<int> vi;
 
+// O(2^n)
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);

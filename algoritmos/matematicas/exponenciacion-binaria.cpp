@@ -8,6 +8,7 @@
 using namespace std;
 typedef long long ll;
 
+// O(log(b))
 ll binpow(ll a, ll b, ll m){  
   ll res=1;a%=m;
   while(b>0){
