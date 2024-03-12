@@ -1,5 +1,10 @@
 # Teoria
 
+## Inclusión-Exclusión
+
+* |A ∪ B| = |A| + |B| - |A ∩ B|
+* Se puede hacer con los subconjuntos, sumando los subconjuntos impares y restando los pares
+
 ## Aritmetica modular
 
 * a^(p-1) % p = 1 (si p es primo)
