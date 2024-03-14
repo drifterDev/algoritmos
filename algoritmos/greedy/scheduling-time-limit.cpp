@@ -1,34 +1,58 @@
 // Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
+// Fecha de creación: 2024
+// 
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
 #include <bits/stdc++.h>
 using namespace std;
+#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 #define all(x) x.begin(), x.end()
-#define F first
-#define S second
+#define sz(x) ((int) x.size())
+#define PB push_back
+typedef vector<int> vi;
 typedef pair<int, int> ii;
-typedef vector<ii> vii;
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  // pares.F = duracion
-  // pares.S = tiempo limite
-  vii pares={{4,2},{3,5},{2,7},{4,5}};
-  int n=4;
-  // Hay que mirar las tareas que acaben primero, sin importar su tiempo limite
-  // Suena raro no tener en cuenta el tiempo limite, pero se puede demostrar
-  // La razón de esto es que si alguna vez
-  // realizamos dos tareas una tras otra de modo que la primera tarea demore más que la
-  // segunda, podemos obtener una mejor solución si intercambiamos las tareas.
-  sort(all(pares));
-  int act=0,res=0;
-  for(auto x:pares){
-    act+=x.F;
-    res+=(x.S-act);
-  }cout<<res<<"\n";
-return 0;
+// Tenemos n trabajos con un tiempo de duracion y un deadline
+// Queremos maximizar el numero de trabajos que podemos hacer
+struct Job{
+  int deadline,duration,idx;
+
+  bool operator<(Job o)const{
+    return deadline < o.deadline;
+  }
+};
+
+// O(nlogn)
+vi compute_schedule(vector<Job> jobs){
+  sort(all(jobs));
+  set<ii> s;
+  vi schedule;
+  for(int i=sz(jobs)-1;i>=0;i--){
+    int t=jobs[i].deadline-(i?jobs[i-1].deadline:0);
+    s.insert({jobs[i].duration, jobs[i].idx});
+    while(t && !s.empty()){
+      auto it=s.begin();
+      if(it->first<=t){
+        t-=it->first;
+        schedule.PB(it->second);
+      } else {
+        s.insert({it->first-t, it->second});
+        t=0;
+      }
+      s.erase(it);
+    }
+  }
+  return schedule;
+}
+
+int main(){
+  ios::sync_with_stdio(false);cin.tie(0);
+  cout<<setprecision(20)<<fixed;
+  // freopen("file.in", "r", stdin);
+  // freopen("file.out", "w", stdout);
+  vector<Job> jobs={{2,4,0},{5,3,1},{7,2,2},{5,4,3}};
+  vi schedule=compute_schedule(jobs);
+  print(schedule);
+  return 0;
 }

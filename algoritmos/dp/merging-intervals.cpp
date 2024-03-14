@@ -14,6 +14,7 @@ using namespace std;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 
+// Hacerlo con dp!
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;

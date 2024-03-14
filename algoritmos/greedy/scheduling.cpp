@@ -15,12 +15,15 @@ typedef pair<int, int> ii;
 typedef vector<ii> vii;
 typedef vector<int> vi;
 
+// Busca maximo de tareas que no se solapen
+// dado su tiempo de inicio y duracion
+// O(nlogn)
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0);
-  vector<char> tasks={'A','B','C','D'};
-  vi begins={1,2,3,6};
-  vi times={3,5,9,8};
+  vector<char> tasks={'A','B','C','D','E','F'};
+  vi begins={1,2,3,6,8,12};
+  vi times={3,5,9,8,2,2};
   vii ends;
   int n=sz(tasks), actualTime=0;
   for(int i=0;i<n;++i)ends.PB({begins[i]+times[i],i});
