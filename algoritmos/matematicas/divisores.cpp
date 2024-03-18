@@ -10,6 +10,10 @@ using namespace std;
 #define S second
 #define F first
 typedef long long ll;
+const int MOD = 1e9+7;
+
+ll binpow(ll a, ll b, ll m);
+void primeFactors(ll n, map<ll, int>& f);
 
 // d(n) = (a1+1)*(a2+1)*...*(ak+1)
 ll numDiv(ll n){
@@ -26,14 +30,19 @@ ll sumDiv(ll n){
   map<ll, int> f;
   primeFactors(n,f);
   for(auto &x:f)
-    ans*=(binpow(x.F,x.S+1,LONG_LONG_MAX)-1)/(x.F-1);
+    ans*=(binpow(x.F,x.S+1,MOD)-1)/(x.F-1);
   return ans;
 }
 
-ll productDiv(ll n){
-  // Implementar binpow
-  ll ans=numDiv(n);
-  return binpow(n,ans/2,LONG_LONG_MAX);
+ll productDiv(map<int, ll>& f){
+  // implementar binpow
+  ll pi=1,res=1;
+  for(auto x:f){
+    ll p=binpow(x.F, x.S*(x.S+1)/2,MOD);
+    res=(binpow(res, x.S+1,MOD)*binpow(p, pi,MOD))%MOD;
+    pi=(pi*(x.S+1))%(MOD-1);
+  }
+  return res;
 }
 
 // Si a y b son coprimos, entonces: 

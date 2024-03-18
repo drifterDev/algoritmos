@@ -10,14 +10,6 @@ typedef long long ll;
 typedef vector<ll> vl;
 typedef vector<int> vi;
 
-// vector<bool> dp(w+1,false);
-// dp[0]=true;
-// for(int i=0;i<n;++i){
-//   for (int wi=w;wi-ws[i]>=0;--wi){
-//     dp[wi]=dp[wi] || dp[wi-ws[i]];
-//   }
-// }
-
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;

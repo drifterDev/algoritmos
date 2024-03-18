@@ -20,30 +20,43 @@ void printSolution(vector<vi>& board){
 }
 
 // O(n!)
-bool nQueen(vector<vi>& board, int col){
-	if(col>=n)return true;
+int ans=0;
+void nQueen(vector<vi>& board, int col){
+	if(col>=n){
+		ans++;
+		return;
+	}
 	for(int i=0;i<n;i++){
 		// Check if the queen can be placed on board[i][col]
-		if ((ld[i-col+n-1]!=1 && rd[i+col]!=1) && cl[i]!=1){
+		if (ld[i-col+n-1]!=1 && rd[i+col]!=1 && cl[i]!=1 && board[i][col]!=-1){
 			// Place this queen in board[i][col]
 			board[i][col]=1;
 			ld[i-col+n-1]=rd[i+col]=cl[i]=1;
 			// Recur to place rest of the queens
-			if(nQueen(board, col+1))return true;
+			nQueen(board, col+1);
 			// If placing queen in board[i][col] doesn't lead to a solution, then remove queen from board[i][col]
 			board[i][col]=0; // BACKTRACK
 			ld[i-col+n-1]=rd[i+col]=cl[i]=0;
 		}
 	}
-	return false;
 }
 
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
-  cin>>n;
+  // cin>>n;
+	n=8;
   vector<vi> board(n,vi(n,0));
-	if(nQueen(board, 0))printSolution(board);
-	else cout<<"Solution does not exist";
+	// if(nQueen(board, 0))printSolution(board);
+	// else cout<<"Solution does not exist";
+	char c;
+	for(int i=0;i<n;++i){
+		for(int j=0;j<n;++j){
+			cin>>c;
+			if(c=='*')board[i][j]=-1;
+		}
+	}
+	nQueen(board, 0);
+	cout<<ans<<"\n";
   return 0;
 }

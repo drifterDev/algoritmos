@@ -1,5 +1,5 @@
 // Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
+// Fecha de creación: 2024
 
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
@@ -14,7 +14,7 @@ using namespace std;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 
-// Hacerlo con dp!
+// Escoger el conjunto de intervalos disjuntos de mayor longitud
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;
