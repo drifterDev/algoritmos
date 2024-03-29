@@ -62,3 +62,12 @@ for i in range(n):
 for weight,value in zip(weights,values):
   pass
 ```
+
+```python
+import sys
+
+sys.setrecursionlimit(1000000)
+
+sys.stdin = open("input.in", "r")
+sys.stdout = open("output.out", "w")
+```

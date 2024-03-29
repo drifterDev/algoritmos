@@ -5,6 +5,11 @@
 * |A ∪ B| = |A| + |B| - |A ∩ B|
 * Se puede hacer con los subconjuntos, sumando los subconjuntos impares y restando los pares
 
+## Bitwise
+
+* a + b = a ^ b + 2 * (a & b)
+* a ^ b = ~(a & b) & (a | b)
+
 ## Aritmetica modular
 
 * a^(p-1) % p = 1 (si p es primo)
@@ -50,6 +55,9 @@ El producto escalar de A y k es una matriz C donde Cij = k * Aij
 ## Geometria
 
 * Lanzar una recta desde un punto P para ver si esta dentro del poligono: contar las intersecciones con los lados del poligono, si es par esta fuera, si es impar esta dentro
+
+* Todo poligono cumple:
+vertices - aristas + caras = 2
 
 ## Probabilidad
 

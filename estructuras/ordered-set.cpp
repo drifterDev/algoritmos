@@ -16,19 +16,16 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 // tree.order_of_key(x) -> Retorna el número de elementos estrictamente menores a x
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(20)<<fixed;
-  // freopen("file.in", "r", stdin);
-  // freopen("file.out", "w", stdout);
-  ordered_set s;
-  s.insert(1);
-  s.insert(3);
-  s.insert(5);
-  s.insert(7);
-  s.insert(9);
-  cout<<*s.find_by_order(4)<<"\n"; //9
-  cout<<s.order_of_key(7)<<"\n"; //3
-  cout<<s.order_of_key(8)<<"\n"; //4
-  cout<<s.order_of_key(11)<<"\n"; //5
-  return 0;
+	ios::sync_with_stdio(false);cin.tie(0);
+	ordered_set s;
+	s.insert(1);
+	s.insert(3);
+	s.insert(5);
+	s.insert(7);
+	s.insert(9);
+	cout<<*s.find_by_order(4)<<"\n"; //9
+	cout<<s.order_of_key(7)<<"\n"; //3
+	cout<<s.order_of_key(8)<<"\n"; //4
+	cout<<s.order_of_key(11)<<"\n"; //5
+	return 0;
 }

@@ -1,33 +1,38 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+// 
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 #include <bits/stdc++.h>
 using namespace std;
-#define S second
-#define F first
-typedef pair<int, int> ii;
 
-struct minqueue{
-  stack<ii> s1, s2;
+template<typename T> struct minqueue{
+	stack<pair<T,T>> s1, s2;
 
-  int mini(){
-    int mini;
-    if(s1.empty() || s2.empty())mini=s1.empty()?s2.top().S:s1.top().S;
-    else mini=min(s1.top().S, s2.top().S);
-    return mini;
-  }
+	T mini(){
+		T mini;
+		if(s1.empty() || s2.empty()){
+            mini=s1.empty()?s2.top().second:s1.top().second;
+        }
+		else mini=min(s1.top().second, s2.top().second);
+		return mini;
+	}
 
-  void add(int x){
-    int mini=s1.empty()?x:min(x, s1.top().S);
-    s1.push({x, mini});
-  }
+	void add(T x){
+		T mini=s1.empty()?x:min(x, s1.top().second);
+		s1.push({x, mini});
+	}
 
-  void remove(){
-    if(s2.empty()){
-      while(!s1.empty()){
-        int x=s1.top().F;
-        s1.pop();
-        int mini=s2.empty()?x:min(x, s2.top().S);
-        s2.push({x, mini});
-      }
-    }
-    s2.pop();
-  }
+	void remove(){
+		if(s2.empty()){
+			while(!s1.empty()){
+				T x=s1.top().first;
+				s1.pop();
+				T mini=s2.empty()?x:min(x, s2.top().second);
+				s2.push({x, mini});
+			}
+		}
+		s2.pop();
+	}
 };

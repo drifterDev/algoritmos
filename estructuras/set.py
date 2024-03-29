@@ -7,7 +7,7 @@
 valores = [20, 50, 30, 40, 50, 10]
 a = set()
 for v in valores:
-  a.add(v)
+	a.add(v)
 b = set(valores)
 print(len(a))
 print(40 in b)

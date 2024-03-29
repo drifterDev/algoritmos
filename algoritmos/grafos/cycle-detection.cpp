@@ -78,6 +78,31 @@ void find_cycle(){
   }
 }
 
+// Contar ciclos, para grafos funcionales
+const int MAXN = 1e5;
+bool visited[MAXN];
+bool on_stack[MAXN];
+int number_of_cycles = 0;
+int next_node[MAXN];
+
+void dfs(int n) {
+	visited[n] = on_stack[n] = true;
+	int u = next_node[n];
+	if (on_stack[u]) {
+		number_of_cycles++;
+	} else if (!visited[u]) {
+		dfs(u);
+	}
+	on_stack[n] = false;
+}
+
+int main() {
+	// read input, etc
+	for (int i = 1; i <= 1e5; i++) {
+		if (!visited[i]) { dfs(i); }
+	}
+}
+
 int main(){
   ios::sync_with_stdio(false);cin.tie(0);
   cout<<setprecision(20)<<fixed;

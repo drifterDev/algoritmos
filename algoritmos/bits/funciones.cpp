@@ -9,6 +9,10 @@ using namespace std;
 
 // Si x es ll usar en vez de 1<< usar 1ll<< 
 
+// a & b           -> Operacion AND
+// a | b           -> Operacion OR
+// a ^ b           -> Operacion XOR
+// ~ a             -> Operacion NOT
 // x & 1           -> Verifica si x es impar
 // x & (1<<i)      -> Verifica si el i-esimo bit esta encendido
 // x = x | (1<<i)  -> Enciende el i-esimo bit
@@ -41,6 +45,29 @@ int countSetBits(int n){
   }return count;
 }
 
+// Suma
+int add(int a, int b){
+  while (b > 0) {
+    int carry = a & b;
+    a ^= b;
+    b = carry << 1;
+  }
+  return a;
+}
+
+// Producto
+int prod(int a, int b) {
+	int c = 0;
+	while (b > 0) {
+		if ((b & 1) == 1) {
+			c = add(c, a); 
+		}
+		a <<= 1;
+		b >>= 1;
+	}
+	return c;
+}
+
 // Devuelve el bit menos significativo prendido
 int lsb(int n){return n&(-n);}
 
@@ -57,6 +84,7 @@ int main() {
   cout<<__builtin_clz(x)<<"\n"; // numero de ceros a la izquierda
   cout<<__builtin_ctz(x)<<"\n"; // numero de ceros a la derecha
   cout<<__builtin_popcount(x)<<"\n"; // numero de bits prendidos
+  cout<<__builtin_parity(x)<<"\n"; // Paridad del numero de unos
   cout<<__builtin_ffs(x)<<"\n"; // posición del primer bit prendido (lsb+1)
   return 0;
 }
