@@ -12,15 +12,15 @@ typedef long long ll;
 typedef vector<ll> vl;
 int nullValue = 0;
  
-struct nodeST{
-	nodeST *left,*right;
+struct NodeST{
+	NodeST *left,*right;
 	int l,r;ll value,lazy;
-	nodeST(vi &v,int l,int r):l(l),r(r){
+	NodeST(vi &v,int l,int r):l(l),r(r){
 		int m=(l+r)>>1;
 		lazy=0;
 		if(l!=r){
-			left=new nodeST(v, l, m);
-			right=new nodeST(v, m+1, r);
+			left=new NodeST(v, l, m);
+			right=new NodeST(v, m+1, r);
 			value=opt(left->value, right->value);
 		}
 		else value = v[l];
@@ -71,12 +71,12 @@ struct nodeST{
 	}
 };
 
-struct segtree{
+struct SegTree{
 	int n;vl v;
 	ll null=0;
 	ll op(ll a, ll b){return a^b;}
-	segtree(int n):n(n),v(2*n,null){}
-	segtree(vl &a):n(sz(a)),v(2*n){
+	SegTree(int n):n(n),v(2*n,null){}
+	SegTree(vl &a):n(sz(a)),v(2*n){
 		for(int i=0;i<n;i++)v[n+i]=a[i];
 		for(int i=n-1;i>=1;--i)v[i]=op(v[i<<1],v[i<<1|1]);
 	}

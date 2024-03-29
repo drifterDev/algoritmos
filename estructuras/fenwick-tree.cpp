@@ -12,10 +12,10 @@ typedef vector<int> vi;
 
 // Suma de rangos y actualizacion individual
 // upd O(log n), rsq O(log n), memory O(n)
-struct fwtree{ 
+struct FwTree{ 
 	int n;
 	vi bit;
-	fwtree(int n): n(n),bit(n+1){}
+	FwTree(int n): n(n),bit(n+1){}
 	int rsq(int r){
 		int sum=0;
 		for(++r;r;r-=r&-r)sum+=bit[r];
@@ -29,11 +29,11 @@ struct fwtree{
 	}
 };
 
-struct fwtree2d{ 
+struct FwTree2d{ 
 	int n, m;
 	vector<vl> bit;
-	fwtree2d(){}
-	fwtree2d(int n, int m):n(n),m(m),bit(n+1, vl(m+1,0)){}
+	FwTree2d(){}
+	FwTree2d(int n, int m):n(n),m(m),bit(n+1, vl(m+1,0)){}
 	ll sum(int x, int y){
 		ll v=0;
 		for(int i=x+1;i;i-=i&-i)
@@ -60,7 +60,7 @@ int main(){
 			if(c=='*')mat[i][j]=1;
 		}
 	}
-	fwtree2d ft(n,n);
+	FwTree2d ft(n,n);
 	for(int i=0;i<n;++i){
 		for(int j=0;j<n;++j){
 			if(mat[i][j]){

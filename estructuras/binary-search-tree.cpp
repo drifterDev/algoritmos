@@ -9,59 +9,59 @@ using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 typedef vector<int> vi;
 
-struct node{
+struct Node{
 	int key;
-	struct node *left, *right;
+	struct Node *left, *right;
 };
 
-struct node* newNode(int item){
-	struct node* temp=new struct node;
+struct Node* newNode(int item){
+	struct Node* temp=new struct Node;
 	temp->key=item;
 	temp->left=temp->right=NULL;
 	return temp;
 }
 
-struct node* insert(struct node* node, int key){
-	if(node==NULL)return newNode(key);
-	if(key<node->key)node->left=insert(node->left, key);
-	else if(key>node->key)node->right=insert(node->right, key);
-	return node;
+struct Node* insert(struct Node* Node, int key){
+	if(Node==NULL)return newNode(key);
+	if(key<Node->key)Node->left=insert(Node->left, key);
+	else if(key>Node->key)Node->right=insert(Node->right, key);
+	return Node;
 }
 
-struct node* search(struct node* root, int key){
+struct Node* search(struct Node* root, int key){
 	if(root==NULL || root->key==key)return root;
 	if(root->key<key)return search(root->right, key);
 	return search(root->left, key);
 }
 
-struct node* minValueNode(struct node* node){
-	struct node* current=node;
+struct Node* minValueNode(struct Node* Node){
+	struct Node* current=Node;
 	while(current && current->left!=NULL)current=current->left;
 	return current;
 }
 
-struct node* deleteNode(struct node* root, int key){
+struct Node* deleteNode(struct Node* root, int key){
 	if(root==NULL)return root;
 	if(key<root->key)root->left=deleteNode(root->left, key);
 	else if(key>root->key)root->right=deleteNode(root->right, key);
 	else{
 		if(root->left==NULL){
-			struct node* temp=root->right;
+			struct Node* temp=root->right;
 			free(root);
 			return temp;
 		}else if(root->right==NULL){
-			struct node* temp=root->left;
+			struct Node* temp=root->left;
 			free(root);
 			return temp;
 		}
-		struct node* temp=minValueNode(root->right);
+		struct Node* temp=minValueNode(root->right);
 		root->key=temp->key;
 		root->right=deleteNode(root->right, temp->key);
 	}
 	return root;
 }
 
-void inorder(vi& order, struct node* root){
+void inorder(vi& order, struct Node* root){
 	if(root!=NULL){
 		order.push_back(root->key);
 		inorder(order, root->left);
@@ -70,14 +70,14 @@ void inorder(vi& order, struct node* root){
 }
 
 int main(){
-	struct node* root=NULL;
+	struct Node* root=NULL;
 	root=insert(root, 50);
 	insert(root, 30);
 	
 	if(search(root, 60)==NULL)cout<<"60 not found\n";
 	else cout<<"60 found\n";
 
-	struct node* min=minValueNode(root);
+	struct Node* min=minValueNode(root);
 	cout<<"Minimum value: "<<min->key<<"\n";
 
 	vi order;

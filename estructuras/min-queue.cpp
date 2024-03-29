@@ -7,7 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-template<typename T> struct minqueue{
+template<typename T> struct MinQueue{
 	stack<pair<T,T>> s1, s2;
 
 	T mini(){
