@@ -54,7 +54,7 @@ vi prefix_function(string s){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 string s;cin>>s;
 // vi z=z_function(s);
 // for(int i=0;i<len(s);i++)cout<<z[i]<<" ";

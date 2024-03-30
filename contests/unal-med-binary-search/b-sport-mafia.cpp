@@ -40,7 +40,7 @@ ll busquedaBinaria(ll n, ll k){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll n,k;cin>>n>>k;
 cout<<busquedaBinaria(n,k)<<"\n";
 return 0;

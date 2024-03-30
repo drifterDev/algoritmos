@@ -22,7 +22,7 @@ int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll n,val,idx,idx2,towers=0;cin>>n;vl nums;
 for(ll i=0;i<n;i++){
   cin>>val;

@@ -22,7 +22,7 @@ int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll val,n,x;cin>>n>>x;int l,r,target;
 vector<pair<ll,ll>> nums;
 for(int i=0;i<n;i++){

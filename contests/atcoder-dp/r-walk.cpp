@@ -50,7 +50,7 @@ ll suma(ll x,ll y){
 
 int main() {
   ios::sync_with_stdio(false);
-  cin.tie(0);
+  cin.tie(nullptr);
   int n;cin>>n;
   ll k;cin>>k;
   vector<vl> matriz(n,vl(n));

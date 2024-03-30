@@ -43,7 +43,7 @@ vl primeFactors(ll n) {
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 sieve(10000000);
 ll n;cin>>n;
 while(n!=0){

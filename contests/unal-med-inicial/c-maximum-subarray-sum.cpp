@@ -27,7 +27,7 @@ int dc[8] = {0, 1, 1, 1, 0, -1, -1, -1};
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n;cin>>n;
 vl nums(n);
 for(int i=0;i<n;i++)cin>>nums[i];

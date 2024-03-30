@@ -50,7 +50,7 @@ void dfs(int x, int y, vector<vector<char>>& mapa, vii& adj){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n;cin>>n;
 int x1,x2,y1,y2;
 cin>>x1>>y1>>x2>>y2;

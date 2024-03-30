@@ -50,7 +50,7 @@ struct FwTree2d{
 };
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(0);
+	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n,m;cin>>n>>m;
 	vector<vi> mat(n, vi(n,0));
 	char c;

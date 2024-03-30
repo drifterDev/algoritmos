@@ -47,7 +47,7 @@ int numDiv(ll n) {
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 sieve(1000000);
 ll t,a,b;cin>>t;
 while(t--){

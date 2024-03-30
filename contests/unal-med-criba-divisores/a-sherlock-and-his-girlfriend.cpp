@@ -15,7 +15,7 @@ typedef vector<long long> vl;
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll t;cin>>t;
 vector<bool> criba(t+2, true);
 for(ll i=2;i<=t+1;i++){

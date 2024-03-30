@@ -11,7 +11,7 @@ typedef vector<ll> vl;
 typedef vector<int> vi;
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   // freopen("file.in", "r", stdin);
   // freopen("file.out", "w", stdout);

@@ -56,7 +56,7 @@ ll binary_search() {
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   int n,m,tmp;cin>>n>>m;
   while(n--){cin>>tmp;cities.PB(tmp);}

@@ -34,7 +34,7 @@ void criba(vi& lista, vi& luckies,int tope){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll p,t,n=pow(10,4);cin>>t;
 vi crib(n+1, 0);vi luckies;
 criba(crib, luckies, n);

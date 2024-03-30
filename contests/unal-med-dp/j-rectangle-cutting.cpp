@@ -13,7 +13,7 @@ int dp[501][501];
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int a,b;cin>>a>>b;
 for(int i=1;i<=500;i++){
     for(int j=1;j<=500;j++){

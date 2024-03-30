@@ -54,7 +54,7 @@ vl dijkstra(vector<vpll> &adj, int s){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   int q;cin>>q;
   for(int i=1,m,s,t;i<=q;++i){

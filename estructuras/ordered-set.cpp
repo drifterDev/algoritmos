@@ -16,7 +16,7 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 // tree.order_of_key(x) -> Retorna el número de elementos estrictamente menores a x
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(0);
+	ios::sync_with_stdio(false);cin.tie(nullptr);
 	ordered_set s;
 	s.insert(1);
 	s.insert(3);

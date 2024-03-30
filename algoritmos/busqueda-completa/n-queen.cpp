@@ -31,10 +31,9 @@ void nQueen(vector<vi>& board, int col){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
-  cout<<setprecision(20)<<fixed;
+    ios::sync_with_stdio(false);cin.tie(nullptr);
 	n=8;
-  vector<vi> board(n,vi(n,0));
+    vector<vi> board(n,vi(n,0));
 	char c;
 	for(int i=0;i<n;++i){
 		for(int j=0;j<n;++j){
@@ -44,5 +43,5 @@ int main(){
 	}
 	nQueen(board, 0);
 	cout<<ans<<"\n";
-  return 0;
+    return 0;
 }

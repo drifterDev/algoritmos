@@ -12,14 +12,13 @@ typedef vector<int> vi;
 
 // O(n!)
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  vi permutation;int n=4;
-  for(int i=0;i<n;i++)permutation.PB(i);
-  do {
-    cout<<"Permutation: ";
-    for(int i=0;i<n;++i)cout<<permutation[i]<<" ";
-    cout<<"\n";
-  } while (next_permutation(all(permutation)));
-  return 0;
+	ios::sync_with_stdio(false);cin.tie(nullptr);
+	vi permutation;int n=4; // sort!
+	for(int i=0;i<n;i++)permutation.PB(i);
+	do {
+		cout<<"Permutation: ";
+		for(int i=0;i<n;++i)cout<<permutation[i]<<" ";
+		cout<<"\n";
+	} while (next_permutation(all(permutation)));
+	return 0;
 }

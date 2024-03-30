@@ -28,7 +28,7 @@ vi z_function(string s) {
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 string s;cin>>s;
 vi z=z_function(s);
 vi res;int n=len(s);

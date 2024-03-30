@@ -34,7 +34,7 @@ void coins(vl& values, ll total, ll n){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll n,x;cin>>n>>x;
 vl values(n,0);
 for(ll i=0;i<n;i++)cin>>values[i];

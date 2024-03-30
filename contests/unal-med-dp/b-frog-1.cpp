@@ -38,7 +38,7 @@ int dp(vi& nums,int n){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n;cin>>n;
 vi nums(n,0);
 for(int i=0;i<n;i++)cin>>nums[i];

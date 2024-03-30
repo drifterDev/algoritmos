@@ -27,7 +27,7 @@ void suma(vl& nums, vector<vl>& dp,ll p,ll q,ll r, ll n){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll p,q,r,n,act, res1=LLONG_MIN, res2=LLONG_MIN, res3=LLONG_MIN;
 cin>>n>>p>>q>>r;
 vl nums(n,0);

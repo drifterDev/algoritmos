@@ -30,7 +30,7 @@ int dy8[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   int n,q;cin>>n>>q;
   vi a(n+1,0),b(n+1,0),c(n+1,0);

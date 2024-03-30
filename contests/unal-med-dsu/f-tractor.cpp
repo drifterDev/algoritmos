@@ -79,7 +79,7 @@ vector<pair<int, ii>> findEdges(vector<vi>& matrix){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   freopen("tractor.in", "r", stdin);
   freopen("tractor.out", "w", stdout);

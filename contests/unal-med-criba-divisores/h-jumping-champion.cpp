@@ -49,7 +49,7 @@ ll calculate(ll l, ll r){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 sieve(1000000);
 ll t,l,r,res;cin>>t;
 while(t--){

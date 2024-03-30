@@ -10,7 +10,7 @@ using namespace std;
 #define F first
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(0);
+	ios::sync_with_stdio(false);cin.tie(nullptr);
 	map<string, int> m;
 
 	if (m.count("Mango")){

@@ -31,7 +31,7 @@ ll dp(ll n){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll n;cin>>n;
 dice[0]=1;dice[1]=2;
 cout<<dp(n)<<"\n";

@@ -29,7 +29,7 @@ void bfs(vector<vi>& lista){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,m, a,b;cin>>n>>m;
 vector<vi> lista(n+1,vi());
 for(int i=0;i<m;i++){

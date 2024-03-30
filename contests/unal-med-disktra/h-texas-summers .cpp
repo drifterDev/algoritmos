@@ -72,7 +72,7 @@ double dist(int x1,int y1, int x2, int y2){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   cin>>n;
   vii puntos(n+2);

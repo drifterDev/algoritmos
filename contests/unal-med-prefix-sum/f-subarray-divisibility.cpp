@@ -34,7 +34,7 @@ ll mod(ll a, ll m){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   int n;cin>>n;
   map<ll, ll>mp;

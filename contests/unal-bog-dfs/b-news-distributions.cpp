@@ -37,7 +37,7 @@ void dfs(vector<bool>& visited, vector<vi>& adj, int act, int& res, vi& tmp){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,m,k,tmp,tmp2;cin>>n>>m;
 vector<vi> adj(n);
 for(int i=0;i<m;i++){

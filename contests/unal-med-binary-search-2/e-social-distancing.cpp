@@ -52,7 +52,7 @@ ll binary_search(vector<pair<ll,ll>>& intervals){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   cin>>n>>m;
   vector<pair<ll, ll>> intervals;

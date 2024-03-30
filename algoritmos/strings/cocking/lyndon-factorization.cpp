@@ -19,50 +19,49 @@ typedef vector<string> vs;
 
 // El algoritmo de Duval encuentra la factorización de Lyndon de un string en O(n)
 vs duval(string const& s) {
-  int n=len(s),i=0;
-  vs factorization;
-  while(i<n){
-    int j=i+1,k=i;
-    while(j<n && s[k]<=s[j]){
-      if(s[k]<s[j])k=i;
-      else k++;
-      j++;
-    }
-    while(i<=k){
-      factorization.push_back(s.substr(i, j-k));
-      i+=j-k;
-    }
-  }
-  return factorization;
+	int n=len(s),i=0;
+	vs factorization;
+	while(i<n){
+		int j=i+1,k=i;
+		while(j<n && s[k]<=s[j]){
+			if(s[k]<s[j])k=i;
+			else k++;
+			j++;
+		}
+		while(i<=k){
+			factorization.push_back(s.substr(i, j-k));
+			i+=j-k;
+		}
+	}
+	return factorization;
 }
 
 // Casos de uso
 // Encontrar el string lexicográficamente menor que es un shift de un string
 string min_cyclic_string(string s) {
-  s+=s;
-  int n=len(s),i=0,ans=0;
-  while(i<n/2){
-    ans=i;
-    int j=i+1,k=i;
-    while(j<n && s[k]<=s[j]){
-      if(s[k]<s[j])k=i;
-      else k++;
-      j++;
-    }
-    while(i<=k)
-    i+=j-k;
-  }
-  return s.substr(ans, n/2);
+	s+=s;
+	int n=len(s),i=0,ans=0;
+	while(i<n/2){
+		ans=i;
+		int j=i+1,k=i;
+		while(j<n && s[k]<=s[j]){
+			if(s[k]<s[j])k=i;
+			else k++;
+			j++;
+		}
+		while(i<=k)
+		i+=j-k;
+	}
+	return s.substr(ans, n/2);
 }
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(0);
-string s="aabaaab";
-vs factorization=duval(s);
-for(string& factor:factorization)cout<<factor<<"\n";
+	ios::sync_with_stdio(false);cin.tie(nullptr);
+	string s="aabaaab";
+	vs factorization=duval(s);
+	for(string& factor:factorization)cout<<factor<<"\n";
 
-string t="ababab";
-cout<<min_cyclic_string(t)<<"\n";
-return 0;
+	string t="ababab";
+	cout<<min_cyclic_string(t)<<"\n";
+	return 0;
 }

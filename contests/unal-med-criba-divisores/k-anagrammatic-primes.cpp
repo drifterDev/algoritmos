@@ -23,7 +23,7 @@ int calculate(ll n){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll n;cin>>n;
 while(n!=0){
   if(n>991)cout<<"0\n";

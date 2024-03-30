@@ -11,7 +11,7 @@ typedef long long ll;
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll a,b;cin>>a>>b;
 ll facto=1, mini=min(a,b);
 for (int i=2;i<=mini;i++)facto*=i;

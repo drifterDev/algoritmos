@@ -54,7 +54,7 @@ int binary_search(vi& nums){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   cin>>n>>m>>c;
   vi nums(n);

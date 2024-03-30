@@ -31,7 +31,7 @@ ll criba(ll tope){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll t;cin>>t;
 ll casi=criba(t);
 cout<<casi<<"\n";

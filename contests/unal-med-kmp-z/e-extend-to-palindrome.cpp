@@ -39,7 +39,7 @@ vi prefix_function(string s){
 
 int main(){
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 string s="-1";cin>>s;
 while(s!="-1"){
     string s2(s);

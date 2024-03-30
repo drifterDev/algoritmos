@@ -25,7 +25,7 @@ const int maxn=200001;
 int n,tmp;
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   cin>>n;
   vector<vi> res(maxn, vi());

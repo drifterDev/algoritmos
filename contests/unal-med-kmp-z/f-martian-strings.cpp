@@ -44,7 +44,7 @@ void prefix_function(string& t, string& s, int *d){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 string t1,t2,p1,p2;cin>>t1;
 t2=t1;reverse(all(t2));
 int k,res=0,n=len(t1),m;cin>>k;

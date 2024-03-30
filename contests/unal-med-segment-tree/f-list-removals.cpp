@@ -89,7 +89,7 @@ void upd(int k, int nv){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,q,x;cin>>n;q=n;
 vi nums(n), tmp(n,1);
 for(int i=0;i<n;++i)cin>>nums[i];

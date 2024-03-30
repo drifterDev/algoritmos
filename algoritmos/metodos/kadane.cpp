@@ -11,11 +11,11 @@ typedef vector<int> vi;
 
 // O(n)
 int kadane(vi &nums){
-  int n=sz(nums);
-  int ans=nums[0],sum=nums[0];
-  for(int i=1;i<n;++i){
-    sum=max(nums[i],sum+nums[i]);
-    ans=max(ans,sum);
-  }
-  return ans;
+	int n=sz(nums);
+	int ans=nums[0],sum=nums[0];
+	for(int i=1;i<n;++i){
+		sum=max(nums[i],sum+nums[i]);
+		ans=max(ans,sum);
+	}
+	return ans;
 }

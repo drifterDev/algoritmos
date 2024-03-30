@@ -89,7 +89,7 @@ void upd(int k, int nv){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,q;cin>>n>>q;
 vector<pair<char, ii>> queries(q);
 vi original(n);

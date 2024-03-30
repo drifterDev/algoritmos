@@ -34,7 +34,7 @@ void bfs(int x, int y, int l, int r, int& res, int n, int m){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,m,x,y,l,r;cin>>n>>m;
 cin>>x>>y;cin>>l>>r;x--;y--;
 for(int i=0;i<n;i++){

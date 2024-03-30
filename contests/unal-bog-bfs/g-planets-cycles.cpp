@@ -36,7 +36,7 @@ void ajustarCiclos(queue<int> camino, int longitud){
  
 int main() {
   ios::sync_with_stdio(false);
-  cin.tie(0);
+  cin.tie(nullptr);
   int n;cin>>n;
   for(int i=1;i<=n;i++)cin>>teleport[i];
   for(int i=1;i<=n;i++){

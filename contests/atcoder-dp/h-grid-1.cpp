@@ -15,7 +15,7 @@ int suma(int x_1,int y_1){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   int n,m;cin>>n>>m;
   vector<vi> dp(n+1, vi(m+1,0));

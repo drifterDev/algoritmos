@@ -15,7 +15,7 @@ typedef vector<long long> vl;
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll t,n,q, query;cin>>t;
 while(t--){
   cin>>n>>q;

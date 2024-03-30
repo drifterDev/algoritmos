@@ -11,7 +11,7 @@ typedef long long ll;
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll c=0,k,num,sum;cin>>k;
 for (ll i=2;i<= 1300000;i++) {
   num = 9 * i + 1;sum = 0;

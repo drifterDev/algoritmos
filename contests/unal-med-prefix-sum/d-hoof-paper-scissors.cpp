@@ -30,7 +30,7 @@ int dy8[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   map<char, char> mp;
   mp['P']='S',mp['S']='H',mp['H']='P';

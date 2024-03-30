@@ -49,7 +49,7 @@ ll binary_search(vl& nums){
 }
 
 int main(){
-  ios::sync_with_stdio(false);cin.tie(0);
+  ios::sync_with_stdio(false);cin.tie(nullptr);
   cout<<setprecision(20)<<fixed;
   cin>>n>>k;
   vl nums(n);

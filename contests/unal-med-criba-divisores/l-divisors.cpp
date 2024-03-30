@@ -11,7 +11,7 @@ typedef long long ll;
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 ll t,a,b;cin>>t;
 while(t--){
   cin>>a>>b;

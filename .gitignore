@@ -3,9 +3,6 @@
 .vscode/
 .cph/
 competencia/
-notebook/
-arboles/
-ejercicios/
 j-sushi.cpp
 n-slimes.cpp
 o-matching.cpp

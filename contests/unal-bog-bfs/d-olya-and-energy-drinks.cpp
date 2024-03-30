@@ -50,7 +50,7 @@ void bfs(int n, int m, int k,ii begin, ii end){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,m,k;cin>>n>>m>>k;
 for(int i=0;i<n;i++){
   for(int j=0;j<m;j++){

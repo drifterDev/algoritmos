@@ -53,7 +53,7 @@ void findSpanningTree(vi deg,int n,int m,vector<vi> g){
 
 int main(){
 	ios::sync_with_stdio(false);
-	cin.tie(0);
+	cin.tie(nullptr);
 	int n,m,act,act2;cin>>n>>m;
 	vector<vector<int>> g(n+1);
 	vector<int> deg(n+1);

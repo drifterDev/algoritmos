@@ -116,7 +116,7 @@ void upd(int k, int nv){
  
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n,q;cin>>n>>q;vi nums(n);
 for(int i=0;i<n;++i)cin>>nums[i];
 nodeST st(nums, 0, n-1);

@@ -27,7 +27,7 @@ ll dp(vector<vi>& happy, int n){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 int n;cin>>n;
 vector<vi> happy(n,vi(3,0));
 for(int i=0;i<n;i++)cin>>happy[i][0]>>happy[i][1]>>happy[i][2];

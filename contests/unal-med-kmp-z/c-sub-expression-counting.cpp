@@ -54,7 +54,7 @@ void kmp(string &t, string &p){
 
 int main() {
 ios::sync_with_stdio(false);
-cin.tie(0);
+cin.tie(nullptr);
 string s1="#",s2;cin>>s1;
 while(s1!="#"){
 	cin>>s2;matches=0;

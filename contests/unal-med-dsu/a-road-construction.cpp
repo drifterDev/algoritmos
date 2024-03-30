@@ -51,7 +51,7 @@ struct dsu{
  
 int main() {
   ios::sync_with_stdio(false);
-  cin.tie(0);
+  cin.tie(nullptr);
   cout << setprecision(20) << fixed;
   int n, m;cin>>n>>m;
   dsu d(n);
