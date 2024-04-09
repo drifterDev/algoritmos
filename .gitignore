@@ -3,7 +3,6 @@
 .vscode/
 .cph/
 competencia/
-two-pointers/
 j-sushi.cpp
 n-slimes.cpp
 o-matching.cpp
