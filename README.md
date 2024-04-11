@@ -6,7 +6,7 @@ Este repositorio contiene implementaciones de algoritmos de programación compet
 
 `algoritmos` contiene implementaciones de algoritmos de programación competitiva divididos por categorías.
 
-`contests` contiene soluciones a problemas de programación competitiva de diferentes contests en los que he participado.
+`contests` contiene soluciones a problemas de programación competitiva de diferentes competencias en las que he participado.
 
 `estructuras` contiene implementaciones de estructuras de datos y explicaciones de su uso.
 
