@@ -6,40 +6,93 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
 
+// path compression
 struct dsu{
-	vl parents,sizes;
-	ll numSets;
-	ll maxSz;
+	vector<int> p,size;
+	int sets,maxSz;
 
-	dsu(ll n){
-		parents.assign(n,0);
-		sizes.assign(n,1);
-		numSets=n;
+	dsu(int n){
+		sets=n;
 		maxSz=1;
-		for(int i=0;i<n;++i)parents[i]=i;
+		p.assign(n,0);
+		size.assign(n,1);
+		iota(p.begin(),p.end(),0);
 	}
 
-	ll findSet(ll v){
-		if(v==parents[v])return v;
-		return parents[v]=findSet(parents[v]);
+	int get(int a){
+		if(a!=p[a])p[a]=get(p[a]);
+		return p[a];
 	}
 
-	bool isSameSet(ll i,ll j){
-		return findSet(i)==findSet(j);
+	void unionSets(int a, int b){
+		a=get(a);
+		b=get(b);
+		if(a==b)return;
+		if(size[a]>size[b])swap(a, b);
+		p[a]=b;
+		size[b]+=size[a];
+		maxSz=max(maxSz,size[b]);
+		sets--;
+	}
+};
+
+// rank heuristic
+struct dsu{
+	vector<int> p,rank;
+
+	dsu(int n){
+		p.assign(n,0);
+		rank.assign(n,1);
+		iota(p.begin(), p.end(), 0);
 	}
 
-	void unionSets(ll a, ll b){
-		a=findSet(a);
-		b=findSet(b);
-		if(a!=b){
-			if(sizes[a]<sizes[b])swap(a, b);
-			parents[b]=a;
-			sizes[a]+=sizes[b];
-			maxSz=max(maxSz,sizes[a]);
-			numSets--;
+	int get(int a){
+        if(a==p[a])return a;
+		return get(p[a]);
+	}
+
+	void unionSets(int a, int b){
+		a=get(a);
+		b=get(b);
+		if(a==b)return;
+        if(rank[a]>rank[b])swap(a,b);
+        rank[a]++;
+        rank[b]=max(rank[a], rank[b]);
+        p[a]=b;
+	}
+};
+
+// Bipartite graph
+struct dsu{
+	vector<int> p,size,len;
+
+	dsu(int n){
+		p.assign(n,0);
+		len.assign(n,0);
+		size.assign(n,1);
+		iota(p.begin(),p.end(),0);
+	}
+
+	pair<int,int> get(int a){
+		if(a==p[a]){
+			return {a, 0};
 		}
+		pair<int,int> valA=get(p[a]);
+		p[a]=valA.first;
+		len[a]=(len[a]+valA.second)%2;
+		return {p[a], len[a]};
+	}
+
+	void unionSets(int a, int b){
+		pair<int,int> valA=get(a);
+		pair<int,int> valB=get(b);
+		if(valA.first==valB.first)return;
+		if(size[valA.first]>size[valB.first]){
+			swap(valA,valB);
+		}
+		p[valA.first]=valB.first;
+		len[valA.first]=(valA.second+valB.second+1)%2;
+		size[valB.first]+=size[valA.first];
 	}
 };

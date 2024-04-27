@@ -8,10 +8,12 @@
 using namespace std;
 #define PB push_back
 typedef vector<int> vi;
+vector<vector<int>> adj;
+vector<int> grade,order;
 int n,m;
 
 // O(n+m)
-void bfs(vector<vi>& adj, vi& grade, vi& order){
+void bfs(){
 	queue<int> q;
 	for(int i=0;i<n;i++)if(!grade[i])q.push(i);
 	while(!q.empty()){
@@ -35,7 +37,7 @@ int main() {
 		adj[a].PB(b);
 		grade[b]++;
 	}
-	bfs(adj,grade,order);
+	bfs();
 	if(order.size()<n)cout<<"IMPOSSIBLE\n";
 	else{
 		for(int x:order)cout<<x+1<<" ";

@@ -53,6 +53,12 @@ void dfs(int v,int p=0){
 	}
 }
 
+void lca(int a, int b, NodeST& st){
+	int l=mp[a],r=mp[b];
+	if(l>r)swap(l,r);
+	cout<<tour[st.get(l,r).second]<<"\n"; 
+}
+
 int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n,q;cin>>n>>q;
@@ -67,8 +73,6 @@ int main(){
 	NodeST st(palst, 0, sz(tour)-1);
 	int a,b;
 	cin>>a>>b;
-	int l=mp[a],r=mp[b];
-	if(l>r)swap(l,r);
-	cout<<tour[st.get(l,r).S]<<"\n";
+	lca(a,b,st);
 	return 0;
 }

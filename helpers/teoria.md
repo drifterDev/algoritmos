@@ -32,6 +32,8 @@ a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan
 * ncr = n-1cr-1 + n-1cr
 * ncr = n! / r! * (n-r)!
 * (a+b)^n = nc0 * a^n * b^0 + nc1 * a^n-1 * b^1 + nc2 * a^n-2 * b^2 + ... + ncn * a^0 * b^n	
+* Con repeticion = n+r-1Cr
+* Permutaciones = n! / (n1! * n2! * ... * nk!)
 
 ## Números de catalan
 
