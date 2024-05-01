@@ -1,31 +1,26 @@
 // Autor: Mateo Álvarez Murillo
 // Fecha de creación: 2024
-
+// 
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
 
 #include <bits/stdc++.h>
 using namespace std;
+#define F first
+#define S second
 typedef long long ll;
 typedef pair<int, int> ii;
-const int MODS[] = { 1001864327, 1001265673 }; // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
-const ii BASE={257, 367}, ZERO={0, 0}, ONE={1, 1};
-const int MAXN = 2*1e5;
+const int MOD[2] = { 1001864327, 1001265673 }; // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
+const ii BASE(257, 367), ZERO(0, 0), ONE(1, 1);
+const int MAXN = 1e6;
 
-inline int mod(int a, const int& m){return ((a%m)+m)%m;}
-inline int suma(int a, int b,  const int& m){return mod(mod(a,m)+mod(b,m),m);}
-inline int resta(int a, int b, const int& m){return mod(a-b,m);}
-inline int multi(int a, int b, const int& m){return mod(mod(a,m)*mod(b,m),m);}
-
-inline ii operator + (const ii a, const ii b){
-  	return {suma(a.first, b.first, MODS[0]), suma(a.second, b.second, MODS[1])};
-}
-inline ii operator - (const ii a, const ii b) {
-  	return {resta(a.first, b.first, MODS[0]), resta(a.second, b.second, MODS[1])};
-}
-inline ii operator * (const ii a, const ii b) {
-  	return {multi(a.first, b.first, MODS[0]), multi(a.second, b.second, MODS[1])};
-}
+inline int add(int a, int b, int mod){return a+b >= mod ? a+b-mod : a+b;}
+inline int sbt(int a, int b, int mod){return a-b < 0 ? a-b+mod : a-b;}
+inline int mul(int a, int b, int mod){return ll(a) * b % mod;} 
+inline ll operator ! (const ii a){return (ll(a.F) << 32) | a.S;}
+inline ii operator + (const ii& a, const ii& b){return {add(a.F, b.F, MOD[0]), add(a.S, b.S, MOD[1])};}
+inline ii operator - (const ii& a, const ii& b){return {sbt(a.F, b.F, MOD[0]), sbt(a.S, b.S, MOD[1])};}
+inline ii operator * (const ii& a, const ii& b){return {mul(a.F, b.F, MOD[0]), mul(a.S, b.S, MOD[1])};}
 
 ii p[MAXN+1];
 void prepare(){
@@ -43,7 +38,7 @@ struct hashing {
 			h[i]=h[i-1]*BASE + ii{t[i-1], t[i-1]};
 	}
 
-	ii query(int l, int r){ // [l, r]
+	ii query(int l, int r){
 		return h[r+1]-h[l]*p[r-l+1];
 	}
 };

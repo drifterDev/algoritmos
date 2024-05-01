@@ -57,8 +57,7 @@ struct dsu{
 		b=get(b);
 		if(a==b)return;
         if(rank[a]>rank[b])swap(a,b);
-        rank[a]++;
-        rank[b]=max(rank[a], rank[b]);
+        rank[b]+=rank[a];
         p[a]=b;
 	}
 };

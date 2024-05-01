@@ -7,14 +7,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<ll> vl;
-typedef vector<int> vi;
 
 // Suma de rangos y actualizacion individual
 // upd O(log n), rsq O(log n), memory O(n)
 struct FwTree{ 
 	int n;
-	vi bit;
+	vector<int> bit;
 	FwTree(int n): n(n),bit(n+1){}
 	int rsq(int r){
 		int sum=0;
@@ -31,9 +29,9 @@ struct FwTree{
 
 struct FwTree2d{ 
 	int n, m;
-	vector<vl> bit;
+	vector<vector<ll>> bit;
 	FwTree2d(){}
-	FwTree2d(int n, int m):n(n),m(m),bit(n+1, vl(m+1,0)){}
+	FwTree2d(int n, int m):n(n),m(m),bit(n+1, vector<ll>(m+1,0)){}
 	ll sum(int x, int y){
 		ll v=0;
 		for(int i=x+1;i;i-=i&-i)
@@ -52,7 +50,7 @@ struct FwTree2d{
 int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n,m;cin>>n>>m;
-	vector<vi> mat(n, vi(n,0));
+	vector<vector<int>> mat(n, vector<int>(n,0));
 	char c;
 	for(int i=0;i<n;++i){
 		for(int j=0;j<n;++j){
