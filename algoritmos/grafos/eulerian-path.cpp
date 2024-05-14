@@ -18,8 +18,7 @@ const int maxn = 1e5+1;
 const int maxm = 2e5+1;
 int n,m;
 
-// O(m)
-// Un camino que pasa por todas las aristas
+// O(m) no dirigido
 void euler_tour(vector<vii>& adj, vi& degree){
 	vector<bool> visited(m,false);
 	stack<int> s;
@@ -52,6 +51,26 @@ void euler_tour(vector<vii>& adj, vi& degree){
 	}else{
 		print(path);
 	}
+}
+
+// O(m+n) dirigido
+void euler_tour(vector<vector<int>>& adj){
+    vector<int> curr_path;
+    curr_path.push_back(0);
+    vector<int> circuit;
+    while(!curr_path.empty()){
+        int v=curr_path.back();
+        if(adj[v].size()>0){
+            int u=adj[v].back();
+            adj[v].pop_back();
+            curr_path.push_back(u);
+        }else{
+            circuit.push_back(curr_path.back());
+            curr_path.pop_back();
+        }
+    }
+    reverse(circuit.begin(), circuit.end());
+    for(auto x:circuit)cout<<x<<" "; 
 }
 
 int main(){

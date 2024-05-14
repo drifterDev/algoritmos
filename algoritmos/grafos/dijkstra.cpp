@@ -16,7 +16,7 @@ typedef vector<pll> vll;
 vector<vll> adj;
 int n;
 
-// O(n+mlog(m))
+// O((n+m)log(m))
 vl dijkstra(int s){
 	priority_queue<pll, vll, greater<pll>> pq;
 	pq.push({0, s});
@@ -24,10 +24,12 @@ vl dijkstra(int s){
 	dist[s]=0;
 	while(!pq.empty()){
 		pll act=pq.top();pq.pop();
-		int d=act.F,u=act.S;
+		ll d=act.F;
+        int u=act.S;
 		if(d>dist[u])continue;
 		for(auto v:adj[u]){
-			int w=v.S,b=v.F;
+			ll w=v.S;
+			int b=v.F;
 			if(dist[u]+w<dist[b]){
 				dist[b]=dist[u]+w;
 				pq.push({dist[b],b});

@@ -4,14 +4,8 @@
 .cph/
 competencia/
 j-sushi.cpp
-n-slimes.cpp
-o-matching.cpp
-p-independent-set.cpp
-q-flowers.cpp
-s-digit-sum.cpp
 t-permutation.cpp
 u-grouping.cpp
-v-subtree.cpp
 w-intervals.cpp
 x-tower.cpp
 y-grid-2.cpp
