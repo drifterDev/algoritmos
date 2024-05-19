@@ -1,13 +1,5 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2024
-// 
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
-#define S second
-#define F first
 typedef long long ll;
 typedef vector<ll> vl;
 vl dp_before, dp_cur,g;
@@ -27,8 +19,8 @@ void compute(int l, int r, int optl, int optr){
 	for(int k=optl;k<=min(mid, optr);++k){
 		best=min(best, {(k?dp_before[k-1]:0) + c(k, mid), k});
 	}
-	dp_cur[mid]=best.F;
-	int opt=best.S;
+	dp_cur[mid]=best.first;
+	int opt=best.second;
 	compute(l, mid - 1, optl, opt);
 	compute(mid + 1, r, opt, optr);
 }

@@ -1,36 +1,29 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2024
-// 
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-#define PB push_back
-typedef vector<int> vi;
-vector<vi> adj;
-vi tour;
+vector<vector<int>> adj;
+vector<int> tour;
 
 void dfs(int v,int p=0){
-	tour.PB(v);
+	tour.push_back(v);
 	for(auto u:adj[v]){
 		if(u==p)continue;
 		dfs(u, v);
-		tour.PB(v);
+		tour.push_back(v);
 	}
 }
 
 int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n;cin>>n;
-	adj.assign(n+1,vi());
+	adj.assign(n+1,vector<int>());
 	for(int a,b,i=0;i<n-1;++i){
 		cin>>a>>b;
-		adj[a].PB(b);
-		adj[b].PB(a);
+		adj[a].push_back(b);
+		adj[b].push_back(a);
 	}
 	dfs(1);
-	print(tour);
+	for(auto x:tour){
+		cout<<x<<" ";
+	}
 	return 0;
 }

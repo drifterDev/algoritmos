@@ -1,9 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
@@ -46,21 +40,4 @@ vector<bool> segmentedSieve(ll L, ll R) {
 	if(L==1)
 		isPrime[0]=false;
 	return isPrime;
-}
-
-// Criba lineal
-vl primos;
-ll lon_criba;
-void criba_lineal(const int N=10000000){
-	lon_criba=N;
-	vi lp(N+1);
-	for(int i=2;i<=N;++i){
-		if(lp[i]==0){
-			lp[i]=i;
-			primos.PB(i);
-		}
-		for(int j=0,mult=i*primos[j];j<sz(primos) && primos[j]<=lp[i] && mult<N;++j, mult=i*primos[j]){
-			lp[mult]=primos[j];
-		}
-	}
 }

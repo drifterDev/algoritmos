@@ -1,9 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -12,9 +6,7 @@ const ll MOD;
 ll gcd(int a, int b, int x, int y);
 ll binpow(ll a, ll b, ll m);
 
-ll mod(ll a, ll m){
-	return ((a%m)+m)%m;
-}
+ll mod(ll a, ll m){return ((a%m)+m)%m;}
 
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
 ll suma(ll a, ll b){return mod(mod(a)+mod(b));}

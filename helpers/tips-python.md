@@ -64,9 +64,9 @@ for weight,value in zip(weights,values):
 ```
 
 ```python
-import sys
+from sys import setrecursionlimit, stdin, stdout
 
-sys.setrecursionlimit(1000000)
+setrecursionlimit(1000000)
 
 sys.stdin = open("input.in", "r")
 sys.stdout = open("output.out", "w")

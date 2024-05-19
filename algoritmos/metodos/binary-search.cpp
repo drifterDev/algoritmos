@@ -1,9 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
@@ -23,7 +17,7 @@ int binary_search(vi& nums, int target){
 
 int main() {
 	ios::sync_with_stdio(false);cin.tie(nullptr);
-	vi v={1, 2, 4, 4, 5, 6, 7, 8, 9};
+	vi v={1, 2, 4, 4, 5, 6, 7, 7,8, 9};
 	int x=6;
 	auto lower=lower_bound(all(v),x);
 	auto upper=upper_bound(all(v),x);
