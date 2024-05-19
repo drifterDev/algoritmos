@@ -21,5 +21,5 @@ int main(){
 		dp[i+2]=min(dp[i+2], dp[i]+abs(h[i]-h[i+2]));
 	}
 	cout<<dp[n-1]<<"\n";
-	return 0;
+	return 0;	
 }

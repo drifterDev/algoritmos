@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+const ll MOD;
 
 ll gcd(int a, int b, int x, int y);
 ll binpow(ll a, ll b, ll m);
@@ -14,6 +15,10 @@ ll binpow(ll a, ll b, ll m);
 ll mod(ll a, ll m){
 	return ((a%m)+m)%m;
 }
+
+ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
+ll suma(ll a, ll b){return mod(mod(a)+mod(b));}
+ll mult(ll a, ll b){return mod(mod(a)*mod(b));}
 
 // O(log(min(a, b))
 ll inv(ll b, ll m){

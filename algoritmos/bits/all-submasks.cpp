@@ -19,5 +19,9 @@ int main() {
         cout<<bitset<4>(s)<<"\n";
         if(s==m)break;
     }
+
+    // O(n^3)
+    // for(int s=0;s<(1<<n);++s)
+    //      for(submask)
     return 0;
 }

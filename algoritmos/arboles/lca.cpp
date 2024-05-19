@@ -6,54 +6,68 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(x) ((int) x.size())
-#define PB push_back
-#define S second
-#define F first
-typedef vector<int> vi;
 typedef pair<int, int> ii;
-ii nullValue={INT_MAX,-1};
 map<int, int> mp;
-vector<vi> adj;
-vi tour,depth,palst;
+vector<vector<int>> adj;
+vector<int> tour,depth,palst;
 
-struct NodeST{
-	NodeST *left,*right;
-	int l,r;ii value;
-	NodeST(vi &v,int l,int r):l(l),r(r){
-		int m=(l+r)>>1;
-		if(l!=r){
-			left=new NodeST(v, l, m);
-			right=new NodeST(v, m+1, r);
-			value=opt(left->value, right->value);
-		}else value={v[l],l};
+struct SegTree{
+	int size;
+	vector<ii> vals;
+	ii null={INT_MAX,-1};
+
+	ii oper(ii a, ii b){
+        return min(a,b);
+    }
+
+	void build(vector<int>& a, int x, int lx, int rx){
+		if(rx-lx==1){
+			if(lx<(int)a.size()){
+				vals[x]={a[lx], lx};
+			}
+			return;
+		}
+		int m=(lx+rx)/2;
+		build(a, 2*x+1, lx, m);
+		build(a, 2*x+2, m, rx);
+		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
 	}
-	
-	ii opt(ii leftValue, ii rightValue){
-		return min(leftValue, rightValue);
+
+	void build(vector<int>& a,int n){
+        size=1;
+		while(size<n)size*=2;
+		vals.resize(2*size);
+		build(a, 0, 0, size);
 	}
-	
-	ii get(int i, int j){
-		if(l>=i && r<=j)return value;
-		if(l>j || r<i)return nullValue;
-		return opt(left->get(i,j),right->get(i,j));
+
+	ii get(int l, int r, int x, int lx, int rx){
+		if(lx>=r || l>=rx)return null;
+		if(lx>=l && rx<=r)return vals[x];
+		int m=(lx+rx)/2;
+		ii v1=get(l,r,2*x+1,lx,m);
+		ii v2=get(l,r,2*x+2,m,rx);
+		return oper(v1,v2);
+	}
+
+	ii get(int l, int r){
+		return get(l,r+1,0,0,size);
 	}
 };
 
 void dfs(int v,int p=0){
-	tour.PB(v);
-	palst.PB(depth[v]);
-	mp[v]=sz(tour)-1;
+	tour.push_back(v);
+	palst.push_back(depth[v]);
+	mp[v]=tour.size()-1;
 	for(auto u:adj[v]){
 		if(u==p)continue;
 		depth[u]=depth[v]+1;
 		dfs(u, v);
-		tour.PB(v);
-		palst.PB(depth[v]);
+		tour.push_back(v);
+		palst.push_back(depth[v]);
 	}
 }
 
-void lca(int a, int b, NodeST& st){
+void lca(int a, int b, SegTree& st){
 	int l=mp[a],r=mp[b];
 	if(l>r)swap(l,r);
 	cout<<tour[st.get(l,r).second]<<"\n"; 
@@ -62,17 +76,20 @@ void lca(int a, int b, NodeST& st){
 int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n,q;cin>>n>>q;
-	adj.assign(n+1,vi());
+	adj.assign(n+1,vector<int>());
 	depth.assign(n+1, 1);
 	for(int a,i=2;i<=n;++i){
 		cin>>a;
-		adj[a].PB(i);
-		adj[i].PB(a);
+		adj[a].push_back(i);
+		adj[i].push_back(a);
 	}
 	dfs(1);
-	NodeST st(palst, 0, sz(tour)-1);
+	SegTree st;
+	st.build(palst, tour.size());
 	int a,b;
-	cin>>a>>b;
-	lca(a,b,st);
+	while(q--){
+		cin>>a>>b;
+		lca(a,b,st);
+	}
 	return 0;
 }
