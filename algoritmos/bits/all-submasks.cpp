@@ -16,6 +16,7 @@ int main() {
 
     // O(n^3)
     // for(int s=0;s<(1<<n);++s)
-    //      for(submask)
+    //      for(int mask=s;;mask=(mask-1)&s){
+                // if(mask==0)break;
     return 0;
 }

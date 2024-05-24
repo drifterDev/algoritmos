@@ -98,7 +98,9 @@ struct Node{
 struct SegTree{
 	int size;
 	vector<Node> vals;
-	Node null;
+	vector<ll> lazy;
+    ll noVal=LLONG_MIN;
+	Node null={0,0,0,0};
 
 	Node oper(Node a, Node b){
         return {
@@ -112,6 +114,11 @@ struct SegTree{
     Node single(ll v){
         if(v<0)return {0,0,0,v};
         return {v,v,v,v};
+    }
+
+    Node oper2(ll v, ll len){
+        if(v<0)return {0,0,0,v*len};
+        return {v*len,v*len,v*len,v*len};
     }
 
 	void build(vector<ll>& a, int x, int lx, int rx){
@@ -131,7 +138,37 @@ struct SegTree{
         size=1;
 		while(size<n)size*=2;
 		vals.resize(2*size);
+        lazy.assign(2*size, 0);
 		build(a, 0, 0, size);
+	}
+
+    void propagate(int x, int lx, int rx){
+        if(rx-lx==1)return;
+        if(lazy[x]==noVal)return;
+        int m=(lx+rx)/2;
+        lazy[2*x+1]=lazy[x];
+        vals[2*x+1]=oper2(lazy[x], m-lx);
+        lazy[2*x+2]=lazy[x]; 
+        vals[2*x+2]=oper2(lazy[x], rx-m);
+        lazy[x]=noVal;
+    }
+
+    void upd(int l, int r, ll v,int x, int lx, int rx){
+        propagate(x,lx,rx);
+		if(lx>=r || l>=rx)return;
+		if(lx>=l && rx<=r){
+            lazy[x]=v;
+			vals[x]=oper2(v,rx-lx);
+            return;
+        }
+		int m=(lx+rx)/2;
+		upd(l,r,v,2*x+1,lx,m);
+		upd(l,r,v,2*x+2,m,rx);
+		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+	}
+
+	void upd(int l, int r, ll v){
+        upd(l,r+1,v,0,0,size);
 	}
 
 	void set(int i, ll val, int x, int lx, int rx){
@@ -153,6 +190,7 @@ struct SegTree{
 	}
 
 	Node get(int l, int r, int x, int lx, int rx){
+        propagate(x,lx,rx);
 		if(lx>=r || l>=rx)return null;
 		if(lx>=l && rx<=r)return vals[x];
 		int m=(lx+rx)/2;
