@@ -28,6 +28,7 @@ void prepare(){
 	for(int i=1;i<=MAXN;i++)p[i]=p[i-1]*BASE;
 }
 
+// Acordate del prepare()!!
 template <class type> 
 struct hashing {
 	vector<ii> h;

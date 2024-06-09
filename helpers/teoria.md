@@ -18,6 +18,19 @@
 * (p-1)! % p = -1 (si p es primo), entonces p es primo cuando (p-1)! + 1 es multiplo de p
 * a^phi(b) % b = 1 (si a y b son primos relativos)
 
+## Polynomial updates
+
+- 1+2+3+4+5+...
+- update [a,b]
+- node [c,d]
+- node+=(c-a)*(len)+sumatoria(len)
+- node+=x*len + sumatoria(len)
+- unas cuantas updates despues
+- node+=(x1+x2+x3+...) * len + u * sumatoria(len)
+- lazy1 = x1+x2+x3+...., lazy2 = #updates
+- nodeLeft (lazy1+=lazy1, lazy2+=lazy2)
+- nodeRight (lazy1+=lazy1+lazy2*(m-lx), lazy2+=lazy2)
+
 ## Congruencia
 
 a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan el mismo resto si los dividimos entre n, o, equivalentemente, si a − b es un múltiplo de n.
