@@ -16,7 +16,7 @@ void criba(ll n){
 	for(ll i=2;i<=n;++i){
 		if(!is_prime[i])continue;
 		for(ll j=1ll*i*i;j<=n;j+=i)is_prime[j]=false;
-		primos.PB(i);
+		primos.push_back(i);
 	}
 }
 

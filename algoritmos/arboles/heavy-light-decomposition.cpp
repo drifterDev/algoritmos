@@ -6,9 +6,9 @@ ll null=LLONG_MIN;
 ll oper(ll a, ll b){return max(a,b);}
 struct SegTree{
     void build(int n){}
-	void set(int i, ll val){}
-	void upd(int l, int r, ll v){}
-	ll get(int l, int r){return null;}
+    void set(int i, ll val){}
+    void upd(int l, int r, ll v){}
+    ll get(int l, int r){return null;}
 };
 
 const int maxn=100000+1; 
@@ -59,8 +59,8 @@ struct HLD{
         op(pos[x]+VALS_IN_EDGES,pos[y]); 
     }
     void modifyPath(int x, int y, int v){ 
-    	processPath(x,y,[this,&v](int l, int r){ 
-    		st.upd(l,r,v);
+        processPath(x,y,[this,&v](int l, int r){ 
+            st.upd(l,r,v);
         }); 
     }
     ll queryPath(int x, int y){ 
@@ -72,5 +72,9 @@ struct HLD{
     }
     void modifySubtree(int x, int v){st.upd(pos[x]+VALS_IN_EDGES,pos[x]+sz[x],v);}
     int querySubtree(int x){return st.get(pos[x]+VALS_IN_EDGES,pos[x]+sz[x]);}
-    void modify(int x, int v){st.set(pos[x],v);} // para nodos y aristas
+    void modify(int x, int v){st.set(pos[x],v);} 
+    void modifyEdge(int x, int y, int v){
+        if(dep[x]<dep[y])swap(x,y);
+        modify(x,v);
+    }
 };

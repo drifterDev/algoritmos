@@ -21,7 +21,7 @@ const char dird[4] = {'D','R','U','L'};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
-    ios::sync_with_stdio(false);cin.tie(nullptr); // Comentar para problemas interactivos
+    ios::sync_with_stdio(false);cin.tie(nullptr);
     cout<<setprecision(20)<<fixed;
     // freopen("file.in", "r", stdin);
     // freopen("file.out", "w", stdout);
