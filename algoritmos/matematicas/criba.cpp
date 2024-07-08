@@ -41,3 +41,29 @@ vector<bool> segmentedSieve(ll L, ll R) {
 		isPrime[0]=false;
 	return isPrime;
 }
+
+// criba lineal
+const int maxn = 1e5;
+vector<int> prime;
+bool is_composite[maxn];
+int f[maxn];
+
+void sieve (int n) {
+	fill (is_composite, is_composite+n, false);
+	// caso base en 1, phi[1]=1;
+	for(int i=2;i<n;++i){
+		if(!is_composite[i]){ // i es primo
+			prime.push_back(i);
+			// caso para primos, phi[i]=i-1;
+		}
+		for(int j=0;j<prime.size() && i*prime[j]<n;++j){
+			is_composite[i*prime[j]]=true;
+			if (i % prime[j] == 0) {
+				// caso prime[j] divide a i, phi[i * prime[j]] = phi[i] * prime[j];	
+				break;
+			} else {
+				// caso prime[j] no divide a i, phi[i * prime[j]] = phi[i] * phi[prime[j]];
+			}
+		}
+	}
+}
