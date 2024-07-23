@@ -56,7 +56,7 @@ void sieve (int n) {
 			prime.push_back(i);
 			// caso para primos, phi[i]=i-1;
 		}
-		for(int j=0;j<prime.size() && i*prime[j]<n;++j){
+		for(int j=0;j<prime.size() && 1ll*i*prime[j]<1ll*n;++j){
 			is_composite[i*prime[j]]=true;
 			if (i % prime[j] == 0) {
 				// caso prime[j] divide a i, phi[i * prime[j]] = phi[i] * prime[j];	

@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int maxn = 40000+5;
-const int maxq = 100000+5;
+const int maxn = 1e5+5;
+const int maxq = 1e4+5;
 const int maxlog = 20+5; 
 int ri[maxn],li[maxn],id[maxn*2];
 vector<int> adj[maxn];
@@ -55,22 +55,14 @@ int lca(int a, int b){
     return up[a][0];
 }
 
-int w[maxn],id2[maxn];
 bool vis[maxn];
-int mp[maxn];
 ll ans=0;
 
-void add(int v){
-	mp[id2[v]]++;
-	if(mp[id2[v]]==1)ans++;
-}
-void remove(int v){
-	mp[id2[v]]--;
-	if(mp[id2[v]]==0)ans--;
-}
-void ask(int v){
-	if(!vis[v])add(v);
-	else remove(v);
+void add(int v, bool left);
+void remove(int v, bool left);
+void ask(int v, bool left){
+	if(!vis[v])add(v, left);
+	else remove(v, left);
 	vis[v]=!vis[v];
 }
 
@@ -91,30 +83,28 @@ void solve(){
 	for(int i=0;i<q;++i){
 		int L=queries[i].l,R=queries[i].r;
 		if(R<l){
-			while(l>L)ask(id[--l]);
-			while(l<L)ask(id[l++]);
-			while(r<R)ask(id[++r]);
-			while(r>R)ask(id[r--]);
+			while(l>L)ask(id[--l], true);
+			while(l<L)ask(id[l++], true);
+			while(r<R)ask(id[++r], false);
+			while(r>R)ask(id[r--], false);
 		}else{
-			while(r<R)ask(id[++r]);
-			while(r>R)ask(id[r--]);
-			while(l>L)ask(id[--l]);
-			while(l<L)ask(id[l++]);
+			while(r<R)ask(id[++r], false);
+			while(r>R)ask(id[r--], false);
+			while(l>L)ask(id[--l], true);
+			while(l<L)ask(id[l++], true);
 		}
 		int a=id[l],b=id[r],c=lca(a,b);
-		if(c!=b && c!=a)ask(c);
+        // if(c!=b && c!=a)ask(c);
 		res[queries[i].id]=ans;
-		if(c!=b && c!=a)ask(c);
+		// if(c!=b && c!=a)ask(c);
 	}
 }
 
 void reset(){
-	ans=0;
 	pos=0;
 	sqrtn=(int)ceil(sqrt(n));
 	memset(up, -1, sizeof(up));
 	memset(dep, 0, sizeof(dep));
-	memset(mp, 0, sizeof(mp));
 	memset(vis, 0, sizeof(vis));
 }
 
@@ -122,13 +112,6 @@ int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
 	cin>>n>>q;
 	reset();
-	map<int, int> can;
-	int act=1;
-	for(int i=0;i<n;++i){
-		cin>>w[i];
-		if(!can[w[i]])can[w[i]]=act++;
-		id2[i]=can[w[i]];
-	}
 	for(int a,b,i=0;i<n-1;++i){
 		cin>>a>>b;a--;b--;
 		adj[a].push_back(b);
