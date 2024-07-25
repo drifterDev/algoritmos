@@ -2,6 +2,7 @@
 using namespace std;
 const int maxn = 1e5+1;
 
+// si da tle, usar bool processed[maxn];
 struct CentroidDecomposition{
 	int dad[maxn],sz[maxn];
 	set<int> adj[maxn];
