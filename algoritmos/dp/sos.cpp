@@ -9,7 +9,7 @@ int main(){
 	for(int i=0;i<(1<<bits);++i){
         dp[i]=a[i];
     }
-    // bottom - up
+    // top - down
 	for(int i=0;i<bits;++i){
 		for(int s=0;s<(1<<bits);++s){
 			if(s&(1<<i)){
@@ -17,7 +17,7 @@ int main(){
 			}
 		}
 	} 
-    // top - down
+    // bottom - up
     for(int i=0;i<bits;++i){
 		for(int s=(1<<bits)-1;s>=0;--s){
 			if(s&(1<<i)){
