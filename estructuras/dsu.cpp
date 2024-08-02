@@ -11,7 +11,7 @@ struct dsu{
 		maxSz=1;
 		p.assign(n,0);
 		size.assign(n,1);
-		iota(p.begin(),p.end(),0);
+		for(int i=0;i<n;++i)p[i]=i;
 	}
 
 	int get(int a){
@@ -38,7 +38,7 @@ struct dsu{
 	dsu(int n){
 		p.assign(n,0);
 		rank.assign(n,1);
-		iota(p.begin(), p.end(), 0);
+		for(int i=0;i<n;++i)p[i]=i;
 	}
 
 	int get(int a){
@@ -64,7 +64,7 @@ struct dsu{
 		p.assign(n,0);
 		len.assign(n,0);
 		size.assign(n,1);
-		iota(p.begin(),p.end(),0);
+		for(int i=0;i<n;++i)p[i]=i;
 	}
 
 	pair<int,int> get(int a){

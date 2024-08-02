@@ -10,8 +10,10 @@ struct SegTree{
 	int n;vector<T> v;
 	T null=0;
 	T op(T a, T b){return a+b;}
-	SegTree(int n):n(n),v(2*n,null){}
-	SegTree(vector<T>& a):n(sz(a)),v(2*n){
+	void build(int _n){n=_n;v.assign(2*_n,null);}
+	void build(vector<T>& a){
+		n=sz(a);
+		v.assign(2*n, null);
 		for(int i=0;i<n;i++)v[n+i]=a[i];
 		for(int i=n-1;i>=1;--i)v[i]=op(v[i<<1],v[i<<1|1]);
 	}

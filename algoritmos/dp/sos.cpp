@@ -13,7 +13,7 @@ int main(){
 	for(int i=0;i<bits;++i){
 		for(int s=0;s<(1<<bits);++s){
 			if(s&(1<<i)){
-				dp[s]=dp[s^(1<<i)];
+				dp[s]+=dp[s^(1<<i)];
 			}
 		}
 	} 
