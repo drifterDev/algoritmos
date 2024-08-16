@@ -24,10 +24,7 @@ ll inv(ll b, ll m){
 
 // O(log MOD)
 // Si m es primo
-ll inv(ll a, ll m){
-	// Implementar exponenciacion binaria
-	return binpow(a, m-2, m);
-}
+ll inv(ll a, ll m){return binpow(a, m-2, m);}
 
 // Calcular el inv de [2,m)
 const int n=1e6;

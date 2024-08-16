@@ -51,7 +51,13 @@ a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan
 ## Números de catalan
 
 * Cn = 1/(n+1) * 2nCn
+* Cn = (2n)!/((n+1)!n!)
+* Cn = (4n-2)/(n+1) * Cn-1
 * Hay Cn árboles binarios con n nodos
+* Hay Cn árboles binarios completos con n+1 hojas
+* Hay Cn caminos de n pasos en una grilla de nxn sin pasar por la diagonal
+* Hay Cn formas de dividir un poligono de n+2 lados en n triangulos
+* Hay Cn secuencias de parentesis balanceados de longitud 2n
 
 ## Matrices
 
@@ -101,3 +107,6 @@ vertices - aristas + caras = 2
 * P(X = x) = (1-p)^(x-1) * p
 * E[X] = 1/p
 
+## Teoría de números
+
+* gcd(a,b) = gcd(a,b-a)

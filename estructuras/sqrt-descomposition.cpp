@@ -34,6 +34,6 @@ struct Sqrt {
 	}
 
     ll query(int l, int r){
-        return query(r)-query(l-1); 
+        return query(r+1)-query(l); 
     }
 };

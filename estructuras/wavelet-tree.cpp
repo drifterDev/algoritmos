@@ -84,8 +84,8 @@ struct WaveletTree {
 	}
 };
 
-int a[maxn];
-WaveletTree wt;
-int n,q;
-for(int i=1;i<=n;++i)cin>>a[i];
-wt.build(a+1, a+n+1, minv, maxv);
+// int a[maxn];
+// WaveletTree wt;
+// int n,q;
+// for(int i=1;i<=n;++i)cin>>a[i];
+// wt.build(a+1, a+n+1, minv, maxv);
