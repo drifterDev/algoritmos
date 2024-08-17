@@ -6,6 +6,7 @@ int main(){
     int num = 42; // Representación binaria: 00101010
     // Crear un objeto bitset a partir del número
     bitset<8> bits(num);
+    // bits._Find_first();
     cout<<"Secuencia bits: "<<bits<<"\n";
     cout<<"Bits activados: "<<bits.count()<<"\n";
     cout<<"Bits desactivados: "<<bits.size()-bits.count()<<"\n";

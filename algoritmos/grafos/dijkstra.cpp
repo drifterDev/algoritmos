@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define PB push_back
-#define S second
-#define F first
 typedef long long ll;
 typedef vector<ll> vl;
 typedef pair<ll, ll> pll;
@@ -18,12 +15,12 @@ vl dijkstra(int s){
 	dist[s]=0;
 	while(!pq.empty()){
 		pll act=pq.top();pq.pop();
-		ll d=act.F;
-        int u=act.S;
+		ll d=act.first;
+        int u=act.second;
 		if(d>dist[u])continue;
 		for(auto v:adj[u]){
-			ll w=v.S;
-			int b=v.F;
+			ll w=v.second;
+			int b=v.first;
 			if(dist[u]+w<dist[b]){
 				dist[b]=dist[u]+w;
 				pq.push({dist[b],b});

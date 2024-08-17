@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
-
 vector<bool> visited;
 vector<vi> adj; 
 vi tin, low;

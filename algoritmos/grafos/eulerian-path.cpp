@@ -2,89 +2,69 @@
 using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 #define sz(x) ((int) x.size())
-#define PB push_back
-#define S second
-#define F first
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
-const int maxn = 1e5+1;
-const int maxm = 2e5+1;
+const int maxn = 1e5+5;
+const int maxm = 2e5+5;
+int degree[maxn];
+bool vis[maxm];
+int out[maxn];
+int in[maxn];
+vii adj2[maxn];
+vi adj[maxn];
+vi path;
 int n,m;
 
-// O(m) no dirigido
-void euler_tour(vector<vii>& adj, vi& degree){
-	vector<bool> visited(m,false);
-	stack<int> s;
-	vi path;
-	s.push(1);
-	while(!s.empty()){
-		int u=s.top();
-		if(degree[u]){
-			while(!adj[u].empty()){
-				int v=adj[u].back().F;
-				int id=adj[u].back().S;
-				adj[u].pop_back();
-				if(!visited[id]){
-					visited[id]=true;
-					degree[u]--;
-					degree[v]--;
-					s.push(v);
-					break;
-				}
-			}
-		}else{
-			path.PB(u);
-			s.pop();
-		}
-	}
-
-	if(sz(path)!=m+1){
-		cout<<"IMPOSSIBLE\n";
-		return;
-	}else{
-		print(path);
-	}
+void dfs(int v){
+    while(!adj[v].empty()){
+        int u=adj[v].back();
+        adj[v].pop_back();
+        dfs(u);
+    }
+    path.push_back(v);
 }
 
-// O(m+n) dirigido
-void euler_tour(vector<vector<int>>& adj){
-    vector<int> curr_path;
-    curr_path.push_back(0);
-    vector<int> circuit;
-    while(!curr_path.empty()){
-        int v=curr_path.back();
-        if(adj[v].size()>0){
-            int u=adj[v].back();
-            adj[v].pop_back();
-            curr_path.push_back(u);
-        }else{
-            circuit.push_back(curr_path.back());
-            curr_path.pop_back();
+void eulerian_path(int start, int end){ 
+    for(int i=1;i<=n;++i){
+        if(i==start || i==end)continue;
+        if(in[i]!=out[i]){
+            cout<<"IMPOSSIBLE\n";
+            return;
         }
     }
-    reverse(circuit.begin(), circuit.end());
-    for(auto x:circuit)cout<<x<<" "; 
+    if(out[start]-in[start]!=1 || in[end]-out[end]!=1){
+        cout<<"IMPOSSIBLE\n";
+        return;
+    }
+    dfs(start);
+    reverse(path.begin(), path.end());
+    if(sz(path)!=m+1 || path.back()!=end)cout<<"IMPOSSIBLE\n";
+    else print(path);
 }
 
-int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
-	cin>>n>>m;
-	vector<vii> adj(n+1);
-	vi degree(n+1,0);
-	for(int i=0,a,b;i<m;++i){
-		cin>>a>>b;
-		adj[a].PB({b,i});
-		adj[b].PB({a,i});
-		degree[a]++;
-		degree[b]++;
-	}
-	bool flag=true;
-	for(int i=1;i<=n;++i)if(degree[i]%2)flag=false;
-	if(!flag){
-		cout<<"IMPOSSIBLE\n";
-		return 0;
-	}
-	euler_tour(adj,degree);
-	return 0;
+// undirected
+void dfs(int v){
+    while(!adj2[v].empty()){
+        ii x=adj2[v].back();
+        adj2[v].pop_back();
+        if(vis[x.second])continue;
+        vis[x.second]=true;
+        dfs(x.first);
+    }
+    path.push_back(v);
+}
+
+void eulerian_path(){
+    for(int i=1;i<=n;++i){
+        if(degree[i]%2!=0){
+            cout<<"IMPOSSIBLE\n";
+            return;
+        }
+    }
+    dfs(1);
+    if(sz(path)!=m+1)cout<<"IMPOSSIBLE\n";
+    else{
+        print(path);
+    }
 }

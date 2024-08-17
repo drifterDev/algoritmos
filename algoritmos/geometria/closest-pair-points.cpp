@@ -78,7 +78,7 @@ int main(){
 	}
 	aux.resize(n);
 	sort(all(points), order_x);
-	res=1E20;
+	res=1e18;
 	rec(0,n);
 	cout<<min(ids.F,ids.S)<<" "<<max(ids.F,ids.S)<<" "<<sqrt(res)<<"\n";
 	return 0;

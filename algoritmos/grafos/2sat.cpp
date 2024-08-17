@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define PB push_back
 typedef vector<int> vi;
 
 // O(n+m)
@@ -29,8 +28,8 @@ struct sat2 {
 	}
 	
 	void add_edge(int u, int v){
-		g[0][u].PB(v);
-		g[1][v].PB(u);
+		g[0][u].push_back(v);
+		g[1][v].push_back(u);
 	}
 	
 	void dfs(int id, int u, int t=0){

@@ -71,17 +71,3 @@ void find_cycle(){
 		cout<<"\n";
 	}
 }
-
-int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
-	int m;
-	cin>>n>>m;
-	adj.resize(n, vi());
-	for(int i=0,u,v;i<m;++i){
-		cin>>u>>v;
-		adj[u-1].PB(v-1);
-		// adj[v-1].PB(u-1);
-	}
-	find_cycle();
-	return 0;
-}
