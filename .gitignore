@@ -2,4 +2,5 @@
 .cph/
 competencia/
 w-intervals.cpp
+persistent-segment-tree.cpp
 p.py

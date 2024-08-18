@@ -1,83 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-typedef vector<int> vi;
+typedef long long T;
 
 struct Node{
-	int key;
-	struct Node *left, *right;
+	int value;
+	struct Node *l, *r;
+	Node(T v){
+		value=v;
+		l=r=nullptr;
+	}
 };
 
-struct Node* newNode(int item){
-	struct Node* temp=new struct Node;
-	temp->key=item;
-	temp->left=temp->right=NULL;
-	return temp;
+typedef Node* PNode;
+PNode insert(PNode x, T v){
+	if(!x)return new Node(v);
+	if(v<x->value)x->l=insert(x->l, v);
+	else if(v>x->value)x->r=insert(x->r, v);
+	return x;
 }
 
-struct Node* insert(struct Node* Node, int key){
-	if(Node==NULL)return newNode(key);
-	if(key<Node->key)Node->left=insert(Node->left, key);
-	else if(key>Node->key)Node->right=insert(Node->right, key);
-	return Node;
+PNode search(PNode x, T v){
+	if(!x || x->value==v)return x;
+	if(x->value<v)return search(x->r, v);
+	return search(x->l, v);
 }
 
-struct Node* search(struct Node* root, int key){
-	if(root==NULL || root->key==key)return root;
-	if(root->key<key)return search(root->right, key);
-	return search(root->left, key);
+PNode min(PNode x){
+	PNode act=x;
+	while(act && act->l!=nullptr)act=act->l;
+	return act;
 }
 
-struct Node* minValueNode(struct Node* Node){
-	struct Node* current=Node;
-	while(current && current->left!=NULL)current=current->left;
-	return current;
-}
-
-struct Node* deleteNode(struct Node* root, int key){
-	if(root==NULL)return root;
-	if(key<root->key)root->left=deleteNode(root->left, key);
-	else if(key>root->key)root->right=deleteNode(root->right, key);
+PNode remove(PNode x, T v){
+	if(!x)return x;
+	if(v<x->value)x->l=remove(x->l, v);
+	else if(v>x->value)x->r=remove(x->r, v);
 	else{
-		if(root->left==NULL){
-			struct Node* temp=root->right;
-			free(root);
-			return temp;
-		}else if(root->right==NULL){
-			struct Node* temp=root->left;
-			free(root);
-			return temp;
+		if(!x->l){
+			PNode tmp=x->r;
+			free(x);
+			return tmp;
+		}else if(!x->r){
+			PNode tmp=x->l;
+			free(x);
+			return tmp;
 		}
-		struct Node* temp=minValueNode(root->right);
-		root->key=temp->key;
-		root->right=deleteNode(root->right, temp->key);
+		PNode tmp=min(x->r);
+		x->value=tmp->value;
+		x->r=remove(x->r, tmp->value);
 	}
-	return root;
+	return x;
 }
 
-void inorder(vi& order, struct Node* root){
-	if(root!=NULL){
-		order.push_back(root->key);
-		inorder(order, root->left);
-		inorder(order, root->right);
-	}
+void dfs(PNode x){
+	if(!x)return;
+	dfs(x->l);
+	cout<<x->value<<" ";
+	dfs(x->r);
 }
 
 int main(){
-	struct Node* root=NULL;
+	PNode root=nullptr;
 	root=insert(root, 50);
 	insert(root, 30);
-	
-	if(search(root, 60)==NULL)cout<<"60 not found\n";
+	insert(root, 100);
+	insert(root, 20);
+	if(search(root, 60)==nullptr)cout<<"60 not found\n";
 	else cout<<"60 found\n";
-
-	struct Node* min=minValueNode(root);
-	cout<<"Minimum value: "<<min->key<<"\n";
-
-	vi order;
-	inorder(order, root);
-	print(order);
-
-	root=deleteNode(root, 30);
+	PNode mini=min(root);
+	cout<<"Minimum value: "<<mini->value<<"\n";
+	dfs(root);cout<<"\n";
+	root=remove(root, 30);
+	dfs(root);cout<<"\n";
 	return 0;
 }

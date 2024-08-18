@@ -1,59 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long T;
 
 struct Node{
-	int value;
+	T value;
 	Node* next;
 	Node* prev;
-};
 
-struct Lista{
-	Node* head;
-	Node* tail;
-	int size;
-};
-
-Lista* constructor(){
-	Lista* lista=new Lista;
-	lista->head=nullptr;
-	lista->tail=nullptr;
-	lista->size=0;
-	return lista;
-}
-
-void insertBegin(Lista* lista, int value){
-	Node* tmp=new Node;
-	tmp->value=value;
-	tmp->prev=nullptr;
-	tmp->next=lista->head;
-	if (lista->head!=nullptr)lista->head->prev=tmp;
-	else lista->tail=tmp;
-	lista->head=tmp;
-	lista->size++;
-}
-
-void insertEnd(Lista* lista, int value) {
-	Node* tmp=new Node;
-	tmp->value=value;
-	tmp->next=nullptr;
-	tmp->prev=lista->tail;
-	if(lista->tail!=nullptr)lista->tail->next=tmp;
-	else lista->head=tmp; 
-	lista->tail=tmp;
-	lista->size++;
-}
-
-void imprimir(Lista* lista){
-	Node* temp=lista->head;
-	while(temp!=nullptr){
-		cout<<temp->value<<" ";
-		temp=temp->next;
+	Node(T v){
+		value=v;
+		next=prev=nullptr;
 	}
-	cout<<"\n";
-}
+};
 
-void deleteNode(Node* node){
-	if(node->prev!=nullptr)node->prev->next=node->next;
-	if(node->next!=nullptr)node->next->prev=node->prev;
-	delete node;
-}
+typedef Node* PNode;
+struct Lista{
+	PNode head,tail;
+	int size;
+
+	Lista(){
+		head=tail=nullptr;
+		size=0;
+	}
+	deque<int> dq;
+	void push_front(T v){
+		PNode tmp=new Node(v);
+		tmp->next=head;
+		if (head!=nullptr)head->prev=tmp;
+		else tail=tmp;
+		head=tmp;
+		size++;
+	}
+
+	void push_back(T v) {
+		PNode tmp=new Node(v);
+		tmp->prev=tail;
+		if(tail!=nullptr)tail->next=tmp;
+		else head=tmp; 
+		tail=tmp;
+		size++;
+	}
+
+	void print(){
+		PNode tmp=head;
+		while(tmp!=nullptr){
+			cout<<tmp->value<<" ";
+			tmp=tmp->next;
+		}
+		cout<<"\n";
+	}
+
+	void pop(PNode x){
+		if(x->prev!=nullptr)x->prev->next=x->next;
+		if(x->next!=nullptr)x->next->prev=x->prev;
+		delete x;
+	}
+};

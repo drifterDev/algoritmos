@@ -4,20 +4,14 @@ using namespace std;
 #define watch(x) cout<<#x<<"="<<x<<"\n"
 #define all(x) x.begin(), x.end()
 #define sz(x) ((int) x.size())
-#define PB push_back
-#define S second
-#define F first
 typedef long long ll;
 typedef vector<ll> vl;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 const double PI = acos(-1);
-const double EPS = 1e-9;
-const int MOD = 1e9+7;
 const int dirx[8] = {0,1,0,-1,1,1,-1,-1};
 const int diry[8] = {1,0,-1,0,1,-1,1,-1};
-const char dird[4] = {'D','R','U','L'};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
