@@ -1,6 +1,5 @@
 .vscode/
 .cph/
 competencia/
-w-intervals.cpp
-persistent-segment-tree.cpp
 p.py
+persistent-segment-tree.cpp
