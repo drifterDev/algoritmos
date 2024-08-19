@@ -1,23 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-struct Node{ll seg,pref,suf,sum;};
+typedef long long T;
 struct SegTree{
+	vector<T> vals;
+	vector<T> lazy;
+	T null=0;
+    T noVal=0;
 	int size;
-	vector<Node> vals;
-	vector<ll> lazy;
-    ll noVal=LLONG_MIN;
-	Node null={0,0,0,0};
 
-	Node oper(Node a, Node b){return null;}
-    Node single(ll v){return null;}
-    Node oper2(ll v, ll len){return null;}
-
-	void build(vector<ll>& a, int x, int lx, int rx){
+	T oper(T a, T b);
+	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
 			if(lx<(int)a.size()){
-				vals[x]=single(a[lx]);
+				vals[x]=a[lx];
 			}
 			return;
 		}
@@ -27,11 +23,11 @@ struct SegTree{
 		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
 	}
 
-	void build(vector<ll>& a,int n){
+	void build(vector<T>& a,int n){
         size=1;
 		while(size<n)size*=2;
 		vals.resize(2*size);
-        lazy.assign(2*size, 0);
+        lazy.assign(2*size, noVal);
 		build(a, 0, 0, size);
 	}
 
@@ -39,21 +35,21 @@ struct SegTree{
         if(rx-lx==1)return;
         if(lazy[x]==noVal)return;
         int m=(lx+rx)/2;
-        lazy[2*x+1]=lazy[x];
-        vals[2*x+1]=oper2(lazy[x], m-lx);
-        lazy[2*x+2]=lazy[x]; 
-        vals[2*x+2]=oper2(lazy[x], rx-m);
+        lazy[2*x+1]+=lazy[x];
+        vals[2*x+1]+=lazy[x]*((T)(m-lx));
+        lazy[2*x+2]+=lazy[x]; 
+        vals[2*x+2]+=lazy[x]*((T)(rx-m));
         lazy[x]=noVal;
     }
 
-    void upd(int l, int r, ll v,int x, int lx, int rx){
-        propagate(x,lx,rx);
+    void upd(int l, int r, T v,int x, int lx, int rx){
 		if(lx>=r || l>=rx)return;
 		if(lx>=l && rx<=r){
-            lazy[x]=v;
-			vals[x]=oper2(v,rx-lx);
+            lazy[x]+=v;
+			vals[x]+=v*((T)(rx-lx));
             return;
         }
+        propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		upd(l,r,v,2*x+1,lx,m);
 		upd(l,r,v,2*x+2,m,rx);
@@ -61,32 +57,30 @@ struct SegTree{
 	}
 
 
-	void set(int i, ll val, int x, int lx, int rx){
+	void set(int i, T v, int x, int lx, int rx){
 		if(rx-lx==1){
-			vals[x]=single(val);
+			vals[x]=v;
 			return;
 		}
+        propagate(x,lx,rx);
 		int m=(lx+rx)/2;
-		if(i<m){
-			set(i,val,2*x+1,lx,m);
-		}else{
-			set(i,val,2*x+2,m,rx);
-		}
+		if(i<m)set(i,v,2*x+1,lx,m);
+		else set(i,v,2*x+2,m,rx);
 		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
 	}
 
 
-	Node get(int l, int r, int x, int lx, int rx){
-        propagate(x,lx,rx);
+	T get(int l, int r, int x, int lx, int rx){
 		if(lx>=r || l>=rx)return null;
 		if(lx>=l && rx<=r)return vals[x];
+        propagate(x,lx,rx);
 		int m=(lx+rx)/2;
-		Node v1=get(l,r,2*x+1,lx,m);
-		Node v2=get(l,r,2*x+2,m,rx);
+		T v1=get(l,r,2*x+1,lx,m);
+		T v2=get(l,r,2*x+2,m,rx);
 		return oper(v1,v2);
 	}
 
-	void set(int i, ll val){set(i,val,0,0,size);}
-	void upd(int l, int r, ll v){upd(l,r+1,v,0,0,size);}
-	Node get(int l, int r){return get(l,r+1,0,0,size);}
+	T get(int l, int r){return get(l,r+1,0,0,size);}
+	void upd(int l, int r, T v){upd(l,r+1,v,0,0,size);}
+	void set(int i, T val){set(i,val,0,0,size);}
 };

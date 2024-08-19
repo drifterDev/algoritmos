@@ -5,9 +5,6 @@ typedef vector<int> vi;
 typedef long long ll;
 typedef vector<ll> vl;
 
-// O(1) update
-// O(n/sqrt(n)+sqrt(n)) query [0, r)
-// O(n/sqrt(n)+sqrt(n)) query [l, r)
 struct Sqrt {
 	int block_size;
 	vi nums;vl blocks;

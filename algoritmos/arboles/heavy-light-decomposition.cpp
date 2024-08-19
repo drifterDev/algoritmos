@@ -13,7 +13,7 @@ struct SegTree{
 
 const int maxn=100000+1; 
 bool VALS_IN_EDGES=false; // si es aristas, modifica la arista padre
-struct HLD{
+struct HLD{ // if maxn >= 2e5, remove struct
     int par[maxn], root[maxn], dep[maxn];
     int sz[maxn], pos[maxn];
     vector<int> adj[maxn];
