@@ -10,14 +10,6 @@
 * a + b = a ^ b + 2 * (a & b)
 * a ^ b = ~(a & b) & (a | b)
 
-## Aritmetica modular
-
-* a^(p-1) % p = 1 (si p es primo)
-* (a^b) % c = ((a % c)^b) % c
-* (a/b) % c = (a * inv(b, c)) % c
-* (p-1)! % p = -1 (si p es primo), entonces p es primo cuando (p-1)! + 1 es multiplo de p
-* a^phi(b) % b = 1 (si a y b son primos relativos)
-
 ## Polynomial updates
 
 - 1+2+3+4+5+...
@@ -30,14 +22,6 @@
 - lazy1 = x1+x2+x3+...., lazy2 = #updates
 - nodeLeft (lazy1+=lazy1, lazy2+=lazy2)
 - nodeRight (lazy1+=lazy1+lazy2*(m-lx), lazy2+=lazy2)
-
-## Congruencia
-
-a y b se encuentran en la misma "clase de congruencia" módulo n, si ambos dejan el mismo resto si los dividimos entre n, o, equivalentemente, si a − b es un múltiplo de n.
-
-63 es congruente a 83 modulo 10 y se escribe 63 ≡ 83 (mod 10)
-
-* a ≡ b (mod N) 
 
 ## Combinatoria
 
@@ -110,3 +94,62 @@ vertices - aristas + caras = 2
 ## Teoría de números
 
 * gcd(a,b) = gcd(a,b-a)
+* a^p ≡ a (mod p), a^(p-1) ≡ 1 (mod p) si p es primo
+* Aproximadamente el número de primos menores o iguales a n es n/ln(n)
+
+## Scheduling
+
+Tenemos dos maquinas y cada trabajo debe hacerse primero en a y luego en b dado su tiempo en cada maquina, da la agenda optima que minimiza los tiempos.
+
+* ordenar por min(a, b) y realizar los de menor tiempo en a primero, luego los de menor tiempo en b, pero en orden inverso
+
+```cpp
+sort(all(jobs));
+vector<Job> a, b;
+for(Job j:jobs){
+    if(j.a<j.b)a.push_back(j);
+    else b.push_back(j);
+}
+a.insert(a.end(), b.rbegin(), b.rend());
+return a;
+```
+
+Tenemos n trabajos con un tiempo de duracion y un deadline, queremos maximizar el numero de trabajos que podemos hacer.
+
+* ordenar por deadline
+
+```cpp
+sort(all(jobs));
+set<ii> s;
+vi schedule;
+for(int i=sz(jobs)-1;i>=0;i--){
+    int t=jobs[i].deadline-(i?jobs[i-1].deadline:0);
+    s.insert({jobs[i].duration, jobs[i].idx});
+    while(t && !s.empty()){
+        auto it=s.begin();
+        if(it->first<=t){
+            t-=it->first;
+            schedule.push_back(it->second);
+        } else {
+            s.insert({it->first-t, it->second});
+            t=0;
+        }
+        s.erase(it);
+    }
+}
+return schedule;
+```
+
+## Recurrencias
+
+* hanoi(n) = 2 * hanoi(n-1) + 1
+
+```cpp
+// hanoi(n, 1, 3)
+void hanoi(int x, int start, int end){ 
+    if(!x)return;
+    hanoi(x-1, start, 6-start-end);
+    ans.push_back({start, end});
+    hanoi(x-1, 6-start-end, end);
+}
+```
