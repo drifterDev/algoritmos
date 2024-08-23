@@ -43,7 +43,3 @@ struct hashing {
 		return h[r+1]-h[l]*p[r-l+1];
 	}
 };
-
-typedef unsigned long long u64;
-mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
-// u64 xor_hash=rng();
