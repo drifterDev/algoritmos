@@ -9,11 +9,10 @@ mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
 struct Treap{
 	Treap *l,*r,*dad;
 	u64 prior;
-	T sz,value,sum;
-	bool lz;
+	T sz,value,sum,lz;
 	Treap(T v){
 		l=r=nullptr;
-		lz=false;
+		lz=0;
 		prior=rng();
 		sz=1;
 		value=sum=v;
@@ -31,10 +30,9 @@ T sum(PTreap x){return (!x?0:x->sum);}
 
 void propagate(PTreap x){
 	if(x && x->lz){
-		swap(x->l, x->r);
-		if(x->l)x->l->lz=!x->l->lz;
-		if(x->r)x->r->lz=!x->r->lz;
-		x->lz=false;
+		if(x->l); // lz, value, sum ...
+		if(x->r); // lz, value, sum ...
+		x->lz=0;
 	}
 }
 
@@ -47,10 +45,10 @@ void update(PTreap x){
 	if(x->r)x->r->dad=x;
 }
 
-void inverse(PTreap x){
+void upd(PTreap x, T v){
 	if(!x)return;
-	x->lz=true;
 	update(x);
+	// lz, value, sum ...
 }
 
 // pair<PTreap, PTreap> split(PTreap x, T key){ // f <= key < s

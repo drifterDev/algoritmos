@@ -1,9 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2024
-// 
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
 #include <bits/stdc++.h>
 using namespace std;
 #define F first
@@ -39,7 +33,11 @@ struct hashing {
 			h[i]=h[i-1]*BASE + ii{t[i-1], t[i-1]};
 	}
 
-	ii query(int l, int r){
+	ii get(int l, int r){
 		return h[r+1]-h[l]*p[r-l+1];
 	}
 };
+
+ii combine(ii a, ii b, int lenb){
+	return a*p[lenb]+b;
+}
