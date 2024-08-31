@@ -1,36 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(x) (int)x.size()
-typedef vector<int> vi;
-typedef long long ll;
-typedef vector<ll> vl;
 
+typedef long long T;
 struct Sqrt {
-	int block_size;
-	vi nums;vl blocks;
-	Sqrt(vi &arr){
-		block_size=(int)ceil(sqrt(sz(arr)));
-        blocks.assign(block_size, 0);
-        nums=arr;
-		for(int i=0;i<sz(nums);++i){
-			blocks[i/block_size]+=nums[i];
+	int sqrtn;
+	vector<T> nums,blocks;
+	void build(vector<T>& arr, int n){
+		sqrtn=(int)ceil(sqrt(n));nums=arr;
+        blocks.assign(sqrtn, 0);
+		for(int i=0;i<n;++i){
+			blocks[i/sqrtn]+=nums[i];
 		}
 	}
 
-	void update(int x, int v){
-		blocks[x/block_size]-=nums[x];
+	void upd(int x, int v){
+		blocks[x/sqrtn]-=nums[x];
 		nums[x]=v;
-		blocks[x/block_size]+=nums[x];
+		blocks[x/sqrtn]+=nums[x];
 	}
 
-	ll query(int r){
-		ll res=0;
-		for(int i=0;i<r/block_size;++i){res+=blocks[i];}
-		for(int i=(r/block_size)*block_size;i<r;++i){res+=nums[i];}
+	T get(int r){
+		T res=0;
+		for(int i=0;i<r/sqrtn;++i){res+=blocks[i];}
+		for(int i=(r/sqrtn)*sqrtn;i<r;++i){res+=nums[i];}
 		return res;
 	}
 
-    ll query(int l, int r){
-        return query(r+1)-query(l); 
-    }
+    T get(int l, int r){return get(r+1)-get(l);}
 };

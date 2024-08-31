@@ -49,27 +49,7 @@ int lca(int a, int b){
     return up[a][0];
 }
 
-int dist(int a, int b){
-    return dep[a]+dep[b]-2*dep[lca(a,b)];
-}
-
-int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
-	memset(dep, 0, sizeof(dep)); 
-	memset(up, -1, sizeof(up)); 
-	cin>>n>>q;
-	for(int a,i=1;i<n;++i){
-		cin>>a;a--;
-		adj[a].push_back(i);
-		adj[i].push_back(a);
-	}
-    dfs(0);
-	build();
-	int a,b;
-    while(q--){
-		cin>>a>>b;
-        a--;b--;
-		cout<<lca(a,b)+1<<"\n";
-	}
-	return 0;
-}
+// memset(dep, 0, sizeof(dep)); 
+// memset(up, -1, sizeof(up)); 
+// dfs(0);
+// build();

@@ -23,12 +23,11 @@ void dfs(int v, int p=-1){
     ft[v]=pos;
 }
 
-void buildLCA();
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
 bool cmp(int v, int u){return st[v]<st[u];}
 
-// return root, O(klogk)
+// O(klogk)
 int virtualTree(vector<int> nodes){
     sort(all(nodes), cmp);
     int m=sz(nodes);
@@ -59,39 +58,10 @@ int virtualTree(vector<int> nodes){
     return s[0];
 }
 
-void reset(){
-    for(int i=0;i<n;++i){
-        for(int l=0;l<maxlog;++l)up[i][l]=-1;
-        adj[i].clear();
-    }
-    pos=0;
-}
-
-int main(){
-    ios::sync_with_stdio(false);cin.tie(nullptr);
-    memset(important, 0, sizeof(important)); 
-	memset(up, -1, sizeof(up)); 
-    int t;
-    cin>>t;
-    while(t--){
-        cin>>n>>q;
-        // input tree
-        dep[0]=0;
-        dfs(0);
-        buildLCA();
-        while(q--){
-            int k;cin>>k;
-            vector<int> nodes(k);
-            for(int& x:nodes){
-                cin>>x;x--;
-                important[x]=true;
-            }
-            int root=virtualTree(nodes);
-            // solve(root);
-            // output answer
-            for(int x:nodes)important[x]=false;
-        }
-        reset();
-    }
-    return 0;
-}
+// int k;cin>>k;
+// vector<int> nodes(k);
+// for(int& x:nodes)important[x]=true;
+// int root=virtualTree(nodes);
+// dp(root);
+// output answer
+// reset

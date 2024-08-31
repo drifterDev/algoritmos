@@ -7,8 +7,7 @@ struct dsu{
 	int sets,maxSz;
 
 	dsu(int n){
-		sets=n;
-		maxSz=1;
+		sets=n;maxSz=1;
 		p.assign(n,0);
 		size.assign(n,1);
 		for(int i=0;i<n;++i)p[i]=i;
@@ -20,12 +19,10 @@ struct dsu{
 	}
 
 	void unionSets(int a, int b){
-		a=get(a);
-		b=get(b);
+		a=get(a);b=get(b);
 		if(a==b)return;
 		if(size[a]>size[b])swap(a, b);
-		p[a]=b;
-		size[b]+=size[a];
+		p[a]=b;size[b]+=size[a];
 		maxSz=max(maxSz,size[b]);
 		sets--;
 	}
@@ -47,12 +44,10 @@ struct dsu{
 	}
 
 	void unionSets(int a, int b){
-		a=get(a);
-		b=get(b);
+		a=get(a);b=get(b);
 		if(a==b)return;
         if(rank[a]>rank[b])swap(a,b);
-        rank[b]+=rank[a];
-        p[a]=b;
+        rank[b]+=rank[a];p[a]=b;
 	}
 };
 

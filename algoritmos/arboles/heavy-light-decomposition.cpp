@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-ll null=LLONG_MIN;
-ll oper(ll a, ll b){return max(a,b);}
+typedef long long T;
+T null=LLONG_MIN;
+T oper(T a, T b){return max(a,b);}
 struct SegTree{
     void build(int n){}
-    void set(int i, ll val){}
-    void upd(int l, int r, ll v){}
-    ll get(int l, int r){return null;}
+    void set(int i, T val){}
+    void upd(int l, int r, T v){}
+    T get(int l, int r){return null;}
 };
 
 const int maxn=100000+1; 
@@ -63,8 +63,8 @@ struct HLD{ // if maxn >= 2e5, remove struct
             st.upd(l,r,v);
         }); 
     }
-    ll queryPath(int x, int y){ 
-        ll res=null;
+    T queryPath(int x, int y){ 
+        T res=null;
         processPath(x,y,[this,&res](int l, int r){ 
             res=oper(res, st.get(l,r));
         });

@@ -74,8 +74,8 @@ int main(){
 		cin>>u>>v;u--;v--;
 		if(ri[u]>ri[v])swap(u,v);
 		int lc=lca(u,v);
-		if(lc==u)queries[i].l=ri[u],queries[i].r=ri[v];
-		else queries[i].l=li[u],queries[i].r=ri[v];
+		queries[i].l=(lc==u?ri[u]:li[u]);
+		queries[i].r=ri[v];
 		queries[i].id=i;
 	}
 	sort(queries, queries+q);

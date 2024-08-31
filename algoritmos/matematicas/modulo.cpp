@@ -9,7 +9,7 @@ ll binpow(ll a, ll b, ll m);
 ll mod(ll a, ll m){return ((a%m)+m)%m;}
 
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
-ll suma(ll a, ll b){return mod(mod(a)+mod(b));}
+ll add(ll a, ll b){return mod(mod(a)+mod(b));}
 ll mult(ll a, ll b){return mod(mod(a)*mod(b));}
 
 // O(log(min(a, b))
