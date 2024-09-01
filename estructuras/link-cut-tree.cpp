@@ -5,9 +5,9 @@ typedef long long T;
 struct SplayTree{
 	struct Node{
 		int ch[2]={0, 0},p=0;
-		T val=0,path=0,sz=1;        		// Path
-		T sub=0,vir=0,ssz=0,vsz=0;          // Subtree
-		bool flip=0;						// Lazy		
+		T val=0,path=0,sz=1;	// Path
+		T sub=0,vir=0,ssz=0,vsz=0;	// Subtree
+		bool flip=0;T lz=0;	// Lazy		
 	};
 	vector<Node> ns;
 
@@ -24,6 +24,12 @@ struct SplayTree{
 			ns[l].flip^=1,ns[r].flip^=1;
 			swap(ns[x].ch[0], ns[x].ch[1]); // check with st oper
 			ns[x].flip=0;
+		}
+		if(ns[x].lz){
+			// ...
+			ns[x].sub+=ns[x].lz*ns[x].ssz;
+			ns[x].vir+=ns[x].lz*ns[x].vsz;
+			// ...
 		}
 	}
 	
@@ -141,27 +147,27 @@ struct LinkCut:SplayTree{ // 1-indexed
 	}
 
 	T comp_size(int u){return ns[root(u)].ssz;}
-	T sub_size(int u){
+	T subtree_size(int u){
 		int p=parent(u);
 		if(!p)return comp_size(u);
 		cut(u);int ans=comp_size(u);
 		link(u,p);return ans;
 	}
-	T sub_size(int u, int v){ // subtree of u, v father
+	T subtree_size(int u, int v){ 
 		int r=root(u);
 		reroot(v);access(u);
-		T ans=ns[u].vsz+1; // por el reroot
+		T ans=ns[u].vsz+1; 
 		return reroot(r),ans;
 	}
 
 	T comp_sum(int u){return ns[root(u)].sub;}
-	T subtree(int u){
+	T subtree_sum(int u){
 		int p=parent(u);
 		if(!p)return comp_sum(u);
 		cut(u);T ans=comp_sum(u);
 		link(u,p);return ans;
 	}
-	T subtree(int u, int v){ // subtree of u, v father
+	T subtree_sum(int u, int v){ // subtree of u, v father
 		int r=root(u);
 		reroot(v);access(u);
 		T ans=ns[u].vir+ns[u].val; // por el reroot

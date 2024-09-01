@@ -13,7 +13,7 @@ struct Sqrt {
 		}
 	}
 
-	void upd(int x, int v){
+	void set(int x, int v){
 		blocks[x/sqrtn]-=nums[x];
 		nums[x]=v;
 		blocks[x/sqrtn]+=nums[x];
