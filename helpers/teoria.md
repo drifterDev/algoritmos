@@ -153,3 +153,8 @@ void hanoi(int x, int start, int end){
     hanoi(x-1, 6-start-end, end);
 }
 ```
+
+### Juegos
+
+* Nim: Si la xor de las pilas es 0, el segundo jugador gana, si no, el primer jugador gana
+* Sprague-Grundy: rx = mex(r1, r2, ..., rk) donde r1, r2, ..., rk son los nimbers de los estados a los que se puede llegar desde s
