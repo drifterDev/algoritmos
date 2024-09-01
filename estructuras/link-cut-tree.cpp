@@ -5,16 +5,18 @@ typedef long long T;
 struct SplayTree{
 	struct Node{
 		int ch[2]={0, 0},p=0;
-		int sz=1;
-		T val=0,path=0;        	// Path
-		T sub=0,vir=0;          // Subtree
-		bool flip=0;			// Lazy			
+		T val=0,path=0,sz=1;        		// Path
+		T sub=0,vir=0,ssz=0,vsz=0;          // Subtree
+		bool flip=0;						// Lazy		
 	};
 	vector<Node> ns;
 
 	SplayTree(int n):ns(n+1){}
 
-	int size(int u){return (u?ns[u].sz:0);}
+	T path(int u){return (u?ns[u].path:0);}
+	T size(int u){return (u?ns[u].sz:0);}
+	T subsize(int u){return (u?ns[u].ssz:0);}
+	T subsum(int u){return (u?ns[u].sub:0);}
 	void push(int x){
 		if(!x)return;
 		int l=ns[x].ch[0],r=ns[x].ch[1];
@@ -29,6 +31,9 @@ struct SplayTree{
 		int l=ns[x].ch[0],r=ns[x].ch[1];
 		push(l);push(r); 
 		ns[x].sz=size(l)+size(r)+1;
+		ns[x].path=max({path(l), path(r), ns[x].val});
+		ns[x].sub=ns[x].vir+subsum(l)+subsum(r)+ns[x].val;
+		ns[x].ssz=ns[x].vsz+subsize(l)+subsize(r)+1;
 	}
 	
 	void set(int x, int d, int y){ns[x].ch[d]=y;ns[y].p=x;pull(x);}
@@ -75,8 +80,10 @@ struct LinkCut:SplayTree{ // 1-indexed
 		for(;u;v=u,u=ns[u].p){
 			splay(u); 
 			int& ov=ns[u].ch[1];
-			// ns[u].vir+=ns[ov].sub;
-			// ns[u].vir-=ns[v].sub;
+			ns[u].vir+=ns[ov].sub;
+			ns[u].vsz+=ns[ov].ssz;
+			ns[u].vir-=ns[v].sub;
+			ns[u].vsz-=ns[v].ssz;
 			ov=v;pull(u);
 		}
 		return splay(x),v;
@@ -89,7 +96,8 @@ struct LinkCut:SplayTree{ // 1-indexed
 	void link(int u, int v){ // u->v
 		reroot(u);
 		access(v); 
-		// ns[v].vir+=ns[u].sub;
+		ns[v].vir+=ns[u].sub;
+		ns[v].vsz+=ns[u].ssz;
 		ns[u].p=v;pull(v);
 	}
 	
@@ -116,12 +124,6 @@ struct LinkCut:SplayTree{ // 1-indexed
 		access(u);splay(u);push(u);
 		return ns[u].sz;
 	}
-	
-	// subtree of u, v father
-	// T subtree(int u, int v){
-	// 	reroot(v);access(u);
-	// 	return ns[u].vir+ns[u].self;
-	// }
 
 	T path(int u, int v){
 		int r=root(u);
@@ -130,16 +132,39 @@ struct LinkCut:SplayTree{ // 1-indexed
 		return reroot(r),ans;
 	}
 	
-	void set(int u, T val){
-		access(u);
-		ns[u].val=val;
-		pull(u);
-	}
-
+	void set(int u, T val){access(u);ns[u].val=val;pull(u);}
 	void upd(int u, int v, T val){
 		int r=root(u);
 		reroot(u);access(v);splay(v);
 		// lazy
 		reroot(r);
+	}
+
+	T comp_size(int u){return ns[root(u)].ssz;}
+	T sub_size(int u){
+		int p=parent(u);
+		if(!p)return comp_size(u);
+		cut(u);int ans=comp_size(u);
+		link(u,p);return ans;
+	}
+	T sub_size(int u, int v){ // subtree of u, v father
+		int r=root(u);
+		reroot(v);access(u);
+		T ans=ns[u].vsz+1; // por el reroot
+		return reroot(r),ans;
+	}
+
+	T comp_sum(int u){return ns[root(u)].sub;}
+	T subtree(int u){
+		int p=parent(u);
+		if(!p)return comp_sum(u);
+		cut(u);T ans=comp_sum(u);
+		link(u,p);return ans;
+	}
+	T subtree(int u, int v){ // subtree of u, v father
+		int r=root(u);
+		reroot(v);access(u);
+		T ans=ns[u].vir+ns[u].val; // por el reroot
+		return reroot(r),ans;
 	}
 };
