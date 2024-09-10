@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define PB push_back
 typedef vector<int> vi;
 int cycle_start, cycle_end,n;
 vector<vi> adj;
@@ -62,9 +61,9 @@ void find_cycle(){
 	if(cycle_start==-1)cout<<"IMPOSSIBLE\n";
 	else{
 		vi cycle;
-		cycle.PB(cycle_start);
-		for(int v=cycle_end;v!=cycle_start;v=parent[v])cycle.PB(v);
-		cycle.PB(cycle_start);
+		cycle.push_back(cycle_start);
+		for(int v=cycle_end;v!=cycle_start;v=parent[v])cycle.push_back(v);
+		cycle.push_back(cycle_start);
 		reverse(cycle.begin(),cycle.end()); // Dirigidos
 		cout<<cycle.size()<<"\n";
 		for(int v:cycle)cout<<v+1<<" ";

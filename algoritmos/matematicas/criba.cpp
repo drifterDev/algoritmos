@@ -1,17 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define sz(arr) ((int) arr.size())
-#define PB push_back
 typedef vector<int> vi;
 typedef long long ll;
 typedef vector<ll> vl;
 
 // O(n*log(log(n)))
 vl primos;
-ll lon_criba;
 vector<bool> is_prime;
-void criba(ll n){
-	lon_criba=n;
+void sieve(ll n){
 	is_prime.assign(n+1,true);
 	for(ll i=2;i<=n;++i){
 		if(!is_prime[i])continue;
@@ -22,14 +18,14 @@ void criba(ll n){
 
 // O((R-L+1)*log(log(R))+sqrt(R)*log(log(R)))
 vl primes;
-vector<bool> segmentedSieve(ll L, ll R) {
+vector<bool> segmented_sieve(ll L, ll R) {
 	// generate all primes up to sqrt(R)
 	ll lim=sqrt(R);
 	vector<bool> mark(lim+1, false);
 	for (ll i=2;i<=lim;++i){
 		if (!mark[i]){
 			for(ll j=i*i;j<=lim;j+=i)mark[j]=true;
-			primes.PB(i);
+			primes.push_back(i);
 		}
 	}
 
@@ -48,8 +44,8 @@ vector<int> prime;
 bool is_composite[maxn];
 int f[maxn];
 
-void sieve (int n) {
-	fill (is_composite, is_composite+n, false);
+void sieve(int n){
+	fill(is_composite, is_composite+n, false);
 	// caso base en 1, phi[1]=1;
 	for(int i=2;i<n;++i){
 		if(!is_composite[i]){ // i es primo
@@ -58,10 +54,10 @@ void sieve (int n) {
 		}
 		for(int j=0;j<prime.size() && 1ll*i*prime[j]<1ll*n;++j){
 			is_composite[i*prime[j]]=true;
-			if (i % prime[j] == 0) {
+			if(i%prime[j]==0){
 				// caso prime[j] divide a i, phi[i * prime[j]] = phi[i] * prime[j];	
 				break;
-			} else {
+			}else{
 				// caso prime[j] no divide a i, phi[i * prime[j]] = phi[i] * phi[prime[j]];
 			}
 		}
