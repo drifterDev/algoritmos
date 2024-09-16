@@ -8,12 +8,12 @@ int dep[maxn];
 int n,q; 
 
 void dfs(int v, int p=-1){
-    up[v][0]=p;
+	up[v][0]=p;
 	for(int u:adj[v]){
 		if(u!=p){
-            dep[u]=dep[v]+1;
-            dfs(u, v);
-        }
+			dep[u]=dep[v]+1;
+			dfs(u, v);
+		}
 	}
 }
 
@@ -37,16 +37,16 @@ int kth(int node, int k){
 }
 
 int lca(int a, int b){
-    a=kth(a, dep[a]-min(dep[a], dep[b]));
-    b=kth(b, dep[b]-min(dep[a], dep[b]));
-    if(a==b)return a;
-    for(int l=maxlog-1;l>=0;--l){
-        if(up[a][l]!=up[b][l]){
-            a=up[a][l];
-            b=up[b][l];
-        }
-    }
-    return up[a][0];
+	a=kth(a, dep[a]-min(dep[a], dep[b]));
+	b=kth(b, dep[b]-min(dep[a], dep[b]));
+	if(a==b)return a;
+	for(int l=maxlog-1;l>=0;--l){
+		if(up[a][l]!=up[b][l]){
+			a=up[a][l];
+			b=up[b][l];
+		}
+	}
+	return up[a][0];
 }
 
 // memset(dep, 0, sizeof(dep)); 

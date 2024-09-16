@@ -7,8 +7,8 @@ int k,d;
 
 ll dfs(string& c,int x=0,int y=0,bool z=0){
 	if(dp[x][y][z]!=-1){
-        return dp[x][y][z];
-    }
+		return dp[x][y][z];
+	}
 	dp[x][y][z]=(y==k);
 	if(x==c.length()){
 		return dp[x][y][z];

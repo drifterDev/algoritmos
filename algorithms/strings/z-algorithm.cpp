@@ -2,7 +2,7 @@
 using namespace std;
 
 // O(n)
-vector<int> z_function(string s){
+vector<int> z_function(string& s){
 	int n=(int)s.size(),l=0,r=0;
 	vector<int> z(n);
 	for(int i=1;i<n;i++){

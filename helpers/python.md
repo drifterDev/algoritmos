@@ -1,12 +1,6 @@
 # Tips for python
 
 ```python
-# Fast input
-import sys
-input = sys.stdin.readline
-```
-
-```python
 # Fast output in case of many lines
 outputs = []
 print('\n'.join(outputs))

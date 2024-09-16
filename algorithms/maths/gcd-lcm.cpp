@@ -2,11 +2,10 @@
 using namespace std;
 typedef long long ll;
 
-// Con recursión
 ll gcd(ll a, ll b){return b==0?a:gcd(b,a%b);} 
 ll lcm(ll a, ll b){return a/gcd(a,b)*b;}
 
-// Identidad de Bezout
+// Bezout
 // O(log(min(a, b))
 // a*x+b*y=gcd(a,b)
 ll gcd(ll a, ll b, ll &x, ll &y){

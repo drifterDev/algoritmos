@@ -17,7 +17,7 @@ void init(){
     act=0;
 }
 
-void add(const string &s){
+void add(const string& s){
     int u=0;
     for(char ch:s){
         int c=conv(ch);

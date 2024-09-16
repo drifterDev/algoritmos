@@ -3,10 +3,7 @@ using namespace std;
 typedef long long ll;
 typedef vector<ll> vl;
 const int MOD = 1e9+7;
-
-ll mod(ll a, ll m){
-	return ((a%m)+m)%m;
-}
+ll mod(ll a, ll m){return ((a%m)+m)%m;}
 
 // O(log(n))
 struct matrix {
@@ -40,7 +37,6 @@ matrix pow(matrix &b, ll p){
 }
 
 int main() {
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	// [1 1] [fib(p+1) fib(p)]
 	// [1 0] [fib(p) fib(p-1)]
 	vector<vl> matriz={{1, 1},{1, 0}};

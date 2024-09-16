@@ -16,7 +16,7 @@ vl dijkstra(int s){
 	while(!pq.empty()){
 		pll act=pq.top();pq.pop();
 		ll d=act.first;
-        int u=act.second;
+		int u=act.second;
 		if(d>dist[u])continue;
 		for(auto v:adj[u]){
 			ll w=v.second;

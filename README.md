@@ -1,14 +1,14 @@
 # Algoritmos 
 
-Este repositorio contiene implementaciones de algoritmos de programación competitiva en C++.
+Este repositorio contiene implementaciones de algoritmos y estructuras de datos en C++ que he utilizado en competencias de programación competitiva. Además, contiene soluciones a problemas de competencias en las que he participado.
 
 ## Estructura del repositorio
 
-`algoritmos` contiene implementaciones de algoritmos de programación competitiva divididos por categorías.
+`algorithms` contiene implementaciones de algoritmos de programación competitiva en C++, divididos en diferentes categorías, las cuales son: dp, graphs, maths, miscellaneous, strings, network-flows, strings y trees.
 
 `contests` contiene soluciones a problemas de programación competitiva de diferentes competencias en las que he participado.
 
-`estructuras` contiene implementaciones de estructuras de datos y explicaciones de su uso.
+`data-strucutres` contiene implementaciones de estructuras de datos en C++.
 
 `helpers` contiene archivos de ayuda como plantillas de código, teoría, etc.
 

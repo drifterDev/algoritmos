@@ -60,7 +60,7 @@ struct PalindromicTree{
 		return true;
 	}
 
-	void build(string s2, int n){
+	void build(string& s2, int n){
 		tree.assign(n+4,Node());
 		tree[1].len=-1;tree[1].link=1;
 		tree[2].len=0;tree[2].link=1;

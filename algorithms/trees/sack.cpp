@@ -35,15 +35,15 @@ void ask(int v, bool add){
 }
 
 void dfs(int v=0, int p=-1, bool keep=true){
-    int mx=0,id=-1;
-    for(int u:adj[v]){
+	int mx=0,id=-1;
+	for(int u:adj[v]){
 		if(u==p)continue;
 		if(nodes[u]>mx){
 			mx=nodes[u];
 			id=u;
 		}
 	}
-    for(int u:adj[v]){
+	for(int u:adj[v]){
 		if(u==p || u==id)continue;
 		dfs(u,v,0); 
 	}
@@ -54,7 +54,7 @@ void dfs(int v=0, int p=-1, bool keep=true){
 	}
 	ask(v, 1);
 	// answer queries
-    if(keep==0){
-        for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
+	if(keep==0){
+		for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
 	}
 }

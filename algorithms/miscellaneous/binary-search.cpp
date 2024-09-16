@@ -16,7 +16,6 @@ int binary_search(vi& nums, int target){
 }
 
 int main() {
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	vi v={1, 2, 4, 4, 5, 6, 7, 7,8, 9};
 	int x=6;
 	auto lower=lower_bound(all(v),x);

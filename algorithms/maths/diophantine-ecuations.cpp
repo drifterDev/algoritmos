@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 ll gcd(ll a, ll b, ll x, ll y);
 
-// O(log(min(a,b)))
+// ax+by=c - O(log(min(a,b)))
 bool find_any_solution(ll a, ll b, ll c, ll &x0, ll &y0, ll &g){
     // Implementar la identidad de Bezout
     g=gcd(abs(a),abs(b),x0,y0);
@@ -47,16 +47,3 @@ ll find_all_solutions(ll a,ll b,ll c,ll minx,ll maxx,ll miny,ll maxy){
     return (rx-lx)/abs(b)+1;
 }
 
-int main() {
-    ios::sync_with_stdio(false);cin.tie(nullptr);
-    ll a,b,c,x,y,g;
-    a=39,b=15,c=12;
-    cout<<"Numero soluciones en el rango definido: "<<find_all_solutions(a,b,c,-100,100,-100,100)<<"\n";
-    // ax+by=c
-    if(find_any_solution(a,b,c,x,y,g)){
-        cout<<"Una solucion: "<<x<<" "<<y<<"\n";
-    }else{
-        cout<<"No solution\n";
-    }
-    return 0;
-}

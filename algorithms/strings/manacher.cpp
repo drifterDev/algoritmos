@@ -2,7 +2,7 @@
 using namespace std;
 
 // O(n), par (raiz, izq, der) 1 - impar 0
-vector<int> manacher(string &s, int par){ 
+vector<int> manacher(string& s, int par){ 
 	int l=0,r=-1,n=(int)s.size();
 	vector<int> m(n,0);
 	for(int i=0;i<n;++i){
