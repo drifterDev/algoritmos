@@ -1,3 +1,9 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
 #include <bits/stdc++.h>
 using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
