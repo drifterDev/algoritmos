@@ -1,0 +1,87 @@
+// Autor: Mateo Álvarez Murillo
+// Fecha de creación: 2024
+
+// Este código se proporciona bajo la Licencia MIT.
+// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void counting_sort(vector<int>& p, vector<int>& c){
+    int n=(int)p.size();
+    vector<int> cnt(n, 0);
+    for(auto x:c){
+        cnt[x]++;
+    }
+
+    vector<int> p2(n);
+    vector<int> pos(n);
+    pos[0]=0;
+    for(int i=1;i<n;++i)pos[i]=pos[i-1]+cnt[i-1];
+    for(auto x:p){
+        p2[pos[c[x]]]=x;
+        pos[c[x]]++;
+    }
+    p=p2;
+}
+
+int main(){
+    ios::sync_with_stdio(false);cin.tie(nullptr);
+    string s;cin>>s;
+    s.push_back('$');
+    int n=(int)s.size();
+    vector<int> p(n);
+    vector<int> c(n);
+
+    vector<pair<char, int>> tmp;
+    for(int i=0;i<n;++i)tmp.push_back({s[i], i});
+    sort(tmp.begin(), tmp.end());
+
+    for(int i=0;i<n;++i)p[i]=tmp[i].second;
+    c[p[0]]=0;
+    for(int i=1;i<n;++i){
+        if(tmp[i].first==tmp[i-1].first){
+            c[p[i]]=c[p[i-1]];
+        }else{
+            c[p[i]]=c[p[i-1]]+1;
+        }
+    }
+
+    int k=0;
+    while(n>=(1<<k)){
+        for(int i=0;i<n;++i){
+            p[i]=(p[i]-(1<<k)+n)%n;
+        }
+
+        counting_sort(p, c);
+
+        vector<int> c2(n);
+        c2[p[0]]=0;
+        for(int i=1;i<n;++i){
+            pair<int, int> op1={c[p[i]], c[(p[i]+(1<<k))%n]};
+            pair<int, int> op2={c[p[i-1]], c[(p[i-1]+(1<<k))%n]};
+            if(op1==op2){
+                c2[p[i]]=c2[p[i-1]];
+            }else{
+                c2[p[i]]=c2[p[i-1]]+1;
+            }
+        }
+
+        c=c2;
+        k++;
+    }
+
+    vector<int> lcp(n-1);
+    k=0;
+    for(int i=0;i<n-1;++i){
+        int id=c[i];
+        int j=p[id-1];
+        while(s[i+k]==s[j+k])k++;
+        lcp[id-1]=k;
+        k=max(0, k-1);
+    }
+
+    for(auto x:p)cout<<x<<" ";cout<<"\n";
+    for(auto x:lcp)cout<<x<<" ";cout<<"\n";
+    return 0;
+}
