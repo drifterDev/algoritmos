@@ -65,7 +65,6 @@ void solve(){
 }
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	memset(vis, 0, sizeof(vis));
 	cin>>n>>q;
 	sqrtn=(int)ceil(sqrt(n));

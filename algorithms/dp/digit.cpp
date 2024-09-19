@@ -29,7 +29,6 @@ ll dfs(string& c,int x=0,int y=0,bool z=0){
 }
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	cin>>n>>m>>k>>d;
 	string s1=to_string(m);
 	string s2=to_string(n-1);
