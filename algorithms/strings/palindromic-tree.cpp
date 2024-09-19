@@ -7,8 +7,8 @@ const char fc = 'a';
 // tree link is the longest suffix palindrome
 // tree dad is the palindrome add to the right and left
 struct Node{
-    int next[alpha];
-    int len,link,dep,cnt,dad;
+	int next[alpha];
+	int len,link,dep,cnt,dad;
 };
 
 // O(nlogn)

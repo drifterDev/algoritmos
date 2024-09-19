@@ -7,24 +7,19 @@ ll gcd(int a, int b, int x, int y);
 ll binpow(ll a, ll b, ll m);
 
 ll mod(ll a, ll m){return ((a%m)+m)%m;}
+ll inv(ll a, ll m){return binpow(a, m-2, m);}
 
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
 ll add(ll a, ll b){return mod(mod(a)+mod(b));}
 ll mult(ll a, ll b){return mod(mod(a)*mod(b));}
 
-// O(log(min(a, b))
+// O(log(min(a, b)) - no primos (b y m coprimos)
 ll inv(ll b, ll m){
-	// Implementar algoritmos de euclides
 	ll x,y;
-	ll d=gcd(b, m, x, y);  //obtiene b*x + m*y == d
-	if(d!=1)return -1;          //indica error
-	// b*x + m*y == 1, ahora aplicamos (mod m) para obtener b*x == 1 (mod m)
+	ll d=gcd(b, m, x, y); 
+	if(d!=1)return -1;	// error
 	return mod(x, m);
 }
-
-// O(log MOD)
-// Si m es primo
-ll inv(ll a, ll m){return binpow(a, m-2, m);}
 
 // Calcular el inv de [2,m)
 const int n=1e6;

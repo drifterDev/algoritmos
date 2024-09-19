@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 typedef long long T;
 T null=0, noVal=0;
-T oper(T a, T b){return max(a,b);}
-
+T oper(T a, T b);
 struct Node{
 	T val,lz;
 	int l,r;
@@ -40,15 +40,15 @@ void propagate(PNode x){
 struct SegTree{
 	PNode root;
 
-    void upd(PNode x, int l, int r, T v){
+	void upd(PNode x, int l, int r, T v){
 		int lx=x->l,rx=x->r;
 		if(lx>=r || l>=rx)return;
 		if(lx>=l && rx<=r){
-            // val, lz
-            return;
-        }
+			// val, lz
+			return;
+		}
 		extends(x);
-        propagate(x);
+		propagate(x);
 		upd(x->pl,l,r,v);
 		upd(x->pr,l,r,v);
 		update(x);
@@ -59,7 +59,7 @@ struct SegTree{
 		if(lx>=r || l>=rx)return null;
 		if(lx>=l && rx<=r)return x->val;
 		extends(x);
-        propagate(x);
+		propagate(x);
 		T v1=get(x->pl,l,r);
 		T v2=get(x->pr,l,r);
 		return oper(v1,v2);

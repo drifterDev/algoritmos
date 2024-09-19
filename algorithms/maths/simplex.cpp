@@ -88,8 +88,6 @@ struct Simplex {
 };
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
-	cout<<setprecision(20)<<fixed;
 	vector<vector<double>> A = {
 		{5,2,6},
 		{2,1,0.5},

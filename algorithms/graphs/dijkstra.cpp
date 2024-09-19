@@ -2,23 +2,23 @@
 using namespace std;
 typedef long long ll;
 typedef vector<ll> vl;
-typedef pair<ll, ll> pll;
-typedef vector<pll> vll;
-vector<vll> adj;
+typedef pair<ll, int> par;
+const int maxn = 1e5;
+vector<par> adj[maxn];
 int n;
 
 // O((n+m)log(m))
 vl dijkstra(int s){
-	priority_queue<pll, vll, greater<pll>> pq;
-	pq.push({0, s});
+	priority_queue<par, vector<par>, greater<par>> pq;
 	vl dist(n, LONG_LONG_MAX); 
+	pq.push({0, s});
 	dist[s]=0;
 	while(!pq.empty()){
-		pll act=pq.top();pq.pop();
+		par act=pq.top();pq.pop();
 		ll d=act.first;
 		int u=act.second;
 		if(d>dist[u])continue;
-		for(auto v:adj[u]){
+		for(par v:adj[u]){
 			ll w=v.second;
 			int b=v.first;
 			if(dist[u]+w<dist[b]){
@@ -32,18 +32,18 @@ vl dijkstra(int s){
 
 // O(kmlog(km))
 void kShortestPaths(int s, int t, int k){
-	priority_queue<pll, vll, greater<pll>> pq;
-	pq.push({0, s});
+	priority_queue<par, vector<par>, greater<par>> pq;
 	vector<int> cnt(n, 0);
 	vector<ll> paths;
+	pq.push({0, s});
 	while(cnt[t]<k){
-		pll act=pq.top();pq.pop();
+		par act=pq.top();pq.pop();
 		ll d=act.first;
 		int u=act.second;
 		if(cnt[u]==k)continue;
 		cnt[u]++;
 		if(u==t)paths.push_back(d);
-		for(auto v:adj[u]){
+		for(par v:adj[u]){
 			ll w=v.second;
 			int b=v.first;
 			pq.push({d+w,b});

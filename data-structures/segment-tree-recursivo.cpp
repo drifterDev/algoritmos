@@ -6,7 +6,7 @@ struct SegTree{
 	vector<T> vals;
 	vector<T> lazy;
 	T null=0;
-    T noVal=0;
+	T noVal=0;
 	int size;
 
 	T oper(T a, T b);
@@ -24,32 +24,32 @@ struct SegTree{
 	}
 
 	void build(vector<T>& a,int n){
-        size=1;
+		size=1;
 		while(size<n)size*=2;
 		vals.resize(2*size);
-        lazy.assign(2*size, noVal);
+		lazy.assign(2*size, noVal);
 		build(a, 0, 0, size);
 	}
 
-    void propagate(int x, int lx, int rx){
-        if(rx-lx==1)return;
-        if(lazy[x]==noVal)return;
-        int m=(lx+rx)/2;
-        lazy[2*x+1]+=lazy[x];
-        vals[2*x+1]+=lazy[x]*((T)(m-lx));
-        lazy[2*x+2]+=lazy[x]; 
-        vals[2*x+2]+=lazy[x]*((T)(rx-m));
-        lazy[x]=noVal;
-    }
+	void propagate(int x, int lx, int rx){
+		if(rx-lx==1)return;
+		if(lazy[x]==noVal)return;
+		int m=(lx+rx)/2;
+		lazy[2*x+1]+=lazy[x];
+		vals[2*x+1]+=lazy[x]*((T)(m-lx));
+		lazy[2*x+2]+=lazy[x]; 
+		vals[2*x+2]+=lazy[x]*((T)(rx-m));
+		lazy[x]=noVal;
+	}
 
-    void upd(int l, int r, T v,int x, int lx, int rx){
+	void upd(int l, int r, T v,int x, int lx, int rx){
 		if(lx>=r || l>=rx)return;
 		if(lx>=l && rx<=r){
-            lazy[x]+=v;
+			lazy[x]+=v;
 			vals[x]+=v*((T)(rx-lx));
-            return;
-        }
-        propagate(x,lx,rx);
+			return;
+		}
+		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		upd(l,r,v,2*x+1,lx,m);
 		upd(l,r,v,2*x+2,m,rx);
@@ -62,7 +62,7 @@ struct SegTree{
 			vals[x]=v;
 			return;
 		}
-        propagate(x,lx,rx);
+		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		if(i<m)set(i,v,2*x+1,lx,m);
 		else set(i,v,2*x+2,m,rx);
@@ -73,7 +73,7 @@ struct SegTree{
 	T get(int l, int r, int x, int lx, int rx){
 		if(lx>=r || l>=rx)return null;
 		if(lx>=l && rx<=r)return vals[x];
-        propagate(x,lx,rx);
+		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		T v1=get(l,r,2*x+1,lx,m);
 		T v2=get(l,r,2*x+2,m,rx);

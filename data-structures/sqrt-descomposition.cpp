@@ -7,7 +7,7 @@ struct Sqrt {
 	vector<T> nums,blocks;
 	void build(vector<T>& arr, int n){
 		sqrtn=(int)ceil(sqrt(n));nums=arr;
-        blocks.assign(sqrtn, 0);
+		blocks.assign(sqrtn, 0);
 		for(int i=0;i<n;++i){
 			blocks[i/sqrtn]+=nums[i];
 		}
@@ -26,5 +26,5 @@ struct Sqrt {
 		return res;
 	}
 
-    T get(int l, int r){return get(r+1)-get(l);}
+	T get(int l, int r){return get(r+1)-get(l);}
 };

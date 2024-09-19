@@ -15,15 +15,15 @@ vector<int> phi(string &s){
 
 // O(n+m)
 int kmp(string& s, string& p){
-    int n=(int)s.size(),m=(int)p.size(),cnt=0;
-    vector<int> pi=phi(p);
-    for(int i=0,j=0;i<n;++i){
-        while(j && s[i]!=p[j])j=pi[j-1];
-        if(s[i]==p[j])j++;
-        if(j==m){
-            cnt++;
-            j=pi[j-1];
-        }
-    }
-    return cnt;
+	int n=(int)s.size(),m=(int)p.size(),cnt=0;
+	vector<int> pi=phi(p);
+	for(int i=0,j=0;i<n;++i){
+		while(j && s[i]!=p[j])j=pi[j-1];
+		if(s[i]==p[j])j++;
+		if(j==m){
+			cnt++;
+			j=pi[j-1];
+		}
+	}
+	return cnt;
 }

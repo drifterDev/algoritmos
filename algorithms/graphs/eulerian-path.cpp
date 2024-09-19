@@ -64,7 +64,5 @@ void eulerian_path(){
 	}
 	dfs(1);
 	if(sz(path)!=m+1)cout<<"IMPOSSIBLE\n";
-	else{
-		print(path);
-	}
+	else print(path);
 }

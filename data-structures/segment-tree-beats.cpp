@@ -50,26 +50,26 @@ struct SegTree{
 		if(vals[x].min2!=INF)vals[x].min2+=v;
 	}
 
-    void propagate(int x, int lx, int rx){
-        if(rx-lx==1)return;
-        int m=(lx+rx)/2;
-        if(vals[x].lazy!=noVal){
+	void propagate(int x, int lx, int rx){
+		if(rx-lx==1)return;
+		int m=(lx+rx)/2;
+		if(vals[x].lazy!=noVal){
 			propagateAdd(vals[x].lazy, 2*x+1, lx, m);
 			propagateAdd(vals[x].lazy, 2*x+2, m, rx);
-        	vals[x].lazy=noVal;
+			vals[x].lazy=noVal;
 		}
 		
 		propagateMin(vals[x].max1, 2*x+1, lx, m);
 		propagateMin(vals[x].max1, 2*x+2, m, rx);
-    }
+	}
 
-    void updAdd(int l, int r, T v,int x, int lx, int rx){
+	void updAdd(int l, int r, T v,int x, int lx, int rx){
 		if(lx>=r || l>=rx)return;
 		if(lx>=l && rx<=r){
-            propagateAdd(v, x, lx, rx);
-            return;
-        }
-        propagate(x,lx,rx);
+			propagateAdd(v, x, lx, rx);
+			return;
+		}
+		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		updAdd(l,r,v,2*x+1,lx,m);
 		updAdd(l,r,v,2*x+2,m,rx);
@@ -79,10 +79,10 @@ struct SegTree{
 	void updMin(int l, int r, T v,int x, int lx, int rx){
 		if(lx>=r || l>=rx || vals[x].max1<v)return;
 		if(lx>=l && rx<=r && vals[x].max2<v){
-            propagateMin(v, x, lx, rx);
-            return;
-        }
-        propagate(x,lx,rx);
+			propagateMin(v, x, lx, rx);
+			return;
+		}
+		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		updMin(l,r,v,2*x+1,lx,m);
 		updMin(l,r,v,2*x+2,m,rx);

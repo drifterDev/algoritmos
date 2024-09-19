@@ -5,7 +5,6 @@ const int INF = 1e9;
 
 // O(n^3)
 int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int n;cin>>n;
 	vector<vi> adj(n, vi(n,INF)); // INF si no existe esa arista
 	for(int k=0;k<n;++k){

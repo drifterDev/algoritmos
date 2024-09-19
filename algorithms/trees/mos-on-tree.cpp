@@ -32,11 +32,11 @@ void ask(int v, bool left){
 
 int sqrtn;
 struct query {
-  int l, r, id;
-  bool operator < (const query &x) const {
-    if(l/sqrtn==x.l/sqrtn) return r<x.r;
-    return l/sqrtn<x.l/sqrtn;
-  }
+	int l, r, id;
+	bool operator < (const query &x) const {
+		if(l/sqrtn==x.l/sqrtn) return r<x.r;
+		return l/sqrtn<x.l/sqrtn;
+	}
 };
 
 query queries[maxq];
@@ -58,7 +58,7 @@ void solve(){
 			while(l<L)ask(id[l++], true);
 		}
 		int a=id[l],b=id[r],c=lca(a,b);
-        // if(c!=b && c!=a)ask(c);
+		// if(c!=b && c!=a)ask(c);
 		ans[queries[i].id]=act;
 		// if(c!=b && c!=a)ask(c);
 	}

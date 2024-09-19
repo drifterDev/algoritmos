@@ -64,7 +64,6 @@ struct sat2 {
 };
 
 int main(){
-	ios::sync_with_stdio(false);cin.tie(nullptr);
 	int m,n;cin>>m>>n;
 	sat2 s(n);
 	char c1,c2;

@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-const int maxn = 1e5;
-const int INF = 1e9;
-int dist[maxn];
-vii adj[maxn];
+typedef long long ll;
+const int maxn = 1e5+5;
+const ll INF = 1e18;
+ll dist[maxn];
+vector<pair<int,ll>> adj[maxn];
 int n;
 
 // Shortest Path Faster Algorithm
 //O(nm) peor caso, O(m) en promedio.
 bool spfa(int s){
 	vi cnt(n,0);
+    for(int i=0;i<n;++i)dist[i]=INF;
 	vector<bool> inqueue(n, false);
 	queue<int> q;
 	dist[s]=0;
@@ -23,7 +23,7 @@ bool spfa(int s){
 		inqueue[v]=false;
 		for(auto x:adj[v]){
 			int u=x.first;
-			int w=x.second;
+			ll w=x.second;
 			if(dist[v]+w<dist[u]){
 				dist[u]=dist[v]+w;
 				if(!inqueue[u]){
@@ -37,5 +37,3 @@ bool spfa(int s){
 	}
 	return true;
 }
-
-// adj[a].push_back({b,-w});

@@ -15,12 +15,11 @@ inline ii operator - (const ii& a, const ii& b){return {sbt(a.first, b.first, MO
 inline ii operator * (const ii& a, const ii& b){return {mul(a.first, b.first, MOD[0]), mul(a.second, b.second, MOD[1])};}
 
 ii p[MAXN+1];
-void prepare(){
+void prepare(){	// Acordate del prepare()!!
 	p[0]=ONE;
 	for(int i=1;i<=MAXN;i++)p[i]=p[i-1]*BASE;
 }
 
-// Acordate del prepare()!!
 template <class type> 
 struct hashing{
 	vector<ii> h;

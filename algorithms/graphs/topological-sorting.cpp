@@ -1,11 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define PB push_back
 typedef vector<int> vi;
 const int maxn = 1e5+5;
-vi adj[maxn];
-vi order;
-vi grade;
+vi adj[maxn],order,grade;
 int n,m;
 
 // O(n+m)

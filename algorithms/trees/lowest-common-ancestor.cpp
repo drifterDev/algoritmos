@@ -3,11 +3,11 @@ using namespace std;
 const int maxn = 2e5+5;
 const int maxlog = 20+5; 
 vector<int> adj[maxn];
-int up[maxn][maxlog];
-int dep[maxn];
+int up[maxn][maxlog]; // memset -1
+int dep[maxn]; // memset 0
 int n,q; 
 
-void dfs(int v, int p=-1){
+void dfs(int v=0, int p=-1){
 	up[v][0]=p;
 	for(int u:adj[v]){
 		if(u!=p){
@@ -48,8 +48,3 @@ int lca(int a, int b){
 	}
 	return up[a][0];
 }
-
-// memset(dep, 0, sizeof(dep)); 
-// memset(up, -1, sizeof(up)); 
-// dfs(0);
-// build();
