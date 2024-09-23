@@ -8,7 +8,7 @@ struct SuffixArray{ // ojo, char separadores
 	string s;int n;
  
 	void build(const string &_s){
-		s=_s;s.push_back((char)32); // check
+		s=_s;s.push_back('$'); // check
 		n=(int)s.size();
 		sa.assign(n, 0);
 		rnk.assign(n, 0);
