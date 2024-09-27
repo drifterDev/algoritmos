@@ -7,6 +7,7 @@ int aut[maxn][alpha];
 
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
+// O(n*alpha)
 void build(string &s){
 	aut[0][conv(s[0])]=1;
 	int n=s.size();
