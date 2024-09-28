@@ -1,10 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 const double EPS = 1e-9;
-
-double f(double x){
-	return x*x;
-}
+double f(double x);
 
 // O(log((r-l)/eps))
 double ternary_search(){

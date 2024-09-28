@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int maxn = 1e5+5;
-const int maxq = 1e4+5;
+const int maxn = 1e5+5, maxq = 1e4+5;
 int ri[maxn],li[maxn],id[maxn*2];
 vector<int> adj[maxn];
 int n,q,pos=0; 
@@ -42,6 +41,7 @@ struct query {
 query queries[maxq];
 ll ans[maxq];
 
+// O((n+q)sqrt(n))
 void solve(){
 	int l=0,r=-1;
 	for(int i=0;i<q;++i){

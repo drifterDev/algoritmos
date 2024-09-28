@@ -7,14 +7,11 @@ typedef pair<int, int> ii;
 typedef vector<ii> vii;
 const int maxn = 1e5+5;
 const int maxm = 2e5+5;
-int degree[maxn];
+int out[maxn],in[maxn];
+int degree[maxn],n,m;
 bool vis[maxm];
-int out[maxn];
-int in[maxn];
+vi adj[maxn],path;
 vii adj2[maxn];
-vi adj[maxn];
-vi path;
-int n,m;
 
 void dfs(int v){
 	while(!adj[v].empty()){

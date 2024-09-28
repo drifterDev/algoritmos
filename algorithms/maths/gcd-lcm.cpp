@@ -5,8 +5,7 @@ typedef long long ll;
 ll gcd(ll a, ll b){return b==0?a:gcd(b,a%b);} 
 ll lcm(ll a, ll b){return a/gcd(a,b)*b;}
 
-// O(log(min(a, b))
-// a*x+b*y=gcd(a,b)
+// O(log(min(a, b)) - a*x+b*y=gcd(a,b)
 ll gcd(ll a, ll b, ll &x, ll &y){
 	x=1,y=0;
 	ll x1=0,y1=1,a1=a,b1=b;

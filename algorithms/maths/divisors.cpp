@@ -17,12 +17,13 @@ ll numDiv(ll n){
 }
 
 // sigma(n) = (p1^(a1+1)-1)/(p1-1) * (p2^(a2+1)-1)/(p2-1) * ... * (pk^(ak+1)-1)/(pk-1)
+// suma divisores a la xth potencia
 ll sumDiv(ll n){
-	ll ans=1;         
+	ll ans=1,pot=1;         
 	map<ll, int> f;
 	primeFactors(n,f);
 	for(auto &x:f)
-		ans*=(binpow(x.first,x.second+1,MOD)-1)/(x.first-1);
+		ans*=(binpow(x.first,(x.second+1)*pot,MOD)-1)/(x.first-1);
 	return ans;
 }
 

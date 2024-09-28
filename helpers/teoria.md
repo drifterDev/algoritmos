@@ -31,6 +31,7 @@
 * (a+b)^n = nc0 * a^n * b^0 + nc1 * a^n-1 * b^1 + nc2 * a^n-2 * b^2 + ... + ncn * a^0 * b^n	
 * Con repeticion = n+r-1Cr
 * Permutaciones = n! / (n1! * n2! * ... * nk!)
+* n_sumatoria_k (nCk)^2 = 2nCn
 
 ## Números de catalan
 

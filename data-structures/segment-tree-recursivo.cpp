@@ -3,18 +3,14 @@ using namespace std;
 
 typedef long long T;
 struct SegTree{
-	vector<T> vals;
-	vector<T> lazy;
-	T null=0;
-	T noVal=0;
+	vector<T> vals,lazy;
+	T null=0,noVal=0;
 	int size;
 
 	T oper(T a, T b);
 	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
-			if(lx<(int)a.size()){
-				vals[x]=a[lx];
-			}
+			if(lx<(int)a.size())vals[x]=a[lx];
 			return;
 		}
 		int m=(lx+rx)/2;
@@ -56,7 +52,6 @@ struct SegTree{
 		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
 	}
 
-
 	void set(int i, T v, int x, int lx, int rx){
 		if(rx-lx==1){
 			vals[x]=v;
@@ -68,7 +63,6 @@ struct SegTree{
 		else set(i,v,2*x+2,m,rx);
 		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
 	}
-
 
 	T get(int l, int r, int x, int lx, int rx){
 		if(lx>=r || l>=rx)return null;

@@ -2,7 +2,7 @@
 using namespace std;
 typedef vector<int> vi;
 vector<bool> visited;
-vector<vi> adj; 
+vector<vi> adj; // undirected
 vi tin, low;
 int n,timer;
 
@@ -25,7 +25,6 @@ void dfs(int v,int p=-1){
 }
 
 // O(n+m)
-// Para grafos no dirigidos
 void find_bridges_cutpoints(){
 	timer=0;
 	visited.assign(n,false);

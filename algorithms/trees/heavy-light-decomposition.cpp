@@ -11,14 +11,13 @@ struct SegTree{
 	T get(int l, int r){return null;}
 };
 
-const int maxn=100000+1; 
+const int maxn=1e5+1; // >= 2e5, remove struct
 bool VALS_IN_EDGES=false; // si es aristas, modifica la arista padre
-struct HLD{ // if maxn >= 2e5, remove struct
+struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
-	int sz[maxn], pos[maxn];
+	int sz[maxn], pos[maxn], ti;
 	vector<int> adj[maxn];
 	SegTree st;
-	int ti;
 
 	void addEdge(int x, int y){adj[x].push_back(y);adj[y].push_back(x);}
 	void dfsSz(int x){ 
@@ -49,7 +48,9 @@ struct HLD{ // if maxn >= 2e5, remove struct
 		// st.build(palst, n);
 		st.build(n);
 	}
-	template <class Oper>
+
+	// O(log^2(n))
+	template <class Oper> 
 	void processPath(int x, int y, Oper op){
 		for(;root[x]!=root[y];y=par[root[y]]){
 			if(dep[root[x]]>dep[root[y]])swap(x,y);

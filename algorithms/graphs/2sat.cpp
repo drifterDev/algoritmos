@@ -2,14 +2,13 @@
 using namespace std;
 typedef vector<int> vi;
 
-// O(n+m)
-// l=(x1 or y1) and (x2 or y2) and ... and (xn or yn)
-struct sat2 {
-	int n;
+// O(n+m), l=(x1 or y1) and (x2 or y2) and ... and (xn or yn)
+struct sat2{
 	vector<vector<vi>> g;
 	vector<bool> vis, val;
-	vi comp;
 	stack<int> st;
+	vi comp;
+	int n;
 	
 	sat2(int n):n(n),g(2, vector<vi>(2*n)),vis(2*n),val(2*n),comp(2*n){}
 	

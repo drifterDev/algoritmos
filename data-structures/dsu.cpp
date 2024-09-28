@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef pair<int, int> ii;
 
 struct dsu{
 	vector<int> p,size;
@@ -8,19 +9,8 @@ struct dsu{
 		size.assign(n,1);
 		for(int i=0;i<n;++i)p[i]=i;
 	}
-
-	// path compression
-	int get(int a){
-		if(a!=p[a])p[a]=get(p[a]);
-		return p[a];
-	}
-
-	// size heuristic
-	int get(int a){
-		if(a==p[a])return a;
-		return get(p[a]);
-	}
-
+	int get(int a){return (a==p[a]?a:p[a]=get(p[a]));} // path compression
+	int get(int a){return (a==p[a]?a:get(p[a]));} // size heuristic
 	void unite(int a, int b){
 		a=get(a);b=get(b);
 		if(a==b)return;
@@ -32,33 +22,26 @@ struct dsu{
 // Bipartite graph
 struct dsu{
 	vector<int> p,size,len;
-
 	dsu(int n){
 		p.assign(n,0);
 		len.assign(n,0);
 		size.assign(n,1);
 		for(int i=0;i<n;++i)p[i]=i;
 	}
-
-	pair<int,int> get(int a){
-		if(a==p[a]){
-			return {a, 0};
-		}
-		pair<int,int> valA=get(p[a]);
-		p[a]=valA.first;
-		len[a]=(len[a]+valA.second)%2;
+	ii get(int a){
+		if(a==p[a])return {a, 0};
+		ii va=get(p[a]);
+		p[a]=va.first;
+		len[a]=(len[a]+va.second)%2;
 		return {p[a], len[a]};
 	}
-
-	void unionSets(int a, int b){
-		pair<int,int> valA=get(a);
-		pair<int,int> valB=get(b);
-		if(valA.first==valB.first)return;
-		if(size[valA.first]>size[valB.first]){
-			swap(valA,valB);
-		}
-		p[valA.first]=valB.first;
-		len[valA.first]=(valA.second+valB.second+1)%2;
-		size[valB.first]+=size[valA.first];
+	void unite(int a, int b){
+		ii va=get(a);
+		ii vb=get(b);
+		if(va.first==vb.first)return;
+		if(size[va.first]>size[vb.first])swap(va,vb);
+		p[va.first]=vb.first;
+		len[va.first]=(va.second+vb.second+1)%2;
+		size[vb.first]+=size[va.first];
 	}
 };

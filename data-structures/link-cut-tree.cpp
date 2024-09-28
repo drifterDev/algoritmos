@@ -64,7 +64,7 @@ struct SplayTree{
 		}
 	}
 };
- 
+
 struct LinkCut:SplayTree{ // 1-indexed 
 	LinkCut(int n):SplayTree(n){}
 

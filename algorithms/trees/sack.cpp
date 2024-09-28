@@ -2,12 +2,9 @@
 using namespace std;
 const int maxn = 1e5+5;
 vector<int> adj[maxn];
-int nodes[maxn];
+int nodes[maxn], dep[maxn], n, q, pos=0;
+int st[maxn], ft[maxn]; // starting - finishing time 
 int ver[2*maxn]; // ver[t] node on time t
-int dep[maxn];
-int st[maxn]; // starting time 
-int ft[maxn]; // finishing time 
-int n,q,pos=0;
 
 void prec(int v=0, int p=-1){
 	nodes[v]=1;
@@ -34,6 +31,7 @@ void ask(int v, bool add){
 	}
 }
 
+// O(nlogn)
 void dfs(int v=0, int p=-1, bool keep=true){
 	int mx=0,id=-1;
 	for(int u:adj[v]){
@@ -54,7 +52,6 @@ void dfs(int v=0, int p=-1, bool keep=true){
 	}
 	ask(v, 1);
 	// answer queries
-	if(keep==0){
-		for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
-	}
+	if(keep)return;
+	for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
 }

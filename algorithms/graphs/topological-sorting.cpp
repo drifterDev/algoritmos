@@ -6,7 +6,7 @@ vi adj[maxn],order,grade;
 int n,m;
 
 // O(n+m)
-void bfs(){
+bool bfs(){
 	queue<int> q;
 	for(int i=0;i<n;i++)if(!grade[i])q.push(i);
 	while(!q.empty()){
@@ -17,6 +17,5 @@ void bfs(){
 			if(grade[v]==0)q.push(v);
 		}
 	}
+	return order.size()==n;
 }
-
-// if(order.size()<n)cout<<"-1\n";

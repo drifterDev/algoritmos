@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-ll dp[18][18][2];
-ll n,m;
+ll dp[18][18][2],n,m;
 int k,d;
 
 ll dfs(string& c,int x=0,int y=0,bool z=0){
@@ -19,11 +18,8 @@ ll dfs(string& c,int x=0,int y=0,bool z=0){
 	}
 	dp[x][y][z]=0;
 	for(int i=0;i<=limit;++i){
-		if(z){
-			dp[x][y][z]+=dfs(c, x+1, y+(i==d), z);
-		}else{
-			dp[x][y][z]+=dfs(c, x+1, y+(i==d), i<limit);
-		}
+		if(z)dp[x][y][z]+=dfs(c, x+1, y+(i==d), z);
+		else dp[x][y][z]+=dfs(c, x+1, y+(i==d), i<limit);
 	}
 	return dp[x][y][z];
 }
@@ -31,7 +27,7 @@ ll dfs(string& c,int x=0,int y=0,bool z=0){
 int main(){
 	cin>>n>>m>>k>>d;
 	string s1=to_string(m);
-	string s2=to_string(n-1);
+	string s2=to_string(n-1ll);
 	memset(dp, -1, sizeof(dp));
 	int ans=dfs(s1);
 	memset(dp, -1, sizeof(dp));

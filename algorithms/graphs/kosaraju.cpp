@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-#define all(x) x.begin(), x.end()
 typedef vector<int> vi;
 const int maxn = 1e5+5;
-vi adj_rev[maxn];
+vi adj_rev[maxn],adj[maxn];
 bool used[maxn];
-vi adj[maxn];
-vi order;
-vi comp;
+vi order,comp;
 int n,m;
 
 // O(n+m)
@@ -29,11 +25,11 @@ void dfs2(int v){
 void init(){
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
-	reverse(all(order));
+	reverse(order.begin(), order.end());
 	for(auto v:order){
 		if(!used[v]){
 			dfs2(v);
-			print(comp);
+			// comp
 			comp.clear();
 		}
 	}

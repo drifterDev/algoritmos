@@ -4,15 +4,15 @@ typedef vector<int> vi;
 typedef long long ll;
 const int maxn = 1e5+5;
 const ll INF = 1e18;
-ll dist[maxn];
 vector<pair<int,ll>> adj[maxn];
+ll dist[maxn];
 int n;
 
 // Shortest Path Faster Algorithm
 //O(nm) peor caso, O(m) en promedio.
 bool spfa(int s){
 	vi cnt(n,0);
-    for(int i=0;i<n;++i)dist[i]=INF;
+	for(int i=0;i<n;++i)dist[i]=INF;
 	vector<bool> inqueue(n, false);
 	queue<int> q;
 	dist[s]=0;

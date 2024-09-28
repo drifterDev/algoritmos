@@ -2,15 +2,11 @@
 using namespace std;
 #define all(x) x.begin(), x.end()
 #define sz(x) ((int) x.size())
-const int maxlog = 20+5; 
-const int maxn = 2e5+5;
-vector<int> adjVT[maxn];
-vector<int> adj[maxn];
-int st[maxn], ft[maxn];
+const int maxlog = 20+5, maxn = 2e5+5;
+vector<int> adjVT[maxn], adj[maxn];
+int st[maxn], ft[maxn], up[maxn][maxlog];
+int dep[maxn], n, q, pos=0; 
 bool important[maxn];
-int up[maxn][maxlog];
-int dep[maxn];
-int n,q,pos=0; 
 
 void dfs(int v, int p=-1){
 	up[v][0]=p;

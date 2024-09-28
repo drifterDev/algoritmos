@@ -84,10 +84,3 @@ int evaluate(string& s){
 	}
 	return st.top();
 }
-
-
-int main(){
-	string s="(1+20*30)-(-40/(-50+60))";
-	cout<<evaluate(s)<<"\n";
-	return 0;
-}

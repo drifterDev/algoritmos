@@ -14,15 +14,15 @@ struct Node{
 };
 
 typedef Node* PNode;
-struct Lista{
+struct LinkedList{
 	PNode head,tail;
 	int size;
 
-	Lista(){
+	LinkedList(){
 		head=tail=nullptr;
 		size=0;
 	}
-	deque<int> dq;
+
 	void push_front(T v){
 		PNode tmp=new Node(v);
 		tmp->next=head;

@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int maxn = 2e5+5;
-const int maxlog = 20+5; 
+const int maxn = 2e5+5, maxlog = 20+5; 
+int up[maxn][maxlog], dep[maxn]; // memset -1, 0
 vector<int> adj[maxn];
-int up[maxn][maxlog]; // memset -1
-int dep[maxn]; // memset 0
 int n,q; 
 
 void dfs(int v=0, int p=-1){
