@@ -29,26 +29,3 @@ vl dijkstra(int s){
 	}
 	return dist;
 }
-
-// O(kmlog(km))
-void kShortestPaths(int s, int t, int k){
-	priority_queue<par, vector<par>, greater<par>> pq;
-	vector<int> cnt(n, 0);
-	vector<ll> paths;
-	pq.push({0, s});
-	while(cnt[t]<k){
-		par act=pq.top();pq.pop();
-		ll d=act.first;
-		int u=act.second;
-		if(cnt[u]==k)continue;
-		cnt[u]++;
-		if(u==t)paths.push_back(d);
-		for(par v:adj[u]){
-			ll w=v.second;
-			int b=v.first;
-			pq.push({d+w,b});
-		}
-	}
-	for(auto x:paths)cout<<x<<" ";
-	cout<<"\n";
-}

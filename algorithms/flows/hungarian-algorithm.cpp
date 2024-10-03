@@ -36,7 +36,7 @@ vector<int> hungarian(const vector<vector<type>>& cost){
 			}
 			wi=w_next;
 		}
-		for(int w =0;w<ws;++w){ 
+		for(int w=0;w<ws;++w){ 
 			dist[w]=min(dist[w],dist[wi]);
 			h[w]+=dist[w];
 		}

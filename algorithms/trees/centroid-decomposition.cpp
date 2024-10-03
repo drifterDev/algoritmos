@@ -5,7 +5,7 @@ const int maxn = 1e5+1;
 // O(nlog(n))
 struct CentroidDecomposition{
 	int dad[maxn],sz[maxn];
-	set<int> adj[maxn]; // check, processed
+	set<int> adj[maxn]; // check, proc
 
 	int operator[](int i){return dad[i];}
 	void addEdge(int x,int y){adj[x].insert(y);adj[y].insert(x);}

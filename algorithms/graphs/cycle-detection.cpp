@@ -5,11 +5,11 @@ int cycle_start, cycle_end,n;
 vector<vi> adj;
 vi parent;
 
-vector<bool> visited; // No dirigidos 
-vi color; // Dirigidos
+// undirected(0) - directed(1)
+vector<bool> visited; // 0 
+vi color; // 1
 
-// Dirigidos
-bool dfs(int v){
+bool dfs(int v){ // 1
 	color[v]=1;
 	for(int u:adj[v]){
 		if(color[u]==0){
@@ -25,8 +25,7 @@ bool dfs(int v){
 	return false;
 }
 
-// No dirigidos
-bool dfs(int v, int par){ 
+bool dfs(int v, int par){ // 0
 	visited[v]=true;
 	for(int u:adj[v]){
 		if(u==par)continue;
@@ -43,16 +42,16 @@ bool dfs(int v, int par){
 
 // O(m)
 void find_cycle(){
-	color.assign(n, 0); // Dirigidos
-	visited.assign(n, false); // No dirigidos
+	color.assign(n, 0); // 1
+	visited.assign(n, false); // 0
 	parent.assign(n, -1);
 	cycle_start=-1;
 	for(int v=0;v<n;++v){
-		// Dirigidos
+		// 1
 		if(color[v]==0){
 			if(dfs(v))break;
 		}
-		// No dirigidos
+		// 0
 		// if(!visited[v]){
 		//   if(dfs(v, parent[v]))break;
 		// }
@@ -64,7 +63,7 @@ void find_cycle(){
 		cycle.push_back(cycle_start);
 		for(int v=cycle_end;v!=cycle_start;v=parent[v])cycle.push_back(v);
 		cycle.push_back(cycle_start);
-		reverse(cycle.begin(),cycle.end()); // Dirigidos
+		reverse(cycle.begin(),cycle.end()); // 1
 		cout<<cycle.size()<<"\n";
 		for(int v:cycle)cout<<v+1<<" ";
 		cout<<"\n";

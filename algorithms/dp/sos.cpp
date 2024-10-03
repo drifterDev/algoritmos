@@ -1,14 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int bits = 23;
+int dp[1<<bits];
 
-int main(){
-	int bits=23;
-	vector<int> a(1<<bits, -1);
-	vector<int> dp(1<<bits, -1);
-	for(int i=0;i<(1<<bits);++i){
-		dp[i]=a[i];
-	}
-
+// O(n*2^n)
+void sos(){
 	// top - down
 	for(int i=0;i<bits;++i){
 		for(int s=0;s<(1<<bits);++s){
@@ -26,5 +22,4 @@ int main(){
 			}
 		}
 	}
-	return 0;
 }

@@ -26,10 +26,4 @@ struct custom_hash {
 	}
 };
 
-unordered_map<long long, int, custom_hash> safe_map;
-gp_hash_table<int, int, custom_hash> table;
-safe_map.reserve(1024); // potencias de 2 para reducir la cantidad de realocaciones de memoria (escoger bien pow 2, tle)
-safe_map.max_load_factor(0.25); 
-// Al establecer una carga máxima de 0.25
-// se asegura que la tabla se redimensione (aumente su tamaño) cuando esté al 25% de su capacidad total. 
-// Esto reduce el numero de colisiones, lo que mejora el rendimiento de las operaciones de busqueda y actualizacion
+unordered_map<long long, int, custom_hash> safe_map; // unordered_map or gp_hash_table

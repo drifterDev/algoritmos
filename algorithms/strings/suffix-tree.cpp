@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) ((int) x.size())
-const int inf = 1e9;
 
 // O(n)
 struct SuffixTree{
 	vector<map<char,int>> to;
 	vector<int> pos,len,link; 
-	int size=0;
+	int size=0,inf=1e9;
 	string s; 
 
 	int make(int _pos, int _len){

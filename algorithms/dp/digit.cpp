@@ -5,11 +5,9 @@ ll dp[18][18][2],n,m;
 int k,d;
 
 ll dfs(string& c,int x=0,int y=0,bool z=0){
-	if(dp[x][y][z]!=-1){
-		return dp[x][y][z];
-	}
+	if(dp[x][y][z]!=-1)return dp[x][y][z];
 	dp[x][y][z]=(y==k);
-	if(x==c.length()){
+	if(x==(int)c.size()){
 		return dp[x][y][z];
 	}
 	int limit=9;

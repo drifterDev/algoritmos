@@ -16,33 +16,11 @@ void sieve(ll n){
 	}
 }
 
-// O((R-L+1)*log(log(R))+sqrt(R)*log(log(R)))
-vl primess;
-vector<bool> segmented_sieve(ll L, ll R) {
-	// generate all primess up to sqrt(R)
-	ll lim=sqrt(R);
-	vector<bool> mark(lim+1, false);
-	for (ll i=2;i<=lim;++i){
-		if (!mark[i]){
-			for(ll j=i*i;j<=lim;j+=i)mark[j]=true;
-			primess.push_back(i);
-		}
-	}
-
-	vector<bool> primes(R-L+1,true);
-	for(ll i:primess)
-		for(ll j=max(i*i,(L+i-1)/i*i);j<=R;j+=i)
-			primes[j-L]=false;
-	if(L==1)primes[0]=false;
-	return primes;
-}
-
 // criba lineal
 const int maxn = 1e5;
 vector<int> primes;
 bool is_composite[maxn];
 int f[maxn];
-
 void sieve(int n){
 	fill(is_composite, is_composite+n, false);
 	// caso base en 1, phi[1]=1;

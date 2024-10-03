@@ -4,13 +4,14 @@ using namespace std;
 
 // O(nlogn)
 int lis(vector<int>& a){
-	int n=(int)a.size(),last=0;
-	vector<int> dp(n+1,INT_MAX),cnt(n,0);
+	int n=a.size(),last=0;
+	vector<int> dp(n+1,INT_MAX);
+	vector<int> cnt(n,0);
 	dp[0]=INT_MIN;
 
 	for(int i=0;i<n;++i){
-		int j=lower_bound(all(dp), a[i])-dp.begin(); // upper_bound if <=
-		if(dp[j-1]<a[i] && a[i]<dp[j]){ // dp[j-1]<=a[i] if <=
+		int j=lower_bound(all(dp), a[i])-dp.begin(); // upper_bound
+		if(dp[j-1]<a[i] && a[i]<dp[j]){ // dp[j-1]<=a[i]
 			dp[j]=a[i];
 			last=max(last,j);
 		}

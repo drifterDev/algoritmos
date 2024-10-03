@@ -28,7 +28,7 @@ int add(string& s){
 	return u;
 }
 
-// O(sum(|s|)*alpha)
+// O(sum(n)*alpha)
 void build(){
 	queue<int> q{{0}};
 	while(!q.empty()){
