@@ -5,11 +5,11 @@ using namespace std;
 
 // O((n+q)*sqrt(n))
 int sqrtn,n;
-struct query {int l, r, idx;};
-bool cmp (query a, query b) {
-	int x = a.l/sqrtn;
-	if (x != b.l/sqrtn) return x < b.l/sqrtn;
-	return (x&1 ? a.r < b.r : a.r > b.r);
+struct query {int l,r,idx;};
+bool cmp(query& a, query& b){
+	int x=a.l/sqrtn;
+	if(x!=b.l/sqrtn)return x<b.l/sqrtn;
+	return (x&1?a.r<b.r:a.r>b.r);
 }
 
 vector<int> ans;
