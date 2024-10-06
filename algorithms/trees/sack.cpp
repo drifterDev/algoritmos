@@ -6,19 +6,6 @@ int len[maxn], n, q, pos=0;
 int st[maxn], ft[maxn]; // starting - finishing time 
 int ver[2*maxn]; // ver[t] node on time t
 
-void prec(int v=0, int p=-1){
-	len[v]=1;
-	ver[pos]=v;
-	st[v]=pos++;
-	for(int u:adj[v]){
-		if(u==p)continue;
-		prec(u,v);
-		len[v]+=len[u];
-	}
-	ver[pos]=v;
-	ft[v]=pos++;
-}
-
 bool vis[maxn];
 void ask(int v, bool add){
 	if(vis[v] && !add){

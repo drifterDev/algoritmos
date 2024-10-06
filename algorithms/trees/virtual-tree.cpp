@@ -2,22 +2,10 @@
 using namespace std;
 #define all(x) x.begin(), x.end()
 #define sz(x) ((int) x.size())
-const int maxlog = 20+5, maxn = 2e5+5;
+const int maxn = 2e5+5;
 vector<int> adjVT[maxn], adj[maxn];
-int st[maxn], ft[maxn], up[maxn][maxlog];
-int dep[maxn], n, q, pos=0; 
+int st[maxn], ft[maxn], n, pos=0; 
 bool important[maxn];
-
-void dfs(int v, int p=-1){
-	up[v][0]=p;
-	st[v]=++pos;
-	for(int u:adj[v]){
-		if(u==p)continue;
-		dep[u]=dep[v]+1;
-		dfs(u, v);
-	}
-	ft[v]=pos;
-}
 
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
@@ -42,13 +30,13 @@ int virtualTree(vector<int> nodes){
 	for(int i=1;i<m;++i){
 		int v=nodes[i];
 		while(sz(s)>=2 && !upper(s.back(), v)){
-			adjVT[s[sz(s)-2]].push_back(s.back()); // add edge
+			adjVT[s[sz(s)-2]].push_back(s.back()); 
 			s.pop_back();
 		}
 		s.push_back(v);
 	}
 	while(sz(s)>=2){
-		adjVT[s[sz(s)-2]].push_back(s.back()); // add edge
+		adjVT[s[sz(s)-2]].push_back(s.back()); 
 		s.pop_back();
 	}
 	return s[0];

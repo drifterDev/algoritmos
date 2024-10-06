@@ -12,7 +12,7 @@ struct SegTree{
 };
 
 const int maxn=1e5+1; // >= 2e5, remove struct
-bool VALS_IN_EDGES=false; // arista padre
+bool edges=false; // arista padre
 struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
@@ -57,7 +57,7 @@ struct HLD{
 			op(pos[root[y]],pos[y]); 
 		}
 		if(dep[x]>dep[y])swap(x,y);
-		op(pos[x]+VALS_IN_EDGES,pos[y]); 
+		op(pos[x]+edges,pos[y]); 
 	}
 	void modifyPath(int x, int y, int v){ 
 		processPath(x,y,[this,&v](int l, int r){ 
@@ -71,8 +71,8 @@ struct HLD{
 		});
 		return res; 
 	}
-	void modifySubtree(int x, int v){st.upd(pos[x]+VALS_IN_EDGES,pos[x]+sz[x],v);}
-	int querySubtree(int x){return st.get(pos[x]+VALS_IN_EDGES,pos[x]+sz[x]);}
+	void modifySubtree(int x, int v){st.upd(pos[x]+edges,pos[x]+sz[x],v);}
+	int querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
 	void modify(int x, int v){st.set(pos[x],v);} 
 	void modifyEdge(int x, int y, int v){
 		if(dep[x]<dep[y])swap(x,y);
