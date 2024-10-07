@@ -5,7 +5,7 @@ using namespace std;
 // O(n*log(alpha))
 struct SuffixAutomaton{
 	vector<map<char,int>> to;
-	vector<int> suf,len; // len, longest string in the ith class
+	vector<int> suf,len; // len, longest string
 	vector<bool> end;
 	int last;
 

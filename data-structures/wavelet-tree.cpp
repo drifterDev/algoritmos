@@ -3,7 +3,7 @@ using namespace std;
 #define sz(x) ((int) x.size())
 typedef long long ll;
 const int maxn = 1e5+5;
-const int maxv = 1e9; 
+const int maxv = 1e9;
 const int minv = -1e9; 
 
 // indexed 1

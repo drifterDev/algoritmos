@@ -6,7 +6,7 @@ int mobius[maxn+1];
 // 1 if n is 1
 // 0 if n has a squared prime factor
 // (-1)^k if n is a product of k distinct prime factors
-void init(){
+void build(){
 	mobius[1]=-1;
 	for(int i=1;i<=maxn;++i){
 		if(mobius[i]){

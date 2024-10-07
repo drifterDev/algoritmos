@@ -3,7 +3,7 @@ using namespace std;
 const int alpha = 256;
 
 // O(nlogn)
-struct SuffixArray{ // ojo, char separadores
+struct SuffixArray{ 
 	vector<int> sa,rnk,lcp;
 	string s;int n;
 

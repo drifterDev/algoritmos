@@ -35,6 +35,5 @@ void init(){
 	}
 }
 
-// cin>>a>>b;
 // adj[a].push_back(b);
 // adj_rev[b].push_back(a);

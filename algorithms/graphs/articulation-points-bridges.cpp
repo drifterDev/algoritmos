@@ -25,7 +25,7 @@ void dfs(int v,int p=-1){
 }
 
 // O(n+m)
-void find_bridges_cutpoints(){
+void init(){
 	timer=0;
 	visited.assign(n,false);
 	tin.assign(n,-1);low.assign(n,-1);

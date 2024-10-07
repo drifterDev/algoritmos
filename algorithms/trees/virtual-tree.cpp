@@ -42,10 +42,7 @@ int virtualTree(vector<int> nodes){
 	return s[0];
 }
 
-// int k;cin>>k;
 // vector<int> nodes(k);
 // for(int& x:nodes)important[x]=true;
 // int root=virtualTree(nodes);
-// dp(root);
-// output answer
-// reset
+// dp(root) - output answer - reset

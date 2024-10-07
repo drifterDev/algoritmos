@@ -5,14 +5,14 @@ typedef long long ll;
 typedef vector<ll> vl;
 
 // O(n*log(log(n)))
-vl primess;
-vector<bool> primes;
+vl primes;
+vector<bool> is_prime;
 void sieve(ll n){
-	primes.assign(n+1,true);
+	is_prime.assign(n+1,true);
 	for(ll i=2;i<=n;++i){
-		if(!primes[i])continue;
-		for(ll j=1ll*i*i;j<=n;j+=i)primes[j]=false;
-		primess.push_back(i);
+		if(!is_prime[i])continue;
+		for(ll j=1ll*i*i;j<=n;j+=i)is_prime[j]=false;
+		primes.push_back(i);
 	}
 }
 

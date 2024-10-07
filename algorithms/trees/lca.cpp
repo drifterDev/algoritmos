@@ -3,7 +3,6 @@ using namespace std;
 const int maxn = 2e5+5, maxlog = 20+5; 
 int up[maxn][maxlog], dep[maxn]; // memset -1, 0
 vector<int> adj[maxn];
-int n,q; 
 
 void dfs(int v=0, int p=-1){
 	up[v][0]=p;
@@ -15,7 +14,7 @@ void dfs(int v=0, int p=-1){
 	}
 }
 
-void build(){
+void build(int n){
 	for(int l=1;l<maxlog;++l){
 		for(int i=0;i<n;++i){
 			if(up[i][l-1]!=-1){

@@ -3,8 +3,7 @@ using namespace std;
 const int maxn = 1e5+5;
 vector<int> adj[maxn];
 int len[maxn], n, q, pos=0;
-int st[maxn], ft[maxn]; // starting - finishing time 
-int ver[2*maxn]; // ver[t] node on time t
+int st[maxn], ft[maxn], ver[2*maxn];
 
 bool vis[maxn];
 void ask(int v, bool add){
