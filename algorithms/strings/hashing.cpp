@@ -24,7 +24,7 @@ void prepare(){	// Acordate del prepare()!!
 template <class type> 
 struct hashing{
 	vector<ii> h;
-	hashing(type &t){
+	hashing(type& t){
 		h.resize((int)t.size()+1);
 		h[0]=zero;
 		for(int i=1;i<(int)h.size();++i)

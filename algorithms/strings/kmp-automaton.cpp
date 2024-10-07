@@ -8,7 +8,7 @@ int to[maxn][alpha];
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 // O(n*alpha)
-void build(string &s){
+void build(string& s){
 	to[0][conv(s[0])]=1;
 	int n=s.size();
 	for(int i=1,p=0;i<n+1;++i){

@@ -2,7 +2,7 @@
 using namespace std;
 
 // O(n)
-vector<int> phi(string &s){
+vector<int> phi(string& s){
 	int n=(int)s.size();
 	vector<int> tmp(n);
 	for(int i=1,j=0;i<n;++i){
