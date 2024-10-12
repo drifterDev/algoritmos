@@ -2,9 +2,9 @@
 using namespace std;
 typedef pair<int, int> ii;
 
-struct dsu{
+struct DSU{
 	vector<int> p,size;
-	dsu(int n){
+	DSU(int n){
 		p.assign(n,0);
 		size.assign(n,1);
 		for(int i=0;i<n;++i)p[i]=i;
@@ -20,9 +20,9 @@ struct dsu{
 };
 
 // Bipartite graph
-struct dsu{
+struct DSU{
 	vector<int> p,size,len;
-	dsu(int n){
+	DSU(int n){
 		p.assign(n,0);
 		len.assign(n,0);
 		size.assign(n,1);

@@ -8,7 +8,7 @@ vector<ii> adj[maxn];
 int n;
 
 // O(nm)
-void bellman_ford(int s){
+void bellman(int s){
 	vector<int> cycle,p(n,-1);
 	vector<ll> dist(n,INFL);
 	dist[s]=0;
