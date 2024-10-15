@@ -10,7 +10,7 @@ int n,m;
 // O(n+m)
 void dfs1(int v){
 	used[v]=true;
-	for(auto u:adj[v])
+	for(int u:adj[v])
 		if(!used[u])dfs1(u);
 	order.push_back(v);
 }
@@ -18,7 +18,7 @@ void dfs1(int v){
 void dfs2(int v){
 	used[v]=true;
 	comp.push_back(v);
-	for(auto u:adj_rev[v])
+	for(int u:adj_rev[v])
 		if(!used[u])dfs2(u);
 }
 
@@ -26,7 +26,7 @@ void init(){
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());
-	for(auto v:order){
+	for(int v:order){
 		if(!used[v]){
 			dfs2(v);
 			// comp

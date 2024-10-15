@@ -8,7 +8,7 @@ vector<int> adj[maxn]; // dad - suf
 int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act;
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
-void build(){ 
+void init(){ 
 	for(int i=0;i<=act;++i){
 		suf[i]=cnt[i]=dad[i]=0;
 		adj[i].clear();

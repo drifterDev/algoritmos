@@ -21,9 +21,7 @@ bool spfa(int s){
 	while(!q.empty()){
 		int v=q.front();q.pop();
 		inqueue[v]=false;
-		for(auto x:adj[v]){
-			int u=x.first;
-			ll w=x.second;
+		for(auto& [u,w]:adj[v]){
 			if(dist[v]+w<dist[u]){
 				dist[u]=dist[v]+w;
 				if(!inqueue[u]){

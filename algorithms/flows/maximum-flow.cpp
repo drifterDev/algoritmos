@@ -59,9 +59,9 @@ struct network{
 	vector<pair<int,int>> edges;
 	void min_cut(int so, int si){
 		cout<<max_flow(so, si)<<"\n";bfs();
-		for(auto x:edges){
-			if(lvl[x.first]!=-1 && lvl[x.second]==-1){
-				cout<<x.first+1<<" "<<x.second+1<<"\n";
+		for(auto& [a,b]:edges){
+			if(lvl[a]!=-1 && lvl[b]==-1){
+				cout<<a+1<<" "<<b+1<<"\n";
 			}
 		}
 	}

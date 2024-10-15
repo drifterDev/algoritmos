@@ -15,9 +15,7 @@ void bellman(int s){
 	for(int i=0;i<n;++i){
 		for(int u=0;u<n;++u){
 			if(dist[u]==INFL)continue;
-			for(auto x:adj[u]){
-				int v=x.first;
-				int w=x.second;
+			for(auto& [v,w]:adj[u]){
 				if(dist[u]+w>=dist[v])continue;
 				dist[v]=dist[u]+w;
 				p[v]=u;
@@ -27,9 +25,7 @@ void bellman(int s){
 	int s2=-1;
 	for(int i=0;i<n;++i){
 		if(dist[i]==INFL)continue;
-		for(auto x:adj[i]){
-			int v=x.first;
-			int w=x.second;
+		for(auto& [v,w]:adj[i]){
 			if(dist[i]+w>=dist[v])continue;
 			s2=i;break;
 		}

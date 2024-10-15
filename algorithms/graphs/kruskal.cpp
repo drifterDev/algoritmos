@@ -17,10 +17,7 @@ void kruskal(){
 	sort(all(edges));
 	dsu uf(n);
 	ll ans=0;
-	for(auto e:edges){
-		int w=get<0>(e);
-		int u=get<1>(e);
-		int v=get<2>(e);
+	for(auto& [w,u,v]:edges){
 		if(uf.get(u)!=uf.get(v)){
 			uf.unite(u, v);
 			ans+=w;
