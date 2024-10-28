@@ -12,7 +12,7 @@ string bin(int num){return bitset<bits>(num).to_string();}
 void init(){ 
 	for(int i=0;i<=act;++i){
 		cnt[i]=0;
-		memset(to[i], 0, sizeof(to[i]));
+		memset(to[i],0,sizeof(to[i]));
 	}
 	act=0;
 }

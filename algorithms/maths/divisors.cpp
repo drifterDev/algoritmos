@@ -7,7 +7,7 @@ const int MOD = 1e9+7;
 ll binpow(ll a, ll b, ll m=MOD);
 void primeFactors(ll n, map<ll, int>& f);
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
-ll mult(ll a, ll b){return mod(mod(a)*mod(b));}
+ll mul(ll a, ll b){return mod(mod(a)*mod(b));}
 
 // d(n) = (a1+1)*(a2+1)*...*(ak+1)
 ll numDiv(ll n){
@@ -34,7 +34,7 @@ ll productDiv(map<int, ll>& f){
 	ll pi=1,res=1;
 	for(auto& [num, pot]:f){
 		ll p=binpow(num, pot*(pot+1)/2);
-		res=mult(binpow(res, pot+1),binpow(p, pi));
+		res=mul(binpow(res, pot+1),binpow(p, pi));
 		pi=(pi*(pot+1))%(MOD-1);
 	}
 	return res;

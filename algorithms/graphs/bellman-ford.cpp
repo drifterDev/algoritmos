@@ -8,35 +8,21 @@ vector<ii> adj[maxn];
 int n;
 
 // O(nm)
-void bellman(int s){
-	vector<int> cycle,p(n,-1);
+bool bellman(int s){
 	vector<ll> dist(n,INFL);
 	dist[s]=0;
-	for(int i=0;i<n;++i){
+	for(int i=0;i<=n;++i){
+		bool change=0;
 		for(int u=0;u<n;++u){
 			if(dist[u]==INFL)continue;
 			for(auto& [v,w]:adj[u]){
 				if(dist[u]+w>=dist[v])continue;
+				if(i==n)return true;
 				dist[v]=dist[u]+w;
-				p[v]=u;
+				change=1;
 			}
 		}
+		if(!change)break;
 	}
-	int s2=-1;
-	for(int i=0;i<n;++i){
-		if(dist[i]==INFL)continue;
-		for(auto& [v,w]:adj[i]){
-			if(dist[i]+w>=dist[v])continue;
-			s2=i;break;
-		}
-	}
-	if(s2==-1){
-		cout<<"No negative cycle\n";
-		return;
-	}
-	for(int i=0;i<n;++i)s2=p[s2];
-	cycle.push_back(s2);
-	for(int v=s2;p[v]!=s2;v=p[v])cycle.push_back(p[v]);
-	cycle.push_back(s2);
-	reverse(cycle.begin(), cycle.end());
+	return false;
 }

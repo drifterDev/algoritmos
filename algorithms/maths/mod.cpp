@@ -11,7 +11,7 @@ ll inv(ll a, ll m){return binpow(a, m-2, m);}
 
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
 ll add(ll a, ll b){return mod(mod(a)+mod(b));}
-ll mult(ll a, ll b){return mod(mod(a)*mod(b));}
+ll mul(ll a, ll b){return mod(mod(a)*mod(b));}
 
 // O(log(min(a, b)) - no primos (b y m coprimos)
 ll inv(ll b, ll m){
