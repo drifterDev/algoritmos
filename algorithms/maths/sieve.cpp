@@ -11,7 +11,7 @@ void sieve(ll n){
 	is_prime.assign(n+1,true);
 	for(ll i=2;i<=n;++i){
 		if(!is_prime[i])continue;
-		for(ll j=1ll*i*i;j<=n;j+=i)is_prime[j]=false;
+		for(ll j=i*i;j<=n;j+=i)is_prime[j]=false;
 		primes.push_back(i);
 	}
 }
