@@ -5,7 +5,7 @@ typedef long long ll;
 typedef pair<int, int> ii;
 // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
 const int mod[2] = { 1001864327, 1001265673 }; 
-const ii base(257, 367); // > alpha (primo)
+const ii base(257, 367); // > alpha (primo), todo char > 0
 const int maxn = 1e6;
 
 int add(int a, int b, int m){return a+b>=m?a+b-m:a+b;}

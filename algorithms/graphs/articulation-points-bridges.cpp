@@ -16,12 +16,12 @@ void dfs(int v,int p=-1){
 		else{
 			dfs(to,v);
 			low[v]=min(low[v], low[to]);
-			if(low[to]>tin[v]); // v-to es un puente
-			if (low[to]>=tin[v] && p!=-1); // v es un punto de articulación
+			if(low[to]>tin[v]); // v-to puente
+			if (low[to]>=tin[v] && p!=-1); // v punto de articulación
 			++children;
 		}
 	}
-	if(p==-1 && children>1); // v es un punto de articulación
+	if(p==-1 && children>1); // v punto de articulación
 }
 
 // O(n+m)
