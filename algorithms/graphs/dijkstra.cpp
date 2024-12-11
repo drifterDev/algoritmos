@@ -16,10 +16,10 @@ vl dijkstra(int s){
 	while(!pq.empty()){
 		auto [d,u]=pq.top();pq.pop();
 		if(d>dist[u])continue;
-		for(auto [b,w]:adj[u]){
-			if(dist[u]+w<dist[b]){
-				dist[b]=dist[u]+w;
-				pq.push({dist[b],b});
+		for(auto [w,v]:adj[u]){
+			if(dist[u]+w<dist[v]){
+				dist[v]=dist[u]+w;
+				pq.push({dist[v],v});
 			}
 		}
 	}

@@ -65,3 +65,7 @@ setrecursionlimit(1000000)
 sys.stdin = open("input.in", "r")
 sys.stdout = open("output.out", "w")
 ```
+
+```python
+inverso = pow(a, -1, MOD)
+```

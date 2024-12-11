@@ -29,6 +29,7 @@ void update(int i,int v,int l,int r){
 void solve(){
 	s=(int)ceil(sqrt(n));
 	sort(all(q), cmp);
+	ans.assign(sz(q),0);
 	int l=0,r=-1,t=0;
 	for(int i=0;i<sz(q);++i){
 		while(t<q[i].t)update(u[t].i,u[t].cur,l,r),++t;
