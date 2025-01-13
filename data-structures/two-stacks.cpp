@@ -6,7 +6,7 @@ struct Node{T val,acum;};
 struct TwoStacks{
 	stack<Node> s1,s2;
 	
-	void add(T x){
+	void push(T x){
 		Node tmp={x,x};
 		if(!s2.empty()){
 			// tmp.acum + s2.top().acum
@@ -14,7 +14,7 @@ struct TwoStacks{
 		s2.push(tmp);
 	}
 
-	void remove(){
+	void pop(){
 		if(s1.empty()){
 			while(!s2.empty()){
 				Node tmp=s2.top();
@@ -30,7 +30,7 @@ struct TwoStacks{
 		s1.pop();
 	}
 
-	bool good(){
+	bool get(){
 		if(s1.empty() && s2.empty())return false;
 		else if(!s1.empty() && s2.empty()){
 			return true; // eval s1.top();

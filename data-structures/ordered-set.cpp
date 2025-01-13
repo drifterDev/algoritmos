@@ -9,3 +9,4 @@ template<typename T> using ordered_multiset = tree<T, null_type,less_equal<T>, r
 // Para multiset cambiar less<int> por less_equal<int>
 // tree.find_by_order(k) -> Retorna un iterador al k-ésimo elemento 
 // tree.order_of_key(x) -> Retorna el número de elementos estrictamente menores a x
+// multiset.erase(upper_bound(x))

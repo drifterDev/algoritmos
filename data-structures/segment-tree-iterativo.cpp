@@ -15,7 +15,7 @@ struct SegTree{
 		for(int i=n-1;i>=1;--i)v[i]=op(v[i<<1],v[i<<1|1]);
 	}
 
-	void upd(int k, T nv){
+	void set(int k, T nv){
 		for(v[k+=n]=nv;k>1;k>>= 1)
 			v[k>>1]=op(v[k], v[k^1]);
 	}

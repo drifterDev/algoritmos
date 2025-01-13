@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-ll dp[18][18][2],n,m;
+ll dp[20][20][2],n,m;
 int k,d;
 
-ll dfs(string& c,int x=0,int y=0,bool z=0){
+ll dfs(string& c, int x=0, int y=0, bool z=0){
 	if(dp[x][y][z]!=-1)return dp[x][y][z];
 	dp[x][y][z]=(y==k);
 	if(x==(int)c.size()){

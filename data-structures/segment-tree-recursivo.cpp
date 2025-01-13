@@ -7,7 +7,7 @@ struct SegTree{
 	T null=0,noVal=0;
 	int size;
 
-	T oper(T a, T b);
+	T op(T a, T b);
 	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
 			if(lx<(int)a.size())vals[x]=a[lx];
@@ -16,7 +16,7 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		build(a, 2*x+1, lx, m);
 		build(a, 2*x+2, m, rx);
-		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+		vals[x]=op(vals[2*x+1], vals[2*x+2]);
 	}
 
 	void build(vector<T>& a,int n){
@@ -49,7 +49,7 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		upd(l,r,v,2*x+1,lx,m);
 		upd(l,r,v,2*x+2,m,rx);
-		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+		vals[x]=op(vals[2*x+1], vals[2*x+2]);
 	}
 
 	void set(int i, T v, int x, int lx, int rx){
@@ -61,7 +61,7 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		if(i<m)set(i,v,2*x+1,lx,m);
 		else set(i,v,2*x+2,m,rx);
-		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+		vals[x]=op(vals[2*x+1], vals[2*x+2]);
 	}
 
 	T get(int l, int r, int x, int lx, int rx){
@@ -71,7 +71,7 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		T v1=get(l,r,2*x+1,lx,m);
 		T v2=get(l,r,2*x+2,m,rx);
-		return oper(v1,v2);
+		return op(v1,v2);
 	}
 
 	T get(int l, int r){return get(l,r+1,0,0,size);}

@@ -159,3 +159,23 @@ void hanoi(int x, int start, int end){
 
 * Nim: Si la xor de las pilas es 0, el segundo jugador gana, si no, el primer jugador gana
 * Sprague-Grundy: rx = mex(r1, r2, ..., rk) donde r1, r2, ..., rk son los nimbers de los estados a los que se puede llegar desde s
+
+
+* c < a+b (a,b,c lados de un triangulo) y c el mayor
+
+* si se va a recibir reales, recibirlos como strings y luego convertirlos 
+
+* Al crear un struct ordenar bien los datos para mejor memoria (ordernar por tamaño de los datos)
+
+```cpp
+struct {
+    double a;       // 8 bytes
+    long long a;    // 8 bytes
+    int bs[4];      // 4 bytes
+    int b;          // 4 bytes
+    char c;         // 1 byte
+    bool d;         // 1 byte
+} st;
+```
+
+* compilar: g++ tmp/a.cpp & ./a.out < tmp/in.txt > tmp/out.txt

@@ -17,3 +17,4 @@ vector<string> split(const string &s/*, char c */){
 // int n=stoi(s, nullptr, 2); base 2
 // double d=stod(s); De string a double
 // string s=to_string(n); De entero a string
+// cout<<"\U0001F600"; para emojis
