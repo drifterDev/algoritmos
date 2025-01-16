@@ -1,16 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(x) ((int) x.size())
 
 typedef long long T;
 struct SegTree{
 	vector<T> vals,lazy;
-	T null=0,noVal=0;
+	T null=0,nolz=0;
 	int size;
 
-	T op(T a, T b);
+	T op(T a, T b){return a+b;}
+	SegTree(vector<T>& a,int n){
+		size=1;
+		while(size<n)size*=2;
+		vals.resize(2*size);
+		lazy.assign(2*size, nolz);
+		build(a, 0, 0, size);
+	}
+
 	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
-			if(lx<(int)a.size())vals[x]=a[lx];
+			if(lx<sz(a))vals[x]=a[lx];
 			return;
 		}
 		int m=(lx+rx)/2;
@@ -19,28 +28,20 @@ struct SegTree{
 		vals[x]=op(vals[2*x+1], vals[2*x+2]);
 	}
 
-	void build(vector<T>& a,int n){
-		size=1;
-		while(size<n)size*=2;
-		vals.resize(2*size);
-		lazy.assign(2*size, noVal);
-		build(a, 0, 0, size);
-	}
-
 	void propagate(int x, int lx, int rx){
 		if(rx-lx==1)return;
-		if(lazy[x]==noVal)return;
+		if(lazy[x]==nolz)return;
 		int m=(lx+rx)/2;
 		lazy[2*x+1]+=lazy[x];
 		vals[2*x+1]+=lazy[x]*((T)(m-lx));
 		lazy[2*x+2]+=lazy[x]; 
 		vals[2*x+2]+=lazy[x]*((T)(rx-m));
-		lazy[x]=noVal;
+		lazy[x]=nolz;
 	}
 
 	void upd(int l, int r, T v,int x, int lx, int rx){
-		if(lx>=r || l>=rx)return;
-		if(lx>=l && rx<=r){
+		if(rx<=l || r<=lx)return;
+		if(l<=lx && rx<=r){
 			lazy[x]+=v;
 			vals[x]+=v*((T)(rx-lx));
 			return;
@@ -65,8 +66,8 @@ struct SegTree{
 	}
 
 	T get(int l, int r, int x, int lx, int rx){
-		if(lx>=r || l>=rx)return null;
-		if(lx>=l && rx<=r)return vals[x];
+		if(rx<=l || r<=lx)return null;
+		if(l<=lx && rx<=r)return vals[x];
 		propagate(x,lx,rx);
 		int m=(lx+rx)/2;
 		T v1=get(l,r,2*x+1,lx,m);
