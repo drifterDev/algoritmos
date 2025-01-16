@@ -4,10 +4,11 @@ using namespace std;
 
 typedef long long T;
 struct SegTree{
-	int n;vector<T> v;
+	vector<T> v;
+	int n;
+	
 	T null=0;
 	T op(T a, T b){return a+b;}
-
 	void build(int _n){n=_n;v.assign(2*_n,null);}
 	void build(vector<T>& a){
 		n=sz(a);v.assign(2*n, null);

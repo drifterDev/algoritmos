@@ -7,7 +7,7 @@ T op(T a, T b); // max, min, gcd ...
 struct Table{ 
 	vector<vector<T>> st;
 
-	void build(vector<T>& v){
+	Table(vector<T>& v){
 		int n=v.size();
 		st.assign(20, vector<T>(n)); // log2(n)
 		for(int i=0;i<n;++i)st[0][i]=v[i];

@@ -5,7 +5,7 @@ const int maxn = 1e6+5;
 int l[maxn],r[maxn];
 int a[maxn];
 
-int cartesian_tree(int n){ // 1-indexed
+int cartesian_tree(int n){ // 1-indexed, O(n)
 	int tot=0;
 	vector<int> s(n+1,0);
 	vector<bool> vis(n+1,false);

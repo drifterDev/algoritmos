@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 typedef long long T;
+
 // build O(n) - get O(n/b+b)
 struct SQRT{ 
 	int b; // check b
