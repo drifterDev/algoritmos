@@ -5,7 +5,6 @@ const int maxn = 1e5+5;
 vi adj_rev[maxn],adj[maxn];
 bool used[maxn];
 vi order,comp;
-int n,m;
 
 // O(n+m)
 void dfs1(int v){
@@ -22,7 +21,7 @@ void dfs2(int v){
 		if(!used[u])dfs2(u);
 }
 
-void init(){
+void init(int n){
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());

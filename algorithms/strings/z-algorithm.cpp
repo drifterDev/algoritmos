@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(arr) (int)arr.size()
 
 // O(n)
 vector<int> z_function(string& s){
-	int n=(int)s.size(),l=0,r=0;
+	int n=sz(s),l=0,r=0;
 	vector<int> z(n);
 	for(int i=1;i<n;i++){
 		if(i<r)z[i]=min(r-i, z[i-l]);

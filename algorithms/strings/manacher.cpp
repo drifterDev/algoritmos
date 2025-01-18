@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(arr) (int)arr.size()
 
 // O(n), par (raiz, izq, der) 1 - impar 0
 vector<int> manacher(string& s, int par){ 
-	int l=0,r=-1,n=(int)s.size();
+	int l=0,r=-1,n=sz(s);
 	vector<int> m(n,0);
 	for(int i=0;i<n;++i){
 		int k=(i>r?(1-par):min(m[l+r-i+ par], r-i+par))+par;

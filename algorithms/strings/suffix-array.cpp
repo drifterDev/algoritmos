@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(arr) (int)arr.size()
 const int alpha = 256;
 
 // O(nlogn)
@@ -9,7 +10,7 @@ struct SuffixArray{
 
 	SuffixArray(string& _s){
 		s=_s;s.push_back('$'); // check
-		n=(int)s.size();
+		n=sz(s);
 		sa.assign(n, 0);
 		rnk.assign(n, 0);
 		lcp.assign(n-1, 0);

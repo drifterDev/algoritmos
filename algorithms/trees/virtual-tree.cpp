@@ -4,8 +4,17 @@ using namespace std;
 #define sz(x) ((int) x.size())
 const int maxn = 2e5+5;
 vector<int> adjVT[maxn], adj[maxn];
-int st[maxn], ft[maxn], n, pos=0; 
+int st[maxn], ft[maxn], pos=0; 
 bool important[maxn];
+
+void dfs(int v, int p=-1){
+    st[v]=pos++;
+	for(int u:adj[v]){
+		if(u==p)continue;
+        dfs(u, v);
+	}
+    ft[v]=pos++;
+}
 
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
@@ -45,4 +54,4 @@ int virtualTree(vector<int> nodes){
 // vector<int> nodes(k);
 // for(int& x:nodes)important[x]=true;
 // int root=virtualTree(nodes);
-// dp(root) - output answer - reset
+// dp(root) - output answer - reset (important, adjvt)

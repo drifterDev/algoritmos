@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define all(x) x.begin(), x.end()
+#define sz(x) ((int) x.size())
 
 // O(n+k)
 void counting_sort(vector<int>& a){ 
-	int n=(int)a.size();
+	int n=sz(a);
 	int maxi=*max_element(all(a));
 	int mini=*min_element(all(a));
 	int k=maxi-mini+1;

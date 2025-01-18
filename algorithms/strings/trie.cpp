@@ -7,7 +7,6 @@ const int bits = 30;
 
 int to[maxn][alpha],cnt[maxn],act;
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
-string bin(int num){return bitset<bits>(num).to_string();}
 
 void init(){ 
 	for(int i=0;i<=act;++i){

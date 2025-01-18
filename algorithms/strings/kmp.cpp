@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define sz(arr) (int)arr.size()
 
 // O(n)
 vector<int> phi(string& s){
-	int n=(int)s.size();
+	int n=sz(s);
 	vector<int> tmp(n);
 	for(int i=1,j=0;i<n;++i){
 		while(j>0 && s[j]!=s[i])j=tmp[j-1];
@@ -15,7 +16,7 @@ vector<int> phi(string& s){
 
 // O(n+m)
 int kmp(string& s, string& p){
-	int n=(int)s.size(),m=(int)p.size(),cnt=0;
+	int n=sz(s),m=sz(p),cnt=0;
 	vector<int> pi=phi(p);
 	for(int i=0,j=0;i<n;++i){
 		while(j && s[i]!=p[j])j=pi[j-1];

@@ -3,12 +3,12 @@ using namespace std;
 
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);}
 vector<string> split(const string &s/*, char c */){
-    vector<string> v;
-    stringstream ss(s);
-    string sub;
-    while(ss>>sub)v.push_back(sub);
-    // while(getline(ss,sub,c))if(sz(sub))v.push_back(sub);
-    return v;
+	vector<string> v;
+	stringstream ss(s);
+	string sub;
+	while(ss>>sub)v.push_back(sub);
+	// while(getline(ss,sub,c))if(sz(sub))v.push_back(sub);
+	return v;
 }
 
 // for(char& c:s)c=toupper(c);
