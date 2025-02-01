@@ -18,7 +18,7 @@ void dfs(int v){
 }
 
 void eulerian_path(int start, int end){ 
-	for(int i=1;i<=n;++i){
+	for(int i=0;i<n;++i){
 		if(i==start || i==end)continue;
 		if(in[i]!=out[i]){
 			cout<<"IMPOSSIBLE\n";

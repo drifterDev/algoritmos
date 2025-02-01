@@ -1,5 +1,5 @@
 // Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2024
+// Fecha de creación: 2025
 // 
 // Este código se proporciona bajo la Licencia MIT.
 // Para más información, consulta el archivo LICENSE en la raíz del repositorio.
@@ -7,129 +7,108 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) ((int) x.size())
+typedef pair<int, int> ii;
 
-struct dsu{
-	vector<int> p,rank,h;
-    int sets;
-
-	dsu(int n){
-        sets=n;
+struct DSU {
+	vector<int> p,size,h;
+	int sets;
+	void build(int n){
+		sets=n;
 		p.assign(n,0);
-		rank.assign(n,1);
-		iota(p.begin(), p.end(), 0);
+		size.assign(n,1);
+		for(int i=0;i<n;++i)p[i]=i;
 	}
-
-	int get(int a){
-        if(a==p[a])return a;
-		return get(p[a]);
-	}
-
-	void unionSets(int a, int b){
-		a=get(a);
-		b=get(b);
+	int get(int a){return (a==p[a]?a:get(p[a]));} 
+	void unite(int a, int b){
+		a=get(a);b=get(b);
 		if(a==b)return;
-        if(rank[a]>rank[b])swap(a,b);
-        rank[b]+=rank[a];
-        h.push_back(a);
-        p[a]=b;
-        sets--;
+		if(size[a]>size[b])swap(a,b);
+		h.push_back(a);
+		size[b]+=size[a];
+		p[a]=b;sets--;
 	}
-
-    void rollback(int x){
-        int len=h.size();
-        while(len>x){
-            int a=h.back();
-            h.pop_back();
-            rank[p[a]]-=rank[a];
-            p[a]=a;
-            sets++;
-            len--;
-        }
-    }
+	void rollback(int s){
+		while(sz(h)>s){
+			int a=h.back();
+			h.pop_back();
+			size[p[a]]-=size[a];
+			p[a]=a;sets++;
+		}
+	}
 };
 
 enum { ADD, DEL, QUERY };
+struct Query { int type,u,v; };
+struct DynCon {
+	map<ii, int> edges;DSU uf;
+	vector<Query> q;
+	vector<int> t;
 
-struct Query{
-    int type, u, v;
-};
-
-struct DynCon{
-	vector<Query> q;  
-    dsu uf;
-	vector<int> mt;  
-    map<pair<int,int>, int> prv;
-    
-	DynCon(int n): uf(n){}
-
-	void add(int i, int j){
-		if(i>j)swap(i, j);
-		q.push_back({ADD, i, j}); 
-        mt.push_back(-1);
-        prv[{i,j}]=sz(q)-1;
+	void add(int u, int v){
+		if(u>v)swap(u,v);
+		edges[{u,v}]=sz(q);
+		q.push_back({ADD, u, v});
+		t.push_back(-1);
 	}
 
-	void remove(int i, int j){
-		if(i > j) swap(i, j);
-		q.push_back({DEL, i, j});
-		int pr = prv[{i, j}];
-		mt[pr] = sz(q)-1;  
-        mt.push_back(pr);
+	void del(int u, int v){
+		if(u>v)swap(u,v);
+		int i=edges[{u,v}];
+		t[i]=sz(q);
+		q.push_back({DEL, u, v});
+		t.push_back(i);
 	}
 
 	void query(){
-        q.push_back({QUERY, -1, -1});  
-        mt.push_back(-1);
-    }
-
-	void process(){ // answers all queries in order
-		if(!sz(q)) return;
-		for(int i=0;i<sz(q);++i){
-            if(q[i].type==ADD && mt[i]<0)mt[i]=sz(q);
-        }
-		go(0, sz(q));
+		q.push_back({QUERY, -1, -1});
+		t.push_back(-1);
 	}
-    
-	void go(int s, int e){
-		if(s+1==e){
-			if(q[s].type == QUERY)cout<<uf.sets<<"\n";
+
+	void dnc(int l, int r){
+		if(r-l==1){
+			if(q[l].type==QUERY)
+				cout<<uf.sets<<"\n";
 			return;
 		}
-		int k=sz(uf.h),m=(s+e)/2;
-        for(int i=e-1;i>=m; --i){
-            if(mt[i]>=0 && mt[i]<s)uf.unionSets(q[i].u, q[i].v);
-        }
-		go(s, m);  
-        uf.rollback(k);
-        for(int i=m-1;i>=s; --i){
-            if(mt[i]>=e)uf.unionSets(q[i].u, q[i].v);
-        }
-		go(m, e);  
-        uf.rollback(k);
+		int m=l+(r-l)/2,k=sz(uf.h);
+		for(int i=m;i<r;++i)
+			if(q[i].type==DEL && t[i]<l)
+				uf.unite(q[i].u, q[i].v);
+		dnc(l, m);
+		uf.rollback(k);
+		for(int i=l;i<m;++i)
+			if(q[i].type==ADD && t[i]>=r)
+				uf.unite(q[i].u, q[i].v);
+		dnc(m, r);
+		uf.rollback(k);
+	}
+
+	void init(int n){
+		uf.build(n);
+		if(!sz(q))return;
+		for(int& ti:t)if(ti==-1)ti=sz(q);
+		dnc(0, sz(q));
 	}
 };
 
 int main(){
-    ios::sync_with_stdio(false);cin.tie(nullptr);
-    int n,q;
-    cin>>n>>q;
-    DynCon dc(n);
-    char op;int a,b;
-    while(q--){
-        cin>>op;
-        if(op=='?'){
-            dc.query();
-            continue;
-        }
-        
-        cin>>a>>b;
-        a--;b--;
-        if(op=='+'){
-            dc.add(a,b);
-        }else{
-            dc.remove(a,b);
-        }
-    }
-    dc.process();
-    return 0;
+	ios::sync_with_stdio(0);cin.tie(0);
+	int n,q;cin>>n>>q;
+	DynCon dc;
+	int u,v;
+	char c;
+	for(int i=0;i<q;++i){
+		cin>>c;
+		if(c=='?'){
+			dc.query();
+		}else if(c=='+'){
+			cin>>u>>v;u--;v--;
+			dc.add(u,v);
+		}else{
+			cin>>u>>v;u--;v--;
+			dc.del(u,v);
+		}
+	}
+	dc.init(n);
+	return 0;
 }

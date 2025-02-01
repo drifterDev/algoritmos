@@ -23,7 +23,7 @@ void dfs(int v){
 }
 
 void eulerian_path(int start){ // cycle
-	for(int i=1;i<=n;++i){
+	for(int i=0;i<n;++i){
 		if(degree[i]%2!=0){
 			cout<<"IMPOSSIBLE\n";
 			return;
