@@ -22,6 +22,9 @@ using namespace std;
 // Devuelve el bit menos significativo prendido
 int lsb(int n){return n&(-n);}
 
+// optimiza el .count de los bitsets y el popcount
+#pragma GCC target("popcnt")
+
 int main() {
 	for(int i=0;i<16;++i){
 		cout<<lsb(i)<<" "<<bitset<4>(i)<<"\n";
