@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
+
 const int maxn = 300;
 const int inf = 1e9;
 int adj[maxn][maxn]; // inf si no existe
-int n;
 
 // O(n^3)
-void floyd(){
+void floyd(int n){
 	for(int k=0;k<n;++k){
 		for(int i=0;i<n;++i){
 			for(int j=0;j<n;++j){

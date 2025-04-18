@@ -5,8 +5,9 @@ using namespace std;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
+
 const int maxn = 1e5+5, maxm = 2e5+5;
-int degree[maxn],n,m;
+int degree[maxn];
 bool vis[maxm];
 vii adj[maxn];
 vi path;
@@ -22,7 +23,7 @@ void dfs(int v){
 	path.push_back(v);
 }
 
-void eulerian_path(int start){ // cycle
+void eulerian_path(int n, int m, int start){ // cycle
 	for(int i=0;i<n;++i){
 		if(degree[i]%2!=0){
 			cout<<"IMPOSSIBLE\n";

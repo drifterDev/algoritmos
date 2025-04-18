@@ -1,27 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 const int maxn = 1e5+5;
 vector<int> adj[maxn]; // undirected
 vector<bool> vis;
 vector<int> tin, low;
 int timer;
 
-void dfs(int v,int p=-1){
-	vis[v]=true;
-	tin[v]=low[v]=timer++;
+void dfs(int u,int p=-1){
+	vis[u]=true;
+	tin[u]=low[u]=timer++;
 	int children=0;
-	for(int to:adj[v]){
-		if(to==p)continue;
-		if(vis[to])low[v]=min(low[v],tin[to]);
+	for(int v:adj[u]){
+		if(v==p)continue;
+		if(vis[v])low[u]=min(low[u],tin[v]);
 		else{
-			dfs(to,v);
-			low[v]=min(low[v], low[to]);
-			if(low[to]>tin[v]); // v-to puente
-			if(low[to]>=tin[v] && p!=-1); // v punto de articulación
+			dfs(v,u);
+			low[u]=min(low[u], low[v]);
+			if(low[v]>tin[u]); // u-v bridge
+			if(low[v]>=tin[u] && p!=-1); // u articulation point
 			++children;
 		}
 	}
-	if(p==-1 && children>1); // v punto de articulación
+	if(p==-1 && children>1); // u articulation point
 }
 
 // O(n+m)

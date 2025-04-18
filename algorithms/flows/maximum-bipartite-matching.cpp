@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// O(nm)
+// O(n*m)
 struct mbm{
 	int l,r;
 	vector<vector<int>> g;

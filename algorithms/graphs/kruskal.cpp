@@ -2,20 +2,20 @@
 using namespace std;
 #define all(x) x.begin(), x.end()
 typedef long long ll;
-vector<tuple<int,int,int>> edges;
-int n,m;
 
-struct dsu{
+struct DSU{
 	int maxSz;
-	dsu(int n);
+	DSU(int n);
 	int get(int a);
 	void unite(int a, int b);
 };
 
-// O(mlogn)
-void kruskal(){
+vector<tuple<int,int,int>> edges;
+
+// O(m*log(n))
+void kruskal(int n){
 	sort(all(edges));
-	dsu uf(n);
+	DSU uf(n);
 	ll ans=0;
 	for(auto& [w,u,v]:edges){
 		if(uf.get(u)!=uf.get(v)){

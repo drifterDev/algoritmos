@@ -2,15 +2,16 @@
 using namespace std;
 typedef long long ll;
 typedef vector<ll> vl;
+
 typedef pair<ll, int> par;
 const int maxn = 1e5;
+const ll inf = 1e18;
 vector<par> adj[maxn];
-int n;
 
 // O((n+m)log(m))
-vl dijkstra(int s){
+vl dijkstra(int s, int n){
 	priority_queue<par, vector<par>, greater<par>> pq;
-	vl dist(n, LLONG_MAX); 
+	vl dist(n, inf); 
 	pq.push({0, s});
 	dist[s]=0;
 	while(!pq.empty()){

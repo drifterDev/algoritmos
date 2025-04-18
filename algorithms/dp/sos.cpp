@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 const int bits = 23;
 int dp[1<<bits];
 
 // O(n*2^n)
 void sos(){
-	// top - down (get info sub)
+	// top-down: accumulate info from subsets
 	for(int i=0;i<bits;++i){
 		for(int s=0;s<(1<<bits);++s){
 			if(s&(1<<i)){
@@ -14,7 +15,7 @@ void sos(){
 		}
 	} 
 	
-	// bottom - up (get info mask)
+	// bottom-up: accumulate info from supersets
 	for(int i=0;i<bits;++i){
 		for(int s=(1<<bits)-1;s>=0;--s){
 			if(s&(1<<i)){

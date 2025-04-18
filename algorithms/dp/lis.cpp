@@ -2,16 +2,17 @@
 using namespace std;
 #define all(x) x.begin(), x.end()
 
-// O(nlogn)
+// O(n*log(n))
 int lis(vector<int>& a){
 	int n=a.size(),last=0;
 	vector<int> dp(n+1,INT_MAX);
 	vector<int> cnt(n,0);
 	dp[0]=INT_MIN;
 
+	// use upper_bound and dp[j-1]<=a[i]
 	for(int i=0;i<n;++i){
-		int j=lower_bound(all(dp), a[i])-dp.begin(); // upper_bound
-		if(dp[j-1]<a[i] && a[i]<dp[j]){ // dp[j-1]<=a[i]
+		int j=lower_bound(all(dp), a[i])-dp.begin();
+		if(dp[j-1]<a[i] && a[i]<dp[j]){ 
 			dp[j]=a[i];
 			last=max(last,j);
 		}

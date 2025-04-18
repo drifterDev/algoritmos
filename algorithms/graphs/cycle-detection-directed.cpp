@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-vector<vector<int>> adj;
-vector<int> parent;
-vector<int> color;
+typedef vector<int> vi;
+
+vector<vi> adj;
+vi parent,color;
 int cy0, cy1;
 
 bool dfs(int v){ 
@@ -32,13 +33,11 @@ void find_cycle(int n){
 			if(dfs(v))break;
 		}
 	}
-
 	if(cy0==-1){
 		cout<<"IMPOSSIBLE\n";
 		return;
 	}
-
-	vector<int> cycle;
+	vi cycle;
 	cycle.push_back(cy0);
 	for(int v=cy1;v!=cy0;v=parent[v])cycle.push_back(v);
 	cycle.push_back(cy0);

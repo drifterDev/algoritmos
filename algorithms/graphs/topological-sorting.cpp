@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
+
 const int maxn = 1e5+5;
 vi adj[maxn],order,grade;
-int n,m;
 
 // O(n+m)
-bool bfs(){
+bool bfs(int n){
 	queue<int> q;
 	for(int i=0;i<n;i++)if(!grade[i])q.push(i);
 	while(!q.empty()){

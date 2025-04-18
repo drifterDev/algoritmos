@@ -3,10 +3,10 @@ using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 #define sz(x) ((int) x.size())
 typedef vector<int> vi;
+
 const int maxn = 1e5+5;
 int out[maxn],in[maxn];
 vi adj[maxn],path;
-int n,m;
 
 void dfs(int v){
 	while(!adj[v].empty()){
@@ -17,7 +17,7 @@ void dfs(int v){
 	path.push_back(v);
 }
 
-void eulerian_path(int start, int end){ 
+void eulerian_path(int n, int m, int start, int end){ 
 	for(int i=0;i<n;++i){
 		if(i==start || i==end)continue;
 		if(in[i]!=out[i]){

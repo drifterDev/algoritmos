@@ -1,9 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
+
 const int maxn = 1e5+5;
-vi adj_rev[maxn],adj[maxn];
+// remember adj[a]->b, adj_rev[b]->a
+vi adj_rev[maxn],adj[maxn]; 
 bool used[maxn];
+int idx[maxn];
 vi order,comp;
 
 // O(n+m)
@@ -25,14 +28,13 @@ void init(int n){
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());
+	int j=0;
 	for(int v:order){
 		if(!used[v]){
 			dfs2(v);
-			// comp
+			for(int u:comp)idx[u]=j;
 			comp.clear();
+			j++;
 		}
 	}
 }
-
-// adj[a].push_back(b);
-// adj_rev[b].push_back(a);
