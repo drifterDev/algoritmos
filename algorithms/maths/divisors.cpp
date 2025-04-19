@@ -40,6 +40,6 @@ ll productDiv(map<int, ll>& f){
 	return res;
 }
 
-// secondi a y b son coprimos, entonces: 
+// si a y b son coprimos, entonces: 
 // sigma(a*b) = sigma(a)*sigma(b)
 // d(a*b) = d(a)*d(b)

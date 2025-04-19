@@ -2,25 +2,33 @@
 using namespace std;
 #define all(x) x.begin(), x.end()
 #define sz(x) ((int) x.size())
+
 const int maxn = 2e5+5;
 vector<int> adjVT[maxn], adj[maxn];
-int st[maxn], ft[maxn], pos=0; 
 bool important[maxn];
+int st[maxn]; // start time of v in euler tour
+int ft[maxn]; // finish time of v in euler tour
+int pos=0;
 
 void dfs(int v, int p=-1){
-    st[v]=pos++;
+	st[v]=pos++;
 	for(int u:adj[v]){
 		if(u==p)continue;
-        dfs(u, v);
+		dfs(u, v);
 	}
-    ft[v]=pos++;
+	ft[v]=pos++;
 }
 
+// Add LCA
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
 bool cmp(int v, int u){return st[v]<st[u];}
 
-// O(klogk)
+// O(k*log(k))
+// 1) fill important[]
+// 2) return root 
+// 4) DP with virtual tree
+// 3) reset important[]
 int virtualTree(vector<int> nodes){
 	sort(all(nodes), cmp);
 	int m=sz(nodes);
@@ -50,8 +58,3 @@ int virtualTree(vector<int> nodes){
 	}
 	return s[0];
 }
-
-// vector<int> nodes(k);
-// for(int& x:nodes)important[x]=true;
-// int root=virtualTree(nodes);
-// dp(root) - output answer - reset (important, adjvt)

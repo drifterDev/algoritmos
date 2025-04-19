@@ -7,11 +7,15 @@ ll gcd(int a, int b, int x, int y);
 ll binpow(ll a, ll b, ll m);
 
 ll mod(ll a, ll m){return ((a%m)+m)%m;}
-ll inv(ll a, ll m){return binpow(a, m-2, m);}
+ll inv(ll a, ll m){return binpow(a, m-2ll, m);}
 
 ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
 ll add(ll a, ll b){return mod(mod(a)+mod(b));}
 ll mul(ll a, ll b){return mod(mod(a)*mod(b));}
+
+int mod(int a, int m){return ((a%m)+m)%m;}
+int add(int a, int b, int m){return a+b>=m?a+b-m:a+b;}
+int mul(int a, int b, int m){return ll(a)*b%m;} 
 
 // O(log(min(a, b)) - no primos (b y m coprimos)
 ll inv(ll b, ll m){

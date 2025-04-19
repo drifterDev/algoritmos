@@ -2,13 +2,17 @@
 using namespace std;
 const int maxn = 1e5+1;
 
-// O(nlog(n))
+// O(n*log(n))
 struct CentroidDecomposition{
 	int dad[maxn],sz[maxn];
-	set<int> adj[maxn]; // check, proc
+	set<int> adj[maxn];
+	// check processed if TLE
 
 	int operator[](int i){return dad[i];}
-	void addEdge(int x,int y){adj[x].insert(y);adj[y].insert(x);}
+	void addEdge(int x,int y){
+		adj[x].insert(y);
+		adj[y].insert(x);
+	}
 
 	void build(int v=0, int p=-1){
 		int n=dfsSz(v, p); 
@@ -40,4 +44,5 @@ struct CentroidDecomposition{
 	}
 };
 
+// for centroid tree 
 // for(int b=a;b!=-1;b=cd[b])

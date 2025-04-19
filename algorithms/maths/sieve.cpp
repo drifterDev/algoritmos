@@ -2,10 +2,9 @@
 using namespace std;
 typedef vector<int> vi;
 typedef long long ll;
-typedef vector<ll> vl;
 
 // O(n*log(log(n)))
-vl primes;
+vector<ll> primes;
 vector<bool> is_prime;
 void sieve(ll n){
 	is_prime.assign(n+1,true);

@@ -17,7 +17,7 @@ int phi(int n){
 	return res;
 }
 
-// O(nlog(log(n)))
+// O(n*log(log(n)))
 vi phin(int n){
 	vi phi(n+1);
 	for(int i=0;i<=n;++i)phi[i]=i;

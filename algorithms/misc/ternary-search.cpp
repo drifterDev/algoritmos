@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-const double EPS = 1e-9;
+const double eps = 1e-9;
 double f(double x);
 
 // O(log((r-l)/eps))
 double ternary(){
 	double l,r;
-	while(r-l>EPS){
+	while(r-l>eps){
 		double m1=l+(r-l)/3.0;
 		double m2=r-(r-l)/3.0;
 		if(f(m1)<f(m2))l=m1;

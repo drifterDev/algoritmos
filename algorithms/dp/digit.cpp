@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 
 // dp[pos][count of d][limit]
-ll dp[20][20][2],n,m;
+ll dp[20][20][2];
 int k,d;
 
 // count numbers <= c with k occurrences of d
