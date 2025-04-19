@@ -3,6 +3,9 @@ using namespace std;
 #define sz(x) ((int) x.size())
 
 // O(n)
+// pos: start of the edge
+// len: edge length
+// link: suffix link
 struct SuffixTree{
 	vector<map<char,int>> to;
 	vector<int> pos,len,link; 
@@ -43,7 +46,7 @@ struct SuffixTree{
 	SuffixTree(string& _s){
 		make(-1,0);int p=0,lef=0;
 		for(char c:_s)add(p,lef,c);
-		add(p,lef,'$');
+		add(p,lef,'$'); // smallest char
 		s.pop_back();
 	}
 
