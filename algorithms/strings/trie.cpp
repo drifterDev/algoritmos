@@ -3,7 +3,6 @@ using namespace std;
 
 const int maxn = 2e6+5;
 const int alpha = 26; 
-const int bits = 30;
 
 int to[maxn][alpha],cnt[maxn],act;
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
