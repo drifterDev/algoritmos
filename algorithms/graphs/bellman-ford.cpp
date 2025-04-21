@@ -27,3 +27,12 @@ bool bellman(int s, int n){
 	}
 	return false;
 }
+
+// para ciclos
+// for(int i=0;i<n;++i)ini=dad[ini];
+// vector<int> cycle;
+// cycle.push_back(ini+1);
+// for(int u=dad[ini];u!=ini;u=dad[u])cycle.push_back(u+1);
+// cycle.push_back(ini+1);
+// reverse(all(cycle));
+// print(cycle);

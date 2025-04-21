@@ -2,15 +2,15 @@
 using namespace std;
 #define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 #define sz(x) ((int) x.size())
-typedef vector<int> vi;
 typedef pair<int, int> ii;
-typedef vector<ii> vii;
+typedef long long ll;
 
-const int maxn = 1e5+5, maxm = 2e5+5;
-int degree[maxn];
+const int maxn = 1e5+5;
+const int maxm = 2e5+5;
+vector<ii> adj[maxn]; // adj[a].push_back({b, i});
+vector<int> path;
+int grade[maxn]; // remember
 bool vis[maxm];
-vii adj[maxn];
-vi path;
 
 void dfs(int v){
 	while(!adj[v].empty()){
@@ -20,17 +20,17 @@ void dfs(int v){
 		vis[x.second]=true;
 		dfs(x.first);
 	}
-	path.push_back(v);
+	path.push_back(v+1);
 }
 
-void eulerian_path(int n, int m, int start){ // cycle
+void eulerian_path(int n, int m, int s){
 	for(int i=0;i<n;++i){
-		if(degree[i]%2!=0){
+		if(grade[i]%2!=0){
 			cout<<"IMPOSSIBLE\n";
 			return;
 		}
 	}
-	dfs(start);
+	dfs(s);
 	if(sz(path)!=m+1)cout<<"IMPOSSIBLE\n";
 	else print(path);
 }

@@ -3,7 +3,8 @@ using namespace std;
 typedef vector<int> vi;
 
 const int maxn = 1e5+5;
-vi adj[maxn],order,grade;
+vi adj[maxn],order;
+int grade[maxn];
 
 // O(n+m)
 bool bfs(int n){

@@ -4,7 +4,8 @@ typedef vector<int> vi;
 
 const int maxn = 300;
 const int inf = 1e9;
-int adj[maxn][maxn]; // inf si no existe
+int adj[maxn][maxn]; 
+// inf si no existe y adj[i][i]=0
 
 // O(n^3)
 void floyd(int n){
