@@ -178,4 +178,4 @@ struct {
 } st;
 ```
 
-* compilar: g++ tmp/a.cpp & ./a.out < tmp/in.txt > tmp/out.txt
+* compilar: g++ a.cpp && ./a.out < in.txt > out.txt

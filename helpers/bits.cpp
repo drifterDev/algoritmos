@@ -46,7 +46,7 @@ int main() {
 		if(s==0)break;
 	}
 	// Ascendente
-	for(int s=0;;s=s-m&m){ 
+	for(int s=0;;s=(s-m)&m){ 
 		cout<<bitset<4>(s)<<"\n";
 		if(s==m)break;
 	}

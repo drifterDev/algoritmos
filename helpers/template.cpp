@@ -12,6 +12,7 @@ typedef vector<ii> vii;
 const double PI = acos(-1);
 const int dirx[8] = {0,1,0,-1,1,1,-1,-1};
 const int diry[8] = {1,0,-1,0,1,-1,1,-1};
+const char dird[4] = {'D','R','U','L'};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
 int main(){
