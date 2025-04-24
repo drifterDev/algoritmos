@@ -2,40 +2,37 @@
 using namespace std;
 #define sz(x) ((int) x.size())
 typedef long long ll;
-const int MOD = 1e9+7;
 
+const ll MOD = 1e9+7;
 ll binpow(ll a, ll b, ll m=MOD);
-void primeFactors(ll n, map<ll, int>& f);
-ll mod(ll a){return ((a%MOD)+MOD)%MOD;}
-ll mul(ll a, ll b){return mod(mod(a)*mod(b));}
+ll add(ll a, ll b, ll m=MOD);
+ll mul(ll a, ll b, ll m=MOD);
+ll inv(ll a);
 
 // d(n) = (a1+1)*(a2+1)*...*(ak+1)
-ll numDiv(ll n){
+ll numDiv(map<ll, ll>& f){
 	ll ans=1;
-	map<ll, int> f;
-	primeFactors(n,f);
-	for(auto& [_,pot]:f)ans*=(pot+1);
+	for(auto [_,pot]:f)ans=mul(ans, (pot+1ll));
 	return ans;
 }
 
 // sigma(n) = (p1^(a1+1)-1)/(p1-1) * (p2^(a2+1)-1)/(p2-1) * ... * (pk^(ak+1)-1)/(pk-1)
 // suma divisores a la xth potencia
-ll sumDiv(ll n){
+ll sumDiv(map<ll, ll>& f){
 	ll ans=1,potencia=1;         
-	map<ll, int> f;
-	primeFactors(n,f);
-	for(auto& [num, pot]:f)
-		ans*=(binpow(num,(pot+1)*potencia)-1)/(num-1);
+	for(auto [num, pot]:f){
+		ll p=binpow(num,(pot+1ll)*potencia)-1ll;
+		ans=mul(ans, mul(p, inv(num-1ll)));
+	}
 	return ans;
 }
 
-ll productDiv(map<int, ll>& f){
-	// implementar binpow
+ll productDiv(map<ll, ll>& f){
 	ll pi=1,res=1;
-	for(auto& [num, pot]:f){
-		ll p=binpow(num, pot*(pot+1)/2);
-		res=mul(binpow(res, pot+1),binpow(p, pi));
-		pi=(pi*(pot+1))%(MOD-1);
+	for(auto [num, pot]:f){
+		ll p=binpow(num, pot*(pot+1ll)/2ll);
+		res=mul(binpow(res, pot+1ll),binpow(p, pi));
+		pi=mul(pi, pot+1ll, MOD-1ll);
 	}
 	return res;
 }

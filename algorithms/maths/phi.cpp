@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
-typedef vector<int> vi;
 
 // O(sqrt(n))
 int phi(int n){
@@ -18,8 +17,8 @@ int phi(int n){
 }
 
 // O(n*log(log(n)))
-vi phin(int n){
-	vi phi(n+1);
+vector<int> phin(int n){
+	vector<int> phi(n+1);
 	for(int i=0;i<=n;++i)phi[i]=i;
 	for(int i=2;i<=n;++i)
 		if(phi[i]==i)

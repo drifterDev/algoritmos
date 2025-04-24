@@ -18,3 +18,10 @@ void build(){
 		}
 	}
 }
+
+// to count coprime pairs
+// ans=n*(n-1)/2
+// for(int x:a){
+// 		for(int y:divisors[a])cnt[y]++;
+// }
+// ans+=(mobius[v]*cnt[v]*(cnt[v]-1))/2
