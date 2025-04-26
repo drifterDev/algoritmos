@@ -6,8 +6,13 @@ const int maxn = 1e5+5;
 const int maxv = 1e9;
 const int minv = -1e9; 
 
-// indexed 1
-struct WaveletTree {
+// O(n*log(n)) build
+// O(log(n)) kth, lte, cnt, sum
+// 1. int a[maxn];
+// 2. WaveletTree wt;
+// 3. fill a[1;n]
+// 4. wt.build(a+1, a+n+1, minv, maxv);
+struct WaveletTree { // indexed 1
 	int lo, hi;
 	WaveletTree *l, *r;
 	int *b, bsz, csz;
@@ -84,7 +89,3 @@ struct WaveletTree {
 	}
 };
 
-// int a[maxn];
-// WaveletTree wt;
-// for(int i=1;i<=n;++i)cin>>a[i];
-// wt.build(a+1, a+n+1, minv, maxv);

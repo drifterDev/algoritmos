@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long T;
 
+// O(1) push, pop, get
+typedef long long T;
 struct Node{T val,acum;};
 struct TwoStacks{
 	stack<Node> s1,s2;

@@ -4,7 +4,9 @@ using namespace std;
 const int maxn = 2e6+5;
 const int alpha = 26; 
 
-int to[maxn][alpha],cnt[maxn],act;
+int to[maxn][alpha]; // to[u][c]: node u edge with the letter c
+int cnt[maxn]; // count of word ending in this node
+int act; // trie node cound
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 void init(){ 

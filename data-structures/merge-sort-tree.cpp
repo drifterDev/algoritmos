@@ -3,6 +3,8 @@ using namespace std;
 #define sz(x) ((int) x.size())
 #define all(x) x.begin(), x.end()
 
+// O(n*log(n)) build
+// O(log(n)) get
 typedef long long T;
 struct SegTree{
 	int size;

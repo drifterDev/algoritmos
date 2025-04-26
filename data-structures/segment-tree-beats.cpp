@@ -3,6 +3,12 @@ using namespace std;
 #define sz(x) ((int) x.size())
 typedef long long ll;
 
+// O(n*log(n)) build
+// O(log(n)) get, upd
+// updMax[l,r] -> ai = max(ai, v)
+// updMin[l,r] -> ai = min(ai, v)
+// updAdd[l,r] -> ai = ai + v
+// get[l,r] -> return sum of the range [l,r]
 typedef long long T;
 T null=0,noVal=0;
 T INF=1e18;
@@ -43,6 +49,13 @@ struct SegTree{
 	vector<Node> vals;
 	int size;
 
+	SegTree(vector<T>& a){
+		size=1;
+		while(size<sz(a))size*=2;
+		vals.resize(2*size);
+		build(a, 0, 0, size);
+	}
+
 	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
 			if(lx<sz(a))vals[x].build(a[lx]);
@@ -52,13 +65,6 @@ struct SegTree{
 		build(a, 2*x+1, lx, m);
 		build(a, 2*x+2, m, rx);
 		vals[x].oper(vals[2*x+1], vals[2*x+2]);
-	}
-
-	void build(vector<T>& a){
-		size=1;
-		while(size<sz(a))size*=2;
-		vals.resize(2*size);
-		build(a, 0, 0, size);
 	}
 
 	void propagateMax(T v, int x, int lx, int rx){
