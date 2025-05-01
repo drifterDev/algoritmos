@@ -7,21 +7,17 @@
 
 ## Bitwise
 
+* a | b = a ^ b + a & b 
+* a ^ (a & b) = (a | b) ^ b
+* b ^ (a & b) = (a | b) ^ a
+* (a & b) ^ (a | b) = a ^ b
+* a + b = a | b + a & b
 * a + b = a ^ b + 2 * (a & b)
+* a - b = (a ^ (a & b)) - ((a | b) ^ a)
+* a - b = ((a | b) ^ b) - ((a | b) ^ a)
+* a - b = (a ^ (a & b)) - (b ^ (a & b))
+* a - b = ((a | b) ^ b) - (b ^ (a & b))
 * a ^ b = ~(a & b) & (a | b)
-
-## Polynomial updates
-
-- 1+2+3+4+5+...
-- update [a,b]
-- node [c,d]
-- node+=(c-a)*(len)+sumatoria(len)
-- node+=x*len + sumatoria(len)
-- unas cuantas updates despues
-- node+=(x1+x2+x3+...) * len + u * sumatoria(len)
-- lazy1 = x1+x2+x3+...., lazy2 = #updates
-- nodeLeft (lazy1+=lazy1, lazy2+=lazy2)
-- nodeRight (lazy1+=lazy1+lazy2*(m-lx), lazy2+=lazy2)
 
 ## Combinatoria
 
@@ -139,20 +135,6 @@ for(int i=sz(jobs)-1;i>=0;i--){
     }
 }
 return schedule;
-```
-
-## Recurrencias
-
-* hanoi(n) = 2 * hanoi(n-1) + 1
-
-```cpp
-// hanoi(n, 1, 3)
-void hanoi(int x, int start, int end){ 
-    if(!x)return;
-    hanoi(x-1, start, 6-start-end);
-    ans.push_back({start, end});
-    hanoi(x-1, 6-start-end, end);
-}
 ```
 
 ### Juegos
