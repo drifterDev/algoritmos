@@ -26,11 +26,12 @@ ll dfs(string& c, int x=0, int y=0, bool z=0){
 }
 
 // count(0,m) - count(0,n-1) = count(n,m)
-ll query(ll n, ll m, int k, int d){
+ll query(ll n, ll m){
 	string s1=to_string(m);
 	string s2=to_string(n-1ll);
 	memset(dp, -1, sizeof(dp));
-	int ans=dfs(s1);
+	ll ans=dfs(s1);
+	if(n<=0ll)return ans;
 	memset(dp, -1, sizeof(dp));
 	return ans-dfs(s2);
 }

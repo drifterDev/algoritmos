@@ -5,9 +5,9 @@ const int alpha = 26;
 const char fc = 'a';
 
 // tree.suf: the longest suffix-palindrome link
-// tree.dad: the parent palindrome by removing the first and last character
+// tree.dad - tree.to: the parent palindrome by removing the first and last character
 struct Node{
-	int next[alpha];
+	int to[alpha];
 	int len,suf,dep,cnt,dad;
 };
 
@@ -30,8 +30,8 @@ struct PalindromicTree{
 			cur=tree[cur].suf;
 		}      
 
-		if(tree[cur].next[let]){  
-			last=tree[cur].next[let];
+		if(tree[cur].to[let]){  
+			last=tree[cur].to[let];
 			tree[last].cnt++;
 			return false;
 		}
@@ -39,7 +39,7 @@ struct PalindromicTree{
 		size++;
 		last=size;
 		tree[size].len=tree[cur].len+2;
-		tree[cur].next[let]=size;
+		tree[cur].to[let]=size;
 		tree[size].cnt=1;
 		tree[size].dad=cur;
 
@@ -53,7 +53,7 @@ struct PalindromicTree{
 			cur=tree[cur].suf;
 			curlen=tree[cur].len;
 			if(pos-1-curlen>=0 && s[pos-1-curlen]==s[pos]){
-				tree[size].suf=tree[cur].next[let];
+				tree[size].suf=tree[cur].to[let];
 				break;
 			}       
 		}           

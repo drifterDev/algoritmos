@@ -31,21 +31,15 @@ next-premutation:
 palindrome-tree:
 - https://cses.fi/problemset/task/1111
 - https://judge.yosupo.jp/problem/eertree 
+- https://codeforces.com/gym/105109/problem/K
 
 suffix-array:
-- https://cses.fi/problemset/task/2102/
-- https://cses.fi/problemset/task/2103/
-- https://cses.fi/problemset/task/2104/
 - https://cses.fi/problemset/task/2105/
 - https://cses.fi/problemset/task/2106/
 - https://cses.fi/problemset/task/2108/
 - https://cses.fi/problemset/task/2110/
 
 suffix-automaton:
-- https://cses.fi/problemset/task/2102/
-- https://cses.fi/problemset/task/2103/
-- https://cses.fi/problemset/task/2104/
-- https://cses.fi/problemset/task/2105/
 - https://cses.fi/problemset/task/2106/
 - https://cses.fi/problemset/task/2108/
 - https://cses.fi/problemset/task/2109

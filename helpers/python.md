@@ -69,3 +69,8 @@ sys.stdout = open("output.out", "w")
 ```python
 inverso = pow(a, -1, MOD)
 ```
+
+```python
+# order of a char
+print(ord('A'))
+```

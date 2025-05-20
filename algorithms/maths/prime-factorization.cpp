@@ -3,6 +3,9 @@ using namespace std;
 #define sz(x) ((int) x.size())
 typedef long long ll;
 
+// O(log(n))
+// Sieve() and save the lowest prime factor 
+
 // O(sqrt(n)/log(sqrt(n)))
 vector<ll> primes;
 void fact(ll n, map<ll, int>& f){
