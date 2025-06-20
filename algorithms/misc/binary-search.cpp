@@ -4,14 +4,24 @@ vector<int> a;
 int x;
 
 // O(log(n))
-int binary_search(){
+bool check(int x);
+void binary_search(){
 	int l=0,r=(int)a.size()-1;
 	while(l<=r){
 		int m=l+(r-l)/2;
-		if(a[m]==x)return m;
-		if(a[m]<x)l=m+1;
+		if(check(m))l=m+1;
 		else r=m-1;
-	}return -1;
+	}
+}
+
+void santa_binaria(){
+	int l=-1; // the last 0
+	int r=a.size(); // the first 1
+	while(r-l>1){
+		int m=l+(r-l)/2;
+		if(check(m))l=m;
+		else r=m;
+	}
 }
 
 int main() {

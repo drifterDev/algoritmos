@@ -3,6 +3,7 @@ using namespace std;
 
 // O(n*log(n)) build
 // O(log(n)) get, set
+// O((n+q)*log(n)) memory
 typedef long long T;
 struct Node{
 	T val;

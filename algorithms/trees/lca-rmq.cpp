@@ -2,7 +2,7 @@
 using namespace std;
 #define sz(x) ((int) x.size())
 
-// Add RMQ
+// Add RMQ - Min
 typedef int T;
 struct Table{
 	void build(vector<T>& a);

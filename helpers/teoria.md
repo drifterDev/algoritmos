@@ -161,3 +161,15 @@ struct {
 ```
 
 * compilar: g++ a.cpp && ./a.out < in.txt > out.txt
+
+* añadir el teorema multinomial
+
+* añadir el binomio de newton
+
+* revisar dinic teoria automac primera fecha mexico K
+
+* añadir puentes online
+
+* revisar st de cses 
+
+* gauss jordan modulo (descomunal)
