@@ -173,3 +173,5 @@ struct {
 * revisar st de cses 
 
 * gauss jordan modulo (descomunal)
+
+* añadir cow game 
