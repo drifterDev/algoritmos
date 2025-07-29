@@ -8,6 +8,9 @@ articulation-points-bridges:
 bellman-ford:
 - https://cses.fi/problemset/task/1197/
 
+block-cut-tree:
+- https://cses.fi/problemset/task/1705/
+
 cycle-detection-directed:
 - https://cses.fi/problemset/task/1678/
 
