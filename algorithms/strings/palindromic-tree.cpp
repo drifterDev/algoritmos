@@ -29,7 +29,7 @@ struct PalindromicTree {
         tree.push_back(Node(0));
 		for(char& c:t) add_char(c);
 		// Propagate counts up the suffix links
-		for(int i=sz(tree)-1;i>=3;i--){
+		for(int i=sz(tree)-1;i>=2;i--){
 			tree[tree[i].suf].cnt+=tree[i].cnt;
 		}
     }
