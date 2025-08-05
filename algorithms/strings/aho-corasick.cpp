@@ -13,7 +13,7 @@ const int alpha = 26;
 // dad: closest suffix link that is terminal
 // cnt: number of strings that end exactly at node v
 vector<int> adj[maxn]; 
-int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act; // not to change
+int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act; // dont touch
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 void init(){ 

@@ -17,8 +17,12 @@ implicit-treap:
 - https://cses.fi/problemset/task/2074/
 - https://cses.fi/problemset/task/1651/
 
-link-cut-tree:
+link-cut-tree-lazy:
 - https://dmoj.ca/problem/ds5easy
+- https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
+- https://www.spoj.com/problems/DYNALCA/
+
+link-cut-tree:
 - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
 - https://www.spoj.com/problems/DYNALCA/
 
