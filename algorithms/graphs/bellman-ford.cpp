@@ -1,9 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef pair<int, int> ii;
-typedef long long ll;
 typedef pair<ll, int> par;
-
 const int maxn = 1e5;
 const ll inf = 1e18;
 vector<par> adj[maxn];

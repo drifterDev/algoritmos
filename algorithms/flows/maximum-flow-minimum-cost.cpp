@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(n*m^2*log(m))
 template <class type>
 struct mcmf{

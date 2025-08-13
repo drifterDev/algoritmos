@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 // O(m*n^2) - redes unitarias O(m*sqrt(n))
 template <class type> 
 struct network{

@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-#define sz(x) ((int) x.size())
-typedef vector<int> vi;
-
 const int maxn = 1e5+5;
 vector<int> adj[maxn],path;
 int out[maxn],in[maxn]; // remember

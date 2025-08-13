@@ -1,13 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-#define sz(x) ((int) x.size())
-typedef pair<int, int> ii;
-typedef vector<int> vi;
-
 // O(n) build
 // bi_connected save the edges
-
 const int maxn = 1e5+5;
 int lowLink[maxn] , dfn[maxn];
 vector<vector<ii>> bi_connected;

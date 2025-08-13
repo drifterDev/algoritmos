@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-typedef vector<int> vi;
-
 vector<vi> adj;
 vi parent,color;
 int cy0, cy1;

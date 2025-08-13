@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef vector<int> vi;
-
 const int maxn = 1e5+5;
 // remember adj[a]->b, adj_rev[b]->a
 vi adj_rev[maxn],adj[maxn]; 
@@ -28,7 +24,7 @@ void dfs2(int v){
 int init(int n){ 
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
-	reverse(order.begin(), order.end());
+	reverse(all(order));
 	int j=0;
 	for(int v:order){
 		if(!used[v]){

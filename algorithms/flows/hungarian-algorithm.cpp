@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // task assignment O(n^3)
 template <class type>
 vector<int> hungarian(const vector<vector<type>>& cost){

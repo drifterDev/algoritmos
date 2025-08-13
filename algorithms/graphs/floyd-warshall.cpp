@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef vector<int> vi;
-
 const int maxn = 300;
 const int inf = 1e9;
 int adj[maxn][maxn]; 

@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
-#define sz(x) ((int) x.size())
-typedef pair<int, int> ii;
-typedef long long ll;
-
 const int maxn = 1e5+5;
 const int maxm = 2e5+5;
 vector<ii> adj[maxn]; // adj[a].push_back({b, i});

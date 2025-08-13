@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef vector<int> vi;
-
 // O(n+m)
 // (x1 or y1) and (x2 or y2) and ... and (xn or yn)
 struct sat2{

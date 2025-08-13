@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 // dp[pos][count of d][limit]
 ll dp[20][20][2];
 int k,d;
@@ -31,7 +27,7 @@ ll query(ll n, ll m){
 	string s2=to_string(n-1ll);
 	memset(dp, -1, sizeof(dp));
 	ll ans=dfs(s1);
-	if(n<=0ll)return ans;
+	if(n<=0ll)return ans; // check
 	memset(dp, -1, sizeof(dp));
 	return ans-dfs(s2);
 }

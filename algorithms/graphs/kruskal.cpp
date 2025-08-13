@@ -1,16 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-typedef long long ll;
 vector<tuple<int,int,int>> edges;
+struct DSU{};
 
-struct DSU{
-	int sets;
-	DSU(int n){}
-	int get(int a);
-	void unite(int a, int b);
-};
- 
 // O(m*log(m))
 void kruskal(int n){
 	sort(all(edges));
