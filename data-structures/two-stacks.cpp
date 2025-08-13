@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(1) push, pop, get
 typedef long long T;
 struct Node{T val,acum;};

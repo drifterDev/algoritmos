@@ -1,13 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(n*log(n)) build
 // O(1) get
 typedef long long T;
 T op(T a, T b); // max, min, gcd ...
 struct Table{ 
 	vector<vector<T>> st;
-	Table(vector<T>& v){
+	Table(vector<T>& v){ // check st clear if -> build()
 		int n=v.size();
 		st.push_back(v);
 		for(int j=1;(1<<j)<=n;++j){

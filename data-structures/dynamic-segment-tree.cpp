@@ -1,8 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-// O(q*log(n))
-// q => queries
+// O(q*log(n)), q => queries
 typedef long long T;
 T null=0, noVal=0;
 T oper(T a, T b){return a+b;}

@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(n*log(n)) build
 // O(log(n)) get, set
 // O((n+q)*log(n)) memory

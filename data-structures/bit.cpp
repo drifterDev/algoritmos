@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(n) build
 // O(log(n)) get, upd
 typedef long long T;

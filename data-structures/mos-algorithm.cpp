@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
 // O((n+q)*sq), sq=n^(1/2)
 // 1. fill queries[]
 // 2. solve(n);

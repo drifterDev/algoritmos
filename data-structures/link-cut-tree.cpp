@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // 1-indexed 
 // All operations are O(log(n))
 typedef long long T;

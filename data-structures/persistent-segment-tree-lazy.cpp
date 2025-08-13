@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 // O(n*log(n)) build
 // O(log(n)) get, upd
 // O((n+q)*log(n)) memory

@@ -1,14 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
 // add LCA
-struct LCA{
-	void build();
-	int lca(int a, int b);
-};
+struct LCA{};
 
 vector<vector<int>> adj;
 const int maxn=1e5+5;

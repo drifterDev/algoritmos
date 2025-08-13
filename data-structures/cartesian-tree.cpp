@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-#define sz(x) (int)x.size()
-
 // O(n) build
 typedef long long T;
 struct CartesianTree{ // 1-indexed

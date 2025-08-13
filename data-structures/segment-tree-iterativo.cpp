@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 typedef long long T;
 struct SegTree{
 	vector<T> v;

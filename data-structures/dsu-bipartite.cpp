@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef pair<int, int> ii;
-
 // Bipartite graph
 // get return the leader and the parity of the distance to the leader
 struct DSU{

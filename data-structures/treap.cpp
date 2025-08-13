@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // Treap => Binary Search Tree + Binary Heap
 // 1. create a empty root (PTreap root=nullptr;)
 // 2. Append the nodes in asc order

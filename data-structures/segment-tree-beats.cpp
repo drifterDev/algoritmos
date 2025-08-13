@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
 // O(n*log(n)) build
 // O(log(n)) get, upd
 // updMax[l,r] -> ai = max(ai, v)

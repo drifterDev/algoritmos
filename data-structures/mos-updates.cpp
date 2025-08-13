@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define all(x) x.begin(), x.end()
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
 // O(q*(s+(n/s)^2) => O(q*(n^(2/3))), s=(2*(n^2))^(1/3) - s=n^(2/3)
 // 1. fill queries[] and upds[]
 // dont confuse index in queries with updates, they are different

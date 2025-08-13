@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) (int)x.size()
-typedef pair<int, int> ii;
-
 struct DSU {
 	vector<int> p,size,h;
 	int sets;
