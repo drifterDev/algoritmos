@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) (int)arr.size()
-
 // O(n)
 int minimum_expression(string s){
 	s=s+s;int n=sz(s),i=0,j=1,k=0;

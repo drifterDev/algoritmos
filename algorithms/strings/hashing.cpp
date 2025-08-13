@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define sz(x) ((int) x.size())
-typedef pair<int, int> ii;
-typedef long long ll;
-
 // O(n) build - O(1) get
 // 1. prepare() in the main
 // 2. hashing<string> hs("hello");
@@ -14,7 +7,10 @@ typedef long long ll;
 // BASE is prime or random
 // If chars are in [0, BASE) then compare the hashes for length
 // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
-const int MOD[2] = { 1001864327, 1001265673 }; const ii BASE(257, 367);
+
+const ii BASE(257, 367);
+const int MOD[2] = { 1001864327, 1001265673 }; 
+
 int add(int a, int b, int m){return a+b>=m?a+b-m:a+b;}
 int sbt(int a, int b, int m){return a-b<0?a-b+m:a-b;}
 int mul(int a, int b, int m){return ll(a)*b%m;} 

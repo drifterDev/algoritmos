@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) (int)arr.size()
-
 // O(n)
 vector<int> phi(string& s){
 	int n=sz(s);

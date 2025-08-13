@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 2e6+5;
 const int alpha = 26; 
 
@@ -11,8 +8,8 @@ int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);}
 
 void init(){ 
 	for(int i=0;i<=act;++i){
-		cnt[i]=0;
 		memset(to[i],0,sizeof(to[i]));
+		cnt[i]=0;
 	}
 	act=0;
 }

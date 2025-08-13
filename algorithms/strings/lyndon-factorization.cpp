@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) (int)arr.size()
-
 // A string is called simple if it is strictly smaller than all its nontrivial cyclic shifts.
 // The Lyndon factorization of the string  is s = w1 w2 ... wk
 // where all strings  wi are simple, and they are in non-increasing order

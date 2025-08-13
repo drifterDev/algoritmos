@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 // O(n)
 // 1) find the last i such that ai<ai+1
 // 2) find the last j such that ai<aj

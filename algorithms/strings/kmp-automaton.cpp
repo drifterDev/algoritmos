@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) (int)arr.size()
-
 const int maxn = 1e5+5;
 const int alpha = 26;
 int to[maxn][alpha];

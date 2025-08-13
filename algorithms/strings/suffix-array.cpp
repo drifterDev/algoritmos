@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define rep(i, a, b) for(int i = a; i < (b); ++i)
-#define all(x) x.begin(), x.end()
-#define sz(x) ((int) x.size())
-typedef vector<int> vi;
-
 // O(n*log(n)) - char in [1, lim)
 // sa: is the starting position of the i-th lex smallest suffix
 // rnk: is the rank (position in SA) of the suffix starting at i

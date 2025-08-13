@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 5e5+5;
 const int bits = 30;
 const int alpha = 2;
