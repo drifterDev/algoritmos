@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef long long T;
 T null=LLONG_MIN;
 T oper(T a, T b){return max(a,b);}
@@ -19,7 +16,7 @@ bool edges=false; // if the values are on edges instead of nodes
 struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
-	vector<int> adj[maxn];
+	vi adj[maxn];
 	SegTree st;
 
 	void addEdge(int x, int y){

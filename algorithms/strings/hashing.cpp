@@ -18,6 +18,7 @@ const int MOD[2] = { 1001864327, 1001265673 }; const ii BASE(257, 367);
 int add(int a, int b, int m){return a+b>=m?a+b-m:a+b;}
 int sbt(int a, int b, int m){return a-b<0?a-b+m:a-b;}
 int mul(int a, int b, int m){return ll(a)*b%m;} 
+ll operator ! (const ii a) { return (ll(a.first) << 32) | a.second; }
 ii operator + (const ii& a, const ii& b){return {add(a.first, b.first, MOD[0]), add(a.second, b.second, MOD[1])};}
 ii operator - (const ii& a, const ii& b){return {sbt(a.first, b.first, MOD[0]), sbt(a.second, b.second, MOD[1])};}
 ii operator * (const ii& a, const ii& b){return {mul(a.first, b.first, MOD[0]), mul(a.second, b.second, MOD[1])};}

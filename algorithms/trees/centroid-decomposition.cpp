@@ -1,8 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-const int maxn = 1e5+1;
-
 // O(n*log(n))
+const int maxn = 1e5+1;
 struct CentroidDecomposition{
 	int dad[maxn],sz[maxn];
 	set<int> adj[maxn];

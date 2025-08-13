@@ -143,10 +143,6 @@ return schedule;
 * Sprague-Grundy: rx = mex(r1, r2, ..., rk) donde r1, r2, ..., rk son los nimbers de los estados a los que se puede llegar desde s
 
 
-* c < a+b (a,b,c lados de un triangulo) y c el mayor
-
-* si se va a recibir reales, recibirlos como strings y luego convertirlos 
-
 * Al crear un struct ordenar bien los datos para mejor memoria (ordernar por tamaño de los datos)
 
 ```cpp
@@ -166,12 +162,20 @@ struct {
 
 * añadir el binomio de newton
 
-* revisar dinic teoria automac primera fecha mexico K
-
-* añadir puentes online
-
-* revisar st de cses 
-
 * gauss jordan modulo (descomunal)
 
 * añadir cow game 
+
+```python
+INF = 10**9
+G = [[] for i in range(N)]
+for a, b, d in E:
+    # x_a - x_b <= d
+    G[b].append((a, d))
+
+s = start_node
+dist = [INF] * N
+dist[s] = 0
+# run shortest path (handles negative weights)
+# dist[i]: the maximum value of (x_i - x_s)
+``` 

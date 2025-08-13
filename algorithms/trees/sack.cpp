@@ -1,8 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 1e5+5;
-vector<int> adj[maxn];
+vi adj[maxn];
 int ver[2*maxn]; // node at position i in euler tour
 int len[maxn];	// size of the subtree 
 int st[maxn]; // start time of v

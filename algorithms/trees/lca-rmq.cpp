@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 // Add RMQ - Min
 typedef int T;
 struct Table{
@@ -12,18 +8,18 @@ struct Table{
 // O(n*log(n)) build
 // O(1) lca
 struct LCA{
-	vector<int> time, path, tmp;
 	Table rmq;
+	vi time, path, tmp;
 	int n,ti;
 
-	void build(vector<vector<int>>& adj, int root){
+	void build(vector<vi>& adj, int root){
 		n=sz(adj);ti=0;
 		time.resize(n);
 		dfs(adj, root);
 		rmq.build(tmp);
 	}
 
-	void dfs(vector<vector<int>>& adj, int u, int p=-1){
+	void dfs(vector<vi>& adj, int u, int p=-1){
 		time[u]=ti++;
 		for(int v:adj[u]){
 			if(v==p)continue;
