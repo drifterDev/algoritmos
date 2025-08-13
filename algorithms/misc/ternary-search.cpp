@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // O(log((r-l)/eps))
 // return maximum value of f(x) in [l,r]
 const double eps = 1e-9;
@@ -24,7 +21,7 @@ int ternary2(){
 	while(r-l>6){
 		int m1=l+(r-l)/3;
 		int m2=r-(r-l)/3;
-		if(f(m1)<f(m2))l=m1;
+		if(f(m1)<f(m2))l=m1; // revisar desempate
 		else r=m2;
 	}
 	int ans=l,val=f(l);

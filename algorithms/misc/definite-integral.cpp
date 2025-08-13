@@ -1,7 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int steps = 1e6; // %2==0
-
 double f(double x);
 double simpson(double a, double b){
 	double h=(b-a)/steps;

@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 vector<int> a;
 int x;
 
@@ -26,13 +24,11 @@ void santa_binaria(){
 
 int main() {
 	vector<int> v={1, 2, 4, 4, 5, 6, 7, 7, 8, 9};x=6;
-	auto lower=lower_bound(v.begin(), v.end(),x);
-	int idx=distance(v.begin(),lower);
-	cout<<"Lower Bound de "<<x<<" en el índice: "<<idx<<"\n";
-	cout<<"Lower Bound de "<<x<<": "<<*lower<<"\n";
-	auto upper=upper_bound(v.begin(), v.end(),x);
-	idx=distance(v.begin(),upper);
-	cout<<"Upper Bound de "<<x<<" en el índice: "<<idx<<"\n";
-	cout<<"Upper Bound de "<<x<<": "<<*upper<<"\n";
+	int id=lower_bound(v.begin(), v.end(),x)-v.begin();
+	cout<<"Lower Bound de "<<x<<" en el índice: "<<id<<"\n";
+	cout<<"Lower Bound de "<<x<<": "<<v[id]<<"\n";
+	id=upper_bound(v.begin(), v.end(),x)-v.begin();
+	cout<<"Upper Bound de "<<x<<" en el índice: "<<id<<"\n";
+	cout<<"Upper Bound de "<<x<<": "<<v[id]<<"\n";
 	return 0;
 }

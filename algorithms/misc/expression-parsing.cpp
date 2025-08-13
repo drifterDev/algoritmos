@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-
 // O(n) - eval() de python 
 bool delim(char c){return c==' ';}
 bool is_op(char c){return c=='+' || c=='-' || c=='*' || c=='/';}

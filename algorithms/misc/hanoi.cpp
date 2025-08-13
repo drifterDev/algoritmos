@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef pair<int, int> ii;
-
 // hanoi(n) = 2 * hanoi(n-1) + 1
 // hanoi(n, 1, 3)
 vector<ii> ans;
