@@ -158,6 +158,12 @@ struct {
 
 * compilar: g++ a.cpp && ./a.out < in.txt > out.txt
 
+```cpp
+auto start = clock();
+// solve()
+cerr<<1.0*(clock()-start)/CLOCKS_PER_SEC<<" s\n";
+```
+
 * añadir el teorema multinomial
 
 * añadir el binomio de newton
