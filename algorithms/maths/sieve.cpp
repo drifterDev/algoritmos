@@ -36,6 +36,7 @@ void sieve(int n){
 }
 
 // O((R-L+1)log(log(R))+sqrt(R)log(log(sqrt(R)))
+// R-L+1 <= 1e7, R <= 1e14
 void segmentedSieve(long long L, long long R) {
     // generate all primes up to sqrt(R)
     long long lim = sqrt(R)+3;

@@ -10,6 +10,10 @@ mobius:
 sieve:
 - https://codeforces.com/contest/222/problem/C
 
+segmented-sieve:
+- https://atcoder.jp/contests/abc412/tasks/abc412_e
+- https://www.spoj.com/problems/PRINT/
+
 simplex:
 - https://codeforces.com/contest/605/problem/C
 
