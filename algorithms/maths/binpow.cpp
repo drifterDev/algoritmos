@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-int mod(int a, int m);
-int mul(int a, int b, int m);
-
 // O(log(b))
 ll binpow(ll a, ll b, ll m){  
 	ll res=1;a%=m;

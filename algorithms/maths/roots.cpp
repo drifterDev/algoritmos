@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // a*x^2+b*x+c=0
 void find_roots(double a,double b,double c){
 	if(a==0 && b==0 && c==0){

@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) ((int) arr.size())
-
 // O(sqrt(n))
 int phi(int n){
 	if(n==1)return 0;

@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-ll binpow(ll a, ll b, ll m);
 ll gcd(ll a, ll b, ll &x, ll &y);
 
 const ll MOD = 1e9+7;

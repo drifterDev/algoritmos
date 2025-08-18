@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 typedef __int128 T;
 struct Fraction{
 	T num,den;

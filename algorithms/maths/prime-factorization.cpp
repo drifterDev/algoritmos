@@ -1,8 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
 // O(log(n))
 // Sieve() and save the lowest prime factor 
 

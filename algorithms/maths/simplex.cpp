@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 // Maximizar c1*x1 + c2*x2 + c3*x3 ...
 // Restricciones a11*x1 + a12*x2 <= b1, a22*x2 + a23*x3 <= b2 ...
 // Retorna valor optimo y valores de las variables

@@ -1,14 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(x) ((int) x.size())
-typedef long long ll;
-
-const ll MOD = 1e9+7;
-ll binpow(ll a, ll b, ll m=MOD);
-ll add(ll a, ll b, ll m=MOD);
-ll mul(ll a, ll b, ll m=MOD);
-ll inv(ll a);
-
 // d(n) = (a1+1)*(a2+1)*...*(ak+1)
 ll numDiv(map<ll, ll>& f){
 	ll ans=1;

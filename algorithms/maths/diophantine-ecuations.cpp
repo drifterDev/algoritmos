@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
 ll gcd(ll a, ll b, ll x, ll y);
 
 // ax+by=c - O(log(min(a,b)))
