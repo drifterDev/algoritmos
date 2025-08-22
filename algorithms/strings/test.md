@@ -8,6 +8,9 @@ hashing:
 - https://cses.fi/problemset/task/1733
 - https://cses.fi/problemset/task/2420
 
+hashing-2d:
+- https://codeforces.com/gym/105446/problem/G
+
 kmp-automaton:
 - https://cses.fi/problemset/task/1112
 
