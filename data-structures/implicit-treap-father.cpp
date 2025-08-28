@@ -7,6 +7,8 @@
 // si se edita un treap, se tiene que hacer un pullAll hasta la raiz
 // si no se hace esto, el treap queda con informacion pasada
 
+// si se va a modificar un treap, hacer un pushAll para bajar los lazy
+
 typedef long long T;
 typedef unsigned long long u64;
 mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
