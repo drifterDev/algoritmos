@@ -9,8 +9,14 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef long long ll;
 
+void main2(){
+	
+}
+
 int main(){
 	ios::sync_with_stdio(false);cin.tie(nullptr);
-	
+	clock_t start = clock();
+	main2();
+    cerr<<double(clock()-start)/CLOCKS_PER_SEC<<" s\n";
 	return 0;
 }
