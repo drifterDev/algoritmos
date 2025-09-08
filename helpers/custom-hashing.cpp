@@ -29,7 +29,7 @@ struct custom_hash {
 unordered_map<long long, int, custom_hash> safe_map; // unordered_map or gp_hash_table
 
 // safe_map.max_load_factor(0.25);
-// safe_map.reserve(500); potencia de 2 más cercana
+// safe_map.reserve(500); potencia de 2 mas cercana
 
 // tabla de velocidad (multitest) - no usar reserve
 // max_load_factor

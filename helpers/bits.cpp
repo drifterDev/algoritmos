@@ -36,7 +36,7 @@ int main() {
 	cout<<__builtin_ctz(x)<<"\n"; // numero de ceros a la derecha
 	cout<<__builtin_popcount(x)<<"\n"; // numero de bits prendidos
 	cout<<__builtin_parity(x)<<"\n"; // Paridad del numero de unos
-	cout<<__builtin_ffs(x)<<"\n"; // posición del primer bit prendido (lsb+1)
+	cout<<__builtin_ffs(x)<<"\n"; // posicion del primer bit prendido (lsb+1)
 
 
 	int m=14; // 1110
