@@ -5,6 +5,7 @@ using namespace std;
 // O(n*log(alpha))
 // suf: suffix link
 // len: length of the longest string in this state
+// minlen: smallest string of node v = (suf[v]==-1?0:len[suf[v]]) + 1
 // end: if this state is terminal
 struct SuffixAutomaton{
 	vector<map<char,int>> to;
