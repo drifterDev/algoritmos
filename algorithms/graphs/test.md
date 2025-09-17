@@ -21,6 +21,9 @@ dial-algorithm:
 - https://codeforces.com/contest/1063/problem/B
 - https://codeforces.com/contest/877/problem/D
 
+dijkstra-sparse-graphs:
+- https://codeforces.com/gym/106063/problem/F
+
 dijkstra:
 - https://cses.fi/problemset/task/1671/
 
