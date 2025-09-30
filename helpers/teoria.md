@@ -18,6 +18,7 @@
 * a - b = (a ^ (a & b)) - (b ^ (a & b))
 * a - b = ((a | b) ^ b) - (b ^ (a & b))
 * a ^ b = ~(a & b) & (a | b)
+* (x < y < z) -> min(x^y, y^z) < (x^z)
 
 ## Combinatoria
 
@@ -179,3 +180,10 @@ dist[s] = 0
 # run shortest path (handles negative weights)
 # dist[i]: the maximum value of (x_i - x_s)
 ``` 
+
+* Quitar repetidos 
+
+```cpp
+sort(all(bs));
+bs.resize(unique(all(bs)) - bs.begin());
+```
