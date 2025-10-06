@@ -44,6 +44,7 @@ struct LCA{
 	}
 
 	int lca(int a, int b){
+		// if(kth(a, dep[a])!=kth(b, dep[b]))return -1; // forest
 		a=kth(a, dep[a]-min(dep[a], dep[b]));
 		b=kth(b, dep[b]-min(dep[a], dep[b]));
 		if(a==b)return a;

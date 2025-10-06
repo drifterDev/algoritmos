@@ -3,10 +3,11 @@ using namespace std;
 #define sz(x) ((int) x.size())
 
 // O(n*log(alpha))
-// suf: suffix link
+// suf: suffix link (like aho if not match)
 // len: length of the longest string in this state
 // minlen: smallest string of node v = (suf[v]==-1?0:len[suf[v]]) + 1
 // end: if this state is terminal
+// count different strings [len[suf[i]]+1, len[i]]
 struct SuffixAutomaton{
 	vector<map<char,int>> to;
 	vector<int> suf,len; 
