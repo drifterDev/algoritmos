@@ -1,66 +1,66 @@
-// a->b->c->b->c
-// b->c
-
 // O(n*log(alpha))
 // suf: suffix link (like aho if not match)
 // len: length of the longest string in this state
-// minlen: smallest string of node v = (suf[v]==-1?0:len[suf[v]]) + 1
+// minlen: smallest string of node v = (v.suf==-1?0:v.suf.len) + 1
 // end: if this state is terminal
-// count different strings [len[suf[i]]+1, len[i]]
+// count different strings [i.suf.len+1, i.len]
 // para saber cuantos substrings itnee a en b, ir procesando los 
 // prefijos y al marcarlos procesar la cantidad visitando los sufijos de los nodos
 // contribucion es u.len - u.suf.len, tener en cuenta con que len se llego
 // puede ser un len2 para manejar eso min(u.len, u.len2)-u.suf.len
+
+// a->b->c->b->c
+// b->c
 template<int alpha = 26>
 struct SuffixAutomaton {
-    struct Node {
-        // array<int, alpha> to; TLE, add -> int conv(char ch)
-        map<char, int> to;
-        int len = 0, suf = 0; 
+	struct Node {
+		// array<int, alpha> to; TLE, add -> int conv(char ch)
+		map<char, int> to;
+		int len = 0, suf = 0; 
 		bool end = false;
-    };
+	};
 
-    vector<Node> sa;
-    int last = 0;
-    ll substrs = 0;
+	vector<Node> sa;
+	int last = 0;
+	ll substrs = 0;
 
-    SuffixAutomaton(string &s) {
-        sa.reserve(sz(s)*2);
-        last = add_node();
-        sa[0].suf = -1;
-        for (char &c : s) add_char(c);
-        for (int p = last; p; p = sa[p].suf) sa[p].end = 1;
-    }
+	SuffixAutomaton(string &s) {
+		sa.reserve(sz(s)*2);
+		last = add_node();
+		sa[0].suf = -1;
+		for (char &c : s) add_char(c);
+		for (int p = last; p; p = sa[p].suf) sa[p].end = 1;
+	}
 
-    int add_node() { sa.push_back({}); return sz(sa)-1; }
+	int add_node() { sa.push_back({}); return sz(sa)-1; }
 
-    void add_char(char c) {
-        int u = add_node(), p = last;
-        sa[u].len = sa[last].len + 1;
-        while (p != -1 && !sa[p].to.count(c)) {
-            sa[p].to[c] = u;
-            substrs += p != 0 ? sa[p].len - sa[sa[p].suf].len : 1;
-            p = sa[p].suf;
-        }
-        if (p != -1) {
-            int q = sa[p].to[c];
-            if (sa[p].len + 1 != sa[q].len) {
-                int clone = add_node();
-                sa[clone] = sa[q];
-                sa[clone].len = sa[p].len + 1;
-                sa[q].suf = sa[u].suf = clone;
-                while (p != -1 && sa[p].to[c] == q) {
-                    sa[p].to[c] = clone;
-                    p = sa[p].suf;
-                }
-            } else sa[u].suf = q;
-        }
-        last = u;
-    }
+	void add_char(char c) {
+		int u = add_node(), p = last;
+		sa[u].len = sa[last].len + 1;
+		while (p != -1 && !sa[p].to.count(c)) {
+			sa[p].to[c] = u;
+			substrs += p != 0 ? sa[p].len - sa[sa[p].suf].len : 1;
+			p = sa[p].suf;
+		}
+		if (p != -1) {
+			int q = sa[p].to[c];
+			if (sa[p].len + 1 != sa[q].len) {
+				int clone = add_node();
+				sa[clone] = sa[q];
+				sa[clone].len = sa[p].len + 1;
+				sa[q].suf = sa[u].suf = clone;
+				while (p != -1 && sa[p].to[c] == q) {
+					sa[p].to[c] = clone;
+					p = sa[p].suf;
+				}
+			} else sa[u].suf = q;
+		}
+		last = u;
+	}
 
-    // Aplicaciones 
-    
-    int dfs(int u){ // count
+	// Aplicaciones 
+	
+	int dfs(int u){ // count
 		if(sa[u].cnt!=-1)return sa[u].cnt;
 		sa[u].cnt=sa[u].end;
 		for(auto [_,v]:sa[u].to){
@@ -69,14 +69,14 @@ struct SuffixAutomaton {
 		return sa[u].cnt;
 	}
 
-    void dfs2(int u){ // grade primero
-        sa[u].pre--;
-        if(sa[u].pre>0)return;
-        for(auto [_,v]:sa[u].to){
-            sa[v].cnt2+=sa[u].cnt2;
-            dfs2(v);
-        }
-    }
+	void dfs2(int u){ // grade primero
+		sa[u].pre--;
+		if(sa[u].pre>0)return;
+		for(auto [_,v]:sa[u].to){
+			sa[v].cnt2+=sa[u].cnt2;
+			dfs2(v);
+		}
+	}
 
 	void dfs2(){
 		vector<int> order(sz(sa)-1);
@@ -98,25 +98,25 @@ struct SuffixAutomaton {
 				u=sa[u].to[c];
 				l++;
 			}
-            ans=max(ans, l);
+			ans=max(ans, l);
 		}
-        return ans;
+		return ans;
 	}
 
-    bool query(string& t){
+	bool query(string& t){
 		int u=0;
 		for(char c:t){
 			if(!sa[u].to.count(c))return false;
 			u=sa[u].to[c];
 		}
-        return true;
+		return true;
 	}
 
-    void cyclic(string& t){ // dfs(0) primero
+	void cyclic(string& t){ // dfs(0) primero
 		int u=0,l=0;
 		int m=sz(t);
 		t+=t;
-		unordered_set<int> s;
+		unordered_set<int> s; // vector<bool>
 		for(char ch:t){
 			int c=conv(ch);
 			while(u && !sa[u].to[c]){
